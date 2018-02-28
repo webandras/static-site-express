@@ -1,0 +1,30 @@
+{
+  "name": "static-site-express",
+  "version": "1.0.0",
+  "description": "A simple Node.js based static site generator that uses EJS",
+  "main": "./scripts/build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node ./scripts/serve.js",
+    "build": "node ./scripts/build.js",
+    "both": "node ./scripts/build.js && node ./scripts/serve.js"
+  },
+  "keywords": [
+    "Node.js",
+    "express",
+    "ejs",
+    "markdown",
+    "static-site"
+  ],
+  "author": "András Gulácsi",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "fs-extra": "^5.0.0",
+    "serve-favicon": "^2.4.5"
+  },
+  "devDependencies": {
+    "standard": "^11.0.0"
+  }
+}
