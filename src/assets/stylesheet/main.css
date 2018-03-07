@@ -1,6 +1,6 @@
 @charset "UTF-8";
-/* Minimal theme Created by András Gulácsi (@andrasgulacsi / salsaboy990), 2018-02-26 */
-
+/* Minimal theme Created by András Gulácsi (@andrasgulacsi / salsaboy990), 2018-03-07 */
+/* Final version */
 .col {
     float: left;
     /* Include padding and border in the element's total width and height */
@@ -88,12 +88,31 @@
         width: 100%
     }
 
+    .book {
+        width: 75% !important
+    }
+
     .clear-padding {
         padding: 0 !important
     }
 
     body, html {
-        font-size: 20px !important
+        font-size: 18px !important
+    }
+
+    img.profile {
+        width: 125px;
+    }
+
+}
+
+@media (max-width: 400px) {
+    body, html {
+        font-size: 16px !important
+    }
+
+    img.profile {
+        width: 110px;
     }
 }
 
@@ -173,6 +192,10 @@
     }
     .lg-col-12 {
         width: 100%
+    }
+
+    html, body {
+        font-size: 22px
     }
 }
 
@@ -506,9 +529,12 @@ html {
 }
 
 body {
-    color: #3A3A3A;
-    font-family: "Average Sans", "Trebuchet MS", Trebuchet, Verdana, sans-serif;
+    color: #111;
+    font-family: "PT Sans", sans-serif;
     margin: 0;
+    width: 100%;
+    height: 100%;
+    text-align: left
 }
 
 body, p, blockquote,
@@ -523,8 +549,8 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
+    font-family: "Merriweather", sans-serif;
+    /*font-weight: bold;*/
     margin: 2rem 0 0.75rem 0;
     -webkit-font-smoothing: initial;
     line-height: 1.25
@@ -536,9 +562,14 @@ h3 a,
 h4 a,
 h5 a,
 h6 a {
-    color: #3A3A3A;
-    text-decoration: none
+    text-decoration: none;
+    font-weight: 500
 }
+
+.merryweather {
+    font-family: "Merriweather", sans-serif;
+}
+
 
 h1,
 .h1 {
@@ -600,25 +631,17 @@ blockquote {
 }
 
 .gray {
-    color: #74777B
+    color: #727779
 }
 
 .dark-gray {
-    color: #545B5C
-}
-
-.black {
     color: #3A3A3A
 }
 
-
-.bg-white {
-    background-color: #FCFFFD
+.black {
+    color: #111 /* #3A3A3A */
 }
 
-.montserrat {
-    font-family: "Montserrat", sans-serif
-}
 
 .letter-spacing {
     letter-spacing: 1px
@@ -644,6 +667,10 @@ blockquote {
     font-weight: 600
 }
 
+.bold-700 {
+    font-weight: 700
+}
+
 .uppercase {
     text-transform: uppercase
 }
@@ -652,22 +679,25 @@ blockquote {
     text-decoration: underline
 }
 
+.no-underline {
+    text-decoration: none
+}
+
 .smallest {
     font-size: .7rem
 }
 
 .small {
-    font-size: .8rem
-}
-
-.medium {
     font-size: .9rem
 }
 
-.big {
+.medium {
     font-size: 1.1rem
 }
 
+.big {
+    font-size: 1.5rem
+}
 
 .left {
     float: left
@@ -719,11 +749,11 @@ img {
     margin-bottom: .5rem;
     display: block;
     height: auto;
-    width: 75%;
+    width: 100%;
 }
 
 .book {
-    width: 50%;
+    width: 40%;
 }
 
 iframe {
@@ -746,11 +776,15 @@ tr:nth-child(even) {
 }
 
 .border-top {
-    border-top: 1px solid #E1E3E4
+    border-top: 1px solid #ccc
 }
 
 .border-bottom {
-    border-bottom: 1px solid #E1E3E4
+    border-bottom: 1px solid #ccc
+}
+
+.border-bottom-black {
+    border-bottom: 1px solid #111
 }
 
 .border-none {
@@ -759,18 +793,20 @@ tr:nth-child(even) {
 
 body,
 html {
-    font-size: 22px;
-    font-family: "Average Sans", sans-serif;
-    line-height: 1.667
+    font-size: 20px;
+    font-family: "PT Sans", sans-serif;
+    line-height: 1.6667;
+    margin: 0;
+    padding: 0;
 }
 
 a {
-    color: hsl(190, 100%, 32%);
+    color: hsl(190, 100%, 22%);
     transition: color 0.3s ease-in
 }
 
 a:hover {
-    color: hsl(190, 100%, 5%)
+    color: hsl(190, 100%, 3%)
 }
 
 .profile {
@@ -779,9 +815,7 @@ a:hover {
     width: 135px;
     display: block;
     border-radius: 50%;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+    margin-right: 0.5rem;
 }
 
 

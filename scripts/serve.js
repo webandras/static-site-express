@@ -15,6 +15,10 @@ const app = express()
 // to serve the static files from the /public folder
 app.use('/', express.static(path.join('public')))
 
+app.get('*', (req, res) => {
+  res.end('404 A keresett oldal nem található.')
+})
+
 // start the server
 app.listen(port, () => {
   console.log(`Server is listening on localhost:${port}...`)

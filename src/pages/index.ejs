@@ -1,24 +1,20 @@
 <!-- BLOGPOSTS -->
-<div class="sm-col-12 md-col-10 lg-col-7 col-8 mx-auto mb3">
+<div class="sm-col-12 md-col-10 lg-col-8 col-9 mx-auto align-left">
 
-  <div class="pb1 border-bottom">
-    <p class="small montserrat m0">2018. január 5.</p>
-    <a href="#" class="black big">Felforgatók, utópisták és a kulturális marxizmus</a>
+  
+<% for (var i = 0; i < site.postdata.length; i++) { %>
+  <div class="pt1 m0">
+    <p class="smallest gray mb0 merryweather"><%= site.dateFormatted[i] %></p>
+    <a href="<%= pathsToPosts[i] %>" class="big pb1 bold-700 merryweather"><%= site.postdata[i].title %></a>
+
+    <div class="mt1 border-bottom-black" style="display: inline-block">
+      <p class="small black left m0 pbhalf" style="width: 55%"><%= site.postdata[i].description %></p>
+      <a href="<%= pathsToPosts[i] %>">
+        <img class="right m0 pl1 " style="width: 45%" src="<%= site.postdata[i].cover_image %>" alt="<%= site.postdata[i].title %>"/>
+      </a>
+    </div>
+
   </div>
-
-  <div class="pt2 pb1 border-bottom">
-    <p class="small montserrat m0">2017. december 18.</p>
-    <a href="#" class="black big">Hány cigány él Magyarországon?</a>
-  </div>
-
-  <div class="pt2 pb1 border-bottom">
-    <p class="small montserrat m0">2017. július 27.</p>
-    <a href="#" class="black big">A Séta a „Tudományért” tüntetések a társadalmi igazságosságért</a>
-  </div>
-
-  <div class="pt2 pb1 border-bottom">
-    <p class="small montserrat m0">2017. július 01.</p>
-    <a href="#" class="black big">Félelemkeltés a GMO-kkal és a vegyszerekkel. A zöld szervezetek kapcsolata az organikus élelmiszerlobbival.</a>
-  </div>
-
+<% } %>
+  <p class="mb2 small" >Feliratkozás a <a href="#">hírlevelemre</a>.</p>
 </div>

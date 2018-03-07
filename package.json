@@ -4,17 +4,20 @@
   "description": "A simple Node.js based static site generator that uses EJS",
   "main": "./scripts/build.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "node ./scripts/serve.js",
     "build": "node ./scripts/build.js",
-    "both": "node ./scripts/build.js && node ./scripts/serve.js"
+    "serve": "node ./scripts/serve.js",
+    "both": "node ./scripts/build.js && node ./scripts/serve.js",
+    "table": "node ./database/mysql_table_tool.js",
+    "mysql": "node ./database/mysql_db_tool.js"
   },
   "keywords": [
     "Node.js",
-    "express",
+    "Express",
     "ejs",
-    "markdown",
-    "static-site"
+    "mysql",
+    "static-site",
+    "static site generator",
+    "static files"
   ],
   "author": "András Gulácsi",
   "license": "MIT",
@@ -22,6 +25,8 @@
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "fs-extra": "^5.0.0",
+    "mysql": "^2.15.0",
+    "readline-sync": "^1.4.9",
     "serve-favicon": "^2.4.5"
   },
   "devDependencies": {
