@@ -1,4 +1,4 @@
-const postData = require('./src/data/postData.json')
+const postData = require('./src/data/postdata.json')
 
 let dateFormatted = []
 let dateParts = []
