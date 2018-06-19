@@ -1,22 +1,13 @@
 <!DOCTYPE html>
 <html lang="hu">
-  <!-- HEAD -->
   <%- include('../partials/head') %>
 <body>
-
-  <!-- MAIN CONTENT -->
-  <main class="m0 p0 clear-padding">
-
-    <!-- HEADER, NAVIGATION BAR -->
-    <%- include('../partials/navbar-home') %>
-
-    <!-- BLOGPOSTS -->
+  <%- include('../partials/header') %>
+  <%- include('../partials/navbar-home') %>
+  <main class="m0 p0 clear-padding"> 
     <%- body %>
-
   </main>
-
-  <!-- FOOTER, SOCIAL MEDIA -->
   <%- include('../partials/footer') %>
-
+  <%- include('../partials/bootstrap') %>
 </body>
 </html>

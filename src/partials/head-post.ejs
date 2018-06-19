@@ -2,26 +2,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow|PT+Sans:400,400i|Merriweather:900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700|PT+Serif:400&amp;subset=latin-ext" rel="stylesheet">
   
     <title><%= site.title %></title>
   
     <!-- MORE METAS ARE COMING HERE -->
     <meta name="description" content="<%= site.description %>">
-    <meta property="og:title" content="<%= site.title %>">
-    <meta property="og:url" content="">
+    <meta property="og:title" content="<%= postTitle %>">
+    <meta property="og:url" content="<%= postUrl %>">
     <meta property="og:site_name" content="<%= site.title %>">
-    <meta property="og:description" content="<%= site.description %>">
-    <meta property="og:image" content="">
+    <meta property="og:description" content="<%= postDescription %>">
+    <meta property="og:image" content="<%= postImage %>">
     <meta property="og:type" content="website">
-  
+
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="<%= site.twitter %>">
     <meta name="twitter:creator" content="<%= site.twitter %>">
-    <meta name="twitter:title" content="<%= site.title %>">
-    <meta name="twitter:description" content="<%= site.description %>">
-    <meta name="twitter:url" content="">
-    <meta name="twitter:image" content="">
+    <meta name="twitter:title" content="<%= postTitle %>">
+    <meta name="twitter:description" content="<%= postDescription %>">
+    <meta name="twitter:url" content="<%= postUrl %>">
+    <meta name="twitter:image" content="<%= postImage %>">
   
+    <link rel="canonical" href="<%= postUrl %>">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="./../../../assets/stylesheet/main.css" rel="stylesheet" type="text/css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#005d70">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   </head>

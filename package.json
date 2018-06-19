@@ -4,11 +4,11 @@
   "description": "A simple Node.js based static site generator that uses EJS",
   "main": "./scripts/build.js",
   "scripts": {
-    "build": "node ./scripts/build.js",
+    "build": "node ./scripts/buildPosts.js && node ./scripts/buildPages.js",
     "serve": "node ./scripts/serve.js",
-    "both": "node ./scripts/build.js && node ./scripts/serve.js",
+    "build-serve": "node ./scripts/buildAll.js && node ./scripts/serve.js",
     "table": "node ./database/mysql_table_tool.js",
-    "mysql": "node ./database/mysql_db_tool.js"
+    "db": "node ./database/mysql_db_tool.js"
   },
   "keywords": [
     "Node.js",
@@ -30,6 +30,6 @@
     "serve-favicon": "^2.4.5"
   },
   "devDependencies": {
-    "standard": "^11.0.0"
+    "standard": "^11.0.1"
   }
 }

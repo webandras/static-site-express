@@ -1,96 +1,110 @@
-const postdata = require('./src/data/postdata.json')
+const postData = require('./src/data/postData.json')
 
 let dateFormatted = []
 let dateParts = []
-let truncatedTitle = []
-for (let i = 0; i < postdata.length; i++) {
-  // split date string by the '-' delimiter into an array
-  dateParts = postdata[i].date.split('-')
-  // console.log(dateParts)
+let linkParts = []
 
-  truncatedTitle.push(shorten(postdata[i].title, 60))
+let yearPosted
+let posts2018 = []
+let posts2017 = []
+
+let links2018 = []
+let links2017 = []
+
+for (let i = 0; i < postData.length; i++) {
+  // split date string by the '-' delimiter into an array
+  dateParts = postData[i].date.split('-')
+  linkParts = postData[i].filename.split('-')
+
+  yearPosted = dateParts[0]
+  switch (yearPosted) {
+    case '2018':
+      posts2018.push(postData[i].title)
+      links2018.push(`/${linkParts[0]}/${linkParts[1]}/${linkParts[2]}/${linkParts[3]}.html`)
+      break
+    case '2017':
+      posts2017.push(postData[i].title)
+      links2017.push(`/${linkParts[0]}/${linkParts[1]}/${linkParts[2]}/${linkParts[3]}.html`)
+      break
+    default:
+      break
+  }
 
   // replace month number with month name
   let month = dateParts[1]
   switch (month) {
     case '01':
-      dateFormatted.push(dateParts[0] + '. január ' + dateParts[2] + '.')
+      dateFormatted.push('January ' + dateParts[2] + ', ' + dateParts[0])
       break
 
     case '02':
-      dateFormatted.push(dateParts[0] + '. február ' + dateParts[2] + '.')
+      dateFormatted.push('February ' + dateParts[2] + ', ' + dateParts[0])
       break
 
     case '03':
-      dateFormatted.push(dateParts[0] + '. március ' + dateParts[2] + '.')
+      dateFormatted.push('March ' + dateParts[2] + ', ' + dateParts[0])
       break
 
     case '04':
-      dateFormatted.push(dateParts[0] + '. április ' + dateParts[2] + '.')
+      dateFormatted.push('April ' + dateParts[2] + ', ' + dateParts[0])
       break
 
     case '05':
-      dateFormatted.push(dateParts[0] + '. május ' + dateParts[2] + '.')
+      dateFormatted.push('May ' + dateParts[2] + ', ' + dateParts[0])
       break
 
     case '06':
-      dateFormatted.push(dateParts[0] + '. június ' + dateParts[2] + '.')
+      dateFormatted.push('June ' + dateParts[2] + ', ' + dateParts[0])
       break
 
     case '07':
-      dateFormatted.push(dateParts[0] + '. július ' + dateParts[2] + '.')
+      dateFormatted.push('July ' + dateParts[2] + ', ' + dateParts[0])
       break
 
     case '08':
-      dateFormatted.push(dateParts[0] + '. augusztus ' + dateParts[2] + '.')
+      dateFormatted.push('August ' + dateParts[2] + ', ' + dateParts[0])
       break
 
     case '09':
-      dateFormatted.push(dateParts[0] + '. szeptember ' + dateParts[2] + '.')
+      dateFormatted.push('September ' + dateParts[2] + ', ' + dateParts[0])
       break
 
     case '10':
-      dateFormatted.push(dateParts[0] + '. október ' + dateParts[2] + '.')
+      dateFormatted.push('October ' + dateParts[2] + ', ' + dateParts[0])
       break
 
     case '11':
-      dateFormatted.push(dateParts[0] + '. november ' + dateParts[2] + '.')
+      dateFormatted.push('November ' + dateParts[2] + ', ' + dateParts[0])
       break
 
     case '12':
-      dateFormatted.push(dateParts[0] + '. december ' + dateParts[2] + '.')
+      dateFormatted.push('December ' + dateParts[2] + ', ' + dateParts[0])
       break
 
     default: break
   }
 }
 
-console.log(truncatedTitle)
-
-function shorten (text, maxLength) {
-  let ret = text
-  if (ret.length > maxLength) {
-    ret = ret.substr(0, maxLength - 3) + '…'
-  }
-  return ret
-}
-
-// console.log(dateFormatted)
-
+// I inserted some dummy text
 module.exports = {
   site: {
-    title: 'Gulácsi András',
-    quote: '„Az ideológiai alapú, utópisztikus gondolkodás ellen veszem fel a küzdelmet a tények, a tapasztalatok és a józan ész segítségével, hogy ne váljon pusztító ideológiák martalékává a társadalom.”',
-    description: 'Egy full stack webfejlesztőnek készülő természettudós és amatőr táncos.',
-    email: 'guland@protonmail.com',
-    github: 'SalsaBoy990',
-    twitter: 'andrasgulacsi',
-    linkedin: 'andrasgulacsi',
-    facebook: 'andras.gulacsi.3',
-    mailchimp: '#',
+    url: '',
+    title: `Your name's blog`,
+    author: 'Your name',
+    quote: 'Your quote that describes your blog... Your quote that describes your blog... Your quote that describes your blog...',
+    description: 'Your short bio goes here... Your short bio goes here... Your short bio goes here... Your short bio goes here... Your short bio goes here...',
+    bookTitle: 'Your book title (if you have one)',
+    email: 'username@yourmail.com',
+    github: 'username',
+    linkedin: 'your-custom-name',
+    cv: 'link-to-your-cv',
+    mailchimp: 'link-to-your-newsletter',
     year: new Date().getFullYear(),
-    postdata,
+    postData,
     dateFormatted: dateFormatted,
-    truncatedTitle: truncatedTitle
+    posts2018: posts2018,
+    posts2017: posts2017,
+    links2018: links2018,
+    links2017: links2017
   }
 }

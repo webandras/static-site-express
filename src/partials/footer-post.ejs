@@ -1,0 +1,26 @@
+<footer>
+    <div class="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <img class="mt2 left profile-small unselectable mr1" src="./../../../assets/images/profile.png" alt="Profile picture"/>
+            <h3 class="bold-800 light-gray"><%= site.author %></h3>
+            <p class="mt1 italic small white" style="margin-left: 75px; max-width: 400px"><%= site.description %></p>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <div class="inline pull-right mr1 mt3 mb1">
+              <div class="row footer-link">
+                <a class="smallest medium-gray mrhalf" href="https://github.com/<%= site.github %>"><i class="fab fa-github fa-lg medium-gray"></i> Github</a>
+                <a class="smallest medium-gray mrhalf" href="https://linkedin.com/in/<%= site.linkedin %>"><i class="fab fa-linkedin fa-lg medium-gray"></i> Linkedin</a>
+                <a class="smallest medium-gray" href="mailto:<%= site.email %>"><i class="fas fa-envelope-square fa-lg medium-gray"></i> Email</a>
+              </div>
+              <div class="row mthalf align-left">
+                <p class="minimal gray">&copy; <%= site.author %>, <%= site.year %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
