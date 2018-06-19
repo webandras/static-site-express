@@ -8,9 +8,6 @@ let yearPosted
 let posts2018 = []
 let posts2017 = []
 
-let links2018 = []
-let links2017 = []
-
 for (let i = 0; i < postData.length; i++) {
   // split date string by the '-' delimiter into an array
   dateParts = postData[i].date.split('-')
@@ -19,12 +16,16 @@ for (let i = 0; i < postData.length; i++) {
   yearPosted = dateParts[0]
   switch (yearPosted) {
     case '2018':
-      posts2018.push(postData[i].title)
-      links2018.push(`/${linkParts[0]}/${linkParts[1]}/${linkParts[2]}/${linkParts[3]}.html`)
+      posts2018.push({
+        title: postData[i].title,
+        link: `/${linkParts[0]}/${linkParts[1]}/${linkParts[2]}/${linkParts[3]}.html`
+      })
       break
     case '2017':
-      posts2017.push(postData[i].title)
-      links2017.push(`/${linkParts[0]}/${linkParts[1]}/${linkParts[2]}/${linkParts[3]}.html`)
+      posts2017.push({
+        title: postData[i].title,
+        link: `/${linkParts[0]}/${linkParts[1]}/${linkParts[2]}/${linkParts[3]}.html`
+      })
       break
     default:
       break
@@ -103,8 +104,6 @@ module.exports = {
     postData,
     dateFormatted: dateFormatted,
     posts2018: posts2018,
-    posts2017: posts2017,
-    links2018: links2018,
-    links2017: links2017
+    posts2017: posts2017
   }
 }

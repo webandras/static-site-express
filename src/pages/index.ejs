@@ -1,7 +1,7 @@
 
-<div class="container mt3" style="width:100%; margin-right: 0; margin-left:0;">
-  <div class="row m0">
-    <div class="col-xs-12 col-sm-7 col-sm-offset-1">
+<div class="container mt3">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
       <% for (var i = 0; i < site.postData.length; i++) { %>
       <article>
         <div class="plhalf prhalf pthalf m0 mb3 border-full border-shadow clearfix" style="background: #fffff0;">
@@ -19,41 +19,42 @@
       </article>
       <% } %>
     </div>
-      <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-0 align-left">
-        <div class="mb2 pb1" style="background: #EFEFEF; border-radius: 3px;">
-          <h4 class="mt0 pthalf mb1 plhalf gray minimal">Blog archive</h4>
-          <h5 class="mt0 mbhalf pl1 dark-gray minimal">
-            <a href="#y2018" data-toggle="collapse" class="no-underline">
-              2018 <span class="gray normal">(<%= site.posts2018.length %>)</span>
-              <b class="caret"></b>
+    
+    <div class="col-xs-12 col-sm-4">
+      <div class="mb2 pb1" style="background: #EFEFEF; border-radius: 3px;">
+        <h4 class="mt0 pthalf mb1 plhalf gray smallest">Blog archive</h4>
+        <h5 class="mt0 mbhalf pl1 dark-gray smallest">
+          <a href="#y2018" data-toggle="collapse" class="no-underline">
+            2018 <span class="gray normal">(<%= site.posts2018.length %>)</span>
+            <b class="caret"></b>
+          </a>
+        </h5>
+        <ul id="y2018" class="no-bullets prhalf plhalf pbhalf collapse">
+        <% for (var i = 0; i < site.posts2018.length; i++) { %>
+          <li class="pl1 mbhalf">
+            <a class="smallest" href="<%= site.posts2018[i].link %>">
+              &raquo; <%= site.posts2018[i].title %>
             </a>
-          </h5>
-          <ul id="y2018" class="no-bullets prhalf plhalf pbhalf collapse">
-          <% for (var i = 0; i < site.posts2018.length; i++) { %>
-            <li class="pl1" style="margin-bottom: 5px;">
-              <a class="smallest" href="<%= site.links2018[i] %>">
-                &raquo; <%= site.posts2018[i] %>
-              </a>
-            </li>
-          <% } %>
-          </ul>
+          </li>
+        <% } %>
+        </ul>
 
-          <h5 class="mt0 mbhalf pl1 align-left dark-gray minimal">
-            <a href="#y2017" data-toggle="collapse" class="no-underline">
-              2017 <span class="gray normal">(<%= site.posts2017.length %>)</span>
-              <b class="caret"></b>
+        <h5 class="mt0 mbhalf pl1 align-left dark-gray smallest">
+          <a href="#y2017" data-toggle="collapse" class="no-underline">
+            2017 <span class="gray normal">(<%= site.posts2017.length %>)</span>
+            <b class="caret"></b>
+          </a>
+        </h5>
+        <ul id="y2017" class="no-bullets prhalf plhalf pbhalf collapse">
+        <% for (var i = 0; i < site.posts2017.length; i++) { %>
+          <li class="pl1 mbhalf">
+            <a class="smallest" href="<%= site.posts2018[i].link %>">
+              &raquo; <%= site.posts2017[i].title %>
             </a>
-          </h5>
-          <ul id="y2017" class="no-bullets prhalf plhalf pbhalf collapse">
-          <% for (var i = 0; i < site.posts2017.length; i++) { %>
-            <li class="pl1" style="margin-bottom: 5px;">
-              <a class="smallest" href="<%= site.links2017[i] %>">
-                &raquo; <%= site.posts2017[i] %>
-              </a>
-            </li>
-          <% } %>
-          </ul>
-        </div>
+          </li>
+        <% } %>
+        </ul>
       </div>
+    </div>
   </div>
 </div>
