@@ -1,24 +1,30 @@
 // Small utility program that exports data from a mysql table into JSON file
-// !IMPORTANT! This script is added to .gitignore!
+// !VERY IMPORTANT! This script is needs to be added to .gitignore!
 'use strict'
 
 const mysql = require('mysql')
 const fs = require('fs')
 
-// !IMPORTANT! This script is added to .gitignore! It would be unwise to push it to
+// replace YOUR_PASSWORD with your actual password
+const yourPassword = 'YOUR_PASSWORD'
+
+// replace YOUR_DATABASE_NAME with your actual database name
+const yourDatabaseName = 'YOUR_DATABASE_NAME'
+
+// name of your table in the database
+const tableName = 'posts'
+
+// // !VERY IMPORTANT! This script is needs to be added to .gitignore! It would be unwise to push it to
 // a public repo, since your username and password would be visible to anyone!
 // I uploaded my version with fake data.
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'YOUR-PASSWORD',
-  database: 'YOUR-DATABASE-NAME',
+  password: yourPassword,
+  database: yourDatabaseName,
   dateStrings: true,
   charset: 'utf8mb4'
 })
-
-// store name of the table
-const tableName = 'posts'
 
 // order rows by this field in the SQL table
 const orderByThisField = 'date'

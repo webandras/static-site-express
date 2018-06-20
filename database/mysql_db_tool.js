@@ -1,7 +1,10 @@
 // Small utility program that provides a command line interface
 // to create a mysql database and/or add a table to the database
-// !IMPORTANT! This script is added to .gitignore!
+// !VERY IMPORTANT! This script is needs to be added to .gitignore!
 'use strict'
+
+// replace YOUR_PASSWORD with your actual password
+const yourPassword = 'YOUR_PASSWORD'
 
 const mysql = require('mysql')
 // synchronous prompt
@@ -50,7 +53,7 @@ function createDatabase () {
   const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'YOUR_PASSWORD',
+    password: yourPassword,
     charset: 'utf8mb4'
   })
 
@@ -80,7 +83,7 @@ function createTable (fields) {
   const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'green76931/*ABC',
+    password: yourPassword,
     database: dbName,
     charset: 'utf8_unicode_ci'
   })

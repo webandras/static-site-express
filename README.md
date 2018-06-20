@@ -47,7 +47,7 @@ The SQL database have to contain the following columns:
 `git clone https://github.com/SalsaBoy990/static-site-express static-site-express`
 
 
-### 5. Register at Netlify (it's free) anf publish your website/blog
+### 5. Register at Netlify (it's free) and publish your website/blog
 
 Register here: https://www.netlify.com/
 
