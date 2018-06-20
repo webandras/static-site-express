@@ -4,13 +4,11 @@
   const fse = require('fs-extra')
   const path = require('path')
 
-  // use promises to avoid callback hell and simplify code
-  const { promisify } = require('util')
   // renders ejs layouts to html
-  const ejsRenderFile = promisify(require('ejs').renderFile)
+  const ejsRender = require('ejs').render
 
   // search for matching files, returns array of filenames
-  const globP = promisify(require('glob'))
+  const glob = require('glob')
 
   // site configuration properties and blogpost metadata imported from MySQL database in JSON format
   const config = require('../site.config')
@@ -51,59 +49,68 @@
 
   // Iterator to fill the metas in the head with metadata
   let iterator = 0
+  let last = postData.length - 1
 
   // Build the blogposts
   // cwd: current working directory
-  globP('**/*.ejs', { cwd: `${srcPath}/posts` })
-    .then((files) => {
-      files.forEach((file) => {
-        const fileData = path.parse(file)
+  const files = glob.sync('**/*.ejs', {
+    cwd: `${srcPath}/posts`
+  })
 
-        // generate canonical url for the post, and the disqus system
-        let postUrl = config.site.url + '/'
-        postUrl += (fileData.name.split('-').join('/') + '.html')
+  try {
+    files.forEach((file) => {
+      const fileData = path.parse(file)
 
-        // generate postid for the post (needed for disqus)
-        let postId = fileData.name.split('-')
-        postId.length = postId.length - 1
-        postId = postId.join('')
+      // generate canonical url for the post, and the disqus system
+      let postUrl = config.site.url + '/'
+      postUrl += (fileData.name.split('-').join('/') + '.html')
 
-        const destPath = path.join(distPath, fileData.dir)
+      // generate postid for the post (needed for disqus)
+      let postId = fileData.name.split('-')
+      postId.length = postId.length - 1
+      postId = postId.join('')
 
-        fse.mkdirs(destPath)
-          .then(() => {
-            // render page
-            return ejsRenderFile(`${srcPath}/posts/${file}`, Object.assign({}, config))
-          })
-          .then((pageContents) => {
-            return ejsRenderFile(`${srcPath}/layouts/blogpost.ejs`, Object.assign({}, config, {
-              body: pageContents,
-              postUrl: postUrl,
-              postId: postId,
-              postTitle: config.site.title + ': ' + config.site.postData[iterator].title,
-              postDescription: config.site.postData[iterator].description,
-              postImage: config.site.postData[iterator].cover_image,
-              commentsEnabled: config.site.postData[iterator].comments_enabled
-            }))
-          })
-          .then((layoutContent) => {
-            iterator++
-            // to store parts of the filename
-            let parts = []
+      const destPath = path.join(distPath, fileData.dir)
 
-            // split filename to extract year, month, day, and the title of the post
-            parts = fileData.name.split('-')
+      fse.mkdirsSync(destPath)
 
-            // year/month/day/post_title.html
-            let result = `${parts[0]}/${parts[1]}/${parts[2]}/${parts[3]}.html`
+      // read data from file and then render post
+      const postContents = ejsRender(fse.readFileSync(`${srcPath}/posts/${file}`, 'utf-8'), Object.assign({}, config, {
+        title: config.site.postData[last].title,
+        date: config.site.dateFormatted[last]
+      }))
 
-            // save the html file, it creates the non-existing folders too
-            // saves blogposts to public/year/month/day/post_title.html
-            fse.outputFile(`${destPath}/${result}`, layoutContent)
-          })
-          .catch(err => { console.error(err) })
-      })
+      last--
+
+      // read layout data from file and then render layout with post contents
+      const layoutContent = ejsRender(fse.readFileSync(`${srcPath}/layouts/blogpost.ejs`, 'utf-8'), Object.assign({}, config, {
+        body: postContents,
+        postUrl: postUrl,
+        postId: postId,
+        postTitle: config.site.title + ': ' + config.site.postData[iterator].title,
+        postDescription: config.site.postData[iterator].description,
+        postImage: config.site.postData[iterator].cover_image,
+        commentsEnabled: config.site.postData[iterator].comments_enabled
+      }), { filename: `${srcPath}/layouts/blogpost.ejs` })
+
+      iterator++
+
+      // to store parts of the filename
+      let parts = []
+
+      // split filename to extract year, month, day, and the title of the post
+      parts = fileData.name.split('-')
+
+      // year/month/day/post_title.html
+      let result = `${parts[0]}/${parts[1]}/${parts[2]}/${parts[3]}.html`
+
+      // save the html file, it creates the non-existing folders too
+      // saves blogposts to public/year/month/day/post_title.html
+      fse.outputFileSync(`${destPath}/${result}`, layoutContent)
     })
-    .catch(err => { console.error(err) })
+    console.log('Successful build. Posts OK...')
+  } catch (err) {
+    console.error(err)
+    console.error('Build posts failed...')
+  }
 })()
-console.log('Successful build! Blogposts OK.')
