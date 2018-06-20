@@ -19,26 +19,27 @@ https://dev.mysql.com/downloads/installer/
 ### 3. Build site and serve it at localhost:4000
 
 `npm run build`
+
 `npm run serve`
 
 Inspect `site.config.js` first. A lot of things are self explanatory. There are comments in the codes.
 
 The `script/` folder contains the JS files used for building the site and serving it at localhost:4000.
 
-The `database/` folder contains the JS scripts that handles the MySQL database (you can create a db and a table with `npm run db`) and exports data to `postdata.json` (with `npm run table`).
+The `database/` folder contains the JS scripts that handle the MySQL database (you can create a db and a table with `npm run db`) and exports data to `postdata.json` (with `npm run table`).
 
 This JSON file is very important, because it contains the blogposts' properties (title, date etc.) that are needed for the sitebuild.
 
 The SQL database have to contain the following columns:
 
-* id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-* title VARCHAR(255), // The title of the post
-* filename VARCHAR(255), // without extension: YYYY-MM-DD-title_of_the_post
-* date DATE, // YYY-MM-DD format
-* comments_enabled TINYINT, // 1 or 0: turns on/off Disquis or the comment engine you prefer
-* topic VARCHAR(255), // topic of the post (optional)
-* description TEXT, // short summary of the post
-* cover_image VARCHAR(255)  // relative link to post cover image
+* `id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY`,
+* `title VARCHAR(255)`, // The title of the post
+* `filename VARCHAR(255)`, // without extension: YYYY-MM-DD-title_of_the_post
+* `date DATE`, // YYYY-MM-DD format
+* `comments_enabled TINYINT`, // 1 or 0: turns on/off Disquis or the comment engine you prefer
+* `topic VARCHAR(255)`, // topic of the post (optional)
+* `description TEXT`, // short summary of the post
+* `cover_image VARCHAR(255)`  // relative link to cover image, for example: ./assets/images/pic01.jpg
 
 
 ### 4. Fork my repository, or create a new repository
@@ -48,7 +49,7 @@ The SQL database have to contain the following columns:
 
 ### 5. Register at Netlify (it's free) anf publish your website/blog
 
-https://www.netlify.com/
+Register here: https://www.netlify.com/
 
 See this tutorial video: https://www.netlify.com/docs/continuous-deployment/
 
@@ -61,7 +62,7 @@ If you have a question ask me: guland@protonmail.com, or open an issue here: htt
 
 #### The idea of making a static site generator came from this article:
 
-Douglas Matoso 2017. Build a static site generator in 40 lines with Node.js
+Douglas Matoso 2017. Build a static site generator in 40 lines with Node.js. 
 https://medium.com/douglas-matoso-english/build-static-site-generator-nodejs-8969ebe34b22
 
 
