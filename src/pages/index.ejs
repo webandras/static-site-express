@@ -22,8 +22,8 @@
     
     <div class="col-xs-12 col-sm-4">
       <div class="mb2 pb1" style="background: #EFEFEF; border-radius: 3px;">
-        <h4 class="mt0 pthalf mb1 plhalf gray smallest">Blog archive</h4>
-        <h5 class="mt0 mbhalf pl1 dark-gray smallest">
+        <h4 class="mt0 pthalf mb1 plhalf gray blog-archive">Blog archive</h4>
+        <h5 class="mt0 mbhalf pl1 dark-gray blog-archive">
           <a href="#y2018" data-toggle="collapse" class="no-underline">
             2018 <span class="gray normal">(<%= site.posts2018.length %>)</span>
             <b class="caret"></b>
@@ -32,14 +32,14 @@
         <ul id="y2018" class="no-bullets prhalf plhalf pbhalf collapse">
         <% for (var i = 0; i < site.posts2018.length; i++) { %>
           <li class="pl1 mbhalf">
-            <a class="smallest" href="<%= site.posts2018[i].link %>">
+            <a class="blog-archive" href="<%= site.posts2018[i].link %>">
               &raquo; <%= site.posts2018[i].title %>
             </a>
           </li>
         <% } %>
         </ul>
 
-        <h5 class="mt0 mbhalf pl1 align-left dark-gray smallest">
+        <h5 class="mt0 mbhalf pl1 align-left dark-gray blog-archive">
           <a href="#y2017" data-toggle="collapse" class="no-underline">
             2017 <span class="gray normal">(<%= site.posts2017.length %>)</span>
             <b class="caret"></b>
@@ -48,7 +48,7 @@
         <ul id="y2017" class="no-bullets prhalf plhalf pbhalf collapse">
         <% for (var i = 0; i < site.posts2017.length; i++) { %>
           <li class="pl1 mbhalf">
-            <a class="smallest" href="<%= site.posts2017[i].link %>">
+            <a class="blog-archive" href="<%= site.posts2017[i].link %>">
               &raquo; <%= site.posts2017[i].title %>
             </a>
           </li>

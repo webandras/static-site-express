@@ -7,6 +7,9 @@
   // renders ejs layouts to html
   const ejsRender = require('ejs').render
 
+  // render markdown to HTML
+  const md = require('markdown-it')()
+
   // search for matching files, returns array of filenames
   const glob = require('glob')
 
@@ -53,7 +56,7 @@
 
   // Build the blogposts
   // cwd: current working directory
-  const files = glob.sync('**/*.ejs', {
+  const files = glob.sync('**/*.@(ejs|md)', {
     cwd: `${srcPath}/posts`
   })
 
@@ -75,15 +78,15 @@
       fse.mkdirsSync(destPath)
 
       // read data from file and then render post
-      const postContents = ejsRender(fse.readFileSync(`${srcPath}/posts/${file}`, 'utf-8'), Object.assign({}, config, {
-        title: config.site.postData[last].title,
-        date: config.site.dateFormatted[last]
-      }))
-
-      last--
+      const markdownData = fse.readFileSync(`${srcPath}/posts/${file}`, 'utf-8')
+      const HTMLData = md.render(markdownData)
+      console.log(HTMLData)
+      const postContents = ejsRender(HTMLData, Object.assign({}, config))
 
       // read layout data from file and then render layout with post contents
       const layoutContent = ejsRender(fse.readFileSync(`${srcPath}/layouts/blogpost.ejs`, 'utf-8'), Object.assign({}, config, {
+        title: config.site.postData[last].title,
+        date: config.site.dateFormatted[last],
         body: postContents,
         postUrl: postUrl,
         postId: postId,
@@ -94,6 +97,7 @@
       }), { filename: `${srcPath}/layouts/blogpost.ejs` })
 
       iterator++
+      last--
 
       // to store parts of the filename
       let parts = []

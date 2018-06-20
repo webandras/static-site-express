@@ -1,6 +1,6 @@
 {
   "name": "static-site-express",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A simple Node.js based static site generator that uses EJS",
   "main": "./scripts/build.js",
   "scripts": {
@@ -27,6 +27,7 @@
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "fs-extra": "^5.0.0",
+    "markdown-it": "^8.4.1",
     "mysql": "^2.15.0",
     "readline-sync": "^1.4.9",
     "serve-favicon": "^2.4.5"

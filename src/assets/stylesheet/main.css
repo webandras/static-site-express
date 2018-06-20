@@ -1002,6 +1002,10 @@ a:hover {
     background: #003981
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-primary:active {
     background: #333
+}
+
+.blog-archive {
+    font-size: 18px
 }
