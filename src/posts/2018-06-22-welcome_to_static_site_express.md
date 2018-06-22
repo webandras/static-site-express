@@ -7,7 +7,7 @@ comments: false
 topic: null
 ---
 
-**static-site-express is a simple Node.js based static site generator that uses EJS and Markdown.**
+static-site-express is a simple Node.js based static site generator that uses EJS and Markdown.
 
 ## Manual
 
@@ -33,21 +33,18 @@ The `script/` folder contains the JS files used for building the site and servin
 
 ### 4. Register at Netlify and publish your website
 
-Register here: https://www.netlify.com/
-
-See this tutorial video: https://www.netlify.com/docs/continuous-deployment/
+Register [here](https://www.netlify.com/), and [see this tutorial video](https://www.netlify.com/docs/continuous-deployment/).
 
 Build command is: `npm run build`
 
 Publish directory is: `public`
 
-If you have a question ask me: guland@protonmail.com, or open an issue here: https://github.com/SalsaBoy990/static-site-express/issues
+If you have a question ask me: [guland@protonmail.com](mailto:guland@protonmail.com), or [open an issue here](https://github.com/SalsaBoy990/static-site-express/issues).
 
 
 ## The idea of making a static site generator came from this article:
 
-* Douglas Matoso 2017. Build a static site generator in 40 lines with Node.js. 
-https://medium.com/douglas-matoso-english/build-static-site-generator-nodejs-8969ebe34b22
+* Douglas Matoso 2017. [Build a static site generator in 40 lines with Node.js](https://medium.com/douglas-matoso-english/build-static-site-generator-nodejs-8969ebe34b22). 
 
 
 ## Future tasks
