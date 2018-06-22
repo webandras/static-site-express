@@ -49,8 +49,7 @@
             title: config.site.title,
             body: pageContents,
             canonicalUrl: config.site.url,
-            description: config.site.quote,
-            image: 'https://d33wubrfki0l68.cloudfront.net/f2fa5a75dc79f3c1c5e872b7ce49e3257f2ac454/aa565/assets/images/me_smaller_hun.jpg'
+            description: config.site.quote
           }), { filename: `${srcPath}/layouts/home.ejs` })
           break
         case 'about.ejs':
@@ -58,8 +57,7 @@
             title: 'About / ' + config.site.title,
             body: pageContents,
             canonicalUrl: config.site.url + '/about',
-            description: config.site.description,
-            image: 'https://d33wubrfki0l68.cloudfront.net/f2fa5a75dc79f3c1c5e872b7ce49e3257f2ac454/aa565/assets/images/me_smaller_hun.jpg'
+            description: config.site.description
           }), { filename: `${srcPath}/layouts/about.ejs` })
           break
         case 'book.ejs':
@@ -67,8 +65,7 @@
             title: 'Book / ' + config.site.title,
             body: pageContents,
             canonicalUrl: config.site.url + '/book',
-            description: config.site.bookTitle,
-            image: 'https://d33wubrfki0l68.cloudfront.net/f0d3e9575ac2c831b151efd3e374d72859c0cab2/c5dc4/assets/images/book_small.jpg'
+            description: config.site.bookTitle
           }), { filename: `${srcPath}/layouts/book.ejs` })
           break
         case 'moderation_rules.ejs':
@@ -76,8 +73,7 @@
             title: 'Moderation rules / ' + config.site.title,
             body: pageContents,
             canonicalUrl: config.site.url + '/' + fileData.name,
-            description: `My blog's moderation rules`,
-            image: ''
+            description: `My blog's moderation rules`
           }), { filename: `${srcPath}/layouts/default.ejs` })
           break
         default:
@@ -85,8 +81,7 @@
             title: '404: Not Found / ' + config.site.title,
             body: pageContents,
             canonicalUrl: config.site.url + '/' + fileData.name,
-            description: 'Are you sure this is the right url?',
-            image: ''
+            description: 'Are you sure this is the right url?'
           }), { filename: `${srcPath}/layouts/not-found.ejs` })
           break
       }
