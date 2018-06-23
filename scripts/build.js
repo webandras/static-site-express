@@ -16,6 +16,7 @@
   const markdownItTable = require('markdown-it-multimd-table')
   const markdownItSup = require('markdown-it-sup')
   const markdownItSub = require('markdown-it-sub')
+  const markdownItAttrs = require('markdown-it-attrs')
 
   md.use(implicitFigures, {
     dataType: false, // <figure data-type="image">, default: false
@@ -27,6 +28,7 @@
   md.use(markdownItTable)
   md.use(markdownItSup)
   md.use(markdownItSub)
+  md.use(markdownItAttrs)
 
   // search for matching files, returns array of filenames
   const glob = require('glob')

@@ -1,6 +1,6 @@
 {
   "name": "static-site-express",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A simple Node.js based static site generator that uses EJS and Markdown",
   "main": "./scripts/build.js",
   "scripts": {
@@ -29,6 +29,7 @@
     "front-matter": "^2.3.0",
     "fs-extra": "^5.0.0",
     "markdown-it": "^8.4.1",
+    "markdown-it-attrs": "^2.2.0",
     "markdown-it-implicit-figures": "^0.9.0",
     "markdown-it-multimd-table": "^3.1.2",
     "markdown-it-sub": "^1.0.0",

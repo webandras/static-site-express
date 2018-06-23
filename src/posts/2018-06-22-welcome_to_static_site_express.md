@@ -31,20 +31,20 @@ Inspect `site.config.js` first. A lot of things are self explanatory. There are 
 The `script/` folder contains the JS files used for building the site and serving it at `localhost:4000`.
 
 
-### 4. Register at Netlify and publish your website
+### 3. Register at Netlify and publish your website
 
-Register [here](https://www.netlify.com/), and [see this tutorial video](https://www.netlify.com/docs/continuous-deployment/).
+Register [here](https://www.netlify.com/){.underline}, and [see this tutorial video](https://www.netlify.com/docs/continuous-deployment/){.underline}.
 
 Build command is: `npm run build`
 
 Publish directory is: `public`
 
-If you have a question ask me: [guland@protonmail.com](mailto:guland@protonmail.com), or [open an issue here](https://github.com/SalsaBoy990/static-site-express/issues).
+If you have a question ask me: [guland@protonmail.com](mailto:guland@protonmail.com){.underline}, or [open an issue here](https://github.com/SalsaBoy990/static-site-express/issues){.underline}.
 
 
 ## The idea of making a static site generator came from this article:
 
-* Douglas Matoso 2017. [Build a static site generator in 40 lines with Node.js](https://medium.com/douglas-matoso-english/build-static-site-generator-nodejs-8969ebe34b22). 
+* Douglas Matoso 2017. [Build a static site generator in 40 lines with Node.js](https://medium.com/douglas-matoso-english/build-static-site-generator-nodejs-8969ebe34b22){.underline}. 
 
 
 ## Future tasks
