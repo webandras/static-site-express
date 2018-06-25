@@ -1,6 +1,6 @@
 {
   "name": "static-site-express",
-  "version": "3.1.2",
+  "version": "3.2.0",
   "description": "A simple Node.js based static site generator that uses EJS and Markdown",
   "main": "./lib/build.js",
   "scripts": {
