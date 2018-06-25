@@ -4,29 +4,27 @@
     <div class="col-xs-12 col-sm-8">
       <% for (var i = 0; i < postsDataForIndexPage.length; i++) { %>
       <article>
-        <div class="plhalf prhalf pthalf m0 mb3 border-full border-shadow clearfix" style="background: #fffff0;">
-          <a href="<%= postsDataForIndexPage[i].pathToPost %>" class="big mbhalf bold-800 pt-sans m0"><%= postsDataForIndexPage[i].title %></a>
-          <hr>
+        <div class="plhalf prhalf pthalf m0 mb3 border-full border-shadow clearfix bg-lightyellow">
+          <a href="<%= postsDataForIndexPage[i].pathToPost %>" class="large mbhalf bold-800 pt-sans uppercase m0"><%= postsDataForIndexPage[i].title %></a>
           <p class="minimal gray mb0"><span class="glyphicon glyphicon-time"></span> <%= postsDataForIndexPage[i].dateFormatted %></p>
           <hr>
           <a href="<%= postsDataForIndexPage[i].pathToPost %>">
             <img class="m0 img-responive" src="<%= postsDataForIndexPage[i].cover %>" alt="<%= postsDataForIndexPage[i].title %>"/>
           </a>
-          <hr>
-          <p class="m0 pbhalf pl1"><%= postsDataForIndexPage[i].excerpt %></p>
-          <a class="btn btn-primary pull-right mbhalf smallest" href="<%= postsDataForIndexPage[i].pathToPost %>">Read more &raquo;</a>
+          <p class="m0 pbhalf"><%= postsDataForIndexPage[i].excerpt %></p>
+          <a class="btn btn-md btn-primary pull-right mbhalf minimal uppercase" href="<%= postsDataForIndexPage[i].pathToPost %>">Read more →</a>
         </div>
       </article>
       <% } %>
     </div>
     
     <div class="col-xs-12 col-sm-4">
-      <div class="mb2 pb1" style="background: #EFEFEF; border-radius: 3px;">
+      <div class="mb2 pb1 bg-lightgray">
         <h4 class="mt0 pthalf mb1 plhalf gray blog-archive">Blog archive</h4>
         <% for (var i = 0; i < blogArchive.length; i++) { %>
         <h5 class="mt0 mbhalf pl1 dark-gray blog-archive">
           <a href="#y<%= blogArchive[i].year %>" data-toggle="collapse" class="no-underline">
-            <%= blogArchive[i].year %><span class="gray normal">(<%= blogArchive[i].articles.length %>)</span>
+            <%= blogArchive[i].year %><span class="gray normal"> (<%= blogArchive[i].articles.length %>)</span>
             <b class="caret"></b>
           </a>
         </h5>

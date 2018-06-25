@@ -539,10 +539,16 @@ body {
 }
 
 body, p, blockquote,
-pre, figure, figcaption {
-  margin: 0;
-  padding: 0;
+figure, figcaption {
+    margin: 0;
+    padding: 0;
 }
+
+pre {
+    margin: 0 0 1rem 0;
+    padding: 0;
+}
+
 
 h1,
 h2,
@@ -656,6 +662,15 @@ blockquote {
     background-color: #FEFEFE
 }
 
+.bg-lightyellow {
+    background: #fffff0
+}
+
+.bg-lightgray {
+    background: #EFEFEF;
+    border-radius: 3px;
+}
+
 .white {
     color: #FFFFF0
 }
@@ -752,6 +767,9 @@ blockquote {
     font-size: 1.5rem
 }
 
+.large {
+    font-size: 1.7rem
+}
 
 .left {
     float: left
@@ -1008,4 +1026,29 @@ a:hover {
 
 .blog-archive {
     font-size: 18px
+}
+
+.footer-description {
+    margin-left: 75px;
+    max-width: 400px
+}
+
+.headline-404 {
+    font-size: 6rem;
+    width: 240px;
+    margin-top: 0
+}
+
+.width-100pc {
+    width: 100%
+}
+
+.width-100pc {
+    width: 70%
+}
+
+.icon {
+    width: 1.33em;
+    height: 1.33em;
+    vertical-align: -15%;
 }
