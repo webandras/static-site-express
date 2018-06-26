@@ -7,7 +7,8 @@
     # Prevent browsers from incorrectly detecting non-scripts as scripts
     X-Content-Type-Options: nosniff
 
-    Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+    # only https
+    # Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
     
     # Don't load any resource type not explicitly enabled
     # Disable plugins like Flash or Silverlight
