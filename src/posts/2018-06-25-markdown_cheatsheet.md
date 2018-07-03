@@ -14,7 +14,7 @@ For safety reasons, you cannot include HTML code into Markdown. By default, HTML
 ## Table of Contents
 ------
 
-1. **[General syntax](#general)**
+* **[General syntax](#general)**
    * *[Headings](#headings)*
    * *[Emphasis](#emphasis)*
    * *[Paragraphs, line breaks](#paragraph)*
@@ -22,7 +22,7 @@ For safety reasons, you cannot include HTML code into Markdown. By default, HTML
    * *[Blockquotes](#blockquotes)*
    * *[Links](#links)*
    * *[Lists](#lists)*
-2. **[Special syntax](#special)**
+* **[Special syntax](#special)**
    * *[Add a CSS class and an #id to an element](#add-class)*
    * *[Table with caption](#tables)*
    * *[Image with caption](#images)*
@@ -303,10 +303,10 @@ Year | Column 1 | Column 2
 Syntax: `![caption text](link-to-image)`
 
 Example:
-`![Figure 1. StaticGen’s graph of growth over the last year.](https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/b8fd0663-dd8e-4974-83d0-2446de261c35/01-staticgen-stats-opt-preview.png)`
+`![Figure 1. Interest in static site generators over time (Google Trends)](/assets/images/trend.png)`
 
 
-![Figure 1. StaticGen’s graph of growth over the last year.](https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/b8fd0663-dd8e-4974-83d0-2446de261c35/01-staticgen-stats-opt-preview.png)
+![Figure 1. Interest in static site generators over time (Google Trends)](/assets/images/trend.png)
 
 
 ### 2.4. Code syntax highlighting{id=highlight}
@@ -329,7 +329,7 @@ This SSG uses the `highlight.js` for syntax highlighting. Everything is automati
 
 ...and the result is:
 
-```` javascript
+````javascript
 var a = 20
 function foo (a) {
   console.log(a)
