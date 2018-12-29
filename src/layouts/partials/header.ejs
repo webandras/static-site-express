@@ -1,12 +1,12 @@
 <header>
-  <div class="intro unselectable border-bottom-gray">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 text-center">
-          <h1 class="light-gray bold-800 mt2  tshadow-black"><%= site.title %></h1>
-          <p class="white smallest italic expanded lh2 mt1 mb2"><%= site.quote %></p>
-        </div>
-      </div>
+  <div class="jumbotron">
+    <div class="container clearfix">
+      <h1 class="mb0 tshadow-black"><%= site.title %></h1>
+      <p><%= site.quote %></p>
+      <button id="deploy" class="mt2 no-visited btn btn-primary btn-lg btn-text" role="button" href="#">
+        <img class="pull-left logo m0" style="margin-right: 5px; margin-top: 0px;" src="/assets/images/netlify.png"/>
+        <span>Deploy to Netlify</span>
+      </button>
     </div>
   </div>
 </header>

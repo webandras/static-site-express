@@ -1,0 +1,208 @@
+<h1 class="mt0 pthalf mb2 dark-gray expanded black-900">Writings</h1>
+<% for (var i = 0; i < blogArchive.length; i++) { %>
+<h2 class="mt0 mlhalf mbhalf gray333 bold-800"><%= blogArchive[i].year %></h2>
+<ul class="no-bullets prhalf plhalf">
+  <% if (blogArchive[i].months.dec) { %>
+  <li>
+    <h3 class="mlhalf mt1 mb0 gray333 bold-700 normal-size">December</h3>
+    <ul class="no-bullets mthalf">
+    <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+    <% if (blogArchive[i].articles[j].dec) { %>
+      <li class="mb1 mlhalf">
+        <a class="gray333 medium" href="<%= blogArchive[i].articles[j].dec.link %>">
+          <%= blogArchive[i].articles[j].dec.title %>
+        </a>
+      </li>
+    <% } %>
+    <% } %>
+    </ul>
+  </li>
+  <% } %>
+  <% if (blogArchive[i].months.nov) { %>
+  <li>
+    <h3 class="mlhalf mt1 mb0 gray333 bold-700 normal-size">November</h3>
+    <ul class="no-bullets mthalf">
+      <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+      <% if (blogArchive[i].articles[j].nov) { %>
+      <li class="mb1 mlhalf">
+        <a class="gray333 medium" href="<%= blogArchive[i].articles[j].nov.link %>">
+          <%= blogArchive[i].articles[j].nov.title %>
+        </a>
+      </li>
+      <% } %>
+      <% } %>
+    </ul>
+  </li>
+  <% } %>
+
+  <% if (blogArchive[i].months.oct) { %>
+  <li>
+    <h3 class="mlhalf mt1 mb0 gray333 bold-700 normal-size">October</h3>
+    <ul class="no-bullets mthalf">
+      <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+      <% if (blogArchive[i].articles[j].oct) { %>
+      <li class="mb1 mlhalf">
+        <a class="gray333 medium" href="<%= blogArchive[i].articles[j].oct.link %>">
+          <%= blogArchive[i].articles[j].oct.title %>
+        </a>
+      </li>
+      <% } %>
+      <% } %>
+    </ul>
+  </li>
+  <% } %>
+    
+  <% if (blogArchive[i].months.sep) { %>
+  <li>
+    <h3 class="mlhalf mt1 mb0 gray333 bold-700 normal-size">September</h3>
+    <ul class="no-bullets mthalf">
+      <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+      <% if (blogArchive[i].articles[j].sep) { %>
+      <li class="mb1 mlhalf">
+        <a class="gray333 medium" href="<%= blogArchive[i].articles[j].sep.link %>">
+          <%= blogArchive[i].articles[j].sep.title %>
+        </a>
+      </li>
+      <% } %>
+      <% } %>
+    </ul>
+  </li>
+  <% } %>
+    
+  <% if (blogArchive[i].months.aug) { %>
+  <li>
+    <h3 class="mlhalf mt1 mb0 gray333 bold-700 normal-size">August</h3>
+    <ul class="no-bullets mthalf">
+      <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+      <% if (blogArchive[i].articles[j].aug) { %>
+      <li class="mb1 mlhalf">
+        <a class="gray333 medium" href="<%= blogArchive[i].articles[j].aug.link %>">
+          <%= blogArchive[i].articles[j].aug.title %>
+        </a>
+      </li>
+      <% } %>
+      <% } %>
+    </ul>
+  </li>
+  <% } %>
+
+  <% if (blogArchive[i].months.jul) { %>
+  <li class="mb1">
+    <h3 class="mlhalf mt1 mb0 gray333 bold-700 normal-size">July</h3>
+    <ul class="no-bullets mthalf">
+      <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+      <% if (blogArchive[i].articles[j].jul) { %>
+      <li class="mb1 mlhalf">
+        <a class="gray333 medium" href="<%= blogArchive[i].articles[j].jul.link %>">
+          <%= blogArchive[i].articles[j].jul.title %>
+        </a>
+      </li>
+      <% } %>
+      <% } %>
+    </ul>
+  </li>
+  <% } %>
+
+  <% if (blogArchive[i].months.jun) { %>
+  <li>
+    <h3 class="mlhalf mt1 mb0 gray333 bold-700 normal-size">June</h3>
+    <ul class="no-bullets mthalf">
+      <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+      <% if (blogArchive[i].articles[j].jun) { %>
+      <li class="mb1 mlhalf">
+        <a class="gray333 medium" href="<%= blogArchive[i].articles[j].jun.link %>">
+          <%= blogArchive[i].articles[j].jun.title %>
+        </a>
+      </li>
+      <% } %>
+      <% } %>
+    </ul>
+  </li>
+  <% } %>
+  
+  <% if (blogArchive[i].months.may) { %>
+  <li>
+    <h3 class="mlhalf mt1 mb0 gray333 bold-700 normal-size">May</h3>
+    <ul class="no-bullets mthalf">
+      <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+      <% if (blogArchive[i].articles[j].may) { %>
+      <li class="mb1 mlhalf">
+        <a class="gray333 medium" href="<%= blogArchive[i].articles[j].may.link %>">
+          <%= blogArchive[i].articles[j].may.title %>
+        </a>
+      </li>
+      <% } %>
+      <% } %>
+    </ul>
+  </li>
+  <% } %>
+  
+  <% if (blogArchive[i].months.apr) { %>
+  <li>
+    <h3 class="mlhalf mt1 mb0 gray333 bold-700 normal-size">April</h3>
+    <ul class="no-bullets mthalf">
+      <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+      <% if (blogArchive[i].articles[j].apr) { %>
+      <li class="mb1 mlhalf">
+        <a class="gray333 medium" href="<%= blogArchive[i].articles[j].apr.link %>">
+          <%= blogArchive[i].articles[j].apr.title %>
+        </a>
+      </li>
+      <% } %>
+      <% } %>
+    </ul>
+  </li>
+  <% } %>
+  
+  <% if (blogArchive[i].months.mar) { %>
+  <li>
+    <h3 class="mlhalf mt1 mb0 bold-700 normal-size">March</h3>
+    <ul class="no-bullets mthalf">
+      <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+      <% if (blogArchive[i].articles[j].mar) { %>
+      <li class="mb1 mlhalf">
+        <a class="gray333 medium" href="<%= blogArchive[i].articles[j].mar.link %>">
+          <%= blogArchive[i].articles[j].mar.title %>
+        </a>
+      </li>
+      <% } %>
+      <% } %>
+    </ul>
+  </li>
+  <% } %>
+
+  <% if (blogArchive[i].months.feb) { %>
+  <li>
+    <h3 class="mlhalf mt1 mb0 bold-700 normal-size">February</h3>
+    <ul class="no-bullets mthalf">
+      <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+      <% if (blogArchive[i].articles[j].feb) { %>
+      <li class="mb1 mlhalf">
+        <a class="gray333 medium" href="<%= blogArchive[i].articles[j].feb.link %>">
+          <%= blogArchive[i].articles[j].feb.title %>
+        </a>
+      </li>
+      <% } %>
+      <% } %>
+    </ul>
+  </li>
+  <% } %>
+
+  <% if (blogArchive[i].months.jan) { %>
+  <li>
+    <h3 class="mlhalf mt1 mb0 bold-700 normal-size">January</h3>
+    <ul class="no-bullets mthalf">
+      <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+      <% if (blogArchive[i].articles[j].jan) { %>
+      <li class="mb1 mlhalf">
+        <a class="gray333 medium" href="<%= blogArchive[i].articles[j].jan.link %>">
+          <%= blogArchive[i].articles[j].jan.title %>
+        </a>
+      </li>
+      <% } %>
+      <% } %>
+    </ul>
+  </li>
+  <% } %>
+</ul>
+<% } %>

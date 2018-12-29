@@ -1,22 +1,32 @@
 # static-site-express
-static-site-express is a simple Node.js based static-site generator (SSG) that uses EJS and Markdown. You can deploy your static site/blog to Netlify, or to Heroku.
+
+static-site-express is a simple Node.js based static-site generator that uses EJS and Markdown. You can deploy your static site to Netlify.
+
+*Post updated on Dec 28, 2018*
+
+*Current version: 4.0.0*
 
 
-## Manual
+**Important notes**
 
-### 1. Installation
+---
 
+  - `nodemon` not trigger re-build on Linux on file changes (this behavior was experienced on Ubuntu 18.04 LTS Bionic Beaver)
+  - On Ubuntu, you can run `npm run watch-exp` command which uses the [chokidar]() package. *Experimental.*
+
+
+## Install static-site-express
+
+- Use the 'Deploy to Netlify' button on the [example website](https://static-site-express.netlify.com/)
+
+- Or install it from npm package manager:
 
 `npm install static-site-express`
 
-Or clone my repository:
 
-`git clone https://github.com/SalsaBoy990/static-site-express your-folder`
+## Build your site locally
 
-
-### 2. Generate website into `./public` folder
-
-Build website: 
+Build site from `./src` into `./public` folder:
 
 `npm run build`
 
@@ -25,86 +35,69 @@ Serve website on `localhost:4000`:
 `npm run serve`
 
 Or you can watch for changes and trigger re-build with nodemon:
+
 `npm run watch`
 
-Inspect `site.config.js` first. You can change the site properties (title, author, description, social media links etc.) that are used in the EJS partials. The site generator will insert your values into the right place.
+You need to add `sudo` before the commands on Linux system.
 
-The `./lib` folder contains the JS files used for building and serving the website.
+Inspect `package.json` for more info. The `./lib` folder contains the JavaScript files used for building and serving the website. Check them out.
+
+The `site.config.js` file contains some of the site properties (like site title, author, description, social media links etc.) that are used in the EJS partials.
 
 
-### 3. Register at Netlify and publish your website
+## Register at Netlify and publish your website
 
-Register [here](https://www.netlify.com/){.underline}, and [see this tutorial video](https://www.netlify.com/docs/continuous-deployment/){.underline}.
+- Register on [Netlify](https://www.netlify.com/), and [see this tutorial video](https://www.netlify.com/docs/continuous-deployment/) if you are unfamiliar with the procedure. You can publish your site in a minute.
 
-Build command is: `npm run build`
+- The `netlify.toml` configuration file contains important properties:
 
-Publish directory is: `public`
+````raw
+[build]
+  base    = "/"
+  publish = "public"
+  command = "npm run build"
+````
 
-The `netlify.toml` configuration file already contains these two settings. You can publish your site in a minute.
+The base path, the build command, and the publish directory. You can keep those settings.
 
-### 4. You can use the Express server app on Heroku too
+In the `_headers` file you can specify the HTTP headers and set Content Security Policy (CSP) rules for the Netlify server. Currently, CSP rules are not set because I don't know which domains you want to whitelist when you create your own website.
 
-A `Procfile` already supplied for you with the command  to execute the app server by the dynos:
+The `_redirects` file is currently empty. When you have a custom domain, you can make a redirect from *.netlify.com to your custom domain.
 
-`web: node ./heroku/serve.js`
+`sitemap.xml` is self-explanatory. Currently empty. robots.txt?
 
-The Express server will run on Heroku, but you need improve security!
-I already set security headers with the `helmet` npm package:
+For Google Search Console verification, you should have an HTML file from Google included in the root of your Netlify publish folder (in our case, public). The build script copies this file from `./src` to `./public`. Change line 87 in `./lib/build.js`: 
+
+````javascript
+ssg.copyRootFile('YOUR-GOOGLE-FILENAME-COMES-HERE.html', srcPath, distPath)
+````
+
+## Alternatively, you can use the Express server app on Heroku (not recommended)
+
+A `Procfile` is already supplied for you with the command to build the site, and after that to run the app server:
+
+`web: npm run heroku`
+
+You need improve security! I already set security headers with the `helmet` npm package, just 2 lines:
 
 ````javascript
 // Set Security Headers.
 const helmet = require('helmet')
-
 app.use(helmet())
 ````
 
-And also defined the Content Security Policy (CSP) rules with the `helmet-csp` package:
+Also, you can set Content Security Policy (CSP) rules using the `helmet-csp` package. This is just an example:
 
-````javascript
-// Content Security Policy.
-const csp = require('helmet-csp')
-
-// An example, with some exeptions:
-app.use(csp({
-  directives: {
-    defaultSrc: [`'self'`, 'https://maxcdn.bootstrapcdn.com'],
-    styleSrc: [`'self'`,
-      'https://fonts.googleapis.com',
-      'https://www.youtube.com',
-      'https://maxcdn.bootstrapcdn.com/'
-    ],
-    fontSrc: [`'self'`,
-      'https://fonts.gstatic.com',
-      'https://maxcdn.bootstrapcdn.com'
-    ],
-    scriptSrc: [`'self'`,
-      'https://www.youtube.com',
-      'https://www.googletagmanager.com',
-      'https://www.google-analytics.com',
-      'https://code.jquery.com',
-      'https://maxcdn.bootstrapcdn.com'
-    ],
-    childSrc: [`'self'`, 'https://www.youtube.com'],
-    imgSrc: [`'self'`,
-      'www.google-analytics.com',
-      'https://use.fontawesome.com'
-    ],
-    objectSrc: [`'self'`],
-    connectSrc: [`'self'`]
-  }
-}))
-````
-
-## The idea of making a static site generator came from this article:
-
-* Douglas Matoso 2017. [Build a static site generator in 40 lines with Node.js](https://medium.com/douglas-matoso-english/build-static-site-generator-nodejs-8969ebe34b22){.underline}. 
+Keep in mind that the contact form on the example site only works on Netlify!
 
 
-## Future tasks
+## The idea of making a static site generator in Node.js
 
-* Use paginator on the index page
+came from this article:
+
+* Douglas Matoso 2017. [Build a static site generator in 40 lines with Node.js](https://medium.com/douglas-matoso-english/build-static-site-generator-nodejs-8969ebe34b22).
 
 
 ## Q&A
 
-If you have a question ask me: [guland@protonmail.com](mailto:guland@protonmail.com){.underline}, or [open an issue here](https://github.com/SalsaBoy990/static-site-express/issues){.underline}.
+If you have a problem or a question about static-site-express, [open an issue](https://github.com/SalsaBoy990/static-site-express/issues).

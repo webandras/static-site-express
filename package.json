@@ -5,7 +5,8 @@
   "main": "./lib/build.js",
   "scripts": {
     "build": "node ./lib/build.js",
-    "watch": "nodemon --watch ./src --watch site.config.js ./lib/build.js -e *",
+    "watch": "nodemon -L --watch ./src --watch site.config.js ./lib/build.js -e *",
+    "watch-exp": "node ./lib/watch.js",
     "serve": "node ./lib/serve.js",
     "heroku": "node ./lib/build.js && node ./lib/serve.js"
   },
@@ -28,6 +29,7 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.4.1",
+    "chokidar": "^2.0.4",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "front-matter": "^2.3.0",
@@ -40,9 +42,10 @@
     "markdown-it-highlightjs": "^3.0.0",
     "markdown-it-implicit-figures": "^0.9.0",
     "markdown-it-multimd-table": "^3.1.2",
+    "markdown-it-podcast": "^0.2.3",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
-    "nodemon": "^1.17.5",
+    "markdown-it-video": "^0.6.3",
     "serve-favicon": "^2.4.5"
   },
   "devDependencies": {

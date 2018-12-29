@@ -1,18 +1,14 @@
-// I inserted some dummy text
+// Add your global site properties here
 module.exports = {
   site: {
     url: '',
     title: `static-site-express`,
-    image: 'https://d33wubrfki0l68.cloudfront.net/4aa0c89513e63430707d6360d84d18531e472d80/ceb27/assets/images/profile.png',
+    defaultImage: '/assets/images/static.jpg',
     author: 'András Gulácsi',
-    quote: 'static-site-express is a simple Node.js based static-site generator (SSG) that uses EJS and Markdown for blogging.',
-    description: 'Webdesigner, UI/UX designer, Frontend Developer, JavaScript, Node.js, SQL, Jekyll, Bootstrap 3, Angular 2+',
-    bookTitle: 'Your book title (if you have one)',
-    email: 'guland@protonmail.com',
-    github: 'SalsaBoy990',
-    linkedin: 'andrasgulacsi',
-    cv: 'link-to-your-cv',
-    mailchimp: '',
-    currentYear: new Date().getFullYear()
+    quote: 'A Node.js-based static site generator that uses EJS and Markdown',
+    description: 'A Node.js-based static site generator that uses EJS and Markdown',
+    currentYear: new Date().getFullYear(),
+    google_analytics: 'YOUR-ID-COMES-HERE',
+    twitter: 'https://twitter.com/andrasgulacsi'
   }
 }

@@ -1,39 +1,42 @@
 ---
-title: "Markdown cheatsheet"
-date: "2018-06-25"
-excerpt: "I created this post for those who are unfamiliar with the syntax of Markdown. People who are already similar with Markdown should also check this post because I use some special plugins that provide additional features."
-cover: "./assets/images/writing.jpg"
-comments: false
-topic: null
+title: Markdown cheatsheet, markdown-it plugins
+date: '2018-06-25'
+excerpt: >-
+  I created this post for those who are unfamiliar with the syntax of Markdown. People who are already similar with Markdown should also check this post because I use some special plugins that provide additional features.
+coverImage: writing.jpg
 ---
 
-I created this post for those who are unfamiliar with the syntax of Markdown (which is a markup language). People who are already similar with Markdown should also check this post because I use some special plugins for `markdown-it` (the npm package I use) that provide additional features.
+I created this post for those who are unfamiliar with the syntax of Markdown which is a markup language. People who are already familiar with Markdown should also check this post because I use some special plugins for `markdown-it` that provide additional features.
 
 For safety reasons, you cannot include HTML code into Markdown. By default, HTML is escaped.
 
 ## Table of Contents
 ------
 
-* **[General syntax](#general)**
-   * *[Headings](#headings)*
-   * *[Emphasis](#emphasis)*
-   * *[Paragraphs, line breaks](#paragraph)*
-   * *[Horizontal rule](#hrule)*
-   * *[Blockquotes](#blockquotes)*
-   * *[Links](#links)*
-   * *[Lists](#lists)*
-* **[Special syntax](#special)**
-   * *[Add a CSS class and an #id to an element](#add-class)*
-   * *[Table with caption](#tables)*
-   * *[Image with caption](#images)*
-   * *[Code syntax highlighting](#highlight)*
+### General syntax
+
+1. [Headings](#headings)
+2. [Emphasis](#emphasis)
+3. [Paragraphs, line breaks](#paragraph)
+4. [Horizontal rule](#hrule)
+5. [Blockquotes](#blockquotes)
+6. [Links](#links)
+7. [Lists](#lists)
+
+
+### Special syntax
+
+1. [Add a CSS class and an #id to an element](#add-class)
+2. [Table with caption](#tables)
+3. [Image with caption](#images)
+4. [Code syntax highlighting](#highlight)
 
 ------
 
-## 1. General syntax{id=general}
+## General syntax
 
 
-### 1.1. Headings{id=headings}
+### 1. Headings{id=headings}
 
 ````
 # H1
@@ -67,7 +70,7 @@ Alt-H1
 Alt-H2
 ------
 
-### 1.2. Emphasis{id=emphasis}
+### 2. Emphasis{id=emphasis}
 
 ```` markdown
 Emphasis, aka italics, with *asterisks* or _underscores_.
@@ -88,7 +91,7 @@ Combined emphasis with **asterisks and _underscores_**.
 Strikethrough uses two tildes. ~~Scratch this.~~
 
 
-### 1.3. Paragraphs, line breaks{id=paragraph}
+### 3. Paragraphs, line breaks{id=paragraph}
 
 My basic recommendation for learning how line breaks work is to experiment and discover -- hit <Enter> once (i.e., insert one newline), then hit it twice (i.e., insert two newlines), see what happens. You'll soon learn to get what you want. "Markdown Toggle" is your friend.
 
@@ -123,7 +126,7 @@ This line is also begins a separate paragraph, but...
 This line is only separated by a single newline, so it's a separate line in the same paragraph.
 
 
-### 1.4. Horizontal rule{id=hrule}
+### 4. Horizontal rule{id=hrule}
 
 ```` markdown
 Three or more...
@@ -155,7 +158,7 @@ ___
 
 Underscores
 
-### 1.5. Blockquotes{id=blockquotes}
+### 5. Blockquotes{id=blockquotes}
 
 ```` markdown
 > Blockquotes are very handy in email to emulate reply text.
@@ -174,7 +177,7 @@ Quote break.
 > This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote. 
 
 
-### 1.6. Links{id=links}
+### 6. Links{id=links}
 
 Some ways to use links:
 
@@ -220,7 +223,7 @@ Some text to show that the reference links can follow later.
 [1]: https://www.mozilla.org
 [link text itself]: https://www.mozilla.org
 
-### 1.7. Lists{id=lists}
+### 7. Lists{id=lists}
 
 (In this example, leading and trailing spaces are shown with with dots: ⋅)
 
@@ -261,9 +264,9 @@ Some text to show that the reference links can follow later.
 + Or pluses
 
 
-## 2. Special syntax{id=special}
+## Special syntax
 
-### 2.1. Add a CSS class and an #id to an element{id=add-class}
+### 1. Add a CSS class and an #id to an element{id=add-class}
 
 One example add underline to a link (by default, Bootstrap 3 does not use underline for the links - I might change this behaviour though):
 
@@ -275,7 +278,7 @@ It is very important that you should not use whitespace, otherwise it will not w
 
 Add an id to an element: `Special syntax{id=special}`. It converts to `<h2 id="special">Special syntax</h2>`.
 
-### 2.2. Table with caption{id=tables}
+### 2. Table with caption{id=tables}
 
 ```` markdown
 Year | Column 1 | Column 2
@@ -298,18 +301,18 @@ Year | Column 1 | Column 2
 [Table 1: Three columns filled with some numbers]
 
 
-### 2.3. Image with caption{id=images}
+### 3. Image with caption{id=images}
 
 Syntax: `![caption text](link-to-image)`
 
 Example:
-`![Figure 1. Interest in static site generators over time (Google Trends)](/assets/images/trend.png)`
+`![Figure 1. Interest in static site generators over time (Google Trends)](/assets/images/articles/trend.png)`
 
 
-![Figure 1. Interest in static site generators over time (Google Trends)](/assets/images/trend.png)
+![Figure 1. Interest in static site generators over time (Google Trends)](/assets/images/articles/trend.png)
 
 
-### 2.4. Code syntax highlighting{id=highlight}
+### 4. Code syntax highlighting{id=highlight}
 
 This SSG uses the `highlight.js` for syntax highlighting. Everything is automatic, so you only need to write the code snippets like this:
 
