@@ -1,7 +1,11 @@
-# Disallow login page
+# Disallow admin page
 User-agent: *
 Disallow: /admin/
 
-# Rule 2
+# Disallow message-sent page
+User-agent: *
+Disallow: /message-sent/
+
+# Rule 3
 User-agent: *
 Allow: /

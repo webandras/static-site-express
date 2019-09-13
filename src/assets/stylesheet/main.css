@@ -231,15 +231,18 @@ h1,
 
 h2,
 .h2 {
-  font-size: 1.8rem; }
+  font-size: 1.8rem;
+  font-weight: 800; }
 
 h3,
 .h3 {
-  font-size: 1.4rem; }
+  font-size: 1.4rem;
+  font-weight: 800; }
 
 h4,
 .h4 {
-  font-size: 20px; }
+  font-size: 20px;
+  font-weight: 700; }
 
 h5,
 .h5 {
@@ -266,7 +269,7 @@ ul {
   list-style-type: none;
   margin-left: 0rem;
   padding-left: 0;
-  line-height: 1.7; }
+  line-height: 1.56; }
 
 blockquote {
   font-style: italic;
@@ -404,6 +407,11 @@ textarea {
   display: inline-block;
   height: 27px;
   width: auto; }
+
+section:before {
+  height: 60px;
+  content: "";
+  display: block; }
 
 /*
 !++++++ MARGINS
