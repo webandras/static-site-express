@@ -1,14 +1,17 @@
 {
   "name": "static-site-express",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "A simple Node.js based static site generator that uses EJS and Markdown",
   "main": "./lib/build.js",
   "scripts": {
+    "sass": "node-sass --include-path ./src/assets/stylesheet/ ./scss/main.scss ./src/assets/stylesheet/main.css",
     "build": "node ./lib/build.js",
+    "heroku": "node ./lib/build.js && node ./lib/serve.js",
+    "serve": "node ./lib/serve.js",
     "watch": "nodemon -L --watch ./src --watch site.config.js ./lib/build.js -e *",
     "watch-exp": "node ./lib/watch.js",
-    "serve": "node ./lib/serve.js",
-    "heroku": "node ./lib/build.js && node ./lib/serve.js"
+    "standard": "standard ./lib/build.js",
+    "standard-fix": "standard --fix ./lib/build.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +22,7 @@
     "Express",
     "ejs",
     "markdown",
+    "SCSS",
     "static-site",
     "static site generator",
     "static files",
@@ -49,6 +53,7 @@
     "serve-favicon": "^2.4.5"
   },
   "devDependencies": {
+    "node-sass": "^4.12.0",
     "standard": "^11.0.1"
   },
   "bugs": {

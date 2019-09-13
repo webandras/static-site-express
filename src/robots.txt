@@ -1,0 +1,7 @@
+# Disallow login page
+User-agent: *
+Disallow: /admin/
+
+# Rule 2
+User-agent: *
+Allow: /

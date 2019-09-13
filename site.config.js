@@ -9,6 +9,6 @@ module.exports = {
     description: 'A Node.js-based static site generator that uses EJS and Markdown',
     currentYear: new Date().getFullYear(),
     google_analytics: 'YOUR-ID-COMES-HERE',
-    twitter: 'https://twitter.com/andrasgulacsi'
+    github: 'https://github.com/SalsaBoy990'
   }
 }

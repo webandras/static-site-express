@@ -1,57 +1,37 @@
-<div width="100%">
-  <div class="container-fluid m0">
-    <div class="row mt3 mb3">
-      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 pl2 pr1">
-        <div class="intro mb4">
-          <p>Hi, my name is <a href="<%= site.twitter %>" class="underline">András Gulácsi</a>. I am a UX designer and a Frontend developer. And this is my Netlify project. Deploy, customize, and write your blog.</p>
-          <a class="menu mt1" href="/">Home</a>
-          <br>
-          <a class="menu mt1" href="/writings.html">Writings</a>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-offset-1 col-lg-6 pl2 pr1">
-        <h2 class="section-title mb2 mt0">Posts</h2>
-        <div class="mb3">
-          <% for (var i = 0; i < postsDataForIndexPage.length; i++) { %>
-          <article>
-            <div class="prhalf mr1 mb2">
-              <p class="post-date mb0"><%= postsDataForIndexPage[i].dateFormatted %></p>
-              <a href="<%= postsDataForIndexPage[i].pathToPost %>" class="no-underline visited-link ">
-                <h3 class="post-title m0"><%= postsDataForIndexPage[i].title %></h3>
-              </a>
-            </div>
-          </article>
-          <% } %>
-        </div>
-      </div>
-    </div>
+<section>
+  <a href="" id="get-started"></a>
+  <h2 class="dark-blue mt3">Get Started with <span class="pink-highlight">static-site-express</span></h2>
+  <h3 class="medium-gray-text mt2">1. Installation</h3>
+  <p>Clone my repository:</p>
+  <pre>
+  <code>git clone https://github.com/SalsaBoy990/static-site-express</code>
+</pre>
+  <p>Or use the 'Deploy to Netlify' button.</p>
 
-    <div class="row"> 
-      <div class="col-xs-12 col-sm-ofset-4 col-sm-8 col-lg-offset-4 col-lg-5 pl2 pr1">
-        <h2 class="section-title mt0">Contact</h2>
-        <form name="contact" class="custom-form ws-validate" method="POST" action="/message-sent.html" netlify-honeypot="bot-field" netlify>
-          <p class="hidden">
-            <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-          </p>
+  <h3 class="medium-gray-text mt2">2. Build your site</h3>
+  <p>Build site into the /public/ folder:</p>
+  <pre>
+  <code>npm run build</code>
+</pre>
+  <p>Serve website on localhost:4000:</p>
+  <pre>
+  <code>npm run serve</code>
+</pre>
 
-          <div class="form-group mb1">
-            <label for="inputEmail" class="form-label">Your email</label>
-            <br>
-            <input type="email" name="name" id="inputEmail" class="border-round input-lg medium expanded" required="required" />
-          </div>
+  <h3 class="medium-gray-text mt2">3. Publish your website</h3>
+  <p><a href="https://www.netlify.com/" target="_blank">Register at Netlify</a> and see the 2-min <a href="https://www.netlify.com/docs/continuous-deployment/"
+      target="_blank">tutorial video.</a></p>
 
-          <div class="form-group">
-            <label for="message" class="form-label">Your message</label>
-            <br>
-            <textarea name="message" id="message" required="required"></textarea>
-          </div>
+  <p>Click on the ‘New site from Git’ button on your Netlify dashboard. Select your GitHub repository. Do NOT change
+    the
+    deploy settings, because I already set them in the <code>netlify.toml</code> config file.</p>
 
-          <div class="text-right">
-            <button type="submit" class="btn btn-primary btn-lg btn-text no-visited">Get in touch</button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-  </div>
-</div>
+  <h2 class="dark-blue mt3">Documentation</h2>
+  <ul class="no-bullets p0">
+    <li><a href="/documentation.html">Goto Full Documentation</a></li>
+    <li><a href="https://www.netlify.com/docs/">See Netlify Documentation</a></li>
+  </ul>
+  <p>If you have a problem or a question about static-site-express, <a href="https://github.com/SalsaBoy990/static-site-express/issues"
+      target="_blank">open an issue here.</a></p>
+  <p>Or use my nice Netlify-powered contact form below!</p>
+</section>

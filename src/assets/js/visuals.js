@@ -1,11 +1,7 @@
 $(document).ready(function () {
-  $('#deploy').click(function () {
-    window.location.href = 'https://app.netlify.com/start/deploy?repository=https://github.com/SalsaBoy990/static-site-express'
-  })
-
   // Add smooth scrolling to all links
   $('a[href="#get-started"], a[href="#contact-me"]').on('click', function (event) {
-    // Make sure this.hash has a value before overriding default behavior
+  // Make sure this.hash has a value before overriding default behavior
     if (this.hash !== '') {
       // Prevent default anchor click behavior
       event.preventDefault()
