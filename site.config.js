@@ -1,7 +1,7 @@
 // Add your global site properties here
 module.exports = {
   site: {
-    url: '',
+    url: 'https://static-site-express.netlify.com/',
     title: `static-site-express`,
     defaultImage: '/assets/images/static.jpg',
     author: 'András Gulácsi',
