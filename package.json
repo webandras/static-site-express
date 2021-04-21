@@ -8,8 +8,8 @@
     "build": "node ./lib/build.js",
     "heroku": "node ./lib/build.js && node ./lib/serve.js",
     "serve": "node ./lib/serve.js",
-    "watch": "nodemon -L --watch ./src --watch site.config.js ./lib/build.js -e *",
-    "watch-exp": "node ./lib/watch.js",
+    "watch-nodemon": "nodemon -L --watch ./src --watch site.config.js ./lib/build.js -e *",
+    "watch-chokidar": "node ./lib/watch.js",
     "standard": "standard ./lib/build.js",
     "standard-fix": "standard --fix ./lib/build.js"
   },
