@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="hu">
-  <%- include partials/head-default.ejs %>
+  <%- include ('partials/head-default.ejs') %>
 <body>
-  <%- include partials/header %>
+  <%- include ('partials/header') %>
   <main>
     <%- body %>
   </main>
-  <%- include partials/scripts %>
-  <%- include partials/tracking %>
+  <%- include ('partials/scripts') %>
+  <%- include ('partials/tracking') %>
 </body>
 </html>
