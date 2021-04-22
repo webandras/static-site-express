@@ -10,8 +10,11 @@
     "serve": "node ./lib/serve.js",
     "watch-nodemon": "nodemon -L --watch ./src --watch site.config.js ./lib/build.js -e *",
     "watch-chokidar": "node ./lib/watch.js",
-    "standard": "standard ./lib/build.js",
-    "standard-fix": "standard --fix ./lib/build.js"
+    "standard": "standard ./lib/*",
+    "standard-fix": "standard --fix ./lib/build.js",
+    "flow": "flow",
+    "transpile": "babel src/ -d lib/",
+    "generate-generator": "npm run transpile"
   },
   "repository": {
     "type": "git",
@@ -53,6 +56,10 @@
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.13.16",
+    "@babel/preset-flow": "^7.13.13",
+    "flow-bin": "^0.149.0",
     "node-sass": "^5.0.0",
     "standard": "^16.0.3"
   },
