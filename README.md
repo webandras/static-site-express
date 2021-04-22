@@ -2,7 +2,24 @@
 
 static-site-express is a simple Node.js based static-site generator that uses EJS and Markdown. You can deploy your static site to the Netlify cloud computing platform. Deploy, customize, and write your own blog.
 
-*Post updated on September 13, 2019*
+## Updates
+
+### Generator update: 22 April 2021
+- All used npm modules will be updated to the newest versions. The code will be re-examined and improved too.
+- Previously, git was not managed very well (commit messages, semver, missing version tags etc.), so I decided to change version to 1.0 in the newest release.
+- git flow will be used and proper semver usage from now on
+- Project will likely to be dockerized
+- Watch mode improvements
+- Possible breaking changes from the previous 2019 version will be documented here.
+- EJS templating, Netlify CMS, Netlify and Heroku support will be kept
+
+In addition I am planning to redesign the example website. It will be minimalistic and based on modern css (e.g. grid).
+Bootstrap removed. You can extend your version with any framework you like.
+
+Branch: update-generator-2021
+
+
+
 *Current version: 4.1.0*
 
 
