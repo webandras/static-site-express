@@ -1,26 +1,58 @@
 # static-site-express
 
-static-site-express is a simple Node.js based static-site generator that uses EJS and Markdown. You can deploy your static site to the Netlify cloud computing platform. Deploy, customize, and write your own blog.
+static-site-express is a simple Node.js based static-site generator that uses EJS and Markdown. Deploy your static site to the Netlify ar any platform to your liking. Suited for blogging, documentation sites, hobby projects, etc.
 
 ## Updates
 
-### Generator update: 22 April 2021
-- All used npm modules will be updated to the newest versions. The code will be re-examined and improved too.
-- Previously, git was not managed very well (commit messages, semver, missing version tags etc.), so I decided to change version to 1.0 in the newest release.
-- git flow will be used and proper semver usage from now on
-- Project will likely to be dockerized
-- Watch mode improvements
-- Possible breaking changes from the previous 2019 version will be documented here.
-- EJS templating, Netlify CMS, Netlify and Heroku support will be kept
-
-In addition I am planning to redesign the example website. It will be minimalistic and based on modern css (e.g. grid).
-Bootstrap removed. You can extend your version with any framework you like.
-
-Branch: update-generator-2021
+### Generator update 2021
+- All used npm modules will be updated to the newest versions. The code will be re-examined and improved too... DONE.
+- Previously, I did not manage git very well (commit messages, semver, missing version tags etc.), so I decided to change version to 1.0.0 in the newest release... DONE.
+- git flow will be used and proper semver usage from now on... DONE.
+- Project will likely to be dockerized... DONE.
+- Watch mode improvements... DONE.
+- Possible breaking changes from the previous 2019 version will be documented... DONE.
+- EJS templating, Netlify CMS, Netlify and Heroku support will be kept... DONE.
+- I am planning to redesign the example website... IDEA DROPPED.
+- TODO: I will create a minimalistic starter template without any styling and with a little dummy data.
+- TODO: Documentation needs serious update. 
 
 
+## Changelog
 
-*Current version: 4.1.0*
+### v1.0.0-alpha (25 April 2021)
+
+- version re-started with *v1.0.0* (from *4.1.0*)
+- Update npm dependencies to the newest versions
+- Build script (partial) code refactoring, code styling
+
+Correct EJS syntax error after EJS version update
+- fix: From now on, EJS include directives should be in this format:
+
+`<%- include ('partial/element-name') %>`
+
+This is a **breaking change**, you should update your partials/templates!
+
+Update build and watch scripts (using chokidar)
+- update: build script content moved into a module (generator.js) to be used in a build and the chokidar-based watch scripts.
+
+In 2019, chokidar was not watching file changes properly, thus the npm script was named "watch-exp". The default watch script is using nodemon. Both will be kept in the future.
+
+Add flow types support and re-structure folders
+- new: add Flow, a static type checker for JavaScript
+- update: site generator source moved to src/, Babel will transpile the source into the lib/ folder where originally the source were
+- update: website source is moved to website/ folder, necessary code changes are applied
+
+Refactor site generator, code improvements, config changes
+- update: package.json add dotenv package, update npm scripts
+- update/add: refactor static site generator scripts, changes in methods, add types to code with flow, update/add comments to every method
+- add: lang and month names options to site.config.js
+
+Dockerize project
+- new: read variables from .env file
+- new: add Dockerfile, docker-compose file, .dockerignore
+
+See: https://github.com/SalsaBoy990/static-site-express/releases
+
 
 
 ## Documentation
