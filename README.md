@@ -1,6 +1,6 @@
 # static-site-express
 
-static-site-express is a simple Node.js based static-site generator that uses EJS and Markdown. Deploy your static site to the Netlify or any platform to your liking. Suited for blogging, documentation sites, hobby projects, etc.
+static-site-express is a simple Node.js based static-site generator that uses EJS and Markdown. Deploy your static site to Netlify or any platform to your liking. Suited for blogging, documentation sites, hobby projects, etc.
 
 ## Updates
 
