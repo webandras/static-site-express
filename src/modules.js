@@ -1,11 +1,12 @@
-const md = require('markdown-it')()
+// @flow
+const md: any = require('markdown-it')()
 
 module.exports = {
   // logger
   log: require('./utils/logger'),
 
   // load utility functions
-  ssg: require('./utils/utils'),
+  ssg: require('./generator/methods'),
 
   // file system module with extended functionality
   fse: require('fs-extra'),

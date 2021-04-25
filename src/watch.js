@@ -1,3 +1,4 @@
+// @flow
 const chokidar = require('chokidar')
 const log = require('./utils/logger')
 const buildSite = require('./generator')
@@ -6,9 +7,9 @@ const buildSite = require('./generator')
 buildSite()
 
 // Initialize watcher
-const watcher = chokidar.watch('./src', { interval: 1000, persistent:true })
+chokidar.watch('./website', { interval: 1000, persistent:true })
   .on('change', () => {
-      // Build site from ./src to ./public folder
-      buildSite()
+    // Build site from ./website to ./public folder
+    buildSite()
   })
-  .on('error', error => log(`Watcher error: ${error}`))
+  .on('error', error => log.error(`Watcher error: ${error}`))

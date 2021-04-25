@@ -1,25 +1,23 @@
-(function (port) {
+// @flow
+(function () {
   'use strict'
+  require('dotenv').config()
   const express = require('express')
   const path = require('path')
   const favicon = require('serve-favicon')
   const fs = require('fs-extra')
+  
+  const port = process.env.PORT || 4000
+  const nodeEnvironment = process.env.NODE_ENV || 'development';
 
-  if (arguments.length === 0) {
+  if (port === undefined) {
     throw new Error(`Argument missing: port number not supplied`)
-  } else if (arguments.length === 1) {
-    // is it an integer?
-    if (!isNaN(parseInt(port, 10))) {
-      port = parseInt(port, 10)
-    } else {
-      throw new Error(`The port number you supplied '${port}' is not a integer`)
-    }
   }
 
   // create express server
   const app = express()
 
-  if (process.env.PORT) {
+  if (nodeEnvironment === 'production') {
     // Set Security Headers.
     const helmet = require('helmet')
 
@@ -28,6 +26,7 @@
     // Content Security Policy.
     const csp = require('helmet-csp')
 
+    // These settings should be changed (these here are just examples)!
     app.use(csp({
       directives: {
         defaultSrc: [`'none'`],
@@ -80,4 +79,4 @@
   app.listen(port, () => {
     console.log(`Server is listening on localhost:${port}...`)
   })
-})(process.env.PORT || 4000)
+})()

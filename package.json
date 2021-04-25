@@ -9,12 +9,12 @@
     "heroku": "node ./lib/build.js && node ./lib/serve.js",
     "serve": "node ./lib/serve.js",
     "watch-nodemon": "nodemon -L --watch ./src --watch site.config.js ./lib/build.js -e *",
-    "watch-chokidar": "node ./lib/watch.js",
+    "watch-chokidar": "node ./lib/watch.js -H localhost",
     "standard": "standard ./lib/*",
-    "standard-fix": "standard --fix ./lib/build.js",
+    "standard-fix": "standard --fix ./lib/*",
     "flow": "flow",
-    "transpile": "babel src/ -d lib/",
-    "generate-generator": "npm run transpile"
+    "flow-status": "flow status",
+    "transpile-flow": "babel src/ -d lib/"
   },
   "repository": {
     "type": "git",
@@ -37,6 +37,7 @@
   "dependencies": {
     "chalk": "^4.1.1",
     "chokidar": "^3.5.1",
+    "dotenv": "^8.2.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "front-matter": "^4.0.2",

@@ -1,3 +1,4 @@
+// @flow
 module.exports = function () {
   'use strict'
 
@@ -14,9 +15,9 @@ module.exports = function () {
   const config = require('../site.config')
 
   // source directory
-  const srcPath = './website'
+  const srcPath: string = './website'
   // destination folder to where the static site will be generated
-  const distPath = './public'
+  const distPath: string = './public'
   // Store the paths to the blogposts for the links in the index page
   const postsDataForIndexPage = []
   // Store posts data for the archive
@@ -110,9 +111,7 @@ module.exports = function () {
       const postData = $.ssg.getPostDataFromMarkdown(pathToFile)
 
       // change date format
-      const dateFormatted = $.ssg.convertDateFormat(postData, pathToFile, [
-        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-      ])
+      const dateFormatted = $.ssg.convertDateFormat(postData, pathToFile, config.site.monthNames, config.site.lang)
 
       // convert md to HTML
       const postContents = $.md.render(postData.body)
@@ -144,7 +143,6 @@ module.exports = function () {
       // save the rendered blogposts to destination folder
       $.ssg.saveBlogpostsHTML(fileData, destPath, layoutContent)
     })
-    console.log('Posts OK...')
   } catch (err) {
     $.log.error(err)
     $.log.info('Build posts failed...')
@@ -247,7 +245,6 @@ module.exports = function () {
       // save the html file
       $.fse.writeFileSync(`${destPath}/${fileData.name}.html`, layoutContent)
     })
-    $.log.success('Pages OK...')
   } catch (err) {
     $.log.error(err)
     $.log.error('Build pages failed...')
