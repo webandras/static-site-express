@@ -184,10 +184,11 @@ module.exports = function () {
         case 'index.ejs':
           layoutContent = ejsRender(
             $.fse.readFileSync(`${srcPath}/layouts/home.ejs`, 'utf-8'),
-            Object.assign({}, config, {
-              title: config.site.title,
+            Object.assign({}, config,
+              postsDataForIndexPage, {
+              title: 'Index page | ' + config.site.title,
               body: pageContents,
-              canonicalUrl: config.site.url,
+              canonicalUrl: config.site.url + fileData.name,
               description: config.site.quote
             }),
             {
@@ -196,18 +197,17 @@ module.exports = function () {
           )
           break
 
-        case 'documentation.ejs':
+        case 'contact.ejs':
           layoutContent = ejsRender(
-            $.fse.readFileSync(`${srcPath}/layouts/documentation.ejs`, 'utf-8'),
-            Object.assign({}, config,
-              postsDataForIndexPage, {
-                title: 'Documentation | ' + config.site.title,
-                body: pageContents,
-                canonicalUrl: config.site.url + '/' + fileData.name,
-                description: config.site.quote
-              }),
+            $.fse.readFileSync(`${srcPath}/layouts/default.ejs`, 'utf-8'),
+            Object.assign({}, config, {
+              title: 'Contact page | ' + config.site.title,
+              body: pageContents,
+              canonicalUrl: config.site.url + fileData.name,
+              description: config.site.quote
+            }),
             {
-              filename: `${srcPath}/layouts/documentation.ejs`
+              filename: `${srcPath}/layouts/default.ejs`
             }
           )
           break
@@ -216,9 +216,24 @@ module.exports = function () {
           layoutContent = ejsRender(
             $.fse.readFileSync(`${srcPath}/layouts/default.ejs`, 'utf-8'),
             Object.assign({}, config, {
-              title: 'Message sent! | ' + config.site.title,
+              title: 'Message sent | ' + config.site.title,
               body: pageContents,
-              canonicalUrl: config.site.url + '/' + fileData.name,
+              canonicalUrl: config.site.url + fileData.name,
+              description: config.site.quote
+            }),
+            {
+              filename: `${srcPath}/layouts/default.ejs`
+            }
+          )
+          break
+
+        case 'sample-page.ejs':
+          layoutContent = ejsRender(
+            $.fse.readFileSync(`${srcPath}/layouts/default.ejs`, 'utf-8'),
+            Object.assign({}, config, {
+              title: 'Sample page | ' + config.site.title,
+              body: pageContents,
+              canonicalUrl: config.site.url + fileData.name,
               description: config.site.quote
             }),
             {
@@ -231,9 +246,9 @@ module.exports = function () {
           layoutContent = ejsRender(
             $.fse.readFileSync(`${srcPath}/layouts/default.ejs`, 'utf-8'),
             Object.assign({}, config, {
-              title: '404: Page not found | ' + config.site.title,
+              title: 'Page not found | ' + config.site.title,
               body: pageContents,
-              canonicalUrl: config.site.url + '/' + fileData.name,
+              canonicalUrl: config.site.url + '/404',
               description: config.site.quote
             }),
             {

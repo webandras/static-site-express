@@ -4,7 +4,7 @@
   "description": "A simple Node.js based static site generator that uses EJS and Markdown",
   "main": "./lib/build.js",
   "scripts": {
-    "sass": "node-sass --include-path ./src/assets/stylesheet/ ./scss/main.scss ./src/assets/stylesheet/main.css",
+    "sass": "node-sass --include-path ./website/assets/stylesheet/ ./scss/main.scss ./website/assets/stylesheet/main.css",
     "build": "node ./lib/build.js",
     "heroku": "node ./lib/build.js && node ./lib/serve.js",
     "serve": "node ./lib/serve.js",
