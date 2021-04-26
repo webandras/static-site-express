@@ -2,6 +2,108 @@
 
 static-site-express is a simple Node.js based static-site generator that uses EJS and Markdown. Deploy your static site to Netlify or any platform to your liking. Suited for blogging, documentation sites, hobby projects, etc.
 
+
+## Documentation 2021
+
+
+### Install static-site-express
+
+1. Clone repository
+
+````raw
+git clone https://github.com/SalsaBoy990/static-site-express name-of-your-site
+````
+2. Checkout the appropriate branch
+
+- minimal-starter-package: a bare bone starter where you can work almost from scratch
+- development: if you want to have an exact replica of the [project's website](https::static-site-express.netlify.com/)
+
+
+(Alternative: Use the 'Deploy to Netlify' button at the [project's website](https://static-site-express.netlify.com/))
+
+
+### Build your site locally without Docker
+
+Use npm scripts defined in package.json
+
+1. Build site from `./website` into the `./public` folder:
+
+````raw
+npm run build
+````
+
+2. Serve website on `localhost:4000`:
+
+````raw
+npm run serve
+````
+
+3a. Watch for changes and trigger auto re-build with nodemon:
+
+````raw
+npm run watch-nodemon
+````
+
+3b. Watch for changes and trigger auto re-build with chokidar:
+
+````raw
+npm run watch-chokidar
+````
+
+
+### Build your site locally with Docker
+
+Install Docker Engine on your operating system:
+https://docs.docker.com/engine/
+
+Build the container for the first time (on Windows):
+
+`(set -a; source .env; docker-compose up --build)`
+
+On Linux distros add `sudo`:
+`set -a
+source .env
+sudo docker-compose up --build`
+
+Stop container from running:
+`docker-compose down`
+
+Start container:
+`docker-compose up`
+
+There are two services
+1. your_app_name_generator: watches changes and auto re-builds (default: with chokidar, but nodemon can also be used)
+2. your_app_name_devserver: runs Express development server on the port specified in the .env file (default: 4000)
+
+
+### Modify the site generator's source code
+
+The source is in the `src/` folder. These files also contain the flow type annotations.
+You only need to modify the `generator.js` and the `generator/methods.js` files.
+
+- `methods.js` contains most of the methods for the generator.
+- In `generator.js`, you can modify the pages you want to generate in the section starting from **line 155**.
+More specifically, the switch statements.
+- Post properties can be extended on **line 119**, in the `templateConfig` object literal (`generator.js`)
+
+After making changes, the source must be transpiled by Babel into ES5 into the `lib/` folder with:
+- `npm run transpile-flow`
+
+Optionally, the standard style can also be applied:
+- `npm run standard-fix`
+
+However, Babel already formats the code into a unified code styling.
+
+At the end of the process, restart build/watch scripts:
+- `npm run build`
+
+### Data sources (in the `websites/` folder)
+
+- Post data comes from markdown files (in `posts/`) where the front matter block contains the post properties.
+- Pages (in `pages/`) are using templates and partials defined in the `layouts/` folder.
+
+
+
 ## Updates
 
 ### Generator update 2021
@@ -22,7 +124,7 @@ static-site-express is a simple Node.js based static-site generator that uses EJ
 ### v1.0.0-alpha.2 (27 April 2021)
 
 Incorrect configuration in docker-compose.yml
--fix: "generator" and "devserver" services share volume data. "devserver" is dependent on the "generator" service.
+- fix: "generator" and "devserver" services share volume data. "devserver" is dependent on the "generator" service.
 
 Under testing. I haven't experienced any errors in this version.
 
@@ -60,45 +162,6 @@ Dockerize project
 
 See: https://github.com/SalsaBoy990/static-site-express/releases
 
-
-
-## Documentation
-
-
-### Install static-site-express
-
-You have to options:
-
-a) Clone my repository:
-
-````raw
-git clone https://github.com/SalsaBoy990/static-site-express name-of-your-site
-````
-
-b) Use the 'Deploy to Netlify' button on the [example website](https://static-site-express.netlify.com/)
-
-
-### Build your site locally
-
-a) Build site from `./src` into `./public` folder:
-
-````raw
-npm run build
-````
-
-b) Serve website on `localhost:4000`:
-
-````raw
-npm run serve
-````
-
-c) Or you can watch for changes and trigger re-build with nodemon:
-
-````raw
-npm run watch
-````
-
-You need to add `sudo` before the commands on Linux system.
 
 #### Important notes
 
