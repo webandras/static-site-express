@@ -13,13 +13,20 @@ static-site-express is a simple Node.js based static-site generator that uses EJ
 - Possible breaking changes from the previous 2019 version will be documented... DONE.
 - EJS templating, Netlify CMS, Netlify and Heroku support will be kept... DONE.
 - I am planning to redesign the example website... IDEA DROPPED.
-- TODO: I will create a minimalistic starter template without any styling and with a little dummy data.
-- TODO: Documentation needs serious update. 
+- I will create a minimalistic starter template without any styling and with a little dummy data... DONE.
+- TODO: Documentation needs serious update.
 
 
 ## Changelog
 
-### v1.0.0-alpha (25 April 2021)
+### v1.0.0-alpha.2 (27 April 2021)
+
+Incorrect configuration in docker-compose.yml
+-fix: "generator" and "devserver" services share volume data. "devserver" is dependent on the "generator" service.
+
+Under testing. I haven't experienced any errors in this version.
+
+### v1.0.0-alpha.1 (25 April 2021)
 
 - version re-started with *v1.0.0* (from *4.1.0*)
 - Update npm dependencies to the newest versions
