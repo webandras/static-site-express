@@ -57,12 +57,11 @@ Install Docker Engine on your operating system:
 https://docs.docker.com/engine/
 
 Build the container for the first time (on Windows):
-
-`(set -a; source .env; docker-compose up --build)`
+- `(set -a; source .env; docker-compose up --build)`
 
 On Linux distros add `sudo`:
-`set -a
-source .env
+- `set -a
+- source .env
 sudo docker-compose up --build`
 
 Stop container from running:
@@ -94,14 +93,12 @@ Optionally, the standard style can also be applied:
 
 However, Babel already formats the code into a unified code styling.
 
-At the end of the process, restart build/watch scripts:
-- `npm run build`
+At the end of the process, restart build/watch scripts.
 
 ### Data sources (in the `websites/` folder)
 
 - Post data comes from markdown files (in `posts/`) where the front matter block contains the post properties.
 - Pages (in `pages/`) are using templates and partials defined in the `layouts/` folder.
-
 
 
 ## Updates
