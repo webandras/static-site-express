@@ -1,36 +1,232 @@
-<section id="get-started">
-  <h2 class="dark-blue">Get Started with <span class="pink-highlight">static-site-express</span></h2>
-  <h3 class="medium-gray-text mt2">1. Installation</h3>
-  <p>Clone my repository:</p>
-  <pre>
-  <code>git clone https://github.com/SalsaBoy990/static-site-express</code>
-</pre>
-  <p>Or use the 'Deploy to Netlify' button.</p>
+<h1>Index page</h1>
 
-  <h3 class="medium-gray-text mt2">2. Build your site</h3>
-  <p>Build site into the /public/ folder:</p>
-  <pre>
-  <code>npm run build</code>
-</pre>
-  <p>Serve website on localhost:4000:</p>
-  <pre>
-  <code>npm run serve</code>
-</pre>
+<p>Posts list</p>
+<ol>
+  <% for (var i = postsDataForIndexPage.length - 1, j = 0; i >= 0; i--) { %>
+  <li><a href="<%= postsDataForIndexPage[i].pathToPost %>">
+    <%= postsDataForIndexPage[i].title %></a></li>
+  <% j = j + 1 %>
+  <% } %>
+</ol>
 
-  <h3 class="medium-gray-text mt2">3. Publish your website</h3>
-  <p><a href="https://www.netlify.com/" target="_blank">Register at Netlify</a> and see the 2-min <a href="https://www.netlify.com/docs/continuous-deployment/"
-      target="_blank">tutorial video.</a></p>
-
-  <p>Click on the ‘New site from Git’ button on your Netlify dashboard. Select your GitHub repository. Do NOT change
-    the
-    deploy settings, because I already set them in the <code>netlify.toml</code> config file.</p>
-
-  <h2 class="dark-blue mt3">Documentation</h2>
-  <ul class="no-bullets p0">
-    <li><a href="/documentation.html">Goto Full Documentation</a></li>
-    <li><a href="https://www.netlify.com/docs/">See Netlify Documentation</a></li>
-  </ul>
-  <p>If you have a problem or a question about static-site-express, <a href="https://github.com/SalsaBoy990/static-site-express/issues"
-      target="_blank">open an issue here.</a></p>
-  <p>Or use my nice Netlify-powered contact form below!</p>
-</section>
+<p>Posts by montly and year</p>
+<% for (var i = 0; i < blogArchive.length; i++) { %>
+<ul>
+  <% if (blogArchive[i].months.dec) { %>
+  <li>
+    <h2>December
+      <%= blogArchive[i].year %>
+      </h2>
+      <ul>
+        <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+        <% if (blogArchive[i].articles[j].dec) { %>
+        <li>
+          <a href="<%= blogArchive[i].articles[j].dec.link %>">
+            <%= blogArchive[i].articles[j].dec.title %>
+          </a>
+        </li>
+        <% } %>
+        <% } %>
+      </ul>
+  </li>
+  <% } %>
+  <% if (blogArchive[i].months.nov) { %>
+  <li>
+    <h2>November
+      <%= blogArchive[i].year %>
+      </h2>
+      <ul>
+        <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+        <% if (blogArchive[i].articles[j].nov) { %>
+        <li>
+          <a href="<%= blogArchive[i].articles[j].nov.link %>">
+            <%= blogArchive[i].articles[j].nov.title %>
+          </a>
+        </li>
+        <% } %>
+        <% } %>
+      </ul>
+  </li>
+  <% } %>
+  <% if (blogArchive[i].months.oct) { %>
+  <li>
+    <h2>October
+      <%= blogArchive[i].year %>
+      </h2>
+      <ul>
+        <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+        <% if (blogArchive[i].articles[j].oct) { %>
+        <li>
+          <a href="<%= blogArchive[i].articles[j].oct.link %>">
+            <%= blogArchive[i].articles[j].oct.title %>
+          </a>
+        </li>
+        <% } %>
+        <% } %>
+      </ul>
+  </li>
+  <% } %>
+  <% if (blogArchive[i].months.sep) { %>
+  <li>
+    <h2>September
+      <%= blogArchive[i].year %>
+      </h2>
+      <ul>
+        <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+        <% if (blogArchive[i].articles[j].sep) { %>
+        <li>
+          <a href="<%= blogArchive[i].articles[j].sep.link %>">
+            <%= blogArchive[i].articles[j].sep.title %>
+          </a>
+        </li>
+        <% } %>
+        <% } %>
+      </ul>
+  </li>
+  <% } %>
+  <% if (blogArchive[i].months.aug) { %>
+  <li>
+    <h2>August
+      <%= blogArchive[i].year %>
+      </h2>
+      <ul>
+        <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+        <% if (blogArchive[i].articles[j].aug) { %>
+        <li>
+          <a href="<%= blogArchive[i].articles[j].aug.link %>">
+            <%= blogArchive[i].articles[j].aug.title %>
+          </a>
+        </li>
+        <% } %>
+        <% } %>
+      </ul>
+  </li>
+  <% } %>
+  <% if (blogArchive[i].months.jul) { %>
+  <li>
+    <h2>July
+      <%= blogArchive[i].year %>
+      </h2>
+      <ul>
+        <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+        <% if (blogArchive[i].articles[j].jul) { %>
+        <li>
+          <a href="<%= blogArchive[i].articles[j].jul.link %>">
+            <%= blogArchive[i].articles[j].jul.title %>
+          </a>
+        </li>
+        <% } %>
+        <% } %>
+      </ul>
+  </li>
+  <% } %>
+  <% if (blogArchive[i].months.jun) { %>
+  <li>
+    <h2>June
+      <%= blogArchive[i].year %>
+    </h2>
+    <ul>
+      <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+      <% if (blogArchive[i].articles[j].jun) { %>
+      <li>
+        <a href="<%= blogArchive[i].articles[j].jun.link %>">
+          <%= blogArchive[i].articles[j].jun.title %>
+        </a>
+      </li>
+      <% } %>
+      <% } %>
+    </ul>
+  </li>
+  <% } %>
+  <% if (blogArchive[i].months.may) { %>
+  <li>
+    <h2>May
+      <%= blogArchive[i].year %>
+    </h2>
+    <ul>
+      <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+      <% if (blogArchive[i].articles[j].may) { %>
+      <li>
+        <a href="<%= blogArchive[i].articles[j].may.link %>">
+          <%= blogArchive[i].articles[j].may.title %>
+        </a>
+      </li>
+      <% } %>
+      <% } %>
+    </ul>
+  </li>
+  <% } %>
+  <% if (blogArchive[i].months.apr) { %>
+  <li>
+    <h2>April
+      <%= blogArchive[i].year %>
+    </h2>
+    <ul>
+      <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+      <% if (blogArchive[i].articles[j].apr) { %>
+      <li>
+        <a href="<%= blogArchive[i].articles[j].apr.link %>">
+          <%= blogArchive[i].articles[j].apr.title %>
+        </a>
+      </li>
+      <% } %>
+      <% } %>
+    </ul>
+  </li>
+  <% } %>
+  <% if (blogArchive[i].months.mar) { %>
+  <li>
+    <h2>March
+      <%= blogArchive[i].year %>
+    </h2>
+    <ul>
+      <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+      <% if (blogArchive[i].articles[j].mar) { %>
+      <li>
+        <a href="<%= blogArchive[i].articles[j].mar.link %>">
+          <%= blogArchive[i].articles[j].mar.title %>
+        </a>
+      </li>
+      <% } %>
+      <% } %>
+    </ul>
+  </li>
+  <% } %>
+  <% if (blogArchive[i].months.feb) { %>
+  <li>
+    <h2>February
+      <%= blogArchive[i].year %>
+    </h2>
+    <ul>
+      <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+      <% if (blogArchive[i].articles[j].feb) { %>
+      <li>
+        <a href="<%= blogArchive[i].articles[j].feb.link %>">
+          <%= blogArchive[i].articles[j].feb.title %>
+        </a>
+      </li>
+      <% } %>
+      <% } %>
+    </ul>
+  </li>
+  <% } %>
+  <% if (blogArchive[i].months.jan) { %>
+  <li>
+    <h2>January
+      <%= blogArchive[i].year %>
+    </h2>
+    <ul>
+      <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %>
+      <% if (blogArchive[i].articles[j].jan) { %>
+      <li>
+        <a href="<%= blogArchive[i].articles[j].jan.link %>">
+          <%= blogArchive[i].articles[j].jan.title %>
+        </a>
+      </li>
+      <% } %>
+      <% } %>
+    </ul>
+  </li>
+  <% } %>
+</ul>
+<% } %>

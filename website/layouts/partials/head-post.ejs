@@ -2,13 +2,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
-  
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-  <link rel="dns-prefetch" href="//fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css?family=DM+Sans:400,400i|Muli:600,700,800|Cousine&display=swap&subset=latin-ext" rel="stylesheet">
+ 
   <title><%= postTitleMeta %></title>
   
-  <!-- MORE METAS ARE COMING HERE -->
+  <!-- Metas for social media-->
   <meta name="description" content="<%= site.description %>">
   <meta property="og:title" content="<%= postTitleMeta %>">
   <meta property="og:url" content="<%= canonicalUrl %>">
@@ -18,16 +15,17 @@
   <meta property="og:type" content="website">
 
   <meta property="fb:app_id" content="<%= site.facebook_app_id %>"/>
+
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="<%= site.title %>">
   <meta name="twitter:creator" content="<%= site.author %>">
   <meta name="twitter:title" content="<%= postTitleMeta %>">
   <meta name="twitter:description" content="<%= excerpt %>">
   <meta name="twitter:url" content="<%= canonicalUrl %>">
-  <meta name="twitter:image" content="<%= site.url %>/assets/images/articles/<%= coverImage %>">
+  <meta name="twitter:image" content="<%= site.url %>/assets/images/uploads/<%= coverImage %>">
   
   <link rel="canonical" href="<%= canonicalUrl %>">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="./../../../assets/stylesheet/main.css" rel="stylesheet" type="text/css">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -37,6 +35,4 @@
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#2b5797">
   <meta name="theme-color" content="#ffffff">
-  <link rel="stylesheet"
-    href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
 </head>

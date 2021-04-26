@@ -1,0 +1,19 @@
+<h1>Contact page</h1>
+<form name="contact" method="POST" action="/message-sent.html" netlify-honeypot="bot-field" netlify>
+  <div class="hidden">
+    <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+  </div>
+  <div>
+    <label for="email">Your email</label>
+    <br>
+    <input type="email" name="name" id="email" required placeholder="Your email" />
+  </div>
+  <div>
+    <label for="message">Your message</label>
+    <br>
+    <textarea name="message" id="message" required placeholder="Your message"></textarea>
+  </div>
+  <div>
+    <button type="submit">Send message</button>
+  </div>
+</form>
