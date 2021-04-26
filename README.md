@@ -15,8 +15,8 @@ git clone https://github.com/SalsaBoy990/static-site-express name-of-your-site
 ````
 2. Checkout the appropriate branch
 
-- minimal-starter-package: a bare bone starter where you can work almost from scratch
-- development: if you want to have an exact replica of the [project's website](https::static-site-express.netlify.com/)
+- `minimal-starter-package`: a bare bone starter where you can work almost from scratch
+- `development`: if you want to have an exact replica of the [project's website](https::static-site-express.netlify.com/)
 
 
 (Alternative: Use the 'Deploy to Netlify' button at the [project's website](https://static-site-express.netlify.com/))
@@ -60,9 +60,9 @@ Build the container for the first time (on Windows):
 - `(set -a; source .env; docker-compose up --build)`
 
 On Linux distros add `sudo`:
-- `set -a
-- source .env
-sudo docker-compose up --build`
+- `set -a`
+- `source .env`
+- `sudo docker-compose up --build`
 
 Stop container from running:
 `docker-compose down`
@@ -95,7 +95,7 @@ However, Babel already formats the code into a unified code styling.
 
 At the end of the process, restart build/watch scripts.
 
-### Data sources (in the `websites/` folder)
+### Data sources (in the `website/` folder)
 
 - Post data comes from markdown files (in `posts/`) where the front matter block contains the post properties.
 - Pages (in `pages/`) are using templates and partials defined in the `layouts/` folder.
