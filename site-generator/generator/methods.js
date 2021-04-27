@@ -119,7 +119,7 @@ function generateCanonicalURL (fileData: any, config: any): string {
 
   const titlePart: string = fileData.name.split('-').slice(3).join('-')
 
-  return config.site.url.replace(/\/$/, ''); + '/' + (datePart.join('/') + '/' + titlePart + '.html')
+  return config.site.url.replace(/\/$/, '') + '/' + (datePart.join('/') + '/' + titlePart + '.html')
 }
 
 
