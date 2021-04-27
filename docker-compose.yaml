@@ -11,7 +11,7 @@ services:
       - ./lib:/usr/app/lib
       - ./public:/usr/app/public
       - ./src:/usr/app/src
-      - ./site-generator:/usr/app/site-generator
+      - ./website:/usr/app/website
       - /usr/app/node_modules
 
   devserver:

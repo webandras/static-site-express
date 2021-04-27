@@ -7,9 +7,9 @@ const buildSite = require('./generator')
 buildSite()
 
 // Initialize watcher
-chokidar.watch('./src', { interval: 1000, persistent:true })
+chokidar.watch('./website', { interval: 1000, persistent:true })
   .on('change', () => {
-    // Build site from ./src to ./public folder
+    // Build site from ./website to ./public folder
     buildSite()
   })
   .on('error', error => log.error(`Watcher error: ${error}`))
