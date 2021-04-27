@@ -1,0 +1,32 @@
+version: '3.5'
+services:
+  generator:
+    container_name: ${PROJECT_NAME}_generator
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: generator
+    command: npm run watch-chokidar
+    volumes:
+      - ./lib:/usr/app/lib
+      - ./public:/usr/app/public
+      - ./src:/usr/app/src
+      - ./website:/usr/app/website
+      - /usr/app/node_modules
+
+  devserver:
+    container_name: ${PROJECT_NAME}_devserver
+    depends_on:
+      - generator
+    build:
+      context: ./
+      target: devserver
+    command: npm run serve
+    volumes:
+      - ./lib:/usr/app/lib
+      - ./public:/usr/app/public
+      - /usr/app/node_modules
+    ports:
+      - "${PORT}:${PORT}"
+    environment:
+      - NODE_ENV=development
