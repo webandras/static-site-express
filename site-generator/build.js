@@ -1,5 +1,5 @@
 // @flow
 const buildSite = require('./generator')
 
-// Build site from ./website to ./public folder
+// Build site from ./src to ./public folder
 buildSite()
