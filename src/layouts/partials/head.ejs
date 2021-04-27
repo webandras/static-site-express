@@ -8,13 +8,12 @@
   <link href="https://fonts.googleapis.com/css?family=DM+Sans:400,400i|Muli:600,700,800|Cousine&display=swap&subset=latin-ext" rel="stylesheet">
   <title><%= site.title %></title>
 
-  <!-- MORE METAS ARE COMING HERE -->
   <meta name="description" content="<%= site.quote %>">
   <meta property="og:title" content="<%= title %>">
   <meta property="og:url" content="<%= canonicalUrl %>">
   <meta property="og:site_name" content="<%= site.title %>">
   <meta property="og:description" content="<%= description %>">
-  <meta property="og:image" content="<%= site.defaultImage %>">
+  <meta property="og:image" content="<%= site.url %><%= site.defaultImage %>">
   <meta property="og:type" content="website">
 
   <meta name="twitter:card" content="summary">
@@ -23,7 +22,7 @@
   <meta name="twitter:title" content="<%= title %>">
   <meta name="twitter:description" content="<%= description %>">
   <meta name="twitter:url" content="<%= canonicalUrl %>">
-  <meta name="twitter:image" content="<%= site.defaultImage %>">
+  <meta name="twitter:image" content="<%= site.url %><%= site.defaultImage %>">
 
   <link rel="canonical" href="<%= canonicalUrl %>">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
