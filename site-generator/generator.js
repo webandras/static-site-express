@@ -15,7 +15,7 @@ module.exports = function () {
   const config = require('../site.config')
 
   // source directory
-  const srcPath: string = './website'
+  const srcPath: string = './src'
   // destination folder to where the static site will be generated
   const distPath: string = './public'
   // Store the paths to the blogposts for the links in the index page

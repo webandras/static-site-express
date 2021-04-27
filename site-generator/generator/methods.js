@@ -89,7 +89,7 @@ function copyAdminFolder (srcPath: string, distPath: string): void {
 
 
 /**
- * Copy files from /website root to the root of /public folder
+ * Copy files from /src root to the root of /public folder
  * 
  * @param filename: string
  * @param srcPath: string
