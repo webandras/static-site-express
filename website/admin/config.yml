@@ -23,5 +23,5 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Date", name: "date", widget: "date", format: "YYYY-MM-DD"}
       - {label: "Excerpt", name: "excerpt", widget: "text"}
-      - {label: "Cover image", name: "coverImage", widget: "image", media_folder: "/assets/images/uploads"}
+      - {label: "Cover image", name: "coverImage", widget: "image"}
       - {label: "Content", name: "body", widget: "markdown"}
