@@ -8,25 +8,29 @@ static-site-express is a simple Node.js based static-site generator that uses EJ
 
 ### Install static-site-express
 
-1. Clone repository
+1. Fork and clone repository
 
 ````raw
 git clone https://github.com/SalsaBoy990/static-site-express name-of-your-site
 ````
 2. Checkout the appropriate branch
 
-- `minimal-starter-package`: a bare bone starter where you can work almost from scratch
-- `development`: if you want to have an exact replica of the [project's website](https::static-site-express.netlify.com/)
+- `minimal-starter-package`: a bare bone starter where you can work almost from scratch (**needs to be updated, lags behind master!**)
+- `master`: if you want to have an exact replica of the [project's website](https::static-site-express.netlify.com/)
 
+Note: Netlify will build your site from the default branch (usually the `master`).
+You can use a different branch (for example `development`) other than the default one, but in that case Netlify CMS will not work properly. For example, the images uploaded through the CMS will be pushed into the default branch, not the other you set up in Netlify!
 
-(Alternative: Use the 'Deploy to Netlify' button at the [project's website](https://static-site-express.netlify.com/))
+For this reason change the default branch to the branch you want to build your website from (e.g. `minimal-starter-package`).
+
+(Alternative: Use the 'Deploy to Netlify' button at the [project's website](https://static-site-express.netlify.com/), but it is not recommended)
 
 
 ### Build your site locally without Docker
 
 Use npm scripts defined in package.json
 
-1. Build site from `./website` into the `./public` folder:
+1. Build site from `./src` into the `./public` folder:
 
 ````raw
 npm run build
@@ -77,7 +81,7 @@ There are two services
 
 ### Modify the site generator's source code
 
-The source is in the `src/` folder. These files also contain the flow type annotations.
+The source is in the `site-generator/` folder. These files also contain the flow type annotations.
 You only need to modify the `generator.js` and the `generator/methods.js` files.
 
 - `methods.js` contains most of the methods for the generator.
@@ -95,10 +99,14 @@ However, Babel already formats the code into a unified code styling.
 
 At the end of the process, restart build/watch scripts.
 
-### Data sources (in the `website/` folder)
+### Data sources (in the `src/` folder)
 
 - Post data comes from markdown files (in `posts/`) where the front matter block contains the post properties.
 - Pages (in `pages/`) are using templates and partials defined in the `layouts/` folder.
+- The `site.config.js` file contains some of the site properties (like site title, author, description, social media links etc.) that are used in the EJS partials.
+
+Inspect `package.json` for more info. The `./lib` folder contains the JavaScript files used for building and serving the website. Check them out.
+
 
 
 ## Updates
@@ -114,18 +122,26 @@ At the end of the process, restart build/watch scripts.
 - I am planning to redesign the example website... IDEA DROPPED.
 - I will create a minimalistic starter template without any styling and with a little dummy data... DONE.
 - TODO: Documentation needs serious update.
-
+- TODO: update minimal-starter (lags behind master)
 
 ## Changelog
 
-### v1.0.0-alpha.2 (27 April 2021)
+### v1.0.2-alpha (28 April 2021)
+
+- Update README.md
+- Update package version number
+- Set node version for Netlify to avoid package compatibility errors
+- Update Netlify CMS settings, change media folder, input types
+- Netlify CMS needs to have the website source files in src/ folder
+
+### v1.0.1-alpha (27 April 2021)
 
 Incorrect configuration in docker-compose.yml
 - fix: "generator" and "devserver" services share volume data. "devserver" is dependent on the "generator" service.
 
 Under testing. I haven't experienced any errors in this version.
 
-### v1.0.0-alpha.1 (25 April 2021)
+### v1.0.0-alpha (25 April 2021) ! breaking change from previous versions !
 
 - version re-started with *v1.0.0* (from *4.1.0*)
 - Update npm dependencies to the newest versions
@@ -160,19 +176,18 @@ Dockerize project
 See: https://github.com/SalsaBoy990/static-site-express/releases
 
 
-#### Important notes
+## Important notes
 
+### Chokidar working properly on Ubuntu 20.04 (other distros not tested) (28 April 2021)
+- Chokidar now can be safely used on Ubuntu
+
+### Chokidar was not working properly on Ubuntu (2019)
 - `nodemon` not trigger re-build on Linux on file changes (this behavior was experienced on Ubuntu 18.04 LTS Bionic Beaver)
-- On Ubuntu, you can run `npm run watch-exp` command which uses the [chokidar](https://github.com/paulmillr/chokidar) package. *Experimental!*
-
-Inspect `package.json` for more info. The `./lib` folder contains the JavaScript files used for building and serving the website. Check them out.
-
-The `site.config.js` file contains some of the site properties (like site title, author, description, social media links etc.) that are used in the EJS partials.
-
+- On Ubuntu, you can run `npm run watch-exp` command which uses the [chokidar](https://github.com/paulmillr/chokidar) package.
 
 ### Register at Netlify and publish your website
 
-- Register on [Netlify](https://www.netlify.com/), and [see this tutorial video](https://www.netlify.com/docs/continuous-deployment/) if you are unfamiliar with the procedure. You can publish your site in a minute.
+- Register on [Netlify](https://www.netlify.com/), and [see this tutorial video](https://www.netlify.com/docs/continuous-deployment/) if you are unfamiliar with the procedure.
 
 - The `netlify.toml` configuration file contains important properties:
 
@@ -185,9 +200,9 @@ The `site.config.js` file contains some of the site properties (like site title,
 
 The base path, the build command, and the publish directory. You can keep those settings.
 
-In the `_headers` file you can specify the HTTP headers and set Content Security Policy (CSP) rules for the Netlify server. Currently, CSP rules are not set because I don't know which domains you want to whitelist when you create your own website. I recommend you the [CSP Evaluator by Google](https://csp-evaluator.withgoogle.com/).
+In the `_headers` file you can specify the HTTP headers and set Content Security Policy (CSP) rules for the Netlify server. Currently, CSP rules are not set. I recommend you the [CSP Evaluator by Google](https://csp-evaluator.withgoogle.com/).
 
-The `_redirects` file is currently empty. When you have a custom domain, you can make a redirect from *.netlify.com to your custom domain.
+The `_redirects` file is currently empty. When you have a custom domain, you can make a redirect from *.netlify.com* to your custom domain.
 
 `sitemap.xml` is self-explanatory. Empty by default.
 `robots.txt` is for search engines. Default settings:
@@ -220,7 +235,7 @@ A `Procfile` is already supplied for you with the command to build the site, and
 web: npm run heroku
 ````
 
-You need improve security! I already set security headers with the `helmet` npm package, just 2 lines:
+You need to improve security! I already set security headers with the `helmet` npm package, just 2 lines:
 
 ````javascript
 // Set Security Headers.
