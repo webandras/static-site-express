@@ -1,16 +1,16 @@
+// @flow
 const chalk = require('chalk')
 
 module.exports = {
-  info (message) {
+  info (message: string) {
     console.log(chalk`{gray [generator]} ${message}`)
   },
 
-  success (message) {
+  success (message: string) {
     console.log(chalk`{gray [generator]} {green ${message}}`)
   },
 
-  error (message) {
+  error (message: string) {
     console.log(chalk`{gray [generator]} {red ${message}}`)
   }
-
 }

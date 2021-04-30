@@ -1,6 +1,6 @@
 {
   "name": "static-site-express",
-  "version": "4.1.0",
+  "version": "1.0.0",
   "description": "A simple Node.js based static site generator that uses EJS and Markdown",
   "main": "./lib/build.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "standard-fix": "standard --fix ./lib/*",
     "flow": "flow",
     "flow-status": "flow status",
-    "transpile-flow": "babel src/ -d lib/"
+    "transpile-flow": "babel site-generator/ -d lib/"
   },
   "repository": {
     "type": "git",
