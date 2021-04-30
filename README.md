@@ -8,20 +8,21 @@ static-site-express is a simple Node.js based static-site generator that uses EJ
 
 ### Install static-site-express
 
-1. Fork and clone repository
+1. Fork and clone this repository to get a bare bone starter where you can work almost from scratch
 
 ````raw
 git clone https://github.com/SalsaBoy990/static-site-express name-of-your-site
 ````
-2. Checkout the appropriate branch
 
-- `minimal-starter-package`: a bare bone starter where you can work almost from scratch (**needs to be updated, lags behind master!**)
-- `master`: if you want to have an exact replica of the [project's website](https::static-site-express.netlify.com/)
+2. If you want to have an exact replica of the [project's website](https::static-site-express.netlify.com/), fork and clone this repo instead:
 
-Note: Netlify will build your site from the default branch (usually the `master`).
-You can use a different branch (for example `development`) other than the default one, but in that case Netlify CMS will not work properly. For example, the images uploaded through the CMS will be pushed into the default branch, not the other you set up in Netlify!
+````raw
+git clone https://github.com/SalsaBoy990/static-site-express-example
+````
 
-For this reason change the default branch to the branch you want to build your website from (e.g. `minimal-starter-package`).
+(Note: Netlify will build your site from the default branch (usually the `master`).
+You can use a different branch other than the default one, but in that case Netlify CMS will not work properly. For example, the images uploaded through the CMS will be pushed into the default branch, not the other you set up in Netlify!)
+
 
 (Alternative: Use the 'Deploy to Netlify' button at the [project's website](https://static-site-express.netlify.com/), but it is not recommended)
 
@@ -81,13 +82,13 @@ There are two services
 
 ### Modify the site generator's source code
 
-The source is in the `site-generator/` folder. These files also contain the flow type annotations.
+The JavaScript source is in the `site-generator/` folder. These files also contain the flow type annotations.
 You only need to modify the `generator.js` and the `generator/methods.js` files.
 
 - `methods.js` contains most of the methods for the generator.
-- In `generator.js`, you can modify the pages you want to generate in the section starting from **line 155**.
-More specifically, the switch statements.
-- Post properties can be extended on **line 119**, in the `templateConfig` object literal (`generator.js`)
+- In `generator.js`, you can modify the pages you want to generate in the switch statements starting from **line 183**. You also need to create a page (`.ejs`) in the `pages/` folder, and a template (in `layouts/`) to be used for that page (or use one of the pre-existing templates like `default.ejs`).
+
+- Post properties can be extended on **line 100**, in the `templateConfig` object literal (`generator.js`)
 
 After making changes, the source must be transpiled by Babel into ES5 into the `lib/` folder with:
 - `npm run transpile-flow`
@@ -97,7 +98,7 @@ Optionally, the standard style can also be applied:
 
 However, Babel already formats the code into a unified code styling.
 
-At the end of the process, restart build/watch scripts.
+At the end of the process, restart build/watch scripts. I know, this process in sub-optimal, but currently this is the workflow.
 
 ### Data sources (in the `src/` folder)
 
@@ -105,24 +106,23 @@ At the end of the process, restart build/watch scripts.
 - Pages (in `pages/`) are using templates and partials defined in the `layouts/` folder.
 - The `site.config.js` file contains some of the site properties (like site title, author, description, social media links etc.) that are used in the EJS partials.
 
-Inspect `package.json` for more info. The `./lib` folder contains the JavaScript files used for building and serving the website. Check them out.
-
-
 
 ## Updates
 
-### Generator update 2021
-- All used npm modules will be updated to the newest versions. The code will be re-examined and improved too... DONE.
+### Generator updates in 2021
+- Update used npm modules to their newest versions. Re-examine and improve the code... DONE.
 - Previously, I did not manage git very well (commit messages, semver, missing version tags etc.), so I decided to change version to 1.0.0 in the newest release... DONE.
-- git flow will be used and proper semver usage from now on... DONE.
-- Project will likely to be dockerized... DONE.
-- Watch mode improvements... DONE.
-- Possible breaking changes from the previous 2019 version will be documented... DONE.
-- EJS templating, Netlify CMS, Netlify and Heroku support will be kept... DONE.
-- I am planning to redesign the example website... IDEA DROPPED.
-- I will create a minimalistic starter template without any styling and with a little dummy data... DONE.
-- TODO: Documentation needs serious update.
-- TODO: update minimal-starter (lags behind master)
+- Use git flow and proper semver from now on... DONE.
+- Dockerize project... DONE.
+- Improve watch mode... DONE.
+- Document possible breaking changes from the previous 2019 version... DONE.
+- Keep EJS templating, Netlify CMS, Netlify and Heroku support... DONE.
+- Re-design the example website... IDEA DROPPED.
+- Move the source of the example website to a new repository... DONE.
+- Create a minimalistic starter template without any styling and with a little dummy data... DONE.
+- Update documentation... DONE.
+- TODO: Create a cmd tool to automatically create pages and templates, and update the generator's code
+- TODO: Create a minimalistic e-commerce starter template by integrating Snipcart (it is actually very simple to do it :) )
 
 ## Changelog
 
@@ -204,8 +204,9 @@ In the `_headers` file you can specify the HTTP headers and set Content Security
 
 The `_redirects` file is currently empty. When you have a custom domain, you can make a redirect from *.netlify.com* to your custom domain.
 
-`sitemap.xml` is self-explanatory. Empty by default.
-`robots.txt` is for search engines. Default settings:
+`sitemap.xml` is empty by default.
+
+`robots.txt` default settings:
 
 ```raw
 # Disallow admin page
@@ -221,11 +222,8 @@ User-agent: *
 Allow: /
 ````
 
-For [Google Search Console](https://search.google.com/search-console/about) verification, you should have an HTML file from Google included in the root of your Netlify publish folder (in our case, public). The build script copies this file from `./src` to `./public`. Change line 87 in `./lib/build.js`: 
+For [Google Search Console](https://search.google.com/search-console/about) verification, you should have an HTML file from Google included in the root of your Netlify publish folder (in our case, public). The build script copies this file from `./src` to `./public`. **Change the filename in the array at line 67** in `./site-generator/generator.js` and rebuild the source into the `lib/` folder!
 
-````javascript
-ssg.copyRootFile('FILENAME.html', srcPath, distPath)
-````
 
 ### Alternatively, you can use the Express server app on Heroku (not recommended)
 
@@ -250,6 +248,5 @@ Keep in mind that the contact form on the example site only works on Netlify!!
 ### Q&A
 
 If you have a problem or a question about static-site-express, [open an issue here](https://github.com/SalsaBoy990/static-site-express/issues).
-
 
 PS. The idea of making a static site generator in Node.js came from this good article by Douglas Matoso: [Build a static site generator in 40 lines with Node.js](https://medium.com/douglas-matoso-english/build-static-site-generator-nodejs-8969ebe34b22).
