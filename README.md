@@ -8,7 +8,7 @@ static-site-express is a simple Node.js based static-site generator that uses EJ
 
 ### Install static-site-express
 
-1. Fork and clone this repository to get a bare bone starter where you can work almost from scratch
+1. Fork and clone this repository to get a bare bone starter where you can work almost from scratch. Use the `master` branch.
 
 ````raw
 git clone https://github.com/SalsaBoy990/static-site-express name-of-your-site
@@ -19,6 +19,20 @@ git clone https://github.com/SalsaBoy990/static-site-express name-of-your-site
 ````raw
 git clone https://github.com/SalsaBoy990/static-site-express-example
 ````
+
+3. To have a minimalistic e-commerce static website using [Snipcart](https://snipcart.com/) ecommerce platform and static-site-express:
+
+- Checkout branch `static-site-express-shop`
+- Register at [Snipcart](https://snipcart.com/)
+- Copy your Snipcart public test key into `src/layouts/partials/header.ejs` as `data-api-key` attribute value on line 10:
+
+ ````html
+ <div id="snipcart" data-config-modal-style="side" data-api-key="YOUR_PUBLIC_TEST_API_KEY" hidden></div>
+ ````
+ [Snipcart](https://snipcart.com/) is more than a simple cart: enjoy a full back-office management dashboard to track abandoned carts, sales, orders, customers and more.
+ - It supports card payments via PayPay, Stripe etc.,
+ - It generates invoices and sends them to customers after purchase,
+ - etc.
 
 (Note: Netlify will build your site from the default branch (usually the `master`).
 You can use a different branch other than the default one, but in that case Netlify CMS will not work properly. For example, the images uploaded through the CMS will be pushed into the default branch, not the other you set up in Netlify!)
