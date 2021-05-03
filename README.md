@@ -90,8 +90,8 @@ Start container:
 `docker-compose up`
 
 There are two services
-1. your_app_name_generator: watches changes and auto re-builds (default: with chokidar, but nodemon can also be used)
-2. your_app_name_devserver: runs Express development server on the port specified in the .env file (default: 4000)
+1. **your_app_name_generator**: watches changes and auto re-builds (default: with chokidar, but nodemon can also be used)
+2. **your_app_name_devserver**: runs Express development server on the port specified in the .env file (default: 4000)
 
 
 ### Modify the site generator's source code
@@ -135,8 +135,8 @@ At the end of the process, restart build/watch scripts. I know, this process in 
 - Move the source of the example website to a new repository... DONE.
 - Create a minimalistic starter template without any styling and with a little dummy data... DONE.
 - Update documentation... DONE.
-- TODO: Create a cmd tool to automatically create pages and templates, and update the generator's code
-- TODO: Create a minimalistic e-commerce starter template by integrating Snipcart (it is actually very simple to do it :) )
+- Create a cmd tool to automatically create pages and templates, and update the generator's code... IDEA DROPPED.
+- Create a minimalistic e-commerce starter template by integrating Snipcart... DONE.
 
 ## Changelog
 
