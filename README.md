@@ -73,30 +73,6 @@ npm run watch-chokidar
 ````
 
 
-### Build your site locally with Docker (2022 - NOT recommended and not even needed)
-
-Install Docker Engine on your operating system:
-https://docs.docker.com/engine/
-
-Build the container for the first time (on Windows):
-- `(set -a; source .env; docker-compose up --build)`
-
-On Linux distros add `sudo`:
-- `set -a`
-- `source .env`
-- `sudo docker-compose up --build`
-
-Stop container from running:
-`docker-compose down`
-
-Start container:
-`docker-compose up`
-
-There are two services
-1. **your_app_name_generator**: watches changes and auto re-builds (default: with chokidar, but nodemon can also be used)
-2. **your_app_name_devserver**: runs Express development server on the port specified in the .env file (default: 4000)
-
-
 ### Modify the site generator's source code
 
 Never change the code in `app` folder since the builder app's code will be generated into this folder automatically!
@@ -113,10 +89,6 @@ The JavaScript source is in the `site-generator/` folder. These files also conta
 After making changes, **the source must be transpiled** by Babel into ES5 into the `app/` folder with:
 - `npm run transpile-flow`
 
-The standard style can also be applied (optional):
-- `npm run standard-fix`
-
-However, Babel already formats the code into a unified code styling (so standard style is pointless).
 
 At the end of the process, restart build/watch scripts.
 
@@ -131,6 +103,19 @@ This process in sub-optimal, but currently this is the workflow.
 
 
 ## Changelog
+
+### v2.0.0-alpha (28 August 2022)
+
+- Update README.md
+- Remove Docker configuration: using the site-builder in Docker would only adds unnecessary complexity for zero gain
+- Refactor folder structure (breaking change)
+- Update paths in scripts, update comments
+- Update npm packages to newer versions (Node v16.14.0 supported)
+- Update package version number
+- Set node version for Netlify to v16.14.0
+- Update Netlify CMS settings
+- Netlify CMS needs to have the website source files in content/ folder
+
 
 ### v1.0.2-alpha (28 April 2021)
 
@@ -163,7 +148,7 @@ This is a **breaking change**, you should update your partials/templates!
 Update build and watch scripts (using chokidar)
 - update: build script content moved into a module (generator.js) to be used in a build and the chokidar-based watch scripts.
 
-In 2019, chokidar was not watching file changes properly, thus the npm script was named "watch-exp". The default watch script is using nodemon. Both will be kept in the future.
+In 2019, chokidar was not watching file changes properly, thus the npm script was named "watch-exp". The default watch script is using nodemon.
 
 Add flow types support and re-structure folders
 - new: add Flow, a static type checker for JavaScript
@@ -253,6 +238,9 @@ Also, you can set Content Security Policy (CSP) rules using the `helmet-csp` pac
 
 Keep in mind that the contact form on the example site only works on Netlify!
 
+### Netlify CMS
+
+Set `display_url` to your custom domain in `content/admin/config.yml`
 
 ### Issues
 
@@ -269,3 +257,6 @@ This package uses modified code from [**doug2k1/nanogen**](https://github.com/do
 ### Licence
 
 MIT licence - Copyright (c) 2022 András Gulácsi.
+
+https://flaviocopes.com/tailwind-setup/
+https://www.sitepoint.com/bundle-static-site-webpack/
