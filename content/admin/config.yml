@@ -6,7 +6,7 @@ backend:
 publish_mode: editorial_workflow
 
 # These lines should *not* be indented
-media_folder: "src/assets/images/uploads" # Media files will be stored in the repo under static/images/uploads
+media_folder: "content/assets/images/uploads" # Media files will be stored in the repo under static/images/uploads
 public_folder: "/assets/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
 
 slug:
@@ -14,11 +14,11 @@ slug:
   clean_accents: true
   sanitize_replacement: "-"
 
-display_url: https://static-site-express.netlify.app/
+display_url: http://localhost:4000/
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
     label: "Write post" # Used in the UI
-    folder: "src/posts/" # The path to the folder where the documents are stored
+    folder: "content/posts/" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
