@@ -1,4 +1,4 @@
-const md = require('markdown-it')()
+const md = require('markdown-it')();
 
 module.exports = {
   // logger
@@ -12,7 +12,7 @@ module.exports = {
   // search for matching files, returns array of filenames
   glob: require('glob'),
   // render markdown to HTML
-  md,
+  md: md,
   // EXTENSIONS for markdown-it (used as middlewares)
   implicitFigures: require('markdown-it-implicit-figures'),
   markdownItTable: require('markdown-it-multimd-table'),
@@ -21,4 +21,4 @@ module.exports = {
   markdownItAttrs: require('markdown-it-attrs'),
   markdownItVideo: require('markdown-it-video'),
   markdownItPodcast: require('markdown-it-podcast')
-}
+};
