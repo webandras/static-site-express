@@ -1,5 +1,5 @@
 // @flow
-const buildSite = require('./generator')
+const buildSite = require('./core/generator')
 
-// Build site from ./src to ./public folder
+// Build site from source to destination
 buildSite()

@@ -2,7 +2,10 @@
 module.exports = function () {
   'use strict'
 
-  /* INITIALIZATIONS */
+  /* =========================================================================
+   * INITIALIZATIONS
+   * =========================================================================
+   */
   // Require all modules, wrap it into a single object
   const $ = require('./modules')
 
@@ -12,10 +15,10 @@ module.exports = function () {
   $.log.info('Building site...')
 
   // site configuration properties
-  const config = require('../site.config')
+  const config = require('../../config/site.config')
 
-  // source directory
-  const srcPath: string = './website'
+  // source directory for website content
+  const srcPath: string = './content'
   // destination folder to where the static site will be generated
   const distPath: string = './public'
   // Store the paths to the blogposts for the links in the index page
@@ -23,11 +26,16 @@ module.exports = function () {
   // Store posts data for the archive
   const blogArchive = []
 
-  // renders ejs layouts to html
+  // function that renders ejs layouts to html
   const ejsRender = require('ejs').render
 
-  /* MIDDLEWARES */
-  // apply markdown-it middlewares
+  /* =========================================================================
+   * MIDDLEWARES
+   * apply markdown-it middlewares
+   * =========================================================================
+   */
+
+  // there are more extensions available of markdown-it, add more here and in `modules.js`
   $.md.use($.markdownItTable)
   $.md.use($.markdownItSup)
   $.md.use($.markdownItSub)
@@ -40,7 +48,6 @@ module.exports = function () {
     link: false // <a href="img.png"><img src="img.png"></a>, default: false
   })
 
-  // md.use(markdownItHighlightjs)
   $.md.use($.markdownItVideo, {
     youtube: { width: 560, height: 315 }
   })
@@ -56,14 +63,18 @@ module.exports = function () {
     visual: true
   })
 
-  /* COPY FILES TO DESTINATION */
-  // clear destination folder first, it needs to be synchronous
+  /* =========================================================================
+   * COPY FILES TO DESTINATION 
+   * clear destination folder first, it needs to be synchronous
+   * =========================================================================
+   */
   $.fse.emptyDirSync(distPath)
 
   // copy assets folder (contains images, scripts and css) and favicon folder to destination
   $.ssg.copyAssetsFaviconFolders(srcPath, distPath)
 
   // copy these files to the root of /public folder
+  // extend the list with new files here
   const filesToCopy = [
     '_headers',
     '_redirects',
@@ -83,13 +94,17 @@ module.exports = function () {
   // copy admin folder to the root of /public folder
   $.ssg.copyAdminFolder(srcPath, distPath)
 
-  /* BUILD THE BLOGPOSTS */
-  // cwd: current working directory
+  
+  /* =========================================================================
+   * BUILD THE BLOGPOSTS 
+   * =========================================================================
+   */
   const files = $.glob.sync('**/*.@(ejs|md)', {
     cwd: `${srcPath}/posts`
   })
 
-  // build blogposts, save post data for the documentation page
+  // build blogposts, save post data for page you need to have your posts list to be rendered
+  // (default here: the documentation page)
   try {
     files.forEach((file) => {
       const fileData = $.path.parse(file)
@@ -148,12 +163,18 @@ module.exports = function () {
     $.log.info('Build posts failed...')
   }
 
-  /* GET POSTS DATA FOR THE ARCHIVE */
-  // get the postsData for the archive on the index page grouped by year
+  /* =========================================================================
+   * GET POSTS DATA FOR THE ARCHIVE
+   * get the postsData for the archive on the index page grouped by year
+   * =========================================================================
+   */
   $.ssg.getDataForArchive(postsDataForIndexPage, config, blogArchive)
 
-  /* BUILD THE PAGES */
-  // cwd: current working directory
+
+  /* =========================================================================
+   * BUILD THE PAGES 
+   * =========================================================================
+   */
   const pages = $.glob.sync('**/*.ejs', {
     cwd: `${srcPath}/pages`
   })
@@ -184,11 +205,10 @@ module.exports = function () {
         case 'index.ejs':
           layoutContent = ejsRender(
             $.fse.readFileSync(`${srcPath}/layouts/home.ejs`, 'utf-8'),
-            Object.assign({}, config,
-              postsDataForIndexPage, {
-              title: 'Index page | ' + config.site.title,
+            Object.assign({}, config, {
+              title: config.site.title,
               body: pageContents,
-              canonicalUrl: config.site.url + fileData.name,
+              canonicalUrl: config.site.url,
               description: config.site.quote
             }),
             {
@@ -197,17 +217,18 @@ module.exports = function () {
           )
           break
 
-        case 'contact.ejs':
+        case 'documentation.ejs':
           layoutContent = ejsRender(
-            $.fse.readFileSync(`${srcPath}/layouts/default.ejs`, 'utf-8'),
-            Object.assign({}, config, {
-              title: 'Contact page | ' + config.site.title,
-              body: pageContents,
-              canonicalUrl: config.site.url + fileData.name,
-              description: config.site.quote
-            }),
+            $.fse.readFileSync(`${srcPath}/layouts/documentation.ejs`, 'utf-8'),
+            Object.assign({}, config,
+              postsDataForIndexPage, {
+                title: 'Documentation | ' + config.site.title,
+                body: pageContents,
+                canonicalUrl: config.site.url + '/' + fileData.name,
+                description: config.site.quote
+              }),
             {
-              filename: `${srcPath}/layouts/default.ejs`
+              filename: `${srcPath}/layouts/documentation.ejs`
             }
           )
           break
@@ -216,24 +237,9 @@ module.exports = function () {
           layoutContent = ejsRender(
             $.fse.readFileSync(`${srcPath}/layouts/default.ejs`, 'utf-8'),
             Object.assign({}, config, {
-              title: 'Message sent | ' + config.site.title,
+              title: 'Message sent! | ' + config.site.title,
               body: pageContents,
-              canonicalUrl: config.site.url + fileData.name,
-              description: config.site.quote
-            }),
-            {
-              filename: `${srcPath}/layouts/default.ejs`
-            }
-          )
-          break
-
-        case 'sample-page.ejs':
-          layoutContent = ejsRender(
-            $.fse.readFileSync(`${srcPath}/layouts/default.ejs`, 'utf-8'),
-            Object.assign({}, config, {
-              title: 'Sample page | ' + config.site.title,
-              body: pageContents,
-              canonicalUrl: config.site.url + fileData.name,
+              canonicalUrl: config.site.url + '/' + fileData.name,
               description: config.site.quote
             }),
             {
@@ -246,9 +252,9 @@ module.exports = function () {
           layoutContent = ejsRender(
             $.fse.readFileSync(`${srcPath}/layouts/default.ejs`, 'utf-8'),
             Object.assign({}, config, {
-              title: 'Page not found | ' + config.site.title,
+              title: '404: Page not found | ' + config.site.title,
               body: pageContents,
-              canonicalUrl: config.site.url + '/404',
+              canonicalUrl: config.site.url + '/' + fileData.name,
               description: config.site.quote
             }),
             {

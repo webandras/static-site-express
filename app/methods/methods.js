@@ -6,25 +6,25 @@ const fse = require('fs-extra')
 
 module.exports = {
   // copy assets folder (contains images, scripts and css) and favicon folder to destination
-  copyAssetsFaviconFolders: copyAssetsFaviconFolders,
+  copyAssetsFaviconFolders,
   // copy admin folder to the root of /public folder
-  copyAdminFolder: copyAdminFolder,
+  copyAdminFolder,
   // copy _headers file to the root of /public folder
-  copyRootFile: copyRootFile,
+  copyRootFile,
   // generate canonical url for the post
-  generateCanonicalURL: generateCanonicalURL,
+  generateCanonicalURL,
   // generate postid for the post (needed for disqus)
-  generatePostId: generatePostId,
+  generatePostId,
   // read data from file and then render post
-  getPostDataFromMarkdown: getPostDataFromMarkdown,
+  getPostDataFromMarkdown,
   // change date format
-  convertDateFormat: convertDateFormat,
+  convertDateFormat,
   // save postdata for the index page
-  savePostDataForIndexPage: savePostDataForIndexPage,
+  savePostDataForIndexPage,
   // save the rendered blogposts to destination folder
-  saveBlogpostsHTML: saveBlogpostsHTML,
+  saveBlogpostsHTML,
   // get the postsData for the archive on the index page grouped by year
-  getDataForArchive: getDataForArchive
+  getDataForArchive
 } // -----------------------------------------------------------------------------------------
 // ------------------------- Functions Used for Site Generation ----------------------------
 // -----------------------------------------------------------------------------------------
@@ -259,7 +259,7 @@ function savePostDataForIndexPage (fileData, dateFormatted, postData, results) {
     pathToPost: fileName,
     title: postData.attributes.title,
     author: postData.attributes.author,
-    dateFormatted: dateFormatted,
+    dateFormatted,
     date: postData.attributes.date,
     excerpt: postData.attributes.excerpt,
     topic: postData.attributes.topic,
@@ -469,7 +469,7 @@ function getDataForArchive (data, config, results) {
     results.unshift({
       year: years[j],
       articles: annualPosts,
-      months: months
+      months
     })
   }
 }

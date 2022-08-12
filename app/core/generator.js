@@ -1,6 +1,9 @@
 module.exports = function () {
   'use strict'
-  /* INITIALIZATIONS */
+  /* =========================================================================
+   * INITIALIZATIONS
+   * =========================================================================
+   */
   // Require all modules, wrap it into a single object
 
   const $ = require('./modules') // store start time
@@ -9,19 +12,23 @@ module.exports = function () {
 
   $.log.info('Building site...') // site configuration properties
 
-  const config = require('../site.config') // source directory
+  const config = require('../../config/site.config') // source directory for website content
 
-  const srcPath = './src' // destination folder to where the static site will be generated
+  const srcPath = './content' // destination folder to where the static site will be generated
 
   const distPath = './public' // Store the paths to the blogposts for the links in the index page
 
   const postsDataForIndexPage = [] // Store posts data for the archive
 
-  const blogArchive = [] // renders ejs layouts to html
+  const blogArchive = [] // function that renders ejs layouts to html
 
   const ejsRender = require('ejs').render
-  /* MIDDLEWARES */
-  // apply markdown-it middlewares
+  /* =========================================================================
+   * MIDDLEWARES
+   * apply markdown-it middlewares
+   * =========================================================================
+   */
+  // there are more extensions available of markdown-it, add more here and in `modules.js`
 
   $.md.use($.markdownItTable)
   $.md.use($.markdownItSup)
@@ -36,8 +43,7 @@ module.exports = function () {
     // <figure tabindex="1+n">..., default: false
     link: false // <a href="img.png"><img src="img.png"></a>, default: false
 
-  }) // md.use(markdownItHighlightjs)
-
+  })
   $.md.use($.markdownItVideo, {
     youtube: {
       width: 560,
@@ -54,12 +60,16 @@ module.exports = function () {
     show_reposts: false,
     visual: true
   })
-  /* COPY FILES TO DESTINATION */
-  // clear destination folder first, it needs to be synchronous
+  /* =========================================================================
+   * COPY FILES TO DESTINATION
+   * clear destination folder first, it needs to be synchronous
+   * =========================================================================
+   */
 
   $.fse.emptyDirSync(distPath) // copy assets folder (contains images, scripts and css) and favicon folder to destination
 
   $.ssg.copyAssetsFaviconFolders(srcPath, distPath) // copy these files to the root of /public folder
+  // extend the list with new files here
 
   const filesToCopy = ['_headers', '_redirects', 'robots.txt', 'sitemap.xml', 'google517a67c0c3ff6768.html']
 
@@ -72,12 +82,15 @@ module.exports = function () {
   } // copy admin folder to the root of /public folder
 
   $.ssg.copyAdminFolder(srcPath, distPath)
-  /* BUILD THE BLOGPOSTS */
-  // cwd: current working directory
+  /* =========================================================================
+   * BUILD THE BLOGPOSTS
+   * =========================================================================
+   */
 
   const files = $.glob.sync('**/*.@(ejs|md)', {
     cwd: `${srcPath}/posts`
-  }) // build blogposts, save post data for the documentation page
+  }) // build blogposts, save post data for page you need to have your posts list to be rendered
+  // (default here: the documentation page)
 
   try {
     files.forEach(file => {
@@ -105,8 +118,8 @@ module.exports = function () {
         topic: postData.attributes.topic ? postData.attributes.topic : false,
         comments: postData.attributes.comments ? postData.attributes.comments : false,
         body: postContents,
-        canonicalUrl: canonicalUrl,
-        postId: postId,
+        canonicalUrl,
+        postId,
         coverImage: postData.attributes.coverImage,
         postTitleMeta: postData.attributes.title + ' | ' + config.site.title
       }) // save postdata for the index page
@@ -124,12 +137,17 @@ module.exports = function () {
     $.log.error(err)
     $.log.info('Build posts failed...')
   }
-  /* GET POSTS DATA FOR THE ARCHIVE */
-  // get the postsData for the archive on the index page grouped by year
+  /* =========================================================================
+   * GET POSTS DATA FOR THE ARCHIVE
+   * get the postsData for the archive on the index page grouped by year
+   * =========================================================================
+   */
 
   $.ssg.getDataForArchive(postsDataForIndexPage, config, blogArchive)
-  /* BUILD THE PAGES */
-  // cwd: current working directory
+  /* =========================================================================
+   * BUILD THE PAGES
+   * =========================================================================
+   */
 
   const pages = $.glob.sync('**/*.ejs', {
     cwd: `${srcPath}/pages`
@@ -143,8 +161,8 @@ module.exports = function () {
       $.fse.mkdirsSync(destPath) // read data from file and then render page
 
       const pageContents = ejsRender($.fse.readFileSync(`${srcPath}/pages/${file}`, 'utf-8'), Object.assign({}, config, {
-        postsDataForIndexPage: postsDataForIndexPage,
-        blogArchive: blogArchive
+        postsDataForIndexPage,
+        blogArchive
       }))
       const name = fileData.base
       let layoutContent // read layout data from file and then render layout with page contents

@@ -26,7 +26,7 @@
     // Content Security Policy.
     const csp = require('helmet-csp')
 
-    // These settings should be changed (these here are just examples)!
+    // These settings should be changed (these are just examples)
     app.use(csp({
       directives: {
         defaultSrc: [`'none'`],

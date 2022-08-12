@@ -3,7 +3,7 @@
 static-site-express is a simple Node.js based static-site generator that uses EJS and Markdown. Deploy your static site to Netlify or any platform to your liking. Suited for blogging, documentation sites, hobby projects, etc.
 
 
-## Documentation 2021
+## Documentation 2022
 
 
 ### Install static-site-express
@@ -20,7 +20,7 @@ git clone https://github.com/SalsaBoy990/static-site-express name-of-your-site
 git clone https://github.com/SalsaBoy990/static-site-express-example
 ````
 
-3. To have a minimalistic e-commerce static website using [Snipcart](https://snipcart.com/) ecommerce platform and static-site-express:
+3. To have a minimalistic e-commerce static website incorporating the [Snipcart](https://snipcart.com/) ecommerce platform into static-site-express:
 
 - Checkout branch `static-site-express-shop`
 - Register at [Snipcart](https://snipcart.com/)
@@ -29,6 +29,9 @@ git clone https://github.com/SalsaBoy990/static-site-express-example
  ````html
  <div id="snipcart" data-config-modal-style="side" data-api-key="YOUR_PUBLIC_TEST_API_KEY" hidden></div>
  ````
+
+Note: Only hardcode the test api key for development, not for production! And never commit it to version control, otherwise you need to invalidate the previous keys and create a new ones. This for testing locally.
+
  [Snipcart](https://snipcart.com/) is more than a simple cart: enjoy a full back-office management dashboard to track abandoned carts, sales, orders, customers and more.
  - It supports card payments via PayPay, Stripe etc.,
  - It generates invoices and sends them to customers after purchase,
@@ -41,11 +44,11 @@ You can use a different branch other than the default one, but in that case Netl
 (Alternative: Use the 'Deploy to Netlify' button at the [project's website](https://static-site-express.netlify.com/), but it is not recommended)
 
 
-### Build your site locally without Docker
+### Build your site locally without Docker (RECOMMENDED)
 
 Use npm scripts defined in package.json
 
-1. Build site from `./src` into the `./public` folder:
+1. Build site from `./content` into the `./public` folder:
 
 ````raw
 npm run build
@@ -70,7 +73,7 @@ npm run watch-chokidar
 ````
 
 
-### Build your site locally with Docker
+### Build your site locally with Docker (2022 - NOT recommended and not even needed)
 
 Install Docker Engine on your operating system:
 https://docs.docker.com/engine/
@@ -96,47 +99,36 @@ There are two services
 
 ### Modify the site generator's source code
 
+Never change the code in `app` folder since the builder app's code will be generated into this folder automatically!
+
 The JavaScript source is in the `site-generator/` folder. These files also contain the flow type annotations.
-You only need to modify the `generator.js` and the `generator/methods.js` files.
+
+**Generally, you only need to modify the `core/generator.js` and the `core/methods.js` files.**
 
 - `methods.js` contains most of the methods for the generator.
 - In `generator.js`, you can modify the pages you want to generate in the switch statements starting from **line 183**. You also need to create a page (`.ejs`) in the `pages/` folder, and a template (in `layouts/`) to be used for that page (or use one of the pre-existing templates like `default.ejs`).
 
 - Post properties can be extended on **line 100**, in the `templateConfig` object literal (`generator.js`)
 
-After making changes, the source must be transpiled by Babel into ES5 into the `lib/` folder with:
+After making changes, **the source must be transpiled** by Babel into ES5 into the `app/` folder with:
 - `npm run transpile-flow`
 
-Optionally, the standard style can also be applied:
+The standard style can also be applied (optional):
 - `npm run standard-fix`
 
-However, Babel already formats the code into a unified code styling.
+However, Babel already formats the code into a unified code styling (so standard style is pointless).
 
-At the end of the process, restart build/watch scripts. I know, this process in sub-optimal, but currently this is the workflow.
+At the end of the process, restart build/watch scripts.
 
-### Data sources (in the `src/` folder)
+This process in sub-optimal, but currently this is the workflow.
 
-- Post data comes from markdown files (in `posts/`) where the front matter block contains the post properties.
+
+### Website content (in the `website/` folder)
+
+- Post data comes from markdown files (in `posts/`) where the front matter block contains the post properties (you can change them, but do not forget to update the `templateConfig` object literal (`generator.js`) as well).
 - Pages (in `pages/`) are using templates and partials defined in the `layouts/` folder.
-- The `site.config.js` file contains some of the site properties (like site title, author, description, social media links etc.) that are used in the EJS partials.
+- The `config/site.config.js` file contains some of the site properties (like site title, author, description, social media links etc.) that are used in the EJS partials. Can also be extended to your liking.
 
-
-## Updates
-
-### Generator updates in 2021
-- Update used npm modules to their newest versions. Re-examine and improve the code... DONE.
-- Previously, I did not manage git very well (commit messages, semver, missing version tags etc.), so I decided to change version to 1.0.0 in the newest release... DONE.
-- Use git flow and proper semver from now on... DONE.
-- Dockerize project... DONE.
-- Improve watch mode... DONE.
-- Document possible breaking changes from the previous 2019 version... DONE.
-- Keep EJS templating, Netlify CMS, Netlify and Heroku support... DONE.
-- Re-design the example website... IDEA DROPPED.
-- Move the source of the example website to a new repository... DONE.
-- Create a minimalistic starter template without any styling and with a little dummy data... DONE.
-- Update documentation... DONE.
-- Create a cmd tool to automatically create pages and templates, and update the generator's code... IDEA DROPPED.
-- Create a minimalistic e-commerce starter template by integrating Snipcart... DONE.
 
 ## Changelog
 
@@ -212,9 +204,9 @@ See: https://github.com/SalsaBoy990/static-site-express/releases
   command = "npm run build"
 ````
 
-The base path, the build command, and the publish directory. You can keep those settings.
+The base path, the build command, and the publish directory. You can keep those settings unchanged.
 
-In the `_headers` file you can specify the HTTP headers and set Content Security Policy (CSP) rules for the Netlify server. Currently, CSP rules are not set. I recommend you the [CSP Evaluator by Google](https://csp-evaluator.withgoogle.com/).
+In the `_headers` file you can specify the HTTP headers and set Content Security Policy (CSP) rules for the Netlify server. Currently, CSP rules are not set. I recommend the [CSP Evaluator by Google](https://csp-evaluator.withgoogle.com/) for testing.
 
 The `_redirects` file is currently empty. When you have a custom domain, you can make a redirect from *.netlify.com* to your custom domain.
 
@@ -236,7 +228,7 @@ User-agent: *
 Allow: /
 ````
 
-For [Google Search Console](https://search.google.com/search-console/about) verification, you should have an HTML file from Google included in the root of your Netlify publish folder (in our case, public). The build script copies this file from `./src` to `./public`. **Change the filename in the array at line 67** in `./site-generator/generator.js` and rebuild the source into the `lib/` folder!
+For [Google Search Console](https://search.google.com/search-console/about) verification, you should have an HTML file from Google included in the root of your Netlify publish folder (in our case, `public`). The build script copies this file from `./content` to `./public`. **Change the filename in the array at line 67** in `./site-generator/generator.js` and rebuild the source into the `lib/` folder!
 
 
 ### Alternatively, you can use the Express server app on Heroku (not recommended)
@@ -246,6 +238,8 @@ A `Procfile` is already supplied for you with the command to build the site, and
 ````raw
 web: npm run heroku
 ````
+
+Note: The free trial of Heroku will run your Express app server for 30 mins only. In case of new incoming requests, it will restart for another 30 mins. So, sometimes the site loads slower.
 
 You need to improve security! I already set security headers with the `helmet` npm package, just 2 lines:
 
@@ -257,10 +251,21 @@ app.use(helmet())
 
 Also, you can set Content Security Policy (CSP) rules using the `helmet-csp` package.
 
-Keep in mind that the contact form on the example site only works on Netlify!!
+Keep in mind that the contact form on the example site only works on Netlify!
 
-### Q&A
+
+### Issues
 
 If you have a problem or a question about static-site-express, [open an issue here](https://github.com/SalsaBoy990/static-site-express/issues).
 
-PS. The idea of making a static site generator in Node.js came from this good article by Douglas Matoso: [Build a static site generator in 40 lines with Node.js](https://medium.com/douglas-matoso-english/build-static-site-generator-nodejs-8969ebe34b22).
+
+### Credits
+
+The idea of making a static site generator in Node.js came from this good article by Douglas Matoso (not accessible any more): [Build a static site generator in 40 lines with Node.js](https://medium.com/douglas-matoso-english/build-static-site-generator-nodejs-8969ebe34b22).
+
+This package uses modified code from [**doug2k1/nanogen**](https://github.com/doug2k1/nanogen) (mainly from the `legacy` branch and some ideas from the `master` branch) **Copyright: MIT (c) 2018 Douglas Matoso.**
+
+
+### Licence
+
+MIT licence - Copyright (c) 2022 András Gulácsi.
