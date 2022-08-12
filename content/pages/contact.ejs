@@ -1,19 +1,48 @@
-<h1>Contact page</h1>
-<form name="contact" method="POST" action="/message-sent.html" netlify-honeypot="bot-field" netlify>
-  <div class="hidden">
-    <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-  </div>
-  <div>
-    <label for="email">Your email</label>
-    <br>
-    <input type="email" name="name" id="email" required placeholder="Your email" />
-  </div>
-  <div>
-    <label for="message">Your message</label>
-    <br>
-    <textarea name="message" id="message" required placeholder="Your message"></textarea>
-  </div>
-  <div>
-    <button type="submit">Send message</button>
-  </div>
-</form>
+<div class="max-w-xl mx-auto">
+  <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">Contact page</h1>
+
+  <form name="contact" method="POST" action="/message-sent.html" netlify-honeypot="bot-field" netlify>
+    <div class="grid gap-6 mb-6 md:grid-cols-2">
+      <div class="hidden">
+        <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+      </div>
+      <div>
+        <label for="full_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Full name</label>
+        <input
+          type="text"
+          id="full_name"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Your name"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
+        <input
+          type="email"
+          id="email"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Your email"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="mb-6">
+      <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your message</label>
+      <textarea
+        id="message"
+        rows="4"
+        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Your message..."
+      ></textarea>
+    </div>
+    <button
+      type="submit"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    >
+      Send message
+    </button>
+  </form>
+</div>
