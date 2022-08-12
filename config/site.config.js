@@ -10,7 +10,6 @@ module.exports = {
     quote: 'A Node.js-based static site generator that uses EJS and Markdown',
     description: 'A Node.js-based static site generator that uses EJS and Markdown',
     currentYear: new Date().getFullYear(),
-    google_analytics: 'YOUR-ID-COMES-HERE',
     github: 'https://github.com/SalsaBoy990'
   }
 }
