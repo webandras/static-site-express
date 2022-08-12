@@ -7,7 +7,7 @@ const buildSite = require('./core/generator')
 buildSite()
 
 // Initialize watcher
-chokidar.watch('./src', { interval: 1000, persistent:true })
+chokidar.watch('./content', { interval: 1000, persistent:true })
   .on('change', () => {
     buildSite()
   })

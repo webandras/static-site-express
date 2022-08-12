@@ -217,20 +217,19 @@ module.exports = function () {
           )
           break
 
-        case 'documentation.ejs':
+        case 'blog.ejs':
           layoutContent = ejsRender(
-            $.fse.readFileSync(`${srcPath}/layouts/documentation.ejs`, 'utf-8'),
-            Object.assign({}, config,
-              postsDataForIndexPage, {
-                title: 'Documentation | ' + config.site.title,
-                body: pageContents,
-                canonicalUrl: config.site.url + '/' + fileData.name,
-                description: config.site.quote
-              }),
+            $.fse.readFileSync(`${srcPath}/layouts/default.ejs`, "utf-8"),
+            Object.assign({}, config, postsDataForIndexPage, {
+              title: "Documentation | " + config.site.title,
+              body: pageContents,
+              canonicalUrl: config.site.url + "/" + fileData.name,
+              description: config.site.quote,
+            }),
             {
-              filename: `${srcPath}/layouts/documentation.ejs`
+              filename: `${srcPath}/layouts/default.ejs`,
             }
-          )
+          );
           break
 
         case 'message-sent.ejs':
