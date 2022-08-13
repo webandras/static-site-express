@@ -2,3 +2,41 @@
   base    = "/"
   publish = "public"
   command = "npm run build"
+
+# If skip_processing = true, all other settings are ignored
+[build.processing]
+  skip_processing = false
+[build.processing.css]
+  bundle = false
+  minify = true
+[build.processing.js]
+  bundle = false
+  minify = false
+[build.processing.html]
+  pretty_urls = true
+[build.processing.images]
+  compress = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Block site from being framed with X-Frame-Options
+    X-Frame-Options: DENY
+    X-XSS-Protection: 1; mode=block
+
+    # Prevent browsers from incorrectly detecting non-scripts as scripts
+    X-Content-Type-Options: nosniff
+
+    # only https
+    # Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+    # Never send the Referer header
+    Referrer-Policy: no-referrer
+
+    # Don't load any resource type not explicitly enabled
+    # Disable plugins like Flash or Silverlight
+    # Load images, scripts, stylesheets and fonts from self
+    # Send reports to report-uri.io
+    # Add your link to the end of the line: report-uri https://report-uri.com/
+    Content-Security-Policy: frame-ancestors 'self'; default-src 'self' cloudfront.net *.cloudfront.net; style-src 'self' fonts.googleapis.com unpkg.com/netlify-cms@2.10.192/dist/cms.css; font-src 'self' fonts.gstatic.com gstatic.com *.gstatic.com fonts.googleapis.com; script-src 'self' identity.netlify.com npkg.com/netlify-cms@2.10.192/dist/cms.js unpkg.com/browse/netlify-cms@2.10.192/dist/netlify-cms.js; child-src 'self'; img-src 'self'; object-src 'none'; connect-src 'self'; base-uri 'none'; form-action 'self';
+
