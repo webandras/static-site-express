@@ -5,7 +5,7 @@
   "main": "./app/build.js",
   "scripts": {
     "css": "postcss assets/css/main.css -o content/assets/css/main.css",
-    "css-watch": "watch 'npm run build-css' ./content/pages ./content/layouts",
+    "css-watch": "watch 'npm run css' ./content/pages ./content/layouts",
     "js": "webpack",
     "js-watch": "webpack --watch",
     "build": "node ./app/build.js",
