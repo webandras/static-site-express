@@ -4,18 +4,17 @@
   "description": "A simple Node.js based static site generator that uses EJS and Markdown",
   "main": "./app/build.js",
   "scripts": {
-    "build-css": "postcss assets/css/main.css -o content/assets/css/main.css",
-    "watch-css": "watch 'npm run build-css' ./content/pages ./content/layouts",
-    "build-js": "webpack",
-    "watch-js": "webpack --watch",
+    "css": "postcss assets/css/main.css -o content/assets/css/main.css",
+    "css-watch": "watch 'npm run build-css' ./content/pages ./content/layouts",
+    "js": "webpack",
+    "js-watch": "webpack --watch",
     "build": "node ./app/build.js",
-    "heroku": "node ./app/build.js && node ./app/serve.js",
     "serve": "node ./app/serve.js",
     "watch-nodemon": "nodemon -L --watch ./content/ --watch ./config/site.config.js ./app/build.js -e *",
     "watch-chokidar": "node ./app/watch.js -H localhost",
     "flow": "flow",
     "flow-status": "flow status",
-    "transpile-flow": "babel site-generator/ -d app/"
+    "generator": "babel site-generator/ -d app/"
   },
   "repository": {
     "type": "git",
