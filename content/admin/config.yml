@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: development # Branch to update (optional; defaults to master)
+  branch: master # Branch to update (optional; defaults to master)
 
 # This line should *not* be indented
 publish_mode: editorial_workflow
