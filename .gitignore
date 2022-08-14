@@ -1,6 +1,4 @@
 app/
-content/assets/css/*.css
-content/assets/js/main.js
 content/assets/js/main.js.LICENSE.txt
 node_modules/
 package-lock.json
