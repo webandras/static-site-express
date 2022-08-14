@@ -7,8 +7,9 @@ const buildSite = require('./core/generator')
 buildSite()
 
 // Initialize watcher
-chokidar.watch('./content', { interval: 1000, persistent:true })
-  .on('change', () => {
-    buildSite()
+chokidar
+  .watch(["./content/layouts", "./content/pages", "./content/posts", "./content/assets"], { interval: 1000, persistent: true })
+  .on("change", () => {
+    setTimeout(buildSite, 3000);
   })
-  .on('error', error => log.error(`Watcher error: ${error}`))
+  .on("error", (error) => log.error(`Watcher error: ${error}`));

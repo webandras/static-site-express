@@ -54,9 +54,12 @@ module.exports = {
  */
 function copyAssetsFaviconFolders (srcPath: string, distPath: string): void {
   'use strict'
-  fse.copy(`${srcPath}/assets`, `${distPath}/assets`, handleError(null, 'assets'))
+  fse.removeSync(`${distPath}/assets`);
+  fse.copySync(`${srcPath}/assets`, `${distPath}/assets`, handleError(null, 'assets'))
+  
+  fse.removeSync(`${distPath}/favicon`);
   // copy favicon folder to the root of /public folder
-  fse.copy(`${srcPath}/favicon`, `${distPath}`, handleError(null, 'favicon'))
+  fse.copySync(`${srcPath}/favicon`, `${distPath}`, handleError(null, 'favicon'))
 }
 
 
@@ -84,7 +87,8 @@ function handleError (err: string|null, name: string): void {
  */
 function copyAdminFolder (srcPath: string, distPath: string): void {
   'use strict'
-  fse.copy(`${srcPath}/admin`, `${distPath}/admin`, handleError(null, 'admin'))
+  fse.removeSync(`${distPath}/admin`);
+  fse.copySync(`${srcPath}/admin`, `${distPath}/admin`, handleError(null, 'admin'))
 }
 
 
@@ -119,7 +123,7 @@ function generateCanonicalURL (fileData: any, config: any): string {
 
   const titlePart: string = fileData.name.split('-').slice(3).join('-')
 
-  return config.site.url.replace(/\/$/, '') + (datePart.join('/') + '/' + titlePart + '.html')
+  return config.site.url + '/' + (datePart.join('/') + '/' + titlePart + '.html')
 }
 
 
@@ -261,7 +265,7 @@ function savePostDataForIndexPage (fileData: any, dateFormatted: string, postDat
     excerpt: postData.attributes.excerpt,
     topic: postData.attributes.topic,
     coverImage: postData.attributes.coverImage
-  })
+  }) 
 }
 
 

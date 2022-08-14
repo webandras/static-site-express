@@ -8,6 +8,7 @@ module.exports = function () {
    */
   // Require all modules, wrap it into a single object
   const $ = require('./modules')
+  let hasError: boolean = false;
 
   // store start time
   const startTime = process.hrtime()
@@ -22,9 +23,9 @@ module.exports = function () {
   // destination folder to where the static site will be generated
   const distPath: string = './public'
   // Store the paths to the blogposts for the links in the index page
-  const postsDataForIndexPage = []
+  const postsDataForIndexPage: any = []
   // Store posts data for the archive
-  const blogArchive = []
+  const blogArchive: any = []
 
   // function that renders ejs layouts to html
   const ejsRender = require('ejs').render
@@ -76,7 +77,6 @@ module.exports = function () {
   // copy these files to the root of /public folder
   // extend the list with new files here
   const filesToCopy = [
-    '_headers',
     '_redirects',
     'robots.txt',
     'sitemap.xml',
@@ -89,6 +89,7 @@ module.exports = function () {
     })
   } catch (err) {
     $.log.error(err)
+    hasError = true;
   }
 
   // copy admin folder to the root of /public folder
@@ -99,9 +100,10 @@ module.exports = function () {
    * BUILD THE BLOGPOSTS 
    * =========================================================================
    */
-  const files = $.glob.sync('**/*.@(ejs|md)', {
-    cwd: `${srcPath}/posts`
-  })
+  const files = $.glob.sync("**/*.@(ejs|md)", {
+    cwd: `${srcPath}/posts`,
+    nosort: true,
+  });
 
   // build blogposts, save post data for page you need to have your posts list to be rendered
   // (default here: the documentation page)
@@ -133,17 +135,20 @@ module.exports = function () {
 
       const templateConfig = Object.assign({}, config, {
         title: postData.attributes.title,
+        breadcrumbTitle: "Writings",
         author: postData.attributes.author,
         date: dateFormatted,
         excerpt: postData.attributes.excerpt,
-        topic: (postData.attributes.topic) ? postData.attributes.topic : false,
-        comments: (postData.attributes.comments) ? postData.attributes.comments : false,
+        topic: postData.attributes.topic ? postData.attributes.topic : false,
+        comments: postData.attributes.comments ? postData.attributes.comments : false,
         body: postContents,
         canonicalUrl: canonicalUrl,
         postId: postId,
         coverImage: postData.attributes.coverImage,
-        postTitleMeta: postData.attributes.title + ' | ' + config.site.title
-      })
+        postTitleMeta: postData.attributes.title + " | " + config.site.title,
+        pageName: "writings",
+        isPost: true,
+      });
 
       // save postdata for the index page
       $.ssg.savePostDataForIndexPage(fileData, dateFormatted, postData, postsDataForIndexPage)
@@ -161,6 +166,7 @@ module.exports = function () {
   } catch (err) {
     $.log.error(err)
     $.log.info('Build posts failed...')
+    hasError = true;
   }
 
   /* =========================================================================
@@ -189,78 +195,108 @@ module.exports = function () {
 
       // read data from file and then render page
       const pageContents = ejsRender(
-        $.fse.readFileSync(`${srcPath}/pages/${file}`, 'utf-8'),
+        $.fse.readFileSync(`${srcPath}/pages/${file}`, "utf-8"),
         Object.assign({}, config, {
-          postsDataForIndexPage: postsDataForIndexPage,
-          blogArchive: blogArchive
-        }
-        )
-      )
+          postsDataForIndexPage,
+          blogArchive,
+        })
+      );
 
       const name = fileData.base
       let layoutContent
 
       // read layout data from file and then render layout with page contents
       switch (name) {
-        case 'index.ejs':
+        case "index.ejs":
           layoutContent = ejsRender(
-            $.fse.readFileSync(`${srcPath}/layouts/home.ejs`, 'utf-8'),
+            $.fse.readFileSync(`${srcPath}/layouts/home.ejs`, "utf-8"),
             Object.assign({}, config, {
               title: config.site.title,
+              breadcrumbTitle: config.site.title,
               body: pageContents,
               canonicalUrl: config.site.url,
-              description: config.site.quote
+              description: config.site.description,
+              currentYear: config.site.currentYear,
+              isPost: false,
+              pageName: "index",
             }),
             {
-              filename: `${srcPath}/layouts/home.ejs`
+              filename: `${srcPath}/layouts/home.ejs`,
             }
-          )
-          break
+          );
+          break;
 
-        case 'blog.ejs':
+        case "contact.ejs":
           layoutContent = ejsRender(
             $.fse.readFileSync(`${srcPath}/layouts/default.ejs`, "utf-8"),
-            Object.assign({}, config, postsDataForIndexPage, {
-              title: "Documentation | " + config.site.title,
+            Object.assign({}, config, {
+              title: "Contact Me | " + config.site.title,
+              breadcrumbTitle: "Contact Me",
               body: pageContents,
               canonicalUrl: config.site.url + "/" + fileData.name,
               description: config.site.quote,
+              isPost: false,
+              pageName: "contact",
             }),
             {
               filename: `${srcPath}/layouts/default.ejs`,
             }
           );
-          break
+          break;
 
-        case 'message-sent.ejs':
+        case "writings.ejs":
           layoutContent = ejsRender(
-            $.fse.readFileSync(`${srcPath}/layouts/default.ejs`, 'utf-8'),
+            $.fse.readFileSync(`${srcPath}/layouts/default.ejs`, "utf-8"),
             Object.assign({}, config, {
-              title: 'Message sent! | ' + config.site.title,
+              title: "Writings | " + config.site.title,
+              breadcrumbTitle: "Writings",
               body: pageContents,
-              canonicalUrl: config.site.url + '/' + fileData.name,
-              description: config.site.quote
+              canonicalUrl: config.site.url + "/" + fileData.name,
+              description: config.site.quote,
+              isPost: false,
+              pageName: "writings",
             }),
             {
-              filename: `${srcPath}/layouts/default.ejs`
+              filename: `${srcPath}/layouts/default.ejs`,
             }
-          )
-          break
+          );
+          break;
+
+        case "message-sent.ejs":
+          layoutContent = ejsRender(
+            $.fse.readFileSync(`${srcPath}/layouts/default.ejs`, "utf-8"),
+            Object.assign({}, config, {
+              title: "Message sent! | " + config.site.title,
+              breadcrumbTitle: "Message sent!",
+              body: pageContents,
+              canonicalUrl: config.site.url + "/" + fileData.name,
+              description: config.site.quote,
+              isPost: false,
+              pageName: "message-sent",
+            }),
+            {
+              filename: `${srcPath}/layouts/default.ejs`,
+            }
+          );
+          break;
 
         default:
           layoutContent = ejsRender(
-            $.fse.readFileSync(`${srcPath}/layouts/default.ejs`, 'utf-8'),
+            $.fse.readFileSync(`${srcPath}/layouts/default.ejs`, "utf-8"),
             Object.assign({}, config, {
-              title: '404: Page not found | ' + config.site.title,
+              title: "404: Page not found | " + config.site.title,
+              breadcrumbTitle: "Page not found",
               body: pageContents,
-              canonicalUrl: config.site.url + '/' + fileData.name,
-              description: config.site.quote
+              canonicalUrl: config.site.url + "/" + fileData.name,
+              description: config.site.quote,
+              isPost: false,
+              pageName: "404",
             }),
             {
-              filename: `${srcPath}/layouts/default.ejs`
+              filename: `${srcPath}/layouts/default.ejs`,
             }
-          )
-          break
+          );
+          break;
       }
       // save the html file
       $.fse.writeFileSync(`${destPath}/${fileData.name}.html`, layoutContent)
@@ -268,10 +304,16 @@ module.exports = function () {
   } catch (err) {
     $.log.error(err)
     $.log.error('Build pages failed...')
+    hasError = true;
   }
 
   // display build time
   const timeDiff = process.hrtime(startTime)
   const duration = timeDiff[0] * 1000 + timeDiff[1] / 1e6
-  $.log.success(`Site built successfully in ${duration}ms`)
+
+  if (!hasError) {
+    $.log.success(`Site built successfully in ${duration}ms`)
+  } else {
+    $.log.error(`Site built failed in ${duration}ms`);
+  }
 }

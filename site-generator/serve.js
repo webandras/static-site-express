@@ -24,10 +24,10 @@
     app.use(helmet())
 
     // Content Security Policy.
-    const csp = require('helmet-csp')
+    //const csp = require('helmet-csp')
 
     // These settings should be changed (these are just examples)
-    app.use(csp({
+    /*app.use(csp({
       directives: {
         defaultSrc: [`'none'`],
         styleSrc: [`'self'`,
@@ -57,7 +57,7 @@
         objectSrc: [`'none'`],
         connectSrc: [`'self'`]
       }
-    }))
+    }))*/
   }
 
   // Middlewares.
