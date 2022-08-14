@@ -1,4 +1,4 @@
-<div class="max-w-xl mx-auto">
+<div class="max-w-2xl mx-auto">
   <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">Contact page</h1>
 
   <form name="contact" method="POST" action="/message-sent.html" netlify-honeypot="bot-field" netlify>
@@ -36,8 +36,15 @@
         rows="4"
         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         placeholder="Your message..."
+        required
       ></textarea>
     </div>
+
+    <div class="flex items-center mb-4">
+      <input id="privacy_accepted" type="checkbox" value="1" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" required>
+      <label for="privacy_accepted" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I have read and accepted the <a href="#" class="hover:underline text-blue-600 dark:text-blue-500">Privacy Policy</a>.</label>
+    </div>
+
     <button
       type="submit"
       class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

@@ -1,6 +1,6 @@
 {
-    "name": "Gul\u00e1csi Andr\u00e1s Blogja",
-    "short_name": "Gul\u00e1csi Andr\u00e1s Blogja",
+    "name": "static-site-express",
+    "short_name": "static-site-express",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,8 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#f2f2f2",
-    "background_color": "#f2f2f2",
-    "start_url": "https://www.gulacsiandras.blog/",
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
     "display": "standalone"
 }

@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" class="light">
 <%- include ('partials/head-default.ejs') %>
-  <body class="bg-white dark:bg-slate-800">
+  <body class="bg-white dark:bg-gray-800">
     <%- include ('partials/header') %>
-    <main class="container w-full mx-auto pl-4 pr-4">
+    <div class="max-w-2xl mx-auto mt-8">
+    <%- include ('partials/breadcrumb') %>
+    </div>
+    <main class="container w-full mx-auto pl-4 pr-4 mt-8">
       <%- body %>
     </main>
     <%- include ('partials/footer') %>
