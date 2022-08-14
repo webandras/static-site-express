@@ -76,12 +76,7 @@ module.exports = function () {
 
   // copy these files to the root of /public folder
   // extend the list with new files here
-  const filesToCopy = [
-    '_redirects',
-    'robots.txt',
-    'sitemap.xml',
-    'google517a67c0c3ff6768.html'
-  ]
+  const filesToCopy = ["_redirects", "_headers", "robots.txt", "sitemap.xml", "google517a67c0c3ff6768.html"];
 
   try {
     filesToCopy.forEach((file) => {
