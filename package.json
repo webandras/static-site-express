@@ -9,6 +9,7 @@
     "js": "webpack",
     "js-watch": "webpack --watch",
     "build": "node ./app/build.js",
+    "publish": "babel site-generator/ -d app/ && node ./app/build.js",
     "serve": "node ./app/serve.js",
     "watch-nodemon": "nodemon -L --watch ./content/ --watch ./config/site.config.js ./app/build.js -e *",
     "watch-chokidar": "node ./app/watch.js -H localhost",
