@@ -1,7 +1,7 @@
 // Add your global site properties here
 module.exports = {
   site: {
-    url: "http://localhost:4000",
+    url: "",
     title: `static-site-express`,
     defaultImage: "/assets/images/static.jpg",
     monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
