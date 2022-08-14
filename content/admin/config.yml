@@ -14,7 +14,6 @@ slug:
   clean_accents: true
   sanitize_replacement: "-"
 
-display_url: http://localhost:4000/
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
     label: "Write post" # Used in the UI
