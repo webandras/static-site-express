@@ -306,10 +306,10 @@ Year | Column 1 | Column 2
 Syntax: `![caption text](link-to-image)`
 
 Example:
-`![Figure 1. Interest in static site generators over time (Google Trends)](/assets/images/articles/trend.png)`
+`![Figure 1. Interest in static site generators over time (Google Trends)](/assets/images/uploads/trend.png)`
 
 
-![Figure 1. Interest in static site generators over time (Google Trends)](/assets/images/articles/trend.png)
+![Figure 1. Interest in static site generators over time (Google Trends)](/assets/images/uploads/trend.png)
 
 
 ### 4. Code syntax highlighting{id=highlight}
