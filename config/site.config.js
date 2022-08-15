@@ -1,16 +1,33 @@
 // Add your global site properties here
 module.exports = {
   site: {
-    url: "",
+
+    // BASE
     title: `static-site-express`,
-    defaultImage: "/assets/images/static.jpg",
-    monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    lang: "en",
-    author: "András Gulácsi",
     quote: "A Node.js-based static site generator that uses EJS and Markdown",
     description:
       "A Node.js based static-site generator that uses EJS and Markdown. Deploy your static site to Netlify or any platform to your liking. Suited for landing pages, portfolio, blogs, documentation, hobby projects.",
-    currentYear: new Date().getFullYear(),
+    author: "András Gulácsi",
+    lang: "en", // currently, the static site generator has no multi-language support
+    defaultImage: "/assets/images/static.jpg",
     github: "https://github.com/SalsaBoy990/static-site-express",
+    currentYear: new Date().getFullYear(),
+
+
+    // CONFIGURATION
+
+    // for local development, leave it empty or use http://localhost:PORT (without trailing "/" at the end!)
+    // This url is pasted before all of your "/links" in the website
+    url: "",
+
+    // Used it for creating canonical urls
+    seoUrl: "https://static-site-express.netlify.app",
+
+    // Using Algolia Search requires configuration
+    // For local development set it to false (no need to send in the postdata for the search index)
+    enableSearch: true,
+
+    // Change these to the language you want to use
+    monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
   },
 };

@@ -1,0 +1,57 @@
+<% if (site.enableSearch) { %>
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js"
+        integrity="sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk="
+        crossorigin="anonymous"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js"
+        integrity="sha256-LAGhRRdtVoD6RLo2qDQsU2mp+XVSciKRC8XPOBWmofM="
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        const searchClient = algoliasearch("CY3IEWKVRY", "8efb8ce104fc062fcb810128f538fec4");
+
+        const search = instantsearch({
+            indexName: "test_static_site_express",
+            searchClient,
+
+            searchFunction: function(helper) {
+                var searchResults = document.querySelector('#hits');
+                if (helper.state.query === '') {
+                searchResults.style.display = 'none';
+                } else {
+                searchResults.style.display = '';
+                }
+
+                helper.search();
+            }
+        });
+
+        search.addWidgets([
+            instantsearch.widgets.searchBox({
+                container: "#searchbox",
+            }),
+
+            instantsearch.widgets.hits({
+                container: "#hits",
+                templates: {
+                    empty: '<b>No results</b>',
+                    item: `
+                        <div>
+                        <a href="{{url}}">
+                        <img src="{{image}}" align="left" alt="{{name}}" />
+                        <div class="hit-name">
+                            {{#helpers.highlight}}{ "attribute": "title" }{{/helpers.highlight}}
+                        </div>
+                        <div class="hit-description">
+                            {{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}
+                        </div>
+                        </a>
+                        </div>
+                    `,
+                },
+            }),
+        ]);
+
+        search.start();
+    </script>
+<% } %>

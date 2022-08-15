@@ -1,4 +1,5 @@
 // @flow
+require("dotenv").config();
 module.exports = function () {
   'use strict'
 
@@ -6,15 +7,17 @@ module.exports = function () {
    * INITIALIZATIONS
    * =========================================================================
    */
-  // Require all modules, wrap it into a single object
-  const $ = require('./modules')
-  let hasError: boolean = false;
-
   // store start time
   const startTime = process.hrtime()
+
+  // Require all modules, wrap it into a single object
+  const $ = require('./modules')
+
+  // If any error occurs
+  let hasError: boolean = false;
+
   // logger funtion on command line with styling
   $.log.info('Building site...')
-
   // site configuration properties
   const config = require('../../config/site.config')
 
@@ -26,6 +29,7 @@ module.exports = function () {
   const postsDataForIndexPage: any = []
   // Store posts data for the archive
   const blogArchive: any = []
+  let searchIndexData: any = [];
 
   // function that renders ejs layouts to html
   const ejsRender = require('ejs').render
@@ -35,7 +39,6 @@ module.exports = function () {
    * apply markdown-it middlewares
    * =========================================================================
    */
-
   // there are more extensions available of markdown-it, add more here and in `modules.js`
   $.md.use($.markdownItTable)
   $.md.use($.markdownItSup)
@@ -63,6 +66,17 @@ module.exports = function () {
     show_reposts: false,
     visual: true
   })
+
+  /* =========================================================================
+   * ALGOLIA SEARCH - Generate search index if enabled
+   * =========================================================================
+   */
+  if (config.site.enableSearch) {
+    const algoliasearch = require("algoliasearch");
+    const client = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_ADMIN_KEY);
+    const index = client.initIndex(process.env.ALGOLIA_INDEX);
+  }
+
 
   /* =========================================================================
    * COPY FILES TO DESTINATION 
@@ -145,6 +159,72 @@ module.exports = function () {
         isPost: true,
       });
 
+      if (config.site.enableSearch) {
+        searchIndexData.push({
+          /**
+           * The object's unique identifier
+           */
+          objectID: postData.attributes.date,
+
+          /**
+           * The URL where the Algolia Crawler found the record
+           */
+          url: canonicalUrl,
+
+          /**
+           * The lang of the page
+           * - html[attr=lang]
+           */
+          lang: config.site.lang,
+
+          /**
+           * The title of the page
+           * - og:title
+           * - head > title
+           */
+          title: postData.attributes.title,
+
+          /**
+           * The description of the page
+           * - meta[name=description]
+           * - meta[property="og:description"]
+           */
+          description: postData.attributes.excerpt,
+
+          /**
+           * The image of the page
+           * - meta[property="og:image"]
+           */
+          image: config.site.seoUrl + "/assets/images/uploads/" + postData.attributes.coverImage,
+
+          /**
+           * The authors of the page
+           * - `author` field of JSON-LD Article object: https://schema.org/Article
+           * - meta[property="article:author"]
+           */
+          authors: [config.site.author],
+
+          /**
+           * The publish date of the page
+           * - `datePublished` field of JSON-LD Article object: https://schema.org/Article
+           * - meta[property="article:published_time"]
+           */
+          datePublished: postData.attributes.date,
+
+          /**
+           * The category of the page
+           * - meta[property="article:section"
+           * - meta[property="product:category"]
+           */
+          category: postData.attributes.topic || "",
+
+          /**
+           * The content of your page
+           */
+          content: postContents,
+        });
+      }
+
       // save postdata for the index page
       $.ssg.savePostDataForIndexPage(fileData, dateFormatted, postData, postsDataForIndexPage)
 
@@ -157,7 +237,18 @@ module.exports = function () {
 
       // save the rendered blogposts to destination folder
       $.ssg.saveBlogpostsHTML(fileData, destPath, layoutContent)
-    })
+
+      // Test
+      // console.log(JSON.stringify(searchIndexData));
+      // $.fse.writeFileSync(`${srcPath}/algoliaindex.json`, JSON.stringify(searchIndexData));
+
+      if (!config.site.enableSearch) {
+        // Update or create records of the Algolia Search index
+        index.partialUpdateObjects(searchIndexData, {
+          createIfNotExists: true,
+        });
+      }
+    });
   } catch (err) {
     $.log.error(err)
     $.log.info('Build posts failed...')

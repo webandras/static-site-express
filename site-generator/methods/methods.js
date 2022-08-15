@@ -123,7 +123,7 @@ function generateCanonicalURL (fileData: any, config: any): string {
 
   const titlePart: string = fileData.name.split('-').slice(3).join('-')
 
-  return config.site.url + '/' + (datePart.join('/') + '/' + titlePart + '.html')
+  return config.site.seoUrl + "/" + (datePart.join("/") + "/" + titlePart);
 }
 
 
