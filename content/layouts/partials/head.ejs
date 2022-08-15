@@ -37,4 +37,16 @@
 
   <!-- identity script needed for logging in to admin/CMS dashboard-->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@algolia/algoliasearch-netlify-frontend@1/dist/algoliasearchNetlify.js"></script>
+  <script type="text/javascript">
+    algoliasearchNetlify({
+      appId: 'AHT1M591NA',
+      apiKey: '824967e706b6dccbd96668f144d1931f',
+      siteId: 'bb6cf5c7-4ccc-4684-8a82-30e64ac00baa',
+      branch: 'master',
+      selector: 'div#search',
+    });
+  </script>
 </head>
