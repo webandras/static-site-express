@@ -2,15 +2,29 @@
   <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900 border-b border-b-gray-200 dark:border-b-gray-800">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
       <a href="<%= site.url %>/" class="flex items-center">
-          <img src="<%= site.url %>/assets/images/static-site-express.png" class="mr-2 h-10 sm:h-11" alt="<%= site.title %>">
-          <span class="self-center text-lg sm:text-xl font-semibold whitespace-nowrap dark:text-white"><%= site.title %></span>
+        <img src="<%= site.url %>/assets/images/static-site-express.png" class="mr-2 h-10 sm:h-11" alt="<%= site.title %>" />
+        <span class="self-center text-lg sm:text-xl font-semibold whitespace-nowrap dark:text-white"><%= site.title %></span>
       </a>
-      <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+      <button
+        data-collapse-toggle="navbar-default"
+        type="button"
+        class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        aria-controls="navbar-default"
+        aria-expanded="false"
+      >
         <span class="sr-only">Open main menu</span>
-        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path
+            fill-rule="evenodd"
+            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
       </button>
       <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-        <ul class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <ul
+          class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+        >
           <li>
             <% if (pageName === 'index') { %>
             <a href="<%= site.url %>/index.html" class="active-link" aria-current="page">Home</a>
@@ -19,32 +33,32 @@
             <% } %>
           </li>
           <li>
-              <% if (pageName === 'contact') { %>
-              <a href="<%= site.url %>/contact.html" class="active-link" aria-current="page">Contact</a>
-              <% } else { %>
-               <a href="<%= site.url %>/contact.html" class="inactive-link">Contact</a>
-              <% } %>
+            <% if (pageName === 'contact') { %>
+            <a href="<%= site.url %>/contact.html" class="active-link" aria-current="page">Contact</a>
+            <% } else { %>
+            <a href="<%= site.url %>/contact.html" class="inactive-link">Contact</a>
+            <% } %>
           </li>
           <li>
-              <% if (pageName === 'writings') { %>
-              <a href="<%= site.url %>/writings.html" class="active-link" aria-current="page">Writings</a>
-              <% } else { %>
-               <a href="<%= site.url %>/writings.html" class="inactive-link">Writings</a>
-              <% } %>
+            <% if (pageName === 'writings') { %>
+            <a href="<%= site.url %>/writings.html" class="active-link" aria-current="page">Writings</a>
+            <% } else { %>
+            <a href="<%= site.url %>/writings.html" class="inactive-link">Writings</a>
+            <% } %>
           </li>
           <li>
-              <% if (pageName === 'message-sent') { %>
-              <a href="<%= site.url %>/message-sent.html" class="active-link" aria-current="page">Message sent</a>
-              <% } else { %>
-               <a href="<%= site.url %>/message-sent.html" class="inactive-link">Message sent</a>
-              <% } %>
+            <% if (pageName === 'message-sent') { %>
+            <a href="<%= site.url %>/message-sent.html" class="active-link" aria-current="page">Message sent</a>
+            <% } else { %>
+            <a href="<%= site.url %>/message-sent.html" class="inactive-link">Message sent</a>
+            <% } %>
           </li>
           <li>
             <% if (pageName === '404') { %>
-              <a href="<%= site.url %>/404.html" class="active-link" aria-current="page">Page 404</a>
-              <% } else { %>
-               <a href="<%= site.url %>/404.html" class="inactive-link">Page 404</a>
-              <% } %>
+            <a href="<%= site.url %>/404.html" class="active-link" aria-current="page">Page 404</a>
+            <% } else { %>
+            <a href="<%= site.url %>/404.html" class="inactive-link">Page 404</a>
+            <% } %>
           </li>
         </ul>
       </div>
