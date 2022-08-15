@@ -5,5 +5,12 @@ module.exports = {
   theme: {
     extend: {},
   },
+   safelist: [
+    'text-lg',
+    'font-bold',
+    'text-gray-700',
+    'mb-3',
+    'mt-2',
+  ],
   plugins: [require("flowbite/plugin"), require("flowbite-typography")],
 };
