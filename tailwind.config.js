@@ -9,8 +9,8 @@ module.exports = {
     'text-lg',
     'font-bold',
     'text-gray-700',
+    'mb-2',
     'mb-3',
-    'mt-2',
   ],
   plugins: [require("flowbite/plugin"), require("flowbite-typography")],
 };

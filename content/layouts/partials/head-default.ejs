@@ -3,7 +3,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-  <title><%= site.title %></title>
+  <title><%= title %></title>
 
   <!-- Metas for social media-->
   <meta name="description" content="<%= site.quote %>" />
@@ -11,7 +11,7 @@
   <meta property="og:url" content="<%= canonicalUrl %>" />
   <meta property="og:site_name" content="<%= site.title %>" />
   <meta property="og:description" content="<%= description %>" />
-  <meta property="og:image" content="<%= site.defaultImage %>" />
+  <meta property="og:image" content="<%= site.seoUrl %><%= site.defaultImage %>" />
   <meta property="og:type" content="website" />
 
   <!-- Twitter -->
@@ -21,7 +21,7 @@
   <meta name="twitter:title" content="<%= title %>" />
   <meta name="twitter:description" content="<%= description %>" />
   <meta name="twitter:url" content="<%= canonicalUrl %>" />
-  <meta name="twitter:image" content="<%= site.defaultImage %>" />
+  <meta name="twitter:image" content="<%= site.seoUrl %><%= site.defaultImage %>" />
 
   <link rel="canonical" href="<%= canonicalUrl %>" />
   <link href="/assets/css/main.css" rel="stylesheet" type="text/css" />

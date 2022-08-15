@@ -40,8 +40,8 @@
         empty: "<b>No results</b>",
         item: `
             <a href="{{url}}">
-                <img src="{{image}}" align="left" alt="{{name}}" />
-                <div class="hit-name text-lg font-bold mt-2 mb-3">
+                <img src="{{image}}" class="mb-2" align="left" alt="{{title}}" />
+                <div class="hit-name text-lg font-bold mb-3">
                     {{#helpers.highlight}}{ "attribute": "title" }{{/helpers.highlight}}
                 </div>
                 <div class="hit-description text-gray-700">

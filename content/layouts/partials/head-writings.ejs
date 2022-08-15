@@ -3,7 +3,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-  <title><%= site.title %></title>
+  <title><%= title %></title>
 
   <!-- Metas for social media-->
   <meta name="description" content="<%= site.quote %>" />
@@ -35,6 +35,12 @@
   <meta name="msapplication-TileColor" content="#2d89ef" />
   <meta name="theme-color" content="#ffffff" />
 
-  <!-- identity script needed for logging in to admin/CMS dashboard-->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <% if (site.enableSearch) { %>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.4.5/themes/satellite-min.css"
+    integrity="sha256-TehzF/2QvNKhGQrrNpoOb2Ck4iGZ1J/DI4pkd2oUsBc="
+    crossorigin="anonymous"
+  />
+  <% } %>
 </head>

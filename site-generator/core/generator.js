@@ -300,7 +300,7 @@ module.exports = function () {
               title: config.site.title,
               breadcrumbTitle: config.site.title,
               body: pageContents,
-              canonicalUrl: config.site.url,
+              canonicalUrl: config.site.seoUrl + '/',
               description: config.site.description,
               currentYear: config.site.currentYear,
               isPost: false,
@@ -319,7 +319,7 @@ module.exports = function () {
               title: "Contact Me | " + config.site.title,
               breadcrumbTitle: "Contact Me",
               body: pageContents,
-              canonicalUrl: config.site.url + "/" + fileData.name,
+              canonicalUrl: config.site.seoUrl + '/' + fileData.name,
               description: config.site.quote,
               isPost: false,
               pageName: "contact",
@@ -332,18 +332,18 @@ module.exports = function () {
 
         case "writings.ejs":
           layoutContent = ejsRender(
-            $.fse.readFileSync(`${srcPath}/layouts/default.ejs`, "utf-8"),
+            $.fse.readFileSync(`${srcPath}/layouts/writings.ejs`, "utf-8"),
             Object.assign({}, config, {
               title: "Writings | " + config.site.title,
               breadcrumbTitle: "Writings",
               body: pageContents,
-              canonicalUrl: config.site.url + "/" + fileData.name,
+              canonicalUrl: config.site.seoUrl + '/' + fileData.name,
               description: config.site.quote,
               isPost: false,
               pageName: "writings",
             }),
             {
-              filename: `${srcPath}/layouts/default.ejs`,
+              filename: `${srcPath}/layouts/writings.ejs`,
             }
           );
           break;
@@ -355,7 +355,7 @@ module.exports = function () {
               title: "Message sent! | " + config.site.title,
               breadcrumbTitle: "Message sent!",
               body: pageContents,
-              canonicalUrl: config.site.url + "/" + fileData.name,
+              canonicalUrl: config.site.seoUrl + "/" + fileData.name,
               description: config.site.quote,
               isPost: false,
               pageName: "message-sent",
@@ -366,6 +366,7 @@ module.exports = function () {
           );
           break;
 
+        // 404 page
         default:
           layoutContent = ejsRender(
             $.fse.readFileSync(`${srcPath}/layouts/default.ejs`, "utf-8"),
@@ -373,7 +374,7 @@ module.exports = function () {
               title: "404: Page not found | " + config.site.title,
               breadcrumbTitle: "Page not found",
               body: pageContents,
-              canonicalUrl: config.site.url + "/" + fileData.name,
+              canonicalUrl: "",
               description: config.site.quote,
               isPost: false,
               pageName: "404",
