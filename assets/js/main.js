@@ -26,8 +26,8 @@ const onLoad = () => {
   // detects the browser language and reads the translation strings from file
   i18next.use(LanguageDetector).init(
     {
-      fallbackLng: "en",
-      debug: true,
+      fallbackLng: config.fallbackLang,
+      debug: config.langDebug,
       resources: translations,
     },
     (err, t) => {

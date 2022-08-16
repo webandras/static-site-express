@@ -7,7 +7,6 @@ module.exports = {
     description:
       "A Node.js based static-site generator that uses EJS and Markdown. Deploy your static site to Netlify or any platform to your liking. Suited for landing pages, portfolio, blogs, documentation, hobby projects.",
     author: "András Gulácsi",
-    lang: "en", // currently, the static site generator has no multi-language support
     defaultImage: "/assets/images/static.jpg",
     github: "https://github.com/SalsaBoy990/static-site-express",
     currentYear: new Date().getFullYear(),
@@ -38,10 +37,17 @@ module.exports = {
     netlifyDeployLink: "https://app.netlify.com/start/deploy?repository=https://github.com/SalsaBoy990/static-site-express",
     netlifyDeployButtonId: "#deploy",
 
+    // Default language
+    lang: "en",
+    // Fallback
+    fallbackLang: "en",
+
     // Supported languages (used for i18n)
     languages: {
       hu: { nativeName: "Magyar" },
       en: { nativeName: "English" },
     },
+    // Debugging i18n module (console.log messages)
+    langDebug: false,
   },
 };
