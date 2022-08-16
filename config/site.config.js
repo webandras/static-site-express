@@ -1,67 +1,44 @@
-const yaml = require("js-yaml");
-const fs = require("fs");
+// Add your global site properties here
+module.exports = {
+  site: {
+    // BASE
+    title: `static-site-express`,
+    quote: "A Node.js-based static site generator that uses EJS and Markdown",
+    description:
+      "A Node.js based static-site generator that uses EJS and Markdown. Deploy your static site to Netlify or any platform to your liking. Suited for landing pages, portfolio, blogs, documentation, hobby projects.",
+    author: "András Gulácsi",
+    lang: "en", // currently, the static site generator has no multi-language support
+    defaultImage: "/assets/images/static.jpg",
+    github: "https://github.com/SalsaBoy990/static-site-express",
+    currentYear: new Date().getFullYear(),
 
-try {
-  // Get opening hours data from yaml file
-  const openingHours = yaml.load(fs.readFileSync("./content/data/opening-hours.yml", "utf8"));
-  console.log(openingHours);
+    // CONFIGURATION
 
-  // Add your global site properties here
-  module.exports = {
-    site: {
-      // BASE
-      title: `static-site-express`,
-      quote: "A Node.js-based static site generator that uses EJS and Markdown",
-      description:
-        "A Node.js based static-site generator that uses EJS and Markdown. Deploy your static site to Netlify or any platform to your liking. Suited for landing pages, portfolio, blogs, documentation, hobby projects.",
-      author: "András Gulácsi",
-      lang: "en", // currently, the static site generator has no multi-language support
-      defaultImage: "/assets/images/static.jpg",
-      github: "https://github.com/SalsaBoy990/static-site-express",
-      currentYear: new Date().getFullYear(),
+    // for local development, leave it empty or use http://localhost:PORT (without trailing "/" at the end!)
+    // This url is pasted before all of your "/links" in the website
+    url: "",
 
-      // CONFIGURATION
+    // Used it for creating canonical urls
+    seoUrl: "https://static-site-express.netlify.app",
 
-      // for local development, leave it empty or use http://localhost:PORT (without trailing "/" at the end!)
-      // This url is pasted before all of your "/links" in the website
-      url: "",
+    // Using Algolia Search requires configuration
+    // For local development set it to false (no need to send in the postdata for the search index)
+    enableSearch: true,
 
-      // Used it for creating canonical urls
-      seoUrl: "https://static-site-express.netlify.app",
+    // Change these to the language you want to use
+    monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 
-      // Using Algolia Search requires configuration
-      // For local development set it to false (no need to send in the postdata for the search index)
-      enableSearch: true,
+    // Switch website to the dark mode
+    darkMode: false,
 
-      // Change these to the language you want to use
-      monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    // Link for the deploy button url
+    netlifyDeployLink: "https://app.netlify.com/start/deploy?repository=https://github.com/SalsaBoy990/static-site-express",
+    netlifyDeployButtonId: "#deploy",
 
-      hours: {
-        "Monday": (openingHours && openingHours.monday) || {},
-        "Tuesday": (openingHours && openingHours.tuesday) || {},
-        "Wednesday": (openingHours && openingHours.wednesday) || {},
-        "Thursday": (openingHours && openingHours.thursday) || {},
-        "Friday": (openingHours && openingHours.friday) || {},
-        "Saturday": (openingHours && openingHours.saturday) || {},
-        "Sunday": (openingHours && openingHours.sunday) || {},
-      },
-
-      // Switch website to the dark mode
-      darkMode: true,
-
-      // Link for the deploy button url
-      netlifyDeployLink: "https://app.netlify.com/start/deploy?repository=https://github.com/SalsaBoy990/static-site-express",
-      netlifyDeployButtonId: "#deploy",
-
-      // Supported languages (used for i18n)
-      languages: {
-        hu: { nativeName: "Magyar" },
-        en: { nativeName: "English" },
-      },
-
+    // Supported languages (used for i18n)
+    languages: {
+      hu: { nativeName: "Magyar" },
+      en: { nativeName: "English" },
     },
-  };
-
-} catch (e) {
-  console.log(e);
-}
+  },
+};
