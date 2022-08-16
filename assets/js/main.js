@@ -5,19 +5,14 @@ import locI18next from "loc-i18next";
 
 // load translations from file
 const translations = require("../../content/lang/translations.json");
-
+// load global site config
 const config = require("../../config/site.config").site;
-
-const languages = {
-  hu: { nativeName: "Magyar" },
-  en: { nativeName: "English" },
-};
 
 const onLoad = () => {
   // Fast deploy to Netlify
   const deployBtn = document.querySelector(config.netlifyDeployButtonId);
   if (deployBtn) {
-    deployBtn.on("click", () => {
+    deployBtn.addEventListener("click", () => {
       window.location.href = config.netlifyDeployLink;
     });
   }
@@ -60,6 +55,8 @@ const onLoad = () => {
   }
 
   function toggleDarkMode() {
+    // Whenever the user explicitly chooses light mode
+    localStorage.theme = "light";
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
     if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
       document.documentElement.classList.add("dark");
@@ -67,14 +64,11 @@ const onLoad = () => {
       document.documentElement.classList.remove("dark");
     }
 
-    // Whenever the user explicitly chooses light mode
-    localStorage.theme = "light";
-
     // Whenever the user explicitly chooses dark mode
-    localStorage.theme = "dark";
+    // localStorage.theme = "dark";
 
     // Whenever the user explicitly chooses to respect the OS preference
-    localStorage.removeItem("theme");
+    //localStorage.removeItem("theme");
   }
   //toggleDarkMode();
 };
