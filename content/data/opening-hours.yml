@@ -1,19 +1,19 @@
-Monday:
+monday:
   start: 1000
   end: 1700
-Tuesday:
+tuesday:
   start: 1000
   end: 1700
-Wednesday:
+wednesday:
   start: 1000
   end: 1900
-Thursday:
+thursday:
   start: 1000
   end: 1700
-Friday:
+friday:
   start: 1000
   end: 1700
-Saturday:
+saturday:
   start: 1000
   end: 1700
-Sunday:
+sunday:

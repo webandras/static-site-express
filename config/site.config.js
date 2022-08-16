@@ -37,13 +37,13 @@ try {
       monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 
       hours: {
-        "Monday": openingHours.Monday|| {},
-        "Tuesday": openingHours.Tuesday|| {},
-        "Wednesday": openingHours.Wednesday|| {},
-        "Thursday": openingHours.Thursday|| {},
-        "Friday": openingHours.Friday|| {},
-        "Saturday": openingHours.Saturday || {},
-        "Sunday": openingHours.Sunday || {},
+        "Monday": openingHours.monday|| {},
+        "Tuesday": openingHours.tuesday|| {},
+        "Wednesday": openingHours.wednesday|| {},
+        "Thursday": openingHours.thursday|| {},
+        "Friday": openingHours.friday|| {},
+        "Saturday": openingHours.saturday || {},
+        "Sunday": openingHours.sunday || {},
       },
 
       // Switch website to the dark mode
