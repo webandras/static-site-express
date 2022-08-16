@@ -97,7 +97,7 @@ module.exports = function () {
 
   // copy these files to the root of /public folder
   // extend the list with new files here
-  const filesToCopy = ["_redirects", "_headers", "robots.txt", "sitemap.xml", "google517a67c0c3ff6768.html"];
+  const filesToCopy = ["_redirects", "_headers", "robots.txt"];
 
   try {
     filesToCopy.forEach((file) => {
@@ -366,7 +366,7 @@ module.exports = function () {
               pageName: "writings",
               algoliaAppId: process.env.ALGOLIA_APP_ID,
               algoliaIndex: process.env.ALGOLIA_INDEX,
-              algoliaSearchKey: process.env.ALGOLIA_SEARCH_KEY,
+              algoliaSearchKey: process.env.ALGOLIA_SEARCH_KEY, // this is a public key with reading rights only
               indexName: process.env.ALGOLIA_INDEX,
             }),
             {

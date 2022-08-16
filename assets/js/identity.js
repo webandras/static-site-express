@@ -7,7 +7,7 @@ if (window.netlifyIdentity) {
     }
   });
 
-  window.netlifyIdentity.on("logout", function() {
+  window.netlifyIdentity.on("logout", function () {
     document.location.href = "/";
   });
 

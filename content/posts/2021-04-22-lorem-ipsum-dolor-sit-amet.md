@@ -1,7 +1,7 @@
 ---
 title: Lorem ipsum dolor sit amet
-date: '2021-04-22'
-excerpt: >- 
+date: "2021-04-22"
+excerpt: >-
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean augue nisl, ultricies eu ex quis, bibendum iaculis neque. Integer blandit magna eget tempus ultricies.
 coverImage: node.jpg
 ---

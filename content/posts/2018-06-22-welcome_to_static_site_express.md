@@ -1,7 +1,7 @@
 ---
 title: Welcome to static-site-express. Install guide
-date: '2018-06-22'
-excerpt: >- 
+date: "2018-06-22"
+excerpt: >-
   static-site-express is a simple Node.js based static site generator that uses EJS and Markdown. Installation and usage guide.
 coverImage: node.jpg
 ---
@@ -16,9 +16,9 @@ static-site-express is a simple Node.js based static-site generator that uses EJ
 
 1. Fork and clone this repository to get a starter template that uses Flowbite, an open-sorce UI library of components created with TailwindCSS. Use the `master` branch.
 
-````raw
+```raw
 git clone https://github.com/SalsaBoy990/static-site-express project
-````
+```
 
 2. To have a basic e-commerce website Flowbite/TailWind starter incorporating the [Snipcart](https://snipcart.com/) ecommerce platform into static-site-express:
 
@@ -26,23 +26,22 @@ git clone https://github.com/SalsaBoy990/static-site-express project
 - Register at [Snipcart](https://snipcart.com/)
 - Copy your Snipcart public test key at `src/layouts/partials/scripts.ejs` to the `publicApiKey` property value on line 6:
 
- ````html
- <div id="snipcart" data-config-modal-style="side" data-api-key="YOUR_PUBLIC_TEST_API_KEY" hidden></div>
- ````
+```html
+<div id="snipcart" data-config-modal-style="side" data-api-key="YOUR_PUBLIC_TEST_API_KEY" hidden></div>
+```
 
-*Note:* Only hardcode the test api key for development, not for production! And never commit it to version control, otherwise you need to invalidate the previous keys and create new ones. This for testing locally. For production, paste your key in as env variable.
+_Note:_ Only hardcode the test api key for development, not for production! And never commit it to version control, otherwise you need to invalidate the previous keys and create new ones. This for testing locally. For production, paste your key in as env variable.
 
- [Snipcart](https://snipcart.com/) is more than a simple cart: enjoy a full back-office management dashboard to track abandoned carts, sales, orders, customers and more.
- - It supports card payments via PayPay, Stripe, and other payment gateways,
- - It generates invoices and sends them to customers after purchase,
- - etc.
+[Snipcart](https://snipcart.com/) is more than a simple cart: enjoy a full back-office management dashboard to track abandoned carts, sales, orders, customers and more.
 
-*Note:* Netlify will build your site from the default branch (usually the `master`) by default.
+- It supports card payments via PayPay, Stripe, and other payment gateways,
+- It generates invoices and sends them to customers after purchase,
+- etc.
+
+_Note:_ Netlify will build your site from the default branch (usually the `master`) by default.
 You can use a different branch other than the default one, but in that case Netlify CMS will not work properly. For example, the images uploaded through the CMS will be pushed into the default branch, not the other you set up in Netlify!)
 
-*Test website:* Use the 'Deploy to Netlify' button at the [project's website](https://static-site-express.netlify.com/) to have a test website.
-
-
+_Test website:_ Use the 'Deploy to Netlify' button at the [project's website](https://static-site-express.netlify.com/) to have a test website.
 
 ### Build your site locally
 
@@ -50,45 +49,43 @@ Use npm scripts defined in package.json
 
 1. Build the site generator into the `app` folder. The `site-generator` folder contains the site builder's source code, and that is the code that you have to modify if you want make changes, not the compiled version in `app` folder. The code uses [flow](https://flow.org/) static type checker annotations. To compile the app code with the Babel transpiler, run:
 
-````raw
+```raw
 bin/generate
-````
+```
 
 2. Build site from `./content` into the `./public` folder (in watch mode):
 
-````raw
+```raw
 bin/watch
-````
+```
 
 This bash script will call: `npm run watch-chokidar`.
 Alternatively, you can also use `npm run watch-nodemon`.
 
-*Issue 1: if you don't see the website updated after file changes, you have to restart the script. Sometimes it happens. TODO*
+_Issue 1: if you don't see the website updated after file changes, you have to restart the script. Sometimes it happens. TODO_
 The build process is intentionally delayed with setTimeout, to have enough time the css to be compiled after changes. Unfortunately, there is an interaction with the css builder script (which is slower). With the delay, crashes are less frequent
 
 3. Serve website on `localhost:4000`:
 
-````raw
+```raw
 bin/serve
-````
+```
 
-*Issue 2: very rarerly, the Express dev server also crashes if the build script fails. TODO*
+_Issue 2: very rarerly, the Express dev server also crashes if the build script fails. TODO_
 
 4. Create the css bundle with PostCSS (in watch mode):
 
-````raw
+```raw
 bin/css
-````
+```
 
 5. Create the js bundle with Webpack (in watch mode):
 
-````raw
+```raw
 bin/js
-````
+```
 
 Check out the `bin` folder and the `package.json` file to know more about the available scripts.
-
-
 
 ### Modify the site generator's source code
 
@@ -104,20 +101,16 @@ The JavaScript source is in the `site-generator/` folder. These files also conta
 - Post properties can be extended **starting at line 136**, in the `templateConfig` object literal (`generator.js`)
 
 After making changes, **the source must be transpiled** by Babel into ES5 into the `app/` folder with:
+
 - `bin/generate` or `npm run generator`
 
-
 At the end of the process, restart build/watch scripts. This process in sub-optimal, but currently this is the workflow.
-
-
 
 ### Website content (in the `website/` folder)
 
 - Post data comes from markdown files (in `posts/`) where the front matter block contains the post properties (you can change them, but do not forget to update the `templateConfig` object literal (`generator.js`) as well).
 - Pages (in `pages/`) are using templates and partials defined in the `layouts/` folder.
 - The `config/site.config.js` file contains some of the site properties (like site title, author, description, social media links etc.) that are used in the EJS partials. Can also be extended it to your liking.
-
-
 
 ## Publish Website to Netlify
 
@@ -127,12 +120,12 @@ At the end of the process, restart build/watch scripts. This process in sub-opti
 
 - The `netlify.toml` configuration file contains important properties:
 
-````raw
+```raw
 [build]
   base    = "/"
   publish = "public"
   command = "npm run build"
-````
+```
 
 The base path, the build command, and the publish directory. You can keep those settings unchanged.
 
@@ -162,10 +155,9 @@ https://github.com/netlify/build-image/blob/focal/run-build.sh
 This is the Dockerfile from which the Netlify image is built (based on `ubuntu:20.04`):
 https://github.com/netlify/build-image/blob/focal/Dockerfile
 
-
 In the optional `_headers` file you can specify the HTTP headers and set Content Security Policy (CSP) rules for the Netlify server. Currently, CSP rules are commented out. You can also specify these in `netlify.toml`.
 
-The `_redirects` file is currently empty. When you have a custom domain, you can make a redirect from *.netlify.com* to your custom domain.
+The `_redirects` file is currently empty. When you have a custom domain, you can make a redirect from _.netlify.com_ to your custom domain.
 
 `sitemap.xml` is empty by default. static-site-express currently does not come with a feature to generate an XML sitemap.
 
@@ -197,11 +189,9 @@ Set `display_url` to your custom domain in `content/admin/config.yml`
 
 [Netlify CMS Docs](https://github.com/netlify/netlify-cms)
 
-
 ## Changelog
 
 ### v2.0.0 (14 August 2022)
-
 
 **New:**
 
@@ -217,7 +207,6 @@ Set `display_url` to your custom domain in `content/admin/config.yml`
 - Add bash scripts with meaningful names to type less to call npm scripts.
 - Add new favicon and app logos.
 
-
 **Update:**
 
 - Update package.json version number.
@@ -231,18 +220,15 @@ Set `display_url` to your custom domain in `content/admin/config.yml`
 - Update README.md.
 - Update .gitignore.
 
-
 **Delete:**
 
 - Remove Docker configuration: using the site-builder in Docker would only add unnecessary complexity for zero gain.
 - Remove GA scripts.
 - remove Heroku Procfile.
 
-
 **New/Update/Delete:**
 
 - Define new, rename existing, remove not needed npm scripts.
-
 
 ### v1.0.2-alpha (28 April 2021)
 
@@ -255,17 +241,19 @@ Set `display_url` to your custom domain in `content/admin/config.yml`
 ### v1.0.1-alpha (27 April 2021)
 
 Incorrect configuration in docker-compose.yml.
+
 - fix: "generator" and "devserver" services share volume data. "devserver" is dependent on the "generator" service.
 
 Under testing. I haven't experienced any errors in this version.
 
 ### v1.0.0-alpha (25 April 2021) ! breaking change from previous versions !
 
-- version re-started with *v1.0.0* (from *4.1.0*).
+- version re-started with _v1.0.0_ (from _4.1.0_).
 - Update npm dependencies to the newest versions.
 - Build script partial code refactoring, code styling.
 
 Correct EJS syntax error after EJS version update.
+
 - fix: From now on, EJS include directives should be in this format:
 
 `<%- include ('partial/element-name') %>`
@@ -273,25 +261,27 @@ Correct EJS syntax error after EJS version update.
 This is a **breaking change**, you should update your `partials/templates`!
 
 Update build and watch scripts (using chokidar).
+
 - update: build script content moved into a module (`generator.js`) to be used in a build and the chokidar-based watch scripts.
 
 In 2019, chokidar was not watching file changes properly, thus the npm script was named "watch-exp". The default watch script is using nodemon.
 
 Add flow types support and re-structure folders.
+
 - new: add Flow, a static type checker for JavaScript.
 - update: site generator source moved to `src/`, Babel will transpile the source into the `lib/` folder where originally the source were.
 - update: website source is moved to `website/` folder, necessary code changes are applied.
 
 Refactor site generator, code improvements, config changes.
+
 - update: `package.json` add dotenv package, update npm scripts.
 - update/add: refactor static site generator scripts, changes in methods, add types to code with flow, update/add comments to every method.
 - add: lang and month names options to site.config.js.
 
 Dockerize project
+
 - new: read variables from `.env` file.
 - new: add Dockerfile, docker-compose file, `.dockerignore`.
-
-
 
 ## Useful resources
 
@@ -306,7 +296,6 @@ Dockerize project
 - [Terser Webpack plugin](https://webpack.js.org/plugins/terser-webpack-plugin/)
 - [Flowbite UI library based on TailwindCSS](https://flowbite.com/docs/getting-started/introduction/)
 
-
 ## Known issues
 
 ### Chokidar regurarly crashes on Ubuntu 20.04 LTS (12 August 2022)
@@ -318,21 +307,21 @@ However, the assets folder is sometimes not deleted, so an exception occurs:
 `[Error: EEXIST: file already exists, mkdir './public/assets']`
 
 ### Chokidar working properly on Ubuntu 20.04 (other distros not tested) (28 April 2021)
+
 - Chokidar now can be safely used on Ubuntu
 
 ### Nodemon was not working properly on Ubuntu (2019)
+
 - `nodemon` not trigger re-build on Linux on file changes (this behavior was experienced on Ubuntu 18.04 LTS Bionic Beaver)
 - On Ubuntu, you can run `npm run watch-exp` command which uses the [chokidar](https://github.com/paulmillr/chokidar) package.
 
 If you have a problem or a question about static-site-express, [open an issue here](https://github.com/SalsaBoy990/static-site-express/issues).
-
 
 ## Credits
 
 The idea of making a static site generator in Node.js came from this good article by Douglas Matoso (not accessible any more): [Build a static site generator in 40 lines with Node.js](https://medium.com/douglas-matoso-english/build-static-site-generator-nodejs-8969ebe34b22).
 
 This package uses modified code from [**doug2k1/nanogen**](https://github.com/doug2k1/nanogen) (mainly from the `legacy` branch and some ideas from the `master` branch) **Copyright: MIT (c) 2018 Douglas Matoso.**
-
 
 ## Licence
 

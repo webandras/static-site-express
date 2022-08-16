@@ -1,6 +1,6 @@
 ---
 title: Quisque nec congue orci
-date: '2021-04-14'
+date: "2021-04-14"
 excerpt: >-
   Quisque nec congue orci, id facilisis ex. Vestibulum sed sapien risus. Vestibulum tempus neque sed nunc volutpat, non pellentesque metus vehicula. Aliquam et velit a odio elementum varius eget sed massa. Sed id dui laoreet, facilisis nisl id, eleifend elit.
 coverImage: writing.jpg
