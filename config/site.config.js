@@ -1,7 +1,16 @@
+const yaml = require("js-yaml");
+const fs = require("fs");
+
+// Get opening hours data from yaml file
+try {
+  const openingHours = yaml.load(fs.readFileSync("./../content/data/opening-hours.yml", "utf8"));
+} catch (e) {
+  console.log(e);
+}
+
 // Add your global site properties here
 module.exports = {
   site: {
-
     // BASE
     title: `static-site-express`,
     quote: "A Node.js-based static site generator that uses EJS and Markdown",
@@ -12,7 +21,6 @@ module.exports = {
     defaultImage: "/assets/images/static.jpg",
     github: "https://github.com/SalsaBoy990/static-site-express",
     currentYear: new Date().getFullYear(),
-
 
     // CONFIGURATION
 
@@ -29,5 +37,29 @@ module.exports = {
 
     // Change these to the language you want to use
     monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+
+    hours: {
+      "Monday": openingHours.Monday|| {},
+      "Tuesday": openingHours.Tuesday|| {},
+      "Wednesday": openingHours.Wednesday|| {},
+      "Thursday": openingHours.Thursday|| {},
+      "Friday": openingHours.Friday|| {},
+      "Saturday": openingHours.Saturday || {},
+      "Sunday": openingHours.Sunday || {},
+    },
+
+    // Switch website to the dark mode
+    darkMode: true,
+
+    // Link for the deploy button url
+    netlifyDeployLink: "https://app.netlify.com/start/deploy?repository=https://github.com/SalsaBoy990/static-site-express",
+    netlifyDeployButtonId: "#deploy",
+
+    // Supported languages (used for i18n)
+    languages: {
+      hu: { nativeName: "Magyar" },
+      en: { nativeName: "English" },
+    },
+
   },
 };

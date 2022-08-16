@@ -11,10 +11,10 @@
 ></script>
 
 <script type="text/javascript">
-  const searchClient = algoliasearch("CY3IEWKVRY", "8efb8ce104fc062fcb810128f538fec4");
+  const searchClient = algoliasearch("<%= algoliaAppId %>", "<%= algoliaSearchKey %>");
 
   const search = instantsearch({
-    indexName: "test_static_site_express",
+    indexName: "<%= indexName %>",
     searchClient,
 
     searchFunction: function (helper) {

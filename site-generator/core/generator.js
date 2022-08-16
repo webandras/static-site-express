@@ -88,6 +88,12 @@ module.exports = function () {
   // copy assets folder (contains images, scripts and css) and favicon folder to destination
   $.ssg.copyAssetsFaviconFolders(srcPath, distPath)
 
+  // copy lang folder to destination
+  $.ssg.copyLangFolder(srcPath, distPath)
+
+    // copy data folder to destination
+  $.ssg.copyDataFolder(srcPath, distPath)
+
   // copy these files to the root of /public folder
   // extend the list with new files here
   const filesToCopy = ["_redirects", "_headers", "robots.txt", "sitemap.xml", "google517a67c0c3ff6768.html"];
@@ -337,10 +343,14 @@ module.exports = function () {
               title: "Writings | " + config.site.title,
               breadcrumbTitle: "Writings",
               body: pageContents,
-              canonicalUrl: config.site.seoUrl + '/' + fileData.name,
+              canonicalUrl: config.site.seoUrl + "/" + fileData.name,
               description: config.site.quote,
               isPost: false,
               pageName: "writings",
+              algoliaAppId: process.env.ALGOLIA_APP_ID,
+              algoliaIndex: process.env.ALGOLIA_INDEX,
+              algoliaSearchKey: process.env.ALGOLIA_SEARCH_KEY,
+              indexName: process.env.ALGOLIA_INDEX,
             }),
             {
               filename: `${srcPath}/layouts/writings.ejs`,

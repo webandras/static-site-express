@@ -11,8 +11,13 @@ module.exports = {
   // copy assets folder (contains images, scripts and css) and favicon folder to destination
   copyAssetsFaviconFolders: copyAssetsFaviconFolders,
 
+  // copy lang folder to destination
+  copyLangFolder: copyLangFolder,
+
   // copy admin folder to the root of /public folder
   copyAdminFolder: copyAdminFolder,
+
+  copyDataFolder: copyDataFolder,
 
   // copy _headers file to the root of /public folder
   copyRootFile: copyRootFile,
@@ -36,8 +41,8 @@ module.exports = {
   saveBlogpostsHTML: saveBlogpostsHTML,
 
   // get the postsData for the archive on the index page grouped by year
-  getDataForArchive: getDataForArchive
-}
+  getDataForArchive: getDataForArchive,
+};
 
 
 // -----------------------------------------------------------------------------------------
@@ -60,6 +65,34 @@ function copyAssetsFaviconFolders (srcPath: string, distPath: string): void {
   fse.removeSync(`${distPath}/favicon`);
   // copy favicon folder to the root of /public folder
   fse.copySync(`${srcPath}/favicon`, `${distPath}`, handleError(null, 'favicon'))
+}
+
+/**
+ * Copy lang folder to destination
+ * 
+ * @param srcPath: string
+ * @param distPath: string
+ * 
+ * @return void
+ */
+function copyLangFolder (srcPath: string, distPath: string): void {
+  'use strict'
+  fse.removeSync(`${distPath}/lang`);
+  fse.copySync(`${srcPath}/lang`, `${distPath}/lang`, handleError(null, "lang"));
+}
+
+/**
+ * Copy data folder to destination
+ * 
+ * @param srcPath: string
+ * @param distPath: string
+ * 
+ * @return void
+ */
+function copyDataFolder (srcPath: string, distPath: string): void {
+  'use strict'
+  fse.removeSync(`${distPath}/data`);
+  fse.copySync(`${srcPath}/data`, `${distPath}/data`, handleError(null, "data"));
 }
 
 

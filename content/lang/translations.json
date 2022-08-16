@@ -1,0 +1,26 @@
+{
+  "en": {
+    "translation": {
+      "contact": {
+        "title": "Contact page",
+        "full_name": "Full name",
+        "email": "Your email",
+        "message": "Your message",
+        "message_placeholder": "Your message...",
+        "send": "Send message"
+      }
+    }
+  },
+  "hu": {
+    "translation": {
+      "contact": {
+        "title": "Kapcsolatfelvétel",
+        "full_name": "Teljes név",
+        "email": "Az e-mail címed",
+        "message": "Az üzeneted",
+        "message_placeholder": "Az üzeneted...",
+        "send": "Üzenet elküldése"
+      }
+    }
+  }
+}

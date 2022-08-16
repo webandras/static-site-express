@@ -21,8 +21,58 @@ collections:
     create: true # Allow users to create new documents in this collection
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Date", name: "date", widget: "date", format: "YYYY-MM-DD"}
-      - {label: "Excerpt", name: "excerpt", widget: "text"}
-      - {label: "Cover image", name: "coverImage", widget: "image"}
-      - {label: "Content", name: "body", widget: "markdown"}
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "date", format: "YYYY-MM-DD" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Cover image", name: "coverImage", widget: "image" }
+      - { label: "Content", name: "body", widget: "markdown" }
+  - name: "data"
+    label: "Data"
+    description: Site configurations in YAML files
+    files:
+      - label: "Opening Hours"
+        name: "opening-hours"
+        file: "content/data/opening-hours.yml"
+        fields:
+          - label: Monday
+            name: monday
+            widget: list
+            fields:
+              - { label: Start, name: start, widget: string }
+              - { label: End, name: end, widget: string }
+          - label: Tuesday
+            name: tuesday
+            widget: list
+            fields:
+              - { label: Start, name: start, widget: string }
+              - { label: End, name: end, widget: string }
+          - label: Wednesday
+            name: wednesday
+            widget: list
+            fields:
+              - { label: Start, name: start, widget: string }
+              - { label: End, name: end, widget: string }
+          - label: Thursday
+            name: thursday
+            widget: list
+            fields:
+              - { label: Start, name: start, widget: string }
+              - { label: End, name: end, widget: string }
+          - label: Friday
+            name: friday
+            widget: list
+            fields:
+              - { label: Start, name: start, widget: string }
+              - { label: End, name: end, widget: string }
+          - label: Saturday
+            name: saturday
+            widget: list
+            fields:
+              - { label: Start, name: start, widget: string }
+              - { label: End, name: end, widget: string }
+          - label: Sunday
+            name: sunday
+            widget: list
+            fields:
+              - { label: Start, name: start, widget: string }
+              - { label: End, name: end, widget: string }
