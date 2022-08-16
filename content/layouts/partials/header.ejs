@@ -54,6 +54,13 @@
             <% } %>
           </li>
           <li>
+            <% if (pageName === 'open-hours') { %>
+            <a href="<%= site.url %>/open-hours.html" class="active-link" aria-current="page">Open hours</a>
+            <% } else { %>
+            <a href="<%= site.url %>/open-hours.html" class="inactive-link">Open hours</a>
+            <% } %>
+          </li>
+          <li>
             <% if (pageName === '404') { %>
             <a href="<%= site.url %>/404.html" class="active-link" aria-current="page">Page 404</a>
             <% } else { %>
