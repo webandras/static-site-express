@@ -34,9 +34,44 @@ collections:
         name: "opening-hours"
         file: "content/data/opening-hours.yml"
         fields:
-          - { label: "Weekday name", name: "weekday", widget: "string" }
-          - label: Opening hours
-            name: opening-hours
+          - label: Monday
+            name: monday
+            widget: list
+            fields:
+              - { label: Start, name: start, widget: string }
+              - { label: End, name: end, widget: string }
+          - label: Tuesday
+            name: tuesday
+            widget: list
+            fields:
+              - { label: Start, name: start, widget: string }
+              - { label: End, name: end, widget: string }
+          - label: Wednesday
+            name: wednesday
+            widget: list
+            fields:
+              - { label: Start, name: start, widget: string }
+              - { label: End, name: end, widget: string }
+          - label: Thursday
+            name: thursday
+            widget: list
+            fields:
+              - { label: Start, name: start, widget: string }
+              - { label: End, name: end, widget: string }
+          - label: Friday
+            name: friday
+            widget: list
+            fields:
+              - { label: Start, name: start, widget: string }
+              - { label: End, name: end, widget: string }
+          - label: Saturday
+            name: saturday
+            widget: list
+            fields:
+              - { label: Start, name: start, widget: string }
+              - { label: End, name: end, widget: string }
+          - label: Sunday
+            name: sunday
             widget: list
             fields:
               - { label: Start, name: start, widget: string }
