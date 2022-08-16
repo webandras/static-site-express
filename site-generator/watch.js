@@ -1,10 +1,10 @@
 // @flow
-const chokidar = require('chokidar')
-const log = require('./utils/logger')
-const buildSite = require('./core/generator')
+const chokidar = require("chokidar");
+const log = require("./utils/logger");
+const buildSite = require("./core/generator");
 
 // Initially build site from source to destination
-buildSite()
+buildSite();
 
 // Initialize watcher
 chokidar

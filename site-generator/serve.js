@@ -1,27 +1,27 @@
 // @flow
 (function () {
-  'use strict'
-  require('dotenv').config()
-  const express = require('express')
-  const path = require('path')
-  const favicon = require('serve-favicon')
-  const fs = require('fs-extra')
-  
-  const port = process.env.PORT || 4000
-  const nodeEnvironment = process.env.NODE_ENV || 'development';
+  "use strict";
+  require("dotenv").config();
+  const express = require("express");
+  const path = require("path");
+  const favicon = require("serve-favicon");
+  const fs = require("fs-extra");
+
+  const port = process.env.PORT || 4000;
+  const nodeEnvironment = process.env.NODE_ENV || "development";
 
   if (port === undefined) {
-    throw new Error(`Argument missing: port number not supplied`)
+    throw new Error(`Argument missing: port number not supplied`);
   }
 
   // create express server
-  const app = express()
+  const app = express();
 
-  if (nodeEnvironment === 'production') {
+  if (nodeEnvironment === "production") {
     // Set Security Headers.
-    const helmet = require('helmet')
+    const helmet = require("helmet");
 
-    app.use(helmet())
+    app.use(helmet());
 
     // Content Security Policy.
     //const csp = require('helmet-csp')
@@ -62,21 +62,21 @@
 
   // Middlewares.
   // GET favicon.ico
-  app.use('/', favicon(path.join('public', 'favicon.ico')))
+  app.use("/", favicon(path.join("public", "favicon.ico")));
 
   // to serve the static files from the /public folder
-  app.use('/', express.static(path.join('public')))
+  app.use("/", express.static(path.join("public")));
 
-  app.get('*', (req, res) => {
-    res.writeHead(200, { 'Content-Type': 'text/html' })
-    fs.readFile(path.join('public', '404.html'), { encoding: 'utf8' }, (err, data) => {
-      if (err) throw err
-      res.end(data)
-    })
-  })
+  app.get("*", (req, res) => {
+    res.writeHead(200, { "Content-Type": "text/html" });
+    fs.readFile(path.join("public", "404.html"), { encoding: "utf8" }, (err, data) => {
+      if (err) throw err;
+      res.end(data);
+    });
+  });
 
   // start the server
   app.listen(port, () => {
-    console.log(`Server is listening on localhost:${port}...`)
-  })
-})()
+    console.log(`Server is listening on localhost:${port}...`);
+  });
+})();

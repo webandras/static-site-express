@@ -1,40 +1,40 @@
 // @flow
 require("dotenv").config();
 module.exports = function () {
-  'use strict'
+  "use strict";
 
   /* =========================================================================
    * INITIALIZATIONS
    * =========================================================================
    */
   // store start time
-  const startTime = process.hrtime()
+  const startTime = process.hrtime();
 
   // Require all modules, wrap it into a single object
-  const $ = require('./modules')
+  const $ = require("./modules");
 
   // If any error occurs
   let hasError: boolean = false;
 
   // logger funtion on command line with styling
-  $.log.info('Building site...')
+  $.log.info("Building site...");
   // site configuration properties
-  const config = require('../../config/site.config')
+  const config = require("../../config/site.config");
 
-  const openingHours = (require("../../content/data/opening-hours"));
+  const openingHours = require("../../content/data/opening-hours");
 
   // source directory for website content
-  const srcPath: string = './content'
+  const srcPath: string = "./content";
   // destination folder to where the static site will be generated
-  const distPath: string = './public'
+  const distPath: string = "./public";
   // Store the paths to the blogposts for the links in the index page
-  const postsDataForIndexPage: any = []
+  const postsDataForIndexPage: any = [];
   // Store posts data for the archive
-  const blogArchive: any = []
+  const blogArchive: any = [];
   let searchIndexData: any = [];
 
   // function that renders ejs layouts to html
-  const ejsRender = require('ejs').render
+  const ejsRender = require("ejs").render;
 
   /* =========================================================================
    * MIDDLEWARES
@@ -42,32 +42,32 @@ module.exports = function () {
    * =========================================================================
    */
   // there are more extensions available of markdown-it, add more here and in `modules.js`
-  $.md.use($.markdownItTable)
-  $.md.use($.markdownItSup)
-  $.md.use($.markdownItSub)
-  $.md.use($.markdownItAttrs)
+  $.md.use($.markdownItTable);
+  $.md.use($.markdownItSup);
+  $.md.use($.markdownItSub);
+  $.md.use($.markdownItAttrs);
 
   $.md.use($.implicitFigures, {
     dataType: false, // <figure data-type="image">, default: false
     figcaption: true, // <figcaption>alternative text</figcaption>, default: false
     tabindex: false, // <figure tabindex="1+n">..., default: false
-    link: false // <a href="img.png"><img src="img.png"></a>, default: false
-  })
+    link: false, // <a href="img.png"><img src="img.png"></a>, default: false
+  });
 
   $.md.use($.markdownItVideo, {
-    youtube: { width: 560, height: 315 }
-  })
+    youtube: { width: 560, height: 315 },
+  });
 
   $.md.use($.markdownItPodcast, {
-    url: '',
+    url: "",
     height: 240,
     auto_play: false,
     hide_related: true,
     show_comments: true,
     show_user: true,
     show_reposts: false,
-    visual: true
-  })
+    visual: true,
+  });
 
   /* =========================================================================
    * ALGOLIA SEARCH - Generate search index if enabled
@@ -79,22 +79,21 @@ module.exports = function () {
     const index = client.initIndex(process.env.ALGOLIA_INDEX);
   }
 
-
   /* =========================================================================
-   * COPY FILES TO DESTINATION 
+   * COPY FILES TO DESTINATION
    * clear destination folder first, it needs to be synchronous
    * =========================================================================
    */
-  $.fse.emptyDirSync(distPath)
+  $.fse.emptyDirSync(distPath);
 
   // copy assets folder (contains images, scripts and css) and favicon folder to destination
-  $.ssg.copyAssetsFaviconFolders(srcPath, distPath)
+  $.ssg.copyAssetsFaviconFolders(srcPath, distPath);
 
   // copy lang folder to destination
-  $.ssg.copyLangFolder(srcPath, distPath)
+  $.ssg.copyLangFolder(srcPath, distPath);
 
-    // copy data folder to destination
-  $.ssg.copyDataFolder(srcPath, distPath)
+  // copy data folder to destination
+  $.ssg.copyDataFolder(srcPath, distPath);
 
   // copy these files to the root of /public folder
   // extend the list with new files here
@@ -102,19 +101,18 @@ module.exports = function () {
 
   try {
     filesToCopy.forEach((file) => {
-      $.ssg.copyRootFile(file, srcPath, distPath)
-    })
+      $.ssg.copyRootFile(file, srcPath, distPath);
+    });
   } catch (err) {
-    $.log.error(err)
+    $.log.error(err);
     hasError = true;
   }
 
   // copy admin folder to the root of /public folder
-  $.ssg.copyAdminFolder(srcPath, distPath)
+  $.ssg.copyAdminFolder(srcPath, distPath);
 
-  
   /* =========================================================================
-   * BUILD THE BLOGPOSTS 
+   * BUILD THE BLOGPOSTS
    * =========================================================================
    */
   const files = $.glob.sync("**/*.@(ejs|md)", {
@@ -126,29 +124,29 @@ module.exports = function () {
   // (default here: the documentation page)
   try {
     files.forEach((file) => {
-      const fileData = $.path.parse(file)
+      const fileData = $.path.parse(file);
 
       // generate canonical url for the post
-      const canonicalUrl = $.ssg.generateCanonicalURL(fileData, config)
+      const canonicalUrl = $.ssg.generateCanonicalURL(fileData, config);
 
       // generate postid for the post (needed for disqus)
-      const postId = $.ssg.generatePostId(fileData)
+      const postId = $.ssg.generatePostId(fileData);
 
       // make output directories for the posts
-      const destPath = $.path.join(distPath, fileData.dir)
-      $.fse.mkdirsSync(destPath)
+      const destPath = $.path.join(distPath, fileData.dir);
+      $.fse.mkdirsSync(destPath);
 
       // file path
-      const pathToFile = `${srcPath}/posts/${file}`
+      const pathToFile = `${srcPath}/posts/${file}`;
 
       // read data from file and then render post
-      const postData = $.ssg.getPostDataFromMarkdown(pathToFile)
+      const postData = $.ssg.getPostDataFromMarkdown(pathToFile);
 
       // change date format
-      const dateFormatted = $.ssg.convertDateFormat(postData, pathToFile, config.site.monthNames, config.site.lang)
+      const dateFormatted = $.ssg.convertDateFormat(postData, pathToFile, config.site.monthNames, config.site.lang);
 
       // convert md to HTML
-      const postContents = $.md.render(postData.body)
+      const postContents = $.md.render(postData.body);
 
       const templateConfig = Object.assign({}, config, {
         title: postData.attributes.title,
@@ -234,17 +232,16 @@ module.exports = function () {
       }
 
       // save postdata for the index page
-      $.ssg.savePostDataForIndexPage(fileData, dateFormatted, postData, postsDataForIndexPage)
+      $.ssg.savePostDataForIndexPage(fileData, dateFormatted, postData, postsDataForIndexPage);
 
       // read layout data from file and then render layout with post contents
-      const layoutContent = ejsRender(
-        $.fse.readFileSync(`${srcPath}/layouts/blogpost.ejs`, 'utf-8'),
-        templateConfig,
-        { filename: `${srcPath}/layouts/blogpost.ejs`, async: false }
-      )
+      const layoutContent = ejsRender($.fse.readFileSync(`${srcPath}/layouts/blogpost.ejs`, "utf-8"), templateConfig, {
+        filename: `${srcPath}/layouts/blogpost.ejs`,
+        async: false,
+      });
 
       // save the rendered blogposts to destination folder
-      $.ssg.saveBlogpostsHTML(fileData, destPath, layoutContent)
+      $.ssg.saveBlogpostsHTML(fileData, destPath, layoutContent);
 
       // Test
       // console.log(JSON.stringify(searchIndexData));
@@ -258,8 +255,8 @@ module.exports = function () {
       }
     });
   } catch (err) {
-    $.log.error(err)
-    $.log.info('Build posts failed...')
+    $.log.error(err);
+    $.log.info("Build posts failed...");
     hasError = true;
   }
 
@@ -268,24 +265,23 @@ module.exports = function () {
    * get the postsData for the archive on the index page grouped by year
    * =========================================================================
    */
-  $.ssg.getDataForArchive(postsDataForIndexPage, config, blogArchive)
-
+  $.ssg.getDataForArchive(postsDataForIndexPage, config, blogArchive);
 
   /* =========================================================================
-   * BUILD THE PAGES 
+   * BUILD THE PAGES
    * =========================================================================
    */
-  const pages = $.glob.sync('**/*.ejs', {
-    cwd: `${srcPath}/pages`
-  })
+  const pages = $.glob.sync("**/*.ejs", {
+    cwd: `${srcPath}/pages`,
+  });
 
   try {
     pages.forEach((file) => {
-      const fileData = $.path.parse(file)
-      const destPath = $.path.join(distPath, fileData.dir)
+      const fileData = $.path.parse(file);
+      const destPath = $.path.join(distPath, fileData.dir);
 
       // make directory
-      $.fse.mkdirsSync(destPath)
+      $.fse.mkdirsSync(destPath);
 
       // read data from file and then render page
       const pageContents = ejsRender(
@@ -296,8 +292,8 @@ module.exports = function () {
         })
       );
 
-      const name = fileData.base
-      let layoutContent
+      const name = fileData.base;
+      let layoutContent;
 
       // read layout data from file and then render layout with page contents
       switch (name) {
@@ -337,7 +333,7 @@ module.exports = function () {
             }
           );
           break;
-        
+
         case "open-hours.ejs":
           layoutContent = ejsRender(
             $.fse.readFileSync(`${srcPath}/layouts/open-hours.ejs`, "utf-8"),
@@ -417,21 +413,21 @@ module.exports = function () {
           break;
       }
       // save the html file
-      $.fse.writeFileSync(`${destPath}/${fileData.name}.html`, layoutContent)
-    })
+      $.fse.writeFileSync(`${destPath}/${fileData.name}.html`, layoutContent);
+    });
   } catch (err) {
-    $.log.error(err)
-    $.log.error('Build pages failed...')
+    $.log.error(err);
+    $.log.error("Build pages failed...");
     hasError = true;
   }
 
   // display build time
-  const timeDiff = process.hrtime(startTime)
-  const duration = timeDiff[0] * 1000 + timeDiff[1] / 1e6
+  const timeDiff = process.hrtime(startTime);
+  const duration = timeDiff[0] * 1000 + timeDiff[1] / 1e6;
 
   if (!hasError) {
-    $.log.success(`Site built successfully in ${duration}ms`)
+    $.log.success(`Site built successfully in ${duration}ms`);
   } else {
     $.log.error(`Site built failed in ${duration}ms`);
   }
-}
+};

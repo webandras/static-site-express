@@ -1,5 +1,5 @@
 // @flow
-const buildSite = require('./core/generator')
+const buildSite = require("./core/generator");
 
 // Build site from source to destination
-buildSite()
+buildSite();
