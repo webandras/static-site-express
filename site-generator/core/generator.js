@@ -21,6 +21,9 @@ module.exports = function () {
   // site configuration properties
   const config = require('../../config/site.config')
 
+  const openingHours = (require("../../content/data/opening-hours"));
+  console.log(openingHours);
+
   // source directory for website content
   const srcPath: string = './content'
   // destination folder to where the static site will be generated
@@ -306,7 +309,7 @@ module.exports = function () {
               title: config.site.title,
               breadcrumbTitle: config.site.title,
               body: pageContents,
-              canonicalUrl: config.site.seoUrl + '/',
+              canonicalUrl: config.site.seoUrl + "/",
               description: config.site.description,
               currentYear: config.site.currentYear,
               isPost: false,
@@ -325,13 +328,32 @@ module.exports = function () {
               title: "Contact Me | " + config.site.title,
               breadcrumbTitle: "Contact Me",
               body: pageContents,
-              canonicalUrl: config.site.seoUrl + '/' + fileData.name,
+              canonicalUrl: config.site.seoUrl + "/" + fileData.name,
               description: config.site.quote,
               isPost: false,
               pageName: "contact",
             }),
             {
               filename: `${srcPath}/layouts/default.ejs`,
+            }
+          );
+          break;
+        
+        case "open-hours.ejs":
+          layoutContent = ejsRender(
+            $.fse.readFileSync(`${srcPath}/layouts/open-hours.ejs`, "utf-8"),
+            Object.assign({}, config, {
+              title: "Open hours | " + config.site.title,
+              breadcrumbTitle: "Open hours",
+              body: pageContents,
+              canonicalUrl: config.site.seoUrl + "/" + fileData.name,
+              description: config.site.quote,
+              isPost: false,
+              pageName: "open-hours",
+              openingHours: openingHours,
+            }),
+            {
+              filename: `${srcPath}/layouts/open-hours.ejs`,
             }
           );
           break;
