@@ -1,3 +1,9 @@
 monday:
   - start: "1000"
     end: "1700"
+tuesday:
+  - start: "1000"
+    end: "1700"
+wednesday:
+  - start: "1000"
+    end: "1900"
