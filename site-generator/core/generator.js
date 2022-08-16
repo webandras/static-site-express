@@ -318,7 +318,7 @@ module.exports = function () {
 
         case "contact.ejs":
           layoutContent = ejsRender(
-            $.fse.readFileSync(`${srcPath}/layouts/default.ejs`, "utf-8"),
+            $.fse.readFileSync(`${srcPath}/layouts/default-breadcrumb-left.ejs`, "utf-8"),
             Object.assign({}, config, {
               title: "Contact Me | " + config.site.title,
               breadcrumbTitle: "Contact Me",
@@ -329,7 +329,7 @@ module.exports = function () {
               pageName: "contact",
             }),
             {
-              filename: `${srcPath}/layouts/default.ejs`,
+              filename: `${srcPath}/layouts/default-breadcrumb-left.ejs`,
             }
           );
           break;
