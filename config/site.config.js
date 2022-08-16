@@ -24,6 +24,9 @@ module.exports = {
     // Using Algolia Search requires configuration
     // For local development set it to false (no need to send in the postdata for the search index)
     enableSearch: true,
+    // post request with updated posts to Algolia search index
+    // generally, you need to do it if you add new posts to the website
+    refreshSearchIndex: false,
 
     // Change these to the language you want to use
     monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],

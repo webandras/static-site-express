@@ -22,7 +22,6 @@ module.exports = function () {
   const config = require('../../config/site.config')
 
   const openingHours = (require("../../content/data/opening-hours"));
-  console.log(openingHours);
 
   // source directory for website content
   const srcPath: string = './content'
@@ -74,7 +73,7 @@ module.exports = function () {
    * ALGOLIA SEARCH - Generate search index if enabled
    * =========================================================================
    */
-  if (config.site.enableSearch) {
+  if (config.site.enableSearch && config.site.refreshSearchIndex) {
     const algoliasearch = require("algoliasearch");
     const client = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_ADMIN_KEY);
     const index = client.initIndex(process.env.ALGOLIA_INDEX);
@@ -168,7 +167,7 @@ module.exports = function () {
         isPost: true,
       });
 
-      if (config.site.enableSearch) {
+      if (config.site.enableSearch && config.site.refreshSearchIndex) {
         searchIndexData.push({
           /**
            * The object's unique identifier
@@ -251,7 +250,7 @@ module.exports = function () {
       // console.log(JSON.stringify(searchIndexData));
       // $.fse.writeFileSync(`${srcPath}/algoliaindex.json`, JSON.stringify(searchIndexData));
 
-      if (!config.site.enableSearch) {
+      if (config.site.enableSearch && config.site.refreshSearchIndex) {
         // Update or create records of the Algolia Search index
         index.partialUpdateObjects(searchIndexData, {
           createIfNotExists: true,
