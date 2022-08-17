@@ -6,7 +6,7 @@ excerpt: >-
 coverImage: node.jpg
 ---
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/bb6cf5c7-4ccc-4684-8a82-30e64ac00baa/deploy-status)](https://app.netlify.com/sites/static-site-express/deploys)
+![Netlify Status](https://api.netlify.com/api/v1/badges/bb6cf5c7-4ccc-4684-8a82-30e64ac00baa/deploy-status)
 
 static-site-express is a simple Node.js based static-site generator that uses EJS and Markdown. Deploy your static site to Netlify or any platform to your liking. Suited for landing pages, portfolio, blogs, documentation, hobby projects.
 
@@ -14,23 +14,23 @@ static-site-express is a simple Node.js based static-site generator that uses EJ
 
 ### Install static-site-express
 
-1. Fork and clone this repository to get a starter template that uses Flowbite, an open-sorce UI library of components created with TailwindCSS. Use the `master` branch.
+1. Click on "Use this template" button to get a exact copy of the repo / site builder that uses Flowbite, an open-sorce UI library of components created with TailwindCSS. Then use the `master` branch, which is the default. Or use the GitHub CLI:
 
 ```raw
-git clone https://github.com/SalsaBoy990/static-site-express project
+gh repo create your-username/new-repo  -p SalsaBoy990/static-site-express
 ```
 
 2. To have a basic e-commerce website Flowbite/TailWind starter incorporating the [Snipcart](https://snipcart.com/) ecommerce platform into static-site-express:
 
 - Checkout branch `snipcart`
 - Register at [Snipcart](https://snipcart.com/)
-- Copy your Snipcart public test key at `src/layouts/partials/scripts.ejs` to the `publicApiKey` property value on line 6:
+- Copy your Snipcart public test key at `src/layouts/partials/scripts.ejs` to the `publicApiKey` property value:
 
 ```html
 <div id="snipcart" data-config-modal-style="side" data-api-key="YOUR_PUBLIC_TEST_API_KEY" hidden></div>
 ```
 
-_Note:_ Only hardcode the test api key for development, not for production! And never commit it to version control, otherwise you need to invalidate the previous keys and create new ones. This for testing locally. For production, paste your key in as env variable.
+_Note:_ This api key is public, and can be submitted to version control. There is also a private key, but that should never be committed! You don't even need that for the project.
 
 [Snipcart](https://snipcart.com/) is more than a simple cart: enjoy a full back-office management dashboard to track abandoned carts, sales, orders, customers and more.
 
@@ -39,11 +39,15 @@ _Note:_ Only hardcode the test api key for development, not for production! And 
 - etc.
 
 _Note:_ Netlify will build your site from the default branch (usually the `master`) by default.
-You can use a different branch other than the default one, but in that case Netlify CMS will not work properly. For example, the images uploaded through the CMS will be pushed into the default branch, not the other you set up in Netlify!)
+You can use a different branch other than the default one, but **in that case Netlify CMS will not work properly**. For example, the images uploaded through the CMS will be pushed into the default branch, not the other you set up in Netlify!)
 
 _Test website:_ Use the 'Deploy to Netlify' button at the [project's website](https://static-site-express.netlify.com/) to have a test website.
 
 ### Build your site locally
+
+First, create a `.env` file (see `.env.example`), and set the variables.
+
+If you want to use Algolia Search, you need to [register](https://www.algolia.com/doc/guides/getting-started/what-is-algolia/) and generate your API credentials. If you don't want to use Algolia, set `enableSearch` to false in `config/site.config.js`. Check out all the settings in the `site.config.js`. There are comments there with additional information.
 
 Use npm scripts defined in package.json
 
@@ -62,16 +66,24 @@ bin/watch
 This bash script will call: `npm run watch-chokidar`.
 Alternatively, you can also use `npm run watch-nodemon`.
 
-_Issue 1: if you don't see the website updated after file changes, you have to restart the script. Sometimes it happens. TODO_
-The build process is intentionally delayed with setTimeout, to have enough time the css to be compiled after changes. Unfortunately, there is an interaction with the css builder script (which is slower). With the delay, crashes are less frequent
+Also call the `bin/css` and `bin/js` watcher scripts to make sure the bundles recreated after file changes.
 
-3. Serve website on `localhost:4000`:
+_Note:_ The build process is intentionally delayed with setTimeout, to have enough time the css to be compiled after changes (see watch-css script). So it is reacting slower to changes, and the css watch script is also a bit slow. Crashes are rare now.
+
+3. Serve website on `localhost:4000` (or the port you set in .env, default port is 4000):
 
 ```raw
 bin/serve
 ```
 
-_Issue 2: very rarerly, the Express dev server also crashes if the build script fails. TODO_
+_Note:_ the Express dev server crashes rarely - not finding some file generated by the builder. The files and folders in the public folder are deleted and re-copied: for a brief moment it is possible not to have a .html file available to be able to be served by the Express server. However, the site-builder generates everything in a few hundreds of milliseconds (generally less than 300 ms). So this error happens rarely.
+
+Also call the `bin/css` and `bin/js` watcher scripts to make sure the bundles recreated after file changes.
+
+If you don't see your changes:
+
+- Make sure you rebuilded the site-generator code after the changes you have made, and restart bin/watch
+- Try to restart bin/watch, bin/css, and bin/js
 
 4. Create the css bundle with PostCSS (in watch mode):
 
@@ -84,6 +96,8 @@ bin/css
 ```raw
 bin/js
 ```
+
+Make sure to build the final bundle in production mode for smaller size.
 
 Check out the `bin` folder and the `package.json` file to know more about the available scripts.
 
@@ -100,7 +114,7 @@ The JavaScript source is in the `site-generator/` folder. These files also conta
 
 - Post properties can be extended **starting at line 136**, in the `templateConfig` object literal (`generator.js`)
 
-After making changes, **the source must be transpiled** by Babel into ES5 into the `app/` folder with:
+After making changes, **the source must be transpiled** by Babel to ES5 into the `app/` folder with:
 
 - `bin/generate` or `npm run generator`
 
@@ -142,11 +156,11 @@ Docker is using the kernel and the resources of the host (obviously), and are fo
 
 VMs are used for full isolation including resources (for example, to subdivide the server resources for shared hosting: each hosting having a computing power of X CPUs of X type, have X GB of memory and X GB storage space), and have a separate OS installed along with the host OS, so they do not share the kernel.
 
-For Windows, you need to install Windows Subsystem for Windows 2 (WSL2) to have a distro based on Linux kernel installed. Although, there are container base images available for Windows as well. So, Docker can even use the Windows kernel, and thus a Linux kernel is not necessarly needed to be installed.
+For Windows, you need to install Windows Subsystem for Windows 2 (WSL2) to have a distro based on Linux kernel installed. Although, there are container base images available for Windows as well. So, Docker can even use the Windows kernel (for specific images).
 
-Lots of images are pre-compiled for us (like the `netlify/build` image) and stored in the DockerHub registry. You don't need to build them from Dockerfile, you just download them from the register.
+Lots of images are pre-compiled for us (like the `netlify/build` image) and stored in the Docker (not DockerHub) registry (DockerHub is just an UI). You don't need to build them from Dockerfile, you just download them from the register.
 
-If you know the basics of Docker, you can understand some things about Netlify as well.
+If you know some Docker basics, you can understand some things about Netlify as well.
 Check these shell scripts out:
 
 When the Docker fires up, this script runs:
@@ -158,8 +172,6 @@ https://github.com/netlify/build-image/blob/focal/Dockerfile
 In the optional `_headers` file you can specify the HTTP headers and set Content Security Policy (CSP) rules for the Netlify server. Currently, CSP rules are commented out. You can also specify these in `netlify.toml`.
 
 The `_redirects` file is currently empty. When you have a custom domain, you can make a redirect from _.netlify.com_ to your custom domain.
-
-`sitemap.xml` is empty by default. static-site-express currently does not come with a feature to generate an XML sitemap.
 
 `robots.txt` default settings:
 
@@ -177,19 +189,132 @@ User-agent: *
 Allow: /
 ```
 
-For [Google Search Console](https://search.google.com/search-console/about) verification, you should have an HTML file from Google included in the root of your Netlify publish folder (in our case, `public`). The build script copies this file from `./content` to `./public`. **Change the filename in the array starting at line 78** in `./site-generator/core/generator.js` and rebuild the source into the `lib/` folder!
+For [Google Search Console](https://search.google.com/search-console/about) verification, you should have an HTML file from Google included in the root of your Netlify publish folder (in our case, `public`). The build script copies this file from `./content` to `./public`.
+
+**Change the filename in the array starting at line 100** in `./site-generator/core/generator.js` and rebuild the source into the `app/` folder with `bin/generate`!
 
 ### Netlify Forms
 
-Netlify automatically discovers the contact form via custom attributes added to the form.
+Netlify automatically discovers the contact form via custom netlify attributes added to the form. A bot field is present in the form to protect agains spam bots. Netlify has first-class spam filter
+
+[Netlify Forms Docs](https://docs.netlify.com/forms/setup/)
 
 ### Netlify CMS
 
-Set `display_url` to your custom domain in `content/admin/config.yml`
+Optional: set `display_url` to your custom domain in `content/admin/config.yml`
 
 [Netlify CMS Docs](https://github.com/netlify/netlify-cms)
 
+### Algolia Search
+
+These are the key parts in the code for Algolia:
+
+```JavaScript
+const algoliasearch = require("algoliasearch");
+const client = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_ADMIN_KEY);
+const index = client.initIndex(process.env.ALGOLIA_INDEX);
+```
+
+Here, we use the AlgoliaSearch client library to send request to update and/or create records for the posts:
+
+```JavaScript
+index.partialUpdateObjects(searchIndexData, {
+  createIfNotExists: true,
+});
+```
+
+This is currently the structure of the search index (can be changed):
+
+```JavaScript
+searchIndexData.push({
+  /**
+   * The object's unique identifier
+   */
+  objectID: postData.attributes.date,
+
+  /**
+   * The URL where the Algolia Crawler found the record
+   */
+  url: canonicalUrl,
+
+  /**
+   * The lang of the page
+   * - html[attr=lang]
+   */
+  lang: config.site.lang,
+
+  /**
+   * The title of the page
+   * - og:title
+   * - head > title
+   */
+  title: postData.attributes.title,
+
+  /**
+   * The description of the page
+   * - meta[name=description]
+   * - meta[property="og:description"]
+   */
+  description: postData.attributes.excerpt,
+
+  /**
+   * The image of the page
+   * - meta[property="og:image"]
+   */
+  image: config.site.seoUrl + "/assets/images/uploads/" + postData.attributes.coverImage,
+
+  /**
+   * The authors of the page
+   * - `author` field of JSON-LD Article object: https://schema.org/Article
+   * - meta[property="article:author"]
+   */
+  authors: [config.site.author],
+
+  /**
+   * The publish date of the page
+   * - `datePublished` field of JSON-LD Article object: https://schema.org/Article
+   * - meta[property="article:published_time"]
+   */
+  datePublished: postData.attributes.date,
+
+  /**
+   * The category of the page
+   * - meta[property="article:section"
+   * - meta[property="product:category"]
+   */
+  category: postData.attributes.topic || "",
+
+  /**
+   * The content of your page
+   */
+  content: postContents,
+});
+```
+
+_Note:_ Currently the `objectID` is the post publish date (like "2022-08-17"). Maybe better to change it to the whole slug to be completely unique. You can't have two posts at the same day now.
+
+### Internationalisation (i18n)
+
+Provided by **i18next** package. See in `assets/js/main.js`. Remove this feature if you don't need it. Some texts (like those coming from config) cannot be made translatable. Probably not a good solution. The code is left there mainly for reference.
+
+The translations come from `content/lang/translations.json`.
+
+[i18next Docs](https://www.i18next.com/)
+
+### Open Hours library for displaying opening hours.
+
+Credits: © Michael Lee.
+[GitHub](https://github.com/michaellee/open-hours)
+[His website/blog](https://michaelsoolee.com/)
+
+When I started my journey as web developer, I started using [Jekyll](http://jekyllrb.com/) for my websites after I read some articles from Michael Lee about it. He has a great starter for Jekyll, the [Jekyll ⍺](https://github.com/michaellee/jekyll-alpha).
+
+The data comes from `content/data/opening-hours.yml`. It can be edited from Netlify CMS as well.
+
 ## Changelog
+
+TODO: minor version 2.1.0
+TODO: patch release 2.0.1
 
 ### v2.0.0 (14 August 2022)
 

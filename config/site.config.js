@@ -1,3 +1,5 @@
+// Make sure to commit it as "production"
+// For local development rewrite it to localhost
 const mode = "production";
 
 // Add your global site properties here
@@ -17,6 +19,7 @@ module.exports = {
     // CONFIGURATION
 
     // This url is pasted before all of your "/links" in the website
+    // Currently, all of your paths are absolute for production
     url: mode === "development" ? "" : "https://static-site-express.netlify.app", // (without trailing "/" at the end!)
 
     // Used it for creating canonical urls. The urls are generated for this domain that are sent to Algoliasearch for indexing

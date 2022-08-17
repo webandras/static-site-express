@@ -274,13 +274,13 @@ Some text to show that the reference links can follow later.
 
 One example add underline to a link (by default, Bootstrap 3 does not use underline for the links - I might change this behaviour though):
 
-`[highlight.js](https://highlightjs.org/){.underline}`
+`[link](https://highlightjs.org/){.underline}`
 
-And the result is: [highlight.js](https://highlightjs.org/){.underline}
+And the result is: [link](https://highlightjs.org/){.underline}
 
 It is very important that you should not use whitespace, otherwise it will not work!
 
-Add an id to an element: `Special syntax{id=special}`. It converts to `<h2 id="special">Special syntax</h2>`.
+Add an id to an element: `## Special syntax{id=special}`. It converts to `<h2 id="special">Special syntax</h2>`.
 
 ### 2. Table with caption{id=tables}
 
@@ -315,11 +315,10 @@ Example:
 
 ![Figure 1. Interest in static site generators over time (Google Trends)](/assets/images/uploads/trend.png)
 
-### 4. Code syntax highlighting{id=highlight}
+### 4. Code {id=highlight}
 
-This SSG uses the `highlight.js` for syntax highlighting. Everything is automatic, so you only need to write the code snippets like this:
 
-` ```` javascript`
+` ```raw`
 
 `var a = 20`
 
@@ -331,19 +330,10 @@ This SSG uses the `highlight.js` for syntax highlighting. Everything is automati
 
 `foo(a)`
 
-` ```` `
+` ``` `
 
-...and the result is:
+To have proper syntax highlighting, you have to integrate the [highlight.js](https://highlightjs.org/) library.
 
-```javascript
-var a = 20;
-function foo(a) {
-  console.log(a);
-}
-foo(a);
-```
-
-The prebuilt version of [highlight.js](https://highlightjs.org/){.underline} is included to this site which supports 23 commonly used languages. However, you can add support for 179 languages and 79 styles if you need.
 
 ## Source of the general syntax part
 
