@@ -1,5 +1,6 @@
 app/
 content/assets/js/main.js.LICENSE.txt
+content/algoliaindex.json
 node_modules/
 package-lock.json
 public/
