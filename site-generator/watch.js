@@ -8,7 +8,10 @@ buildSite();
 
 // Initialize watcher
 chokidar
-  .watch(["./content/layouts", "./content/pages", "./content/posts", "./content/assets", "./content/data"], { interval: 1000, persistent: true })
+  .watch(["./content/layouts", "./content/pages", "./content/posts", "./content/assets", "./content/data", "./config/site.config.js"], {
+    interval: 1000,
+    persistent: true,
+  })
   .on("change", () => {
     setTimeout(buildSite, 3000);
   })

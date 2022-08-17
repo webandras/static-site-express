@@ -1,3 +1,5 @@
+const mode = "production";
+
 // Add your global site properties here
 module.exports = {
   site: {
@@ -9,16 +11,17 @@ module.exports = {
     author: "András Gulácsi",
     defaultImage: "/assets/images/static.jpg",
     github: "https://github.com/SalsaBoy990/static-site-express",
+    githubProfile: "https://github.com/SalsaBoy990",
     currentYear: new Date().getFullYear(),
 
     // CONFIGURATION
 
-    // for local development, leave it empty or use http://localhost:PORT (without trailing "/" at the end!)
     // This url is pasted before all of your "/links" in the website
-    url: "",
+    url: mode === "development" ? "" : "https://static-site-express.netlify.app", // (without trailing "/" at the end!)
 
-    // Used it for creating canonical urls
-    seoUrl: "https://static-site-express.netlify.app",
+    // Used it for creating canonical urls. The urls are generated for this domain that are sent to Algoliasearch for indexing
+    // Should always be your LIVE domain, do not send in localhost links.
+    seoUrl: "https://static-site-express.netlify.app", // (without trailing "/" at the end!)
 
     // Using Algolia Search requires configuration
     // For local development set it to false (no need to send in the postdata for the search index)
