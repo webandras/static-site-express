@@ -1,8 +1,9 @@
-app/
+site-generator/
 content/assets/js/main.js.LICENSE.txt
 content/algoliaindex.json
 node_modules/
-package-lock.json
+# package-lock.json
 public/
 .env
+.idea/
 
