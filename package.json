@@ -29,8 +29,7 @@
     "netlify",
     "Tailwind CSS",
     "Flowbite UI library",
-    "PostCSS",
-    "Flow Static Type Checker for JavaScript"
+    "PostCSS"
   ],
   "author": "András Gulácsi",
   "license": "MIT",
