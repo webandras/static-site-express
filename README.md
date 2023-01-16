@@ -41,13 +41,15 @@ _Test website:_ Use the 'Deploy to Netlify' button at the [project's website](ht
 
 First, create a `.env` file (see `.env.example`), and set the variables.
 
-If you want to use Algolia Search, you need to [register](https://www.algolia.com/doc/guides/getting-started/what-is-algolia/) and generate your API credentials. If you don't want to use Algolia, set `enableSearch` to false in `config/site.config.js`. Check out all the settings in the `site.config.js`. There are comments there with additional information.
+If you want to use Algolia Search, you need to [register](https://www.algolia.com/doc/guides/getting-started/what-is-algolia/) and generate your API credentials. If you don't want to use Algolia, set `enableSearch` to false in `config/site.config.js`.
+
+Check out all the settings in the `site.config.js`. There are comments there with additional information.
 
 Use npm scripts defined in package.json
 
-Previously, I used [flow](https://flow.org/), a static type checker for JavaScript, to have type checking for the code, but I find it hardly useful.
+Previously, I used [flow](https://flow.org/), a static type checker for JavaScript, to have type checking for the code, but I found it hardly useful.
 It caught some wrong argument types, but that is all. Besides, a good IDE can catch those errors without tedious rebuilds all the time changes have been made.
-So building the app code into the `app` folder from `site-generator` folder, where the JS code with flow annotation resides, is not necessary any more.
+So, building the app code into the `app` folder from `site-generator` folder, where the JS code with flow annotation used to be, is not necessary any more.
 The `site-generator` folder was deleted.
 Babel and flow packages were removed too.
 This script was also deleted:
@@ -67,7 +69,7 @@ Alternatively, you can also use `npm run watch-nodemon`.
 
 Also call the `bin/css` and `bin/js` watcher scripts to make sure the bundles recreated after file changes.
 
-_TODO:_ The build process is intentionally delayed with setTimeout, to have enough time the css to be compiled after changes (see watch-css script). So it is reacting slower to changes, and the css watch script is also a bit slow. Crashes are rare now.
+_TODO:_ The build process is intentionally delayed with setTimeout, to have enough time the css to be compiled after changes (see watch-css script). So it is reacting slower to changes, and the css watch script is also a bit slow.
 
 2. Serve website on `localhost:4000` (or the port you set in .env, default port is 4000):
 
@@ -81,8 +83,8 @@ Also call the `bin/css` and `bin/js` watcher scripts to make sure the bundles re
 
 If you don't see your changes:
 
-- Make sure you rebuilt the site-generator code after the changes you have made, and restart bin/watch
-- Try to restart bin/watch, bin/css, and bin/js
+- After the app code changes you have made, restart `bin/watch`
+- Try to restart `bin/css`, and `bin/js`
 
 3. Create the css bundle with PostCSS (in watch mode):
 
@@ -105,8 +107,8 @@ Check out the `bin` folder and the `package.json` file to know more about the av
 The JavaScript source is in the `app/` folder. **Generally, you only need to modify the `core/generator.js` and the `core/methods.js` files.**
 
 - `methods.js` contains most of the methods for the generator.
-- In `generator.js`, you can modify the pages you want to generate in the switch statements starting from **line 209**. You also need to create a page (`.ejs`) in the `pages/` folder, and a template (in `layouts/`) to be used for that page (or use one of the pre-existing templates like `default.ejs`).
-- Post properties can be extended **starting at line 136**, in the `templateConfig` object literal (`generator.js`)
+- In `generator.js`, you can modify the pages you want to generate in the switch statements starting from **line 280**. You also need to create a page (`.ejs`) in the `pages/` folder, and a template (in `layouts/`) to be used for that page (or use one of the pre-existing templates like `default.ejs`).
+- Post properties can be extended **starting at line 142**, in the `templateConfig` object literal (`generator.js`)
 
 After the changes, restart build/watch scripts. This process in suboptimal, but currently this is the workflow.
 
@@ -157,14 +159,14 @@ Allow: /
 
 For [Google Search Console](https://search.google.com/search-console/about) verification, you should have an HTML file from Google included in the root of your Netlify publish folder (in our case, `public`). The build script copies this file from `./content` to `./public`.
 
-Change the filename in the `filesToCopy` array at line 100 in `./app/core/generator.js` and restart watch script!
+Add the name of the filename in the `filesToCopy` array at line 100 in `./app/core/generator.js` and restart watch script!
 
 Netlify builds your website with its buildbot. It starts a Docker container running the [Netlify build image](https://hub.docker.com/r/netlify/build/#!)
 
 
 #### For folks unfamiliar with Docker
 
-TL;DR: Netlify install a lot of packages (copies files over) to be able to run your favorite language/runtime/something to build your static website. And this is done in a Docker container. Read the overview section of Docker docs: https://docs.docker.com/get-started/
+TL;DR: Netlify install a lot of packages (copies files over) to be able to run your favorite tool to build your static website. And this is done in a Docker container. Read the overview section of Docker docs: https://docs.docker.com/get-started/
 
 A Docker container is basically a writable OverlayFS (FS = filesystem) layer created on top of the numerous read-only OverlayFS layers of the Docker image (files copied on top of each other: each layer is represents a command in the Dockerfile). Which is destroyed after the build has been completed (the data can be made permanent using volumes which are kept).
 
