@@ -351,6 +351,10 @@ function saveBlogpostsHTML(fileData, destPath, layoutContent) {
 function getDataForArchive(data, config, results) {
   "use strict";
 
+  if (data.length === 0) {
+    return null;
+  }
+
   let years = [];
   let start = parseInt(data[0].date.split("-")[0], 10);
   let current; // Get the year of the earliest post
