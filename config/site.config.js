@@ -37,7 +37,7 @@ module.exports = {
     monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 
     // Switch website to the dark mode
-    darkMode: false,
+    darkMode: true,
 
     // Link for the deploy button url
     netlifyDeployLink: "https://app.netlify.com/start/deploy?repository=https://github.com/SalsaBoy990/static-site-express",
