@@ -13,7 +13,7 @@ module.exports = function () {
   const $ = require("./modules"); // If any error occurs
 
 
-  let hasError = false; // logger funtion on command line with styling
+  let hasError = false; // logger function on command line with styling
 
   $.log.info("Building site..."); // site configuration properties
 
