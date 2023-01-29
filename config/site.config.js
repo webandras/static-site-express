@@ -1,5 +1,5 @@
 // Make sure to commit it as "production"
-// For local development rewrite it to localhost
+// For local development rewrite it to "development"
 const mode = "production";
 
 // Add your global site properties here
