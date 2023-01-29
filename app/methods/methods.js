@@ -207,7 +207,7 @@ function convertDateFormat(postData, pathToFile, months, lang = "en") {
 
   const month = dateParts[1];
 
-  if (lang === "hun") {
+  if (lang === "hu") {
     switch (month) {
       case "01":
         return dateParts[0] + ". " + months[0] + " " + dateParts[2] + ".";
