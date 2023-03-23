@@ -1,8 +1,9 @@
-"use strict"; // module used for extracting the YAML headers from md files
+"use strict";
 
-const fm = require("front-matter"); // file system module with extended functionality
+// module used for extracting the YAML headers from md files
+const fm = require("front-matter");
 
-
+// file system module with extended functionality
 const fse = require("fs-extra");
 
 module.exports = {
@@ -29,7 +30,9 @@ module.exports = {
   saveBlogpostsHTML: saveBlogpostsHTML,
   // get the postsData for the archive on the index page grouped by year
   getDataForArchive: getDataForArchive
-}; // -----------------------------------------------------------------------------------------
+};
+
+// -----------------------------------------------------------------------------------------
 // ------------------------- Functions Used for Site Generation ----------------------------
 // -----------------------------------------------------------------------------------------
 
@@ -41,16 +44,18 @@ module.exports = {
  *
  * @return void
  */
-
 function copyAssetsFaviconFolders(srcPath, distPath) {
   "use strict";
 
   fse.removeSync(`${distPath}/assets`);
   fse.copySync(`${srcPath}/assets`, `${distPath}/assets`, handleError(null, "assets"));
-  fse.removeSync(`${distPath}/favicon`); // copy favicon folder to the root of /public folder
+  fse.removeSync(`${distPath}/favicon`);
 
+  // copy favicon folder to the root of /public folder
   fse.copySync(`${srcPath}/favicon`, `${distPath}`, handleError(null, "favicon"));
 }
+
+
 /**
  * Copy lang folder to destination
  *
@@ -59,14 +64,14 @@ function copyAssetsFaviconFolders(srcPath, distPath) {
  *
  * @return void
  */
-
-
 function copyLangFolder(srcPath, distPath) {
   "use strict";
 
   fse.removeSync(`${distPath}/lang`);
   fse.copySync(`${srcPath}/lang`, `${distPath}/lang`, handleError(null, "lang"));
 }
+
+
 /**
  * Copy data folder to destination
  *
@@ -75,14 +80,14 @@ function copyLangFolder(srcPath, distPath) {
  *
  * @return void
  */
-
-
 function copyDataFolder(srcPath, distPath) {
   "use strict";
 
   fse.removeSync(`${distPath}/data`);
   fse.copySync(`${srcPath}/data`, `${distPath}/data`, handleError(null, "data"));
 }
+
+
 /**
  * Handle errors for copying folders
  *
@@ -91,14 +96,14 @@ function copyDataFolder(srcPath, distPath) {
  *
  * @return void
  */
-
-
 function handleError(err, name) {
   "use strict";
 
   if (err) throw err;
   console.log(`Successfully copied ${name} folder!`);
 }
+
+
 /**
  * copy admin folder (contains files for Netlify CMS) to the root of /public folder
  * @param srcPath: string
@@ -106,14 +111,14 @@ function handleError(err, name) {
  *
  * @return void
  */
-
-
 function copyAdminFolder(srcPath, distPath) {
   "use strict";
 
   fse.removeSync(`${distPath}/admin`);
   fse.copySync(`${srcPath}/admin`, `${distPath}/admin`, handleError(null, "admin"));
 }
+
+
 /**
  * Copy files from /website root to the root of /public folder
  *
@@ -123,14 +128,14 @@ function copyAdminFolder(srcPath, distPath) {
  *
  * @return void
  */
-
-
 function copyRootFile(filename, srcPath, distPath) {
   "use strict";
 
   fse.copySync(`${srcPath}/${filename}`, `${distPath}/${filename}`);
   console.log(`Successfully copied '${filename}' file!`);
 }
+
+
 /**
  * Generate canonical url for the post
  *
@@ -139,8 +144,6 @@ function copyRootFile(filename, srcPath, distPath) {
  *
  * @return string
  */
-
-
 function generateCanonicalURL(fileData, config) {
   "use strict";
 
@@ -149,6 +152,8 @@ function generateCanonicalURL(fileData, config) {
   const titlePart = fileData.name.split("-").slice(3).join("-");
   return config.site.seoUrl + "/" + (datePart.join("/") + "/" + titlePart);
 }
+
+
 /**
  * Generate postid for the post (needed for disqus)
  *
@@ -167,6 +172,8 @@ function generatePostId(fileData) {
   // postId
   return nameSplitted.join("");
 }
+
+
 /**
  * Read data from file and then render post
  *
@@ -174,8 +181,6 @@ function generatePostId(fileData) {
  *
  * @return string
  */
-
-
 function getPostDataFromMarkdown(pathToFile) {
   "use strict";
 
@@ -184,6 +189,8 @@ function getPostDataFromMarkdown(pathToFile) {
   // content
   return fm(markdownData);
 }
+
+
 /**
  * Change date format
  *
@@ -194,8 +201,6 @@ function getPostDataFromMarkdown(pathToFile) {
  *
  * @return string
  */
-
-
 function convertDateFormat(postData, pathToFile, months, lang = "en") {
   // additional checking needed!
   if (months.length !== 12) {
@@ -290,20 +295,24 @@ function convertDateFormat(postData, pathToFile, months, lang = "en") {
         throw new Error(`Invalid date format in ${pathToFile}`);
     }
   }
-} // save postdata for the index page
+}
 
-
+// save postdata for the index page
 function savePostDataForIndexPage(fileData, dateFormatted, postData, results) {
-  "use strict"; // split filename to extract year, month, day, and the title of the post
+  "use strict";
 
+  // split filename to extract year, month, day, and the title of the post
   const datePart = fileData.name.split("-");
   datePart.length = 3;
-  const titlePart = fileData.name.split("-").slice(3).join("-"); // year/month/day/post_title.html
 
-  const fileName = "/" + (datePart.join("/") + "/" + titlePart + ".html"); // Store the paths to the blogposts, in descending order by date
-  // Here, the md files are in ascending order (oldest first),
+  const titlePart = fileData.name.split("-").slice(3).join("-");
+
+  // year/month/day/post_title.html
+  const fileName = "/" + (datePart.join("/") + "/" + titlePart + ".html");
+
+  // Store the paths to the blogposts, in descending order by date
+  // Here, the md files are in ascending order (the oldest first),
   // so we need to be reverse the order for the index page
-
   results.unshift({
     pathToPost: fileName,
     title: postData.attributes.title,
@@ -315,6 +324,8 @@ function savePostDataForIndexPage(fileData, dateFormatted, postData, results) {
     coverImage: postData.attributes.coverImage
   });
 }
+
+
 /**
  * Save the rendered blogposts to destination folder
  *
@@ -324,8 +335,6 @@ function savePostDataForIndexPage(fileData, dateFormatted, postData, results) {
  *
  * @return void
  */
-
-
 function saveBlogpostsHTML(fileData, destPath, layoutContent) {
   "use strict"; // split filename to extract year, month, day, and the title of the post
 
@@ -337,6 +346,8 @@ function saveBlogpostsHTML(fileData, destPath, layoutContent) {
 
   fse.outputFileSync(`${destPath}/${fileName}`, layoutContent);
 }
+
+
 /**
  * Get the postsData for the archive on the index page grouped by year, month
  *
@@ -346,8 +357,6 @@ function saveBlogpostsHTML(fileData, destPath, layoutContent) {
  *
  * @return [type]
  */
-
-
 function getDataForArchive(data, config, results) {
   "use strict";
 
@@ -357,22 +366,23 @@ function getDataForArchive(data, config, results) {
 
   let years = [];
   let start = parseInt(data[0].date.split("-")[0], 10);
-  let current; // Get the year of the earliest post
+  let current;
 
+  // Get the year of the earliest post
   for (let i = 1; i < data.length; i++) {
     current = parseInt(data[i].date.split("-")[0], 10);
 
     if (current < start) {
       start = current;
     }
-  } // Put the years in an array in ascending order
+  }
 
-
+  // Put the years in an array in ascending order
   for (let i = start; i <= config.site.currentYear; i++) {
     years.push(i);
-  } // Outer index: iterate through the years
+  }
 
-
+  // Outer index: iterate through the years
   for (let i = start, j = 0; i <= config.site.currentYear; i++, j++) {
     let annualPosts = [];
     let months = {
@@ -388,11 +398,13 @@ function getDataForArchive(data, config, results) {
       oct: 0,
       nov: 0,
       dec: 0
-    }; // Inner index: iterate through the posts in the current year (outer index)
+    };
 
+    // Inner index: iterate through the posts in the current year (outer index)
     for (let k = 0; k < data.length; k++) {
-      let postYear = parseInt(data[k].pathToPost.split("/")[1], 10); // if year matches, store post title and link; ascending order
+      let postYear = parseInt(data[k].pathToPost.split("/")[1], 10);
 
+      // if year matches, store post title and link; ascending order
       if (postYear === i) {
         let month = parseInt(data[k].pathToPost.split("/")[2], 10);
 
@@ -521,9 +533,9 @@ function getDataForArchive(data, config, results) {
             throw new Error("Some error occured");
         }
       }
-    } // results in descending order
+    }
 
-
+    // results in descending order
     results.unshift({
       year: years[j],
       articles: annualPosts,

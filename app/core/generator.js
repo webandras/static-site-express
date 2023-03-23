@@ -2,43 +2,51 @@ require("dotenv").config();
 
 module.exports = function () {
   "use strict";
+
   /* =========================================================================
    * INITIALIZATIONS
    * =========================================================================
    */
-  // store start time
 
+  // store start time
   const startTime = process.hrtime(); // Require all modules, wrap it into a single object
 
-  const $ = require("./modules"); // If any error occurs
+  const $ = require("./modules");
 
+  // If any error occurs
+  let hasError = false;
 
-  let hasError = false; // logger function on command line with styling
+  // logger function on command line with styling
+  $.log.info("Building site...");
 
-  $.log.info("Building site..."); // site configuration properties
-
+  // site configuration properties
   const config = require("../../config/site.config");
 
-  const openingHours = require("../../content/data/opening-hours"); // source directory for website content
+  const openingHours = require("../../content/data/opening-hours");
 
+  // source directory for website content
+  const srcPath = "./content";
 
-  const srcPath = "./content"; // destination folder to where the static site will be generated
+  // destination folder to where the static site will be generated
+  const distPath = "./public";
 
-  const distPath = "./public"; // Store the paths to the blogposts for the links in the index page
+  // Store the paths to the blogposts for the links in the index page
+  const postsDataForIndexPage = [];
 
-  const postsDataForIndexPage = []; // Store posts data for the archive
-
+  // Store posts data for the archive
   const blogArchive = [];
-  let searchIndexData = []; // function that renders ejs layouts to html
+  let searchIndexData = [];
 
+  // function that renders ejs layouts to html
   const ejsRender = require("ejs").render;
+
+
   /* =========================================================================
    * MIDDLEWARES
    * apply markdown-it middlewares
    * =========================================================================
    */
   // there are more extensions available of markdown-it, add more here and in `modules.js`
-
 
   $.md.use($.markdownItTable);
   $.md.use($.markdownItSup);
@@ -70,6 +78,8 @@ module.exports = function () {
     show_reposts: false,
     visual: true
   });
+
+
   /* =========================================================================
    * ALGOLIA SEARCH - Generate search index if enabled
    * =========================================================================
@@ -81,22 +91,26 @@ module.exports = function () {
     const client = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_ADMIN_KEY);
     const index = client.initIndex(process.env.ALGOLIA_INDEX);
   }
+
+
   /* =========================================================================
    * COPY FILES TO DESTINATION
    * clear destination folder first, it needs to be synchronous
    * =========================================================================
    */
+  $.fse.emptyDirSync(distPath);
 
+  // copy assets folder (contains images, scripts and css) and favicon folder to destination
+  $.ssg.copyAssetsFaviconFolders(srcPath, distPath);
 
-  $.fse.emptyDirSync(distPath); // copy assets folder (contains images, scripts and css) and favicon folder to destination
+  // copy lang folder to destination
+  $.ssg.copyLangFolder(srcPath, distPath);
 
-  $.ssg.copyAssetsFaviconFolders(srcPath, distPath); // copy lang folder to destination
+  // copy data folder to destination
+  $.ssg.copyDataFolder(srcPath, distPath);
 
-  $.ssg.copyLangFolder(srcPath, distPath); // copy data folder to destination
-
-  $.ssg.copyDataFolder(srcPath, distPath); // copy these files to the root of /public folder
+  // copy these files to the root of /public folder
   // extend the list with new files here
-
   const filesToCopy = ["_redirects", "_headers", "robots.txt"];
 
   try {
@@ -106,10 +120,12 @@ module.exports = function () {
   } catch (err) {
     $.log.error(err);
     hasError = true;
-  } // copy admin folder to the root of /public folder
+  }
 
-
+  // copy admin folder to the root of /public folder
   $.ssg.copyAdminFolder(srcPath, distPath);
+
+
   /* =========================================================================
    * BUILD THE BLOGPOSTS
    * =========================================================================
@@ -118,26 +134,34 @@ module.exports = function () {
   const files = $.glob.sync("**/*.@(ejs|md)", {
     cwd: `${srcPath}/posts`,
     nosort: true
-  }); // build blogposts, save post data for page you need to have your posts list to be rendered
-  // (default here: the documentation page)
+  });
 
+  // build blogposts, save post data for page you need to have your posts list to be rendered
+  // (default here: the documentation page)
   try {
     files.forEach(file => {
-      const fileData = $.path.parse(file); // generate canonical url for the post
+      const fileData = $.path.parse(file);
 
-      const canonicalUrl = $.ssg.generateCanonicalURL(fileData, config); // generate postid for the post (needed for disqus)
+      // generate canonical url for the post
+      const canonicalUrl = $.ssg.generateCanonicalURL(fileData, config);
 
-      const postId = $.ssg.generatePostId(fileData); // make output directories for the posts
+      // generate postid for the post (needed for disqus)
+      const postId = $.ssg.generatePostId(fileData);
 
+      // make output directories for the posts
       const destPath = $.path.join(distPath, fileData.dir);
-      $.fse.mkdirsSync(destPath); // file path
+      $.fse.mkdirsSync(destPath);
 
-      const pathToFile = `${srcPath}/posts/${file}`; // read data from file and then render post
+      // file path
+      const pathToFile = `${srcPath}/posts/${file}`;
 
-      const postData = $.ssg.getPostDataFromMarkdown(pathToFile); // change date format
+      // read data from file and then render post
+      const postData = $.ssg.getPostDataFromMarkdown(pathToFile);
 
-      const dateFormatted = $.ssg.convertDateFormat(postData, pathToFile, config.site.monthNames, config.site.lang); // convert md to HTML
+      // change date format
+      const dateFormatted = $.ssg.convertDateFormat(postData, pathToFile, config.site.monthNames, config.site.lang);
 
+      // convert md to HTML
       const postContents = $.md.render(postData.body);
       const templateConfig = Object.assign({}, config, {
         title: postData.attributes.title,
@@ -220,17 +244,20 @@ module.exports = function () {
            */
           content: postContents
         });
-      } // save postdata for the index page
+      }
 
-
+      // save postdata for the index page
       $.ssg.savePostDataForIndexPage(fileData, dateFormatted, postData, postsDataForIndexPage); // read layout data from file and then render layout with post contents
 
       const layoutContent = ejsRender($.fse.readFileSync(`${srcPath}/layouts/blogpost.ejs`, "utf-8"), templateConfig, {
         filename: `${srcPath}/layouts/blogpost.ejs`,
         async: false
-      }); // save the rendered blogposts to destination folder
+      });
 
-      $.ssg.saveBlogpostsHTML(fileData, destPath, layoutContent); // Test
+      // save the rendered blogposts to destination folder
+      $.ssg.saveBlogpostsHTML(fileData, destPath, layoutContent);
+
+      // Test
       // console.log(JSON.stringify(searchIndexData));
       // $.fse.writeFileSync(`${srcPath}/algoliaindex.json`, JSON.stringify(searchIndexData));
 
@@ -246,14 +273,17 @@ module.exports = function () {
     $.log.info("Build posts failed...");
     hasError = true;
   }
+
+
   /* =========================================================================
    * GET POSTS DATA FOR THE ARCHIVE
    * get the postsData for the archive on the index page grouped by year
    * =========================================================================
    */
 
-
   $.ssg.getDataForArchive(postsDataForIndexPage, config, blogArchive);
+
+
   /* =========================================================================
    * BUILD THE PAGES
    * =========================================================================
@@ -266,17 +296,20 @@ module.exports = function () {
   try {
     pages.forEach(file => {
       const fileData = $.path.parse(file);
-      const destPath = $.path.join(distPath, fileData.dir); // make directory
+      const destPath = $.path.join(distPath, fileData.dir);
 
-      $.fse.mkdirsSync(destPath); // read data from file and then render page
+      // make directory
+      $.fse.mkdirsSync(destPath);
 
+      // read data from file and then render page
       const pageContents = ejsRender($.fse.readFileSync(`${srcPath}/pages/${file}`, "utf-8"), Object.assign({}, config, {
         postsDataForIndexPage,
         blogArchive
       }));
       const name = fileData.base;
-      let layoutContent; // read layout data from file and then render layout with page contents
+      let layoutContent;
 
+      // read layout data from file and then render layout with page contents
       switch (name) {
         case "index.ejs":
           layoutContent = ejsRender($.fse.readFileSync(`${srcPath}/layouts/home.ejs`, "utf-8"), Object.assign({}, config, {
@@ -354,8 +387,8 @@ module.exports = function () {
             filename: `${srcPath}/layouts/default.ejs`
           });
           break;
-        // 404 page
 
+        // 404 page
         default:
           layoutContent = ejsRender($.fse.readFileSync(`${srcPath}/layouts/default.ejs`, "utf-8"), Object.assign({}, config, {
             title: "404: Page not found | " + config.site.title,
@@ -369,18 +402,19 @@ module.exports = function () {
             filename: `${srcPath}/layouts/default.ejs`
           });
           break;
-      } // save the html file
+      }
 
-
+      // save the html file
       $.fse.writeFileSync(`${destPath}/${fileData.name}.html`, layoutContent);
+
     });
   } catch (err) {
     $.log.error(err);
     $.log.error("Build pages failed...");
     hasError = true;
-  } // display build time
+  }
 
-
+  // display build time
   const timeDiff = process.hrtime(startTime);
   const duration = timeDiff[0] * 1000 + timeDiff[1] / 1e6;
 
