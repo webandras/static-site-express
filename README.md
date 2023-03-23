@@ -487,4 +487,4 @@ This package uses some modified code parts from [**doug2k1/nanogen**](https://gi
 
 ## Licence
 
-MIT licence - Copyright © 2022 András Gulácsi.
+MIT licence - Copyright © 2018-2023 András Gulácsi.
