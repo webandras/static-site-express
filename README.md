@@ -66,7 +66,10 @@ bin/watch
 This bash script will call: `npm run watch-chokidar`.
 Alternatively, you can also use `npm run watch-nodemon`.
 
-Also call the `bin/css` and `bin/js` watcher scripts to make sure the bundles recreated after file changes.
+If you modify `site.config.js` restart the `bin/watch` script to apply the changes you made.
+For local development, make sure you rewrite the mode to "development"!
+
+~~Also call the `bin/css` and `bin/js` watcher scripts to make sure the bundles recreated after file changes.~~
 These scripts were replaced by `bin\webpack`. This will generate the js and css bundles as well (in --watch mode).
 
 ~~_TODO:_ The build process is intentionally delayed with setTimeout, to have enough time the css to be compiled after changes (see watch-css script). So it is reacting slower to changes, and the css watch script is also a bit slow.~~
@@ -322,8 +325,12 @@ The data comes from `content/data/opening-hours.yml`. It can be edited from Netl
 
 ### Release 2.2.0 (24 March 2023)
 
-- todo
+- replace bin/css and bin/js scripts with bin/webpack (it generates both the js and css bundles)
+- add browser-sync (run: `bin/livereload`) with local server to refresh the page after the file changes
+- updated npm packages (remove unnecessary / add new / put some packages under dev-dependencies)
+- updated readme
 
+You can use `bin/livereload` instead of `bin\serve`. The old express local server is not removed.
 
 ### Release 2.1.2 (23 March 2023)
 
