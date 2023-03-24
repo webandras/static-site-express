@@ -8,6 +8,7 @@
     "webpack-watch": "webpack --watch",
     "liveserver": "browser-sync start --server 'public' --files 'public'",
     "build": "node ./app/build.js",
+    "publish": "node ./app/build.js",
     "serve": "node ./app/serve.js",
     "watch-nodemon": "nodemon -L --watch ./content/ --watch ./config/site.config.js ./app/build.js -e *",
     "watch-chokidar": "node ./app/watch.js -H localhost"
