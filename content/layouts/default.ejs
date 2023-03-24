@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="<%= site.lang %>">
 <%- include ('partials/head-default.ejs') %>
-  <body class="bg-white dark:bg-gray-800 justify-between">
+  <body>
+
     <%- include ('partials/header') %>
-    <div class="max-w-2xl mx-auto mt-8">
-    <%- include ('partials/breadcrumb') %>
-    </div>
-    <main class="container w-full mx-auto pl-4 pr-4 mt-8">
+
+    <main class="container">
+      <%- include ('partials/breadcrumb') %>
       <%- body %>
     </main>
+
     <%- include ('partials/footer') %>
     <%- include ('partials/scripts') %>
   </body>

@@ -1,12 +1,7 @@
-<section class="bg-gray-50 dark:bg-gray-900">
-  <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
-    <a
-      href="<%= site.github %>"
-      class="inline-flex justify-between items-center py-2 pl-6 pr-4 mb-7 text-sm font-medium text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
-      role="alert"
-    >
+<section class="container" style="text-align: center; padding: 1.5em; border-bottom: 1px solid #eee">
+    <a href="<%= site.github %>" role="alert">
       Full documentation
-      <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <svg fill="currentColor" style="width: 24px; height: 24px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
         <path
           fill-rule="evenodd"
           d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
@@ -14,23 +9,15 @@
         ></path>
       </svg>
     </a>
-    <h1 class="mb-4 text-4xl font-extrabold uppercase leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white"><%= title %></h1>
-    <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400"><%= description %></p>
-    <div class="flex flex-col mb-0 lg:mb-8 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-      <button
-        id="deploy"
-        role="button"
-        class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center rounded-lg border text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-      >
-        <img class="w-5 h-5 mr-1" src="/assets/images/netlify.png" alt="Netlify logo" />
+    <h1><%= title %></h1>
+    <p><%= description %></p>
+    <div>
+      <button id="deploy" role="button">
+        <img style="width: 24px; height: 24px;" src="/assets/images/netlify.png" alt="Netlify logo" />
         Deploy to Netlify
       </button>
-      <a
-        href="<%= site.github %>"
-        class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-      >
-        <svg
-          class="w-5 h-5 mr-1"
+      <a href="<%= site.github %>">
+        <svg style="width: 24px; height: 24px"
           aria-hidden="true"
           focusable="false"
           data-prefix="fab"
@@ -47,5 +34,5 @@
         Github repository
       </a>
     </div>
-  </div>
+
 </section>

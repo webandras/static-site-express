@@ -1,22 +1,22 @@
-<section class="mb-4 max-w-2xl mx-auto">
-  <h1 class="text-left text-2xl sm:text-2xl md:text-3xl lg:text-3xl font-bold mb-8 text-gray-900 dark:text-white">All writings</h1>
+<section>
+  <h1>All writings</h1>
 
   <% if (site.enableSearch) { %>
-  <div class="mt-4 mb-8">
+  <div>
     <div id="searchbox"></div>
     <div id="hits"></div>
   </div>
   <% } %>
 
   <% for (var i = 0; i < blogArchive.length; i++) { %>
-  <ul class="format dark:format-invert max-w-2xl mx-auto">
+  <ul>
     <% if (blogArchive[i].months.dec) { %>
     <li>
-      <div class="text-xl font-bold text-gray-900 dark:text-gray-300">December <%= blogArchive[i].year %></div>
-      <ul class="list-none pl-0 mb-10">
+      <div>December <%= blogArchive[i].year %></div>
+      <ul>
         <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %> <% if (blogArchive[i].articles[j].dec) { %>
-        <li class="pl-0">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-200">
+        <li>
+          <h3>
             <a href="<%= blogArchive[i].articles[j].dec.link %>"> <%= blogArchive[i].articles[j].dec.title %> </a>
           </h3>
         </li>
@@ -25,11 +25,11 @@
     </li>
     <% } %> <% if (blogArchive[i].months.nov) { %>
     <li>
-      <div class="text-xl font-bold text-gray-900 dark:text-gray-300">November <%= blogArchive[i].year %></div>
-      <ul class="list-none pl-0 mb-10">
+      <div>November <%= blogArchive[i].year %></div>
+      <ul>
         <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %> <% if (blogArchive[i].articles[j].nov) { %>
-        <li class="pl-0">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-300">
+        <li>
+          <h3>
             <a href="<%= blogArchive[i].articles[j].nov.link %>"> <%= blogArchive[i].articles[j].nov.title %> </a>
           </h3>
         </li>
@@ -38,11 +38,11 @@
     </li>
     <% } %> <% if (blogArchive[i].months.oct) { %>
     <li>
-      <div class="text-xl font-bold text-gray-900 dark:text-gray-300">October <%= blogArchive[i].year %></div>
-      <ul class="list-none pl-0 mb-10">
+      <div>October <%= blogArchive[i].year %></div>
+      <ul>
         <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %> <% if (blogArchive[i].articles[j].oct) { %>
-        <li class="pl-0">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-300">
+        <li>
+          <h3>
             <a href="<%= blogArchive[i].articles[j].oct.link %>"> <%= blogArchive[i].articles[j].oct.title %> </a>
           </h3>
         </li>
@@ -51,11 +51,11 @@
     </li>
     <% } %> <% if (blogArchive[i].months.sep) { %>
     <li>
-      <div class="text-xl font-bold text-gray-900 dark:text-gray-300">September <%= blogArchive[i].year %></div>
-      <ul class="list-none pl-0 mb-10">
+      <div>September <%= blogArchive[i].year %></div>
+      <ul>
         <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %> <% if (blogArchive[i].articles[j].sep) { %>
-        <li class="pl-0">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-300">
+        <li>
+          <h3>
             <a href="<%= blogArchive[i].articles[j].sep.link %>"> <%= blogArchive[i].articles[j].sep.title %> </a>
           </h3>
         </li>
@@ -64,11 +64,11 @@
     </li>
     <% } %> <% if (blogArchive[i].months.aug) { %>
     <li>
-      <div class="text-xl font-bold text-gray-900 dark:text-gray-300">August <%= blogArchive[i].year %></div>
-      <ul class="list-none pl-0 mb-10">
+      <div>August <%= blogArchive[i].year %></div>
+      <ul>
         <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %> <% if (blogArchive[i].articles[j].aug) { %>
-        <li class="pl-0">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-300">
+        <li>
+          <h3>
             <a href="<%= blogArchive[i].articles[j].aug.link %>"> <%= blogArchive[i].articles[j].aug.title %> </a>
           </h3>
         </li>
@@ -77,11 +77,11 @@
     </li>
     <% } %> <% if (blogArchive[i].months.jul) { %>
     <li>
-      <div class="text-xl font-bold text-gray-900 dark:text-gray-300">July <%= blogArchive[i].year %></div>
-      <ul class="list-none pl-0 mb-10">
+      <div>July <%= blogArchive[i].year %></div>
+      <ul>
         <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %> <% if (blogArchive[i].articles[j].jul) { %>
-        <li class="pl-0">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-300">
+        <li>
+          <h3>
             <a href="<%= blogArchive[i].articles[j].jul.link %>"> <%= blogArchive[i].articles[j].jul.title %> </a>
           </h3>
         </li>
@@ -90,11 +90,11 @@
     </li>
     <% } %> <% if (blogArchive[i].months.jun) { %>
     <li>
-      <div class="text-xl font-bold text-gray-900 dark:text-gray-300">June <%= blogArchive[i].year %></div>
-      <ul class="list-none pl-0 mb-10">
+      <div>June <%= blogArchive[i].year %></div>
+      <ul>
         <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %> <% if (blogArchive[i].articles[j].jun) { %>
-        <li class="pl-0">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-300">
+        <li>
+          <h3>
             <a href="<%= blogArchive[i].articles[j].jun.link %>"> <%= blogArchive[i].articles[j].jun.title %> </a>
           </h3>
         </li>
@@ -103,11 +103,11 @@
     </li>
     <% } %> <% if (blogArchive[i].months.may) { %>
     <li>
-      <div class="text-xl font-bold text-gray-900 dark:text-gray-300">May <%= blogArchive[i].year %></div>
-      <ul class="list-none pl-0 mb-10">
+      <div>May <%= blogArchive[i].year %></div>
+      <ul>
         <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %> <% if (blogArchive[i].articles[j].may) { %>
-        <li class="pl-0">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-300">
+        <li>
+          <h3>
             <a href="<%= blogArchive[i].articles[j].may.link %>"> <%= blogArchive[i].articles[j].may.title %> </a>
           </h3>
         </li>
@@ -116,11 +116,11 @@
     </li>
     <% } %> <% if (blogArchive[i].months.apr) { %>
     <li>
-      <div class="text-xl font-bold text-gray-900 dark:text-gray-300">April <%= blogArchive[i].year %></div>
-      <ul class="list-none pl-0 mb-10">
+      <div>April <%= blogArchive[i].year %></div>
+      <ul>
         <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %> <% if (blogArchive[i].articles[j].apr) { %>
-        <li class="pl-0">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-300">
+        <li>
+          <h3>
             <a href="<%= blogArchive[i].articles[j].apr.link %>"> <%= blogArchive[i].articles[j].apr.title %> </a>
           </h3>
         </li>
@@ -129,11 +129,11 @@
     </li>
     <% } %> <% if (blogArchive[i].months.mar) { %>
     <li>
-      <div class="text-xl font-bold text-gray-900 dark:text-gray-300">March <%= blogArchive[i].year %></div>
-      <ul class="list-none pl-0 mb-10">
+      <div>March <%= blogArchive[i].year %></div>
+      <ul>
         <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %> <% if (blogArchive[i].articles[j].mar) { %>
-        <li class="pl-0">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-300">
+        <li>
+          <h3>
             <a href="<%= blogArchive[i].articles[j].mar.link %>"> <%= blogArchive[i].articles[j].mar.title %> </a>
           </h3>
         </li>
@@ -142,11 +142,11 @@
     </li>
     <% } %> <% if (blogArchive[i].months.feb) { %>
     <li>
-      <div class="text-xl font-bold text-gray-900 dark:text-gray-300">February <%= blogArchive[i].year %></div>
-      <ul class="list-none pl-0 mb-10">
+      <div>February <%= blogArchive[i].year %></div>
+      <ul>
         <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %> <% if (blogArchive[i].articles[j].feb) { %>
-        <li class="pl-0">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-300">
+        <li>
+          <h3>
             <a href="<%= blogArchive[i].articles[j].feb.link %>"> <%= blogArchive[i].articles[j].feb.title %> </a>
           </h3>
         </li>
@@ -155,11 +155,11 @@
     </li>
     <% } %> <% if (blogArchive[i].months.jan) { %>
     <li>
-      <div class="text-xl font-bold text-gray-900 dark:text-gray-300">January <%= blogArchive[i].year %></div>
-      <ul class="list-none pl-0 mb-10">
+      <div>January <%= blogArchive[i].year %></div>
+      <ul>
         <% for (var j = 0; j < blogArchive[i].articles.length; j++) { %> <% if (blogArchive[i].articles[j].jan) { %>
-        <li class="pl-0">
-          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-300">
+        <li>
+          <h3>
             <a href="<%= blogArchive[i].articles[j].jan.link %>"> <%= blogArchive[i].articles[j].jan.title %> </a>
           </h3>
         </li>

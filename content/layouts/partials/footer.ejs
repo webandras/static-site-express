@@ -1,56 +1,64 @@
-<footer class="p-4 bg-gray-200 md:p-8 lg:p-10 dark:bg-gray-900 mt-12">
-  <div class="mx-auto max-w-screen-xl text-center">
-    <a href="<%= site.url %>/" class="flex justify-center items-center text-xl font-semibold text-gray-900 dark:text-white">
-      <img src="<%= site.url %>/assets/images/static-site-express.png" class="mr-2 h-10 sm:h-11" alt="<%= site.title %>" />
+<footer class="footer">
+  <div>
+    <a class="footer--logo" href="<%= site.url %>/">
+      <img src="<%= site.url %>/assets/images/static-site-express.png" alt="<%= site.title %>" />
       <%= site.title %>
     </a>
-    <p class="my-6 text-gray-600 dark:text-gray-400"><%= site.quote %></p>
-    <ul class="flex flex-wrap justify-center items-center mb-6 text-gray-900 dark:text-white">
+
+    <p><%= site.quote %></p>
+
+    <ul class="footer--nav">
+
       <li>
         <% if (pageName === 'index') { %>
-        <a href="<%= site.url %>/index.html" class="active-link mr-4 md:mr-6" aria-current="page">Home</a>
+        <a href="<%= site.url %>/index.html" aria-current="page">Home</a>
         <% } else { %>
-        <a href="<%= site.url %>/index.html" class="inactive-link-footer mr-4 no-underline md:hover:underline md:hover:underline-offset-4 md:mr-6">Home</a>
+        <a href="<%= site.url %>/index.html">Home</a>
         <% } %>
       </li>
+
       <li>
         <% if (pageName === 'contact') { %>
-        <a href="<%= site.url %>/contact.html" class="active-link mr-4 md:mr-6" aria-current="page">Contact</a>
+        <a href="<%= site.url %>/contact.html" aria-current="page">Contact</a>
         <% } else { %>
-        <a href="<%= site.url %>/contact.html" class="inactive-link-footer mr-4 no-underline md:hover:underline md:hover:underline-offset-4 md:mr-6">Contact</a>
+        <a href="<%= site.url %>/contact.html">Contact</a>
         <% } %>
       </li>
+
       <li>
         <% if (pageName === 'writings') { %>
-        <a href="<%= site.url %>/writings.html" class="active-link mr-4 md:mr-6" aria-current="page">Writings</a>
+        <a href="<%= site.url %>/writings.html" aria-current="page">Writings</a>
         <% } else { %>
-        <a href="<%= site.url %>/writings.html" class="inactive-link-footer mr-4 no-underline md:hover:underline md:hover:underline-offset-4 md:mr-6">Writings</a>
+        <a href="<%= site.url %>/writings.html">Writings</a>
         <% } %>
       </li>
+
       <li>
         <% if (pageName === 'message-sent') { %>
-        <a href="<%= site.url %>/message-sent.html" class="active-link mr-4 md:mr-6" aria-current="page">Message sent</a>
+        <a href="<%= site.url %>/message-sent.html" aria-current="page">Message sent</a>
         <% } else { %>
-        <a href="<%= site.url %>/message-sent.html" class="inactive-link-footer mr-4 no-underline md:hover:underline md:hover:underline-offset-4 md:mr-6">Message sent</a>
+        <a href="<%= site.url %>/message-sent.html">Message sent</a>
         <% } %>
       </li>
+
       <li>
         <% if (pageName === 'open-hours') { %>
-        <a href="<%= site.url %>/open-hours.html" class="active-link mr-4 md:mr-6" aria-current="page">Open hours</a>
+        <a href="<%= site.url %>/open-hours.html" aria-current="page">Open hours</a>
         <% } else { %>
-        <a href="<%= site.url %>/open-hours.html" class="inactive-link-footer mr-4 no-underline md:hover:underline md:hover:underline-offset-4 md:mr-6">Open hours</a>
+        <a href="<%= site.url %>/open-hours.html">Open hours</a>
         <% } %>
       </li>
+
       <li>
         <% if (pageName === '404') { %>
-        <a href="<%= site.url %>/404.html" class="active-link mr-4 md:mr-6" aria-current="page">Page 404</a>
+        <a href="<%= site.url %>/404.html" aria-current="page">Page 404</a>
         <% } else { %>
-        <a href="<%= site.url %>/404.html" class="inactive-link-footer mr-4 no-underline md:hover:underline md:hover:underline-offset-4 md:mr-6">Page 404</a>
+        <a href="<%= site.url %>/404.html">Page 404</a>
         <% } %>
       </li>
+
     </ul>
-    <span class="text-sm text-gray-600 sm:text-center dark:text-gray-400"
-      >© 2019-<%= site.currentYear %> <a href="<%= site.githubProfile %>" class="hover:underline"><%= site.author %></a>. MIT license.</span
-    >
+
+    <div class="footer--copyright">© 2019-<%= site.currentYear %> <a href="<%= site.githubProfile %>" class="hover:underline"><%= site.author %></a>. MIT license.</div>
   </div>
 </footer>
