@@ -1,4 +1,5 @@
-import "flowbite";
+import './../css/main.css';
+
 import i18next from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import locI18next from "loc-i18next";
@@ -17,7 +18,7 @@ const onLoad = () => {
     });
   }
 
-  // Enable multi language features
+  // Enable multi-language features
   // detects the browser language and reads the translation strings from file
   i18next.use(LanguageDetector).init(
     {
