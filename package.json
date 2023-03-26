@@ -38,6 +38,7 @@
     "express": "^4.18.1",
     "front-matter": "^4.0.2",
     "fs-extra": "^10.1.0",
+    "glob": "^9.3.2",
     "helmet": "^5.1.1",
     "helmet-csp": "^3.4.0",
     "html-escaper": "^3.0.3",
@@ -57,15 +58,17 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
-    "chalk": "^5.2.0",
+    "chalk": "4.1.1",
     "chokidar": "^3.5.3",
     "css-loader": "^6.7.3",
     "cssnano": "^5.1.15",
     "mini-css-extract-plugin": "^2.7.5",
     "postcss": "^8.4.16",
     "postcss-loader": "^7.1.0",
+    "sass": "^1.60.0",
+    "sass-loader": "^13.2.1",
     "terser-webpack-plugin": "^5.3.4",
-    "webpack": "^5.76.0",
+    "webpack": "^5.76.3",
     "webpack-cli": "^4.10.0"
   },
   "bugs": {
