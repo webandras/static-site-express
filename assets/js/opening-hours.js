@@ -35,7 +35,7 @@
       const now = new Date();
       if (day === weekIndex[now.getDay()]) {
         dayDiv.style["font-weight"] = "bold";
-        dayDiv.className = "page-open-hours--table--current";
+        dayDiv.className = "";
       }
     };
 
