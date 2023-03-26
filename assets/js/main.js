@@ -101,6 +101,32 @@ const onLoad = () => {
     });
 
   }
+
+  // SIDEBAR MENU
+  /* Set the width of the side navigation to 250px */
+  function openOffcanvasNavigation() {
+    const defaultNavbar = document.getElementById("navbar-default");
+    const defaultNavbarClone = defaultNavbar.cloneNode(true);
+
+    // delete previous cloned content
+    const mobileNav = document.getElementById("mobile-nav");
+    mobileNav.innerText = '';
+    mobileNav.appendChild(defaultNavbarClone);
+    document.getElementById("main-sidenav").style.width = "250px";
+  }
+
+  /* Set the width of the side navigation to 0, delete cloned menu */
+  function closeOffcanvasNavigation() {
+    document.getElementById("main-sidenav").style.width = "0";
+    document.getElementById("mobile-nav").innerText = '';
+  }
+
+  // Sidebar close button
+  document.getElementById('close-btn').addEventListener('click', closeOffcanvasNavigation);
+
+  // Sidebar open menu
+  document.getElementById("toggle-menu").addEventListener('click', openOffcanvasNavigation);
+
 };
 
 // only execute when DOM is ready
