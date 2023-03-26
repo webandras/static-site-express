@@ -1,7 +1,7 @@
-<section class="container" style="text-align: center; padding: 1.5em; border-bottom: 1px solid #eee">
-    <a href="<%= site.github %>" role="alert">
+<section class="introduction container">
+    <a href="<%= site.github %>" role="alert" class="introduction--link-center">
       Full documentation
-      <svg fill="currentColor" style="width: 24px; height: 24px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <svg fill="currentColor" class="icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
         <path
           fill-rule="evenodd"
           d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
@@ -11,12 +11,12 @@
     </a>
     <h1><%= title %></h1>
     <p><%= description %></p>
-    <div>
+    <div class="introduction-cta-row">
       <button id="deploy" role="button">
-        <img style="width: 24px; height: 24px;" src="/assets/images/netlify.png" alt="Netlify logo" />
-        Deploy to Netlify
+        <img style="width: 24px; height: 24px; position: relative; top: 4px;" src="/assets/images/netlify.png" alt="Netlify logo" />
+          <span>Deploy to Netlify</span>
       </button>
-      <a href="<%= site.github %>">
+      <a href="<%= site.github %>" class="link">
         <svg style="width: 24px; height: 24px"
           aria-hidden="true"
           focusable="false"

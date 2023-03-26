@@ -5,7 +5,7 @@
         <span><%= site.title %></span>
       </a>
 
-      <div id="navbar-default" style="display: inline">
+      <div id="navbar-default">
         <ul>
           <li>
             <% if (pageName === 'index') { %>
@@ -72,6 +72,7 @@
               type="button"
               aria-controls="navbar-default"
               aria-expanded="false"
+              onclick="openOffcanvasNavigation()"
       >
         <span class="sr-only">Open main menu</span>
         <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -85,3 +86,27 @@
     </div>
   </nav>
 </header>
+
+<div class="sidenav" id="main-sidenav">
+  <a href="javascript:void(0)" class="close-btn" onclick="closeOffcanvasNavigation()">&times;</a>
+  <div id="mobile-nav"></div>
+</div>
+
+<script>
+  /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+  function openOffcanvasNavigation() {
+    const defaultNavbar = document.getElementById("navbar-default");
+    const defaultNavbarClone = defaultNavbar.cloneNode(true);
+
+    document.getElementById("mobile-nav").appendChild(defaultNavbarClone);
+    document.getElementById("main-sidenav").style.width = "250px";
+    // document.getElementById("main").style.marginLeft = "250px";
+  }
+
+  /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+  function closeOffcanvasNavigation() {
+    document.getElementById("main-sidenav").style.width = "0";
+    // document.getElementById("main").style.marginLeft = "0";
+    document.getElementById("mobile-nav").innerText = ''
+  }
+</script>

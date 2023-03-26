@@ -24,6 +24,11 @@
   <meta name="twitter:image" content="<%= site.seoUrl %><%= site.defaultImage %>" />
 
   <link rel="canonical" href="<%= canonicalUrl %>" />
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <link href="/assets/css/trongate.css" rel="stylesheet" type="text/css" />
   <link href="/assets/css/main.css" rel="stylesheet" type="text/css" />
 
   <!-- Favicons, icons for mobile devices-->
@@ -39,7 +44,7 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
   <% if (site.darkMode) { %>
-  <script>
+  <script type="text/javascript">
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
     if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
@@ -48,4 +53,5 @@
     }
   </script>
   <% } %>
+  <script type="text/javascript">hljs.highlightAll();</script>
 </head>
