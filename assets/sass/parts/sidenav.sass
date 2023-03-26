@@ -1,0 +1,36 @@
+.sidenav
+    height: 100%
+    width: 0
+    position: fixed
+    z-index: 1
+    top: 0
+    left: 0
+    background-color: $darkgray
+    overflow-x: hidden
+    padding-top: 60px
+    transition: 0.5s
+
+    @media screen and (max-height: 550px)
+        padding-top: 1em
+
+
+    .close-btn
+        text-decoration: none
+        color: $lightgray
+        position: absolute
+        top: 0
+        right: 12px
+        font-size: 36px
+
+        &:hover, &:focus
+            color: lightblue
+
+    #mobile-nav
+        #navbar-default
+            ul
+                li
+                    a
+                        color: $lightgray
+
+                        &:hover, &:focus
+                            color: lightblue

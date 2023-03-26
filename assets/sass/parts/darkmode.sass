@@ -1,0 +1,37 @@
+html.dark
+    a
+        color: lightblue
+
+        &:hover, &:focus
+            color: coral
+
+    body
+        background-color: $darkgray
+        color: $gray
+
+        .header, .footer
+            background-color: $black
+            color: $lightgray
+
+        table, .page-open-hours--table
+            border: 1px solid $gray
+
+            tr
+                &:nth-child(odd)
+                    background-color: $black
+
+                &:nth-child(even)
+                    background-color: $darkgray
+
+                &.page-open-hours--table--current
+                    background-color: black
+
+                &:hover, &:focus
+                    background-color: darkgreen
+
+                th, td
+                    border: 1px solid $gray
+
+        p, ul li
+            code
+                color: coral

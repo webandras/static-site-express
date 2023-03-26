@@ -1,0 +1,47 @@
+header.header
+    background-color: $white
+
+    nav
+        display: flex
+        align-items: center
+        justify-content: space-around
+
+        @media screen and (max-width: 850px)
+            justify-content: space-between
+            margin: 0 16px
+
+        a
+            display: flex
+            align-items: center
+
+
+        button#theme-toggle,
+        button#toggle-menu
+            margin: 0
+            padding: 0.3em
+
+            svg
+                width: 18px
+                height: 18px
+
+
+        #toggle-menu
+            display: none
+            @media screen and (max-width: 850px)
+                display: inline-block
+
+        #navbar-default
+            display: inline
+
+            @media screen and (max-width: 850px)
+                display: none
+
+            ul
+                display: flex
+
+                li
+                    display: inline
+                    margin: 0 0.5em
+
+                    a[aria-current="page"]
+                        font-weight: 700
