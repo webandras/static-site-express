@@ -323,6 +323,14 @@ The data comes from `content/data/opening-hours.yml`. It can be edited from Netl
 
 ## CHANGELOG
 
+### Release 2.2.1 (27 March 2023)
+
+- fix: Missing glob package (caused an issue on starter/barebone branch - not able to reproduce it on master though).
+- update: 3 posts (the ones serve as documentation)
+
+I created the **"Barebone"** theme (branch: `starter/barebone`) without TailwindCSS, with SASS support and some basic styling (nothing has changed in the app folder)
+It was a mistake to be dependent on a CSS framework. Choose whatever you like for **Barebone**.
+
 ### Release 2.2.0 (24 March 2023)
 
 - replace bin/css and bin/js scripts with bin/webpack (it generates both the js and css bundles)
