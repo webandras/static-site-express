@@ -12,7 +12,7 @@ For the installation guide, [see my previous posts](https://static-site-express.
 
 ## Directory Structure (only the main parts are shown)
 
-```none
+```plain
 ├── app
 ├── assets
 |   ├── css
@@ -107,7 +107,7 @@ You should stick to this format.
 
 The YAML header (between the two `---`) looks like this:
 
-```raw
+```markdown
 ---
 title: Welcome to static-site-express. Install guide.
 date: '2018-06-22'
