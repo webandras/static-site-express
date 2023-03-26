@@ -37,7 +37,7 @@ For safety reasons, you cannot include HTML code into Markdown. By default, HTML
 
 ### 1. Headings{id=headings}
 
-```
+```markdown
 # H1
 ## H2
 ### H3
@@ -317,20 +317,31 @@ Example:
 
 ### 4. Code {id=highlight}
 
+````plain
+```javascript
 
-` ```raw`
+var a = 20
 
-`var a = 20`
+function foo (a) {
+  console.log(a)
+}
 
-`function foo (a) {`
+foo(a)
+```
+````
 
-` console.log(a)`
 
-`}`
+```javascript
 
-`foo(a)`
+var a = 20
 
-` ``` `
+function foo (a) {
+  console.log(a)
+}
+
+foo(a)
+```
+
 
 To have proper syntax highlighting, you have to integrate the [highlight.js](https://highlightjs.org/) library.
 
