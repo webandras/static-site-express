@@ -16,7 +16,7 @@ static-site-express is a simple Node.js based static-site generator that uses EJ
 
 1. Click on "Use this template" button to get a exact copy of the repo / site builder that uses Flowbite, an open-sorce UI library of components created with TailwindCSS. Then use the `master` branch, which is the default. Or use the GitHub CLI:
 
-```raw
+```bash
 gh repo create your-username/new-repo  -p SalsaBoy990/static-site-express
 ```
 
@@ -26,7 +26,7 @@ gh repo create your-username/new-repo  -p SalsaBoy990/static-site-express
 - Register at [Snipcart](https://snipcart.com/)
 - Copy your Snipcart public test key at `src/layouts/partials/scripts.ejs` to the `publicApiKey` property value:
 
-```html
+```plain
 <div id="snipcart" data-config-modal-style="side" data-api-key="YOUR_PUBLIC_TEST_API_KEY" hidden></div>
 ```
 
@@ -65,7 +65,7 @@ This script was also deleted: ~~bin/generate~~
 
 1. Build site from `./content` into the `./public` folder (in watch mode):
 
-```raw
+```bash
 bin/watch
 ```
 
@@ -80,7 +80,7 @@ Not an issue any more the `watch` npm package is not used any more.
 
 2. Serve website on `localhost:4000` (or the port you set in .env, default port is 4000) (legacy):
 
-```raw
+```bash
 bin/serve
 ```
 
@@ -88,7 +88,7 @@ bin/serve
 
 It is recommended to switch to browser-sync to have live reloading in the browser when files change. The issue above will disappear if you use this:
 
-```raw
+```bash
 bin/liveserver
 ```
 or run:
@@ -139,7 +139,7 @@ After the changes, restart build/watch scripts. This process in suboptimal, but 
 
 - The `netlify.toml` configuration file contains important properties:
 
-```raw
+```plain
 [build]
   base    = "/"
   publish = "public"
@@ -156,7 +156,7 @@ The `_redirects` file is currently empty. When you have a custom domain, you can
 
 `robots.txt` default settings:
 
-```raw
+```plain
 # Disallow admin page
 User-agent: *
 Disallow: /admin/
@@ -221,7 +221,7 @@ Optional: set `display_url` to your custom domain in `content/admin/config.yml`
 
 These are the key parts in the code for Algolia:
 
-```JavaScript
+```javascript
 const algoliasearch = require("algoliasearch");
 const client = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_ADMIN_KEY);
 const index = client.initIndex(process.env.ALGOLIA_INDEX);
@@ -229,7 +229,7 @@ const index = client.initIndex(process.env.ALGOLIA_INDEX);
 
 Here, I use the AlgoliaSearch client library to send request to update and/or create records for the posts:
 
-```JavaScript
+```javascript
 index.partialUpdateObjects(searchIndexData, {
   createIfNotExists: true,
 });
@@ -237,7 +237,7 @@ index.partialUpdateObjects(searchIndexData, {
 
 This is currently the structure of the search index (as a default example):
 
-```JavaScript
+```javascript
 searchIndexData.push({
   /**
    * The object's unique identifier
@@ -445,7 +445,9 @@ This intended to be the last major version release.
 
 - fix: From now on, EJS include directives should be in this format:
 
+```html
 `<%- include ('partial/element-name') %>`
+```
 
 This is a **breaking change**, you should update your `partials/templates`!
 
