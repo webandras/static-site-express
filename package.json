@@ -63,7 +63,7 @@
     "css-loader": "^6.7.3",
     "cssnano": "^5.1.15",
     "mini-css-extract-plugin": "^2.7.5",
-    "postcss": "^8.4.16",
+    "postcss": "^8.4.31",
     "postcss-loader": "^7.1.0",
     "sass": "^1.60.0",
     "sass-loader": "^13.2.1",
