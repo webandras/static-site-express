@@ -1,6 +1,6 @@
 {
   "name": "static-site-express",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "A simple Node.js based static site generator that uses EJS and Markdown",
   "main": "./app/build.js",
   "scripts": {
@@ -35,7 +35,8 @@
     "algoliasearch": "^4.14.2",
     "dotenv": "^16.0.1",
     "ejs": "^3.1.8",
-    "express": "^4.18.1",
+    "express": "^4.19.2",
+    "flowbite": "^1.5.2",
     "front-matter": "^4.0.2",
     "fs-extra": "^10.1.0",
     "glob": "^9.3.2",
