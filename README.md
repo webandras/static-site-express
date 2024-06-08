@@ -24,12 +24,12 @@ gh repo create your-username/new-repo  -p SalsaBoy990/static-site-express
 <div id="snipcart" data-config-modal-style="side" data-api-key="YOUR_PUBLIC_TEST_API_KEY" hidden></div>
 ```
 
-_Note:_ This api key is public, and can be submitted to version control. There is also a private key, but that should never be committed! You don't even need that for the project.
+_Note:_ This api key is public, and can be submitted to version control. There is also a private key, but that should never be committed.
 
 [Snipcart](https://snipcart.com/) is more than a simple cart: enjoy a full back-office management dashboard to track abandoned carts, sales, orders, customers and more.
 
 - It supports card payments via PayPay, Stripe, and other payment gateways,
-- It generates invoices and sends them to customers after purchase,
+- It generates invoices and sends them to the customers after purchase,
 - etc.
 
 _Note:_ Netlify will build your site from the default branch (usually the `master`) by default.
@@ -72,9 +72,6 @@ For local development, make sure you rewrite the mode to "development"!
 ~~Also call the `bin/css` and `bin/js` watcher scripts to make sure the bundles recreated after file changes.~~
 These scripts were replaced by `bin\webpack`. This will generate the js and css bundles as well (in --watch mode).
 
-~~_TODO:_ The build process is intentionally delayed with setTimeout, to have enough time the css to be compiled after changes (see watch-css script). So it is reacting slower to changes, and the css watch script is also a bit slow.~~
-Not an issue any more the `watch` npm package is not used any more.
-
 2. Serve website on `localhost:4000` (or the port you set in .env, default port is 4000) (legacy):
 
 ```raw
@@ -98,13 +95,9 @@ browser-sync start --server 'public' --files 'public'
 
 If you don't see your changes:
 
-- After the app code changes you have made, restart `bin/watch`
+- After the app code changes you have made, restart `bin/watch`,
 - Try to restart `bin/webpack`,
-- Try to restart `bin/liveserver`,
-
-~~3. Create the css bundle with PostCSS (in watch mode)~~ removed: ~~bin/css~~
-
-~~4. Create the js bundle with Webpack (in watch mode)~~ removed: ~~bin/js~~
+- Try to restart `bin/liveserver`
 
 
 Make sure to build the live bundle in production mode.
@@ -120,7 +113,7 @@ The JavaScript source is in the `app/` folder. **Generally, you only need to mod
 - In `generator.js`, you can modify the pages you want to generate in the switch statements starting from **line 280**. You also need to create a page (`.ejs`) in the `pages/` folder, and a template (in `layouts/`) to be used for that page (or use one of the pre-existing templates like `default.ejs`).
 - Post properties can be extended **starting at line 142**, in the `templateConfig` object literal (`generator.js`)
 
-After the changes, restart build/watch scripts. This process in suboptimal, but currently this is the workflow.
+After the changes, restart build/watch scripts. This process in sub-optimal, but currently this is the workflow.
 
 ### Website content (in the `content/` folder)
 
@@ -182,7 +175,7 @@ A Docker container is basically a writable OverlayFS (FS = filesystem) layer cre
 
 The images are based on base images (the FROM statement at the first line of a Dockerfile) that are special distributions that "think they are operating systems", but are more lightweight that a complete OS.
 
-[Alpine Linux](https://hub.docker.com/_/alpine/) is the most lightweight of them (around 5MB). Interesting to note, that [images can built from scratch as well](https://codeburst.io/docker-from-scratch-2a84552470c8) (scratch is a reserved image that is empty, and thus does nothing!). The base images are built this way ("FROM scratch").
+[Alpine Linux](https://hub.docker.com/_/alpine/) is the most lightweight of them (around 5MB). Interesting to note, that [images can built from scratch as well](https://codeburst.io/docker-from-scratch-2a84552470c8) (scratch is a reserved image that is empty, and thus does nothing). The base images are built this way ("FROM scratch").
 
 Docker is using the kernel and obviously the resources of the host (which are shared), and are meant for process isolation only. Containers are more lightweight, don't have the overheads Virtual Machines do. [More about this topic](https://www.simplilearn.com/tutorials/docker-tutorial/docker-vs-virtual-machine).
 
@@ -328,8 +321,8 @@ The data comes from `content/data/opening-hours.yml`. It can be edited from Netl
 - fix: Missing glob package (caused an issue on starter/barebone branch - not able to reproduce it on master though).
 - update: 3 posts (the ones serve as documentation)
 
-I created the **"Barebone"** theme (branch: `starter/barebone`) without TailwindCSS, with SASS support and some basic styling (nothing has changed in the app folder)
-It was a mistake to be dependent on a CSS framework. Choose whatever you like for **Barebone**.
+I created the **"Barebone"** theme (branch: `starter/barebone`) without Tailwind CSS, with SASS support and some basic styling (nothing has changed in the app folder)
+It was a mistake to be dependent on one CSS framework. Choose whatever you like for **Barebone**.
 
 ### Release 2.2.0 (24 March 2023)
 
@@ -421,7 +414,7 @@ This intended to be the last major version release.
 
 - Remove Docker configuration: using the site-builder in Docker would only add unnecessary complexity for zero gain.
 - Remove GA scripts.
-- remove Heroku Procfile.
+- Remove Heroku Procfile.
 
 **New/Update/Delete:**
 
