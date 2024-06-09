@@ -1,55 +1,55 @@
 ---
 title: Customize your site, write your blog with Netlify CMS
-date: "2018-12-28"
+date: "2024-06-09"
 excerpt: >-
   Tutorial on how to customize your website, use Netlify Identity, Git Gateway, Netlify Forms, and Netlify Content Management System (CMS) to conveniently write your blog.
 coverImage: static.jpg
 ---
 
-The frontend of website is created by using Tailwind CSS framework with Flowbite UI library. In order to understand static-site-express better, I show you the directory structure. When you customize your site, you need to modify the site generator code a little bit. For example, if you want to add about page etc. to your site.
+The frontend of website is created by using Tailwind CSS framework with Flowbite UI library. In order to understand static-site-express better, the directory structure is shown below. When you customize your site, you need to modify the site generator code a little bit. For example, if you want to add about page etc. to your site.
 
-For the installation guide, [see my previous posts](https://static-site-express.netlify.com/2018/06/22/welcome_to_static_site_express).
+For the installation guide, [see this posts](https://static-site-express.netlify.app/2024/06/10/welcome_to_static_site_express).
 
 ## Directory Structure (only the main parts are shown)
 
 ```plain
 ├── app
 ├── assets
-|   ├── css
-|       ├── main.css
-|   ├── js
-|       ├── identity.js
-|       └── main.js
+    ├── css
+        ├── main.css
+    ├── js
+        ├── identity.js
+        └── main.js
 ├── bin
 ├── config/site.config.js
 ├── content
-|   ├── admin
-|   ├── assets
-|       ├── images
-|           └── uploads
-|       ├── js
-|       └── css
-|   ├── data
-|   ├── favicon
-|   ├── lang
-|   ├── layouts
-|       └── partials
-|   ├── pages
-|   ├── posts
-|   ├── _headers
-|   ├── _redirects
-|   ├── robots.txt
+    ├── admin
+    ├── assets
+        ├── images
+            └── uploads
+        ├── js
+        └── css
+    ├── data
+    ├── favicon
+    ├── lang
+    ├── layouts
+        └── partials
+    ├── pages
+    ├── posts
+    ├── _headers
+    ├── _redirects
+    ├── robots.txt
 ├── site-generator
-|   ├── core
-|       ├── generator.js
-|       ├── modules.js
-|   ├── methods
-|       ├── methods.js
-|   ├── utils
-|       ├── logger.js
-|   ├── build.js
-|   └── serve.js
-|   └── watch.js
+    ├── core
+        ├── generator.js
+        ├── modules.js
+    ├── methods
+        ├── methods.js
+    ├── utils
+        ├── logger.js
+    ├── build.js
+    └── serve.js
+    └── watch.js
 ├── public
 ├── node_modules
 ├── netlify.toml
