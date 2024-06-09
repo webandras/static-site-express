@@ -19,7 +19,7 @@ const onLoad = () => {
     });
   }
 
-  // Enable multi language features
+  // Enable multi-language features
   // detects the browser language and reads the translation strings from file
   i18next.use(LanguageDetector).init(
     {
