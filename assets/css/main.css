@@ -19,3 +19,21 @@ body {
 .inactive-link-footer {
     @apply block py-2 pr-4 pl-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent;
 }
+
+
+.format h1.post-title {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+@media (min-width: 1024px) {
+    .lg\:format-lg h1.post-title {
+        margin-bottom: 0.5rem;
+    }
+}
+
+.format .post-date {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 16px;
+}
