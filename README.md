@@ -8,10 +8,10 @@ static-site-express is a simple Node.js based static-site generator that uses EJ
 
 ### Install static-site-express
 
-1. Click on "Use this template" button to get a exact copy of the repo / site builder that uses Flowbite, an open-sorce UI library of components created with TailwindCSS. Then use the `master` branch, which is the default. Or use the GitHub CLI:
+1. Click on "Use this template" button to get a exact copy of the repo / site builder that uses Flowbite, an open-sorce UI library of components created with Tailwind CSS. Then use the `master` branch, which is the default. Or use the GitHub CLI:
 
 ```raw
-gh repo create your-username/new-repo  -p SalsaBoy990/static-site-express
+gh repo create your-username/new-repo  -p webandras/static-site-express
 ```
 
 2. To have a basic e-commerce website Flowbite/TailWind starter incorporating the [Snipcart](https://snipcart.com/) ecommerce platform into static-site-express:
@@ -24,18 +24,20 @@ gh repo create your-username/new-repo  -p SalsaBoy990/static-site-express
 <div id="snipcart" data-config-modal-style="side" data-api-key="YOUR_PUBLIC_TEST_API_KEY" hidden></div>
 ```
 
-_Note:_ This api key is public, and can be submitted to version control. There is also a private key, but that should never be committed! You don't even need that for the project.
+_Note:_ This api key is public, and can be submitted to version control. There is also a private key, but that should never be committed.
 
 [Snipcart](https://snipcart.com/) is more than a simple cart: enjoy a full back-office management dashboard to track abandoned carts, sales, orders, customers and more.
+_Disclaimer:_ I am not affiliated with Snipcart in any ways.
 
 - It supports card payments via PayPay, Stripe, and other payment gateways,
-- It generates invoices and sends them to customers after purchase,
+- It generates invoices and sends them to the customers after purchase,
 - etc.
 
 _Note:_ Netlify will build your site from the default branch (usually the `master`) by default.
-You can use a different branch other than the default one, but **in that case Netlify CMS will not work properly**. For example, the images uploaded through the CMS will be pushed into the default branch, not the other you set up in Netlify!)
+You can use a different branch other than the default one, but **in that case Netlify CMS will not work properly**. For example, the images uploaded through the CMS will be pushed into the default branch, not the other one you set up in Netlify!)
 
 _Test website:_ Use the 'Deploy to Netlify' button at the [project's website](https://static-site-express.netlify.com/) to have a test website.
+
 
 ### Build your site locally
 
@@ -51,31 +53,47 @@ Use npm scripts defined in package.json
 
 Previously, I used [flow](https://flow.org/), a static type checker for JavaScript, to have type checking for the code, but I found it hardly useful.
 It caught some wrong argument types, but that is all. Besides, a good IDE can catch those errors without tedious rebuilds all the time changes have been made.
-So, building the app code into the `app` folder from `site-generator` folder, where the JS code with flow annotation used to be, is not necessary any more.
+So, building the app code into the `app` folder from `site-generator` folder, where the JS code with flow annotation used to be, is not necessary anymore.
 The `site-generator` folder was deleted.
 Babel and flow packages were removed too.
 This script was also deleted: ~~bin/generate~~
 
+Note: On Windows, you can't use the bash scripts located in the bin folder -> use the corresponding npm scripts in package.json instead.
 
-1. Build site from `./content` into the `./public` folder (in watch mode):
+1. **Build** site from `./content` into the `./public` folder (in watch mode):
 
 ```raw
 bin/watch
 ```
 
+Or:
+```raw
+npm run watch-chokidar
+```
+
+Or:
+```raw
+npm run watch-nodemon
+```
+
 This bash script will call: `npm run watch-chokidar`.
 Alternatively, you can also use `npm run watch-nodemon`.
 
-Also call the `bin/css` and `bin/js` watcher scripts to make sure the bundles recreated after file changes.
-These scripts were replaced by `bin\webpack`. This will generate the js and css bundles as well (in --watch mode).
+If you modify `site.config.js` restart the `bin/watch` or the corresponding scripts in package.json to apply the changes you have made.
+For local development, make sure you rewrite the mode to "development"!
 
-~~_TODO:_ The build process is intentionally delayed with setTimeout, to have enough time the css to be compiled after changes (see watch-css script). So it is reacting slower to changes, and the css watch script is also a bit slow.~~
-Not an issue any more the `watch` npm package is not used any more.
+~~Also call the `bin/css` and `bin/js` watcher scripts to make sure the bundles recreated after file changes.~~
+These scripts were replaced by `bin\webpack`, or `npm run webpack-watch`. This will generate the js and css bundles as well (in --watch mode).
 
-2. Serve website on `localhost:4000` (or the port you set in .env, default port is 4000) (legacy):
+2. **Serve website** on `localhost:4000` (or the port you set in .env, default port is 4000) (legacy):
 
 ```raw
 bin/serve
+```
+
+Or:
+```raw
+npm run serve
 ```
 
 ~~_TODO:_ the Express dev server crashes rarely - not finding some file generated by the builder. The files and folders in the public folder are deleted and re-copied: for a brief moment it is possible not to have a .html file available to be served by the Express server. However, the site-builder generates everything in a few hundreds of milliseconds (generally less than 300 ms). So this error happens rarely.~~
@@ -85,29 +103,30 @@ It is recommended to switch to browser-sync to have live reloading in the browse
 ```raw
 bin/liveserver
 ```
-or run:
 
+Or:
+```raw
+npm run liveserver
+```
+
+or run:
 ```bash
 browser-sync start --server 'public' --files 'public'
 ```
 
-3. Call the `bin/webpack` watcher script to make sure the js and css bundles are recreated after file changes.
+3. Call the `bin/webpack` (`npm run webpack`) watcher script to make sure the js and css bundles are recreated after file changes.
 
 If you don't see your changes:
 
-- After the app code changes you have made, restart `bin/watch`
-- Try to restart `bin/webpack`,
-- Try to restart `bin/liveserver`,
-
-~~3. Create the css bundle with PostCSS (in watch mode)~~ removed: ~~bin/css~~
-
-~~4. Create the js bundle with Webpack (in watch mode)~~ removed: ~~bin/js~~
+- After the app code changes you have made, restart `bin/watch` (`npm run watch-chokidar`, or `npm run watch-nodemon`),
+- Try to restart `bin/webpack` (`npm run webpack`),
+- Try to restart `bin/liveserver` (`npm run liveserver`)
 
 
 Make sure to build the live bundle in production mode.
 
-Check out the `bin` folder and the `package.json` file to know more about the available scripts.
-Make sure your npm packages are up-to-date or installed.
+Check out the `bin` folder and the `package.json` file to see the available scripts.
+
 
 ### Modify the application code
 
@@ -140,13 +159,14 @@ After the changes, restart build/watch scripts. This process in suboptimal, but 
   command = "npm run build"
 ```
 
-The base path, the build command, and the publish directory. You can keep those settings unchanged.
+The base path, the build command, and the "publish" directory. You can keep those settings unchanged.
 
-You can also define here some post-processing actions to be run in post-processing stages as part of Netlify's CI/CD pipeline.
+You can also define here some post-processing actions to be run in the post-processing stages, for example as part of Netlify's CI/CD pipeline.
 
-In the optional `_headers` file you can specify the HTTP headers and set Content Security Policy (CSP) rules for the Netlify server. Currently, CSP rules are commented out. You can also specify these in `netlify.toml`.
+In the optional `_headers` file you can specify the HTTP headers and set Content Security Policy (CSP) rules for the Netlify server.
+Currently, CSP rules are commented out. You can also specify these in `netlify.toml`.
 
-The `_redirects` file is currently empty. When you have a custom domain, you can make a redirect from _.netlify.com_ to your custom domain.
+The `_redirects` file is currently empty. When you have a custom domain, you can make a redirect from _.netlify.com_ to your custom domain there.
 
 `robots.txt` default settings:
 
@@ -175,19 +195,19 @@ Netlify builds your website with its buildbot. It starts a Docker container runn
 
 TL;DR: Netlify install a lot of packages (copies files over) to be able to run your favorite tool to build your static website. And this is done in a Docker container. Read the overview section of Docker docs: https://docs.docker.com/get-started/
 
-A Docker container is basically a writable OverlayFS (FS = filesystem) layer created on top of the numerous read-only OverlayFS layers of the Docker image (files copied on top of each other: each layer is represents a command in the Dockerfile). Which is destroyed after the build has been completed (the data can be made permanent using volumes which are kept).
+A Docker container is basically a writable **OverlayFS** (FS = filesystem) layer created on the very top of the numerous read-only OverlayFS layers of the Docker image (files copied on top of each other: each layer represents a command in the Dockerfile). Which is destroyed after the build has been completed. However, the data can be made permanent using volumes which are kept.
 
-The images are based on base images (the FROM statement at the first line of a Dockerfile) that are special distributions that "think they are operating systems", but are more lightweight that a complete OS.
+The images are based on **base images** (the FROM statement at the first line of a Dockerfile) that are special distributions that "think they are operating systems", but are more lightweight that a complete OS.
 
-[Alpine Linux](https://hub.docker.com/_/alpine/) is the most lightweight of them (around 5MB). Interesting to note, that [images can built from scratch as well](https://codeburst.io/docker-from-scratch-2a84552470c8) (scratch is a reserved image that is empty, and thus does nothing!). The base images are built this way ("FROM scratch").
+[Alpine Linux](https://hub.docker.com/_/alpine/) is the most lightweight of them (around 5MB). Interesting to note, that [images can built from scratch as well](https://codeburst.io/docker-from-scratch-2a84552470c8) (scratch is a reserved image that is empty, and thus does nothing). The base images are built this way (_"FROM scratch"_).
 
 Docker is using the kernel and obviously the resources of the host (which are shared), and are meant for process isolation only. Containers are more lightweight, don't have the overheads Virtual Machines do. [More about this topic](https://www.simplilearn.com/tutorials/docker-tutorial/docker-vs-virtual-machine).
 
 VMs are used for full isolation including resources (for example, to subdivide the server resources for shared hosting: each hosting having a computing power of X CPUs of X type, have X GB of memory and X GB storage space), and have a separate (full) OS installed along with the host OS, so they do not share the kernel.
 
-If you use Windows, you need to install Windows Subsystem for Windows 2 (WSL2) to have a (not fully featured) distro based on Linux kernel installed, that will run as a regular application. Although, there are container base images available for Windows as well. So, Docker can even use the Windows kernel now (for specific images).
+If you use Windows, you need to install Windows Subsystem for Windows 2 (WSL2) to have a (not fully featured) distro based on Linux kernel installed (Ubuntu is used most of the time), that will run as a regular application. Although, there are container base images available for Windows as well. So, Docker can even use the Windows kernel now (for specific images).
 
-Lots of images are pre-built for us (like the `netlify/build` image) and stored in the Docker (not DockerHub) registry (DockerHub is just a user interface). You don't need to build them from Dockerfile, you just download them from the registry.
+Lots of images are **pre-built** for us (like the `netlify/build` image) and stored in the **Docker registry** (not DockerHub, since that is just a user interface). You don't need to build them from Dockerfile, you just download them from the registry.
 
 If you know the Docker basics, you can understand some things about Netlify as well.
 Check these shell scripts out:
@@ -320,10 +340,22 @@ The data comes from `content/data/opening-hours.yml`. It can be edited from Netl
 
 ## CHANGELOG
 
+### Release 2.2.1 (27 March 2023)
+
+- fix: Missing glob package (caused an issue on starter/barebone branch - not able to reproduce it on master though).
+- update: 3 posts (the ones serve as documentation)
+
+I created the **"Barebone"** theme (branch: `starter/barebone`) without Tailwind CSS, with SASS support and some basic styling (nothing has changed in the app folder)
+It was a mistake to be dependent on one CSS framework. Choose whatever you like for **Barebone**.
+
 ### Release 2.2.0 (24 March 2023)
 
-- todo
+- replace bin/css and bin/js scripts with bin/webpack (it generates both the js and css bundles)
+- add browser-sync (run: `bin/livereload`) with local server to refresh the page after the file changes
+- updated npm packages (remove unnecessary / add new / put some packages under dev-dependencies)
+- updated readme
 
+You can use `bin/livereload` instead of `bin\serve`. The old express local server is not removed.
 
 ### Release 2.1.2 (23 March 2023)
 
@@ -406,7 +438,7 @@ This intended to be the last major version release.
 
 - Remove Docker configuration: using the site-builder in Docker would only add unnecessary complexity for zero gain.
 - Remove GA scripts.
-- remove Heroku Procfile.
+- Remove Heroku Procfile.
 
 **New/Update/Delete:**
 
