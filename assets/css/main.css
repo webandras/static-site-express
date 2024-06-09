@@ -28,3 +28,21 @@ body {
 .snipcart-button-primary.snipcart-base-button.is-icon-right {
     @apply bg-blue-500;
 }
+
+
+.format h1.post-title {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+@media (min-width: 1024px) {
+    .lg\:format-lg h1.post-title {
+        margin-bottom: 0.5rem;
+    }
+}
+
+.format .post-date {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 16px;
+}
