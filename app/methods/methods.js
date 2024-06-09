@@ -313,7 +313,7 @@ function savePostDataForIndexPage(fileData, dateFormatted, postData, results) {
   // Store the paths to the blogposts, in descending order by date
   // Here, the md files are in ascending order (the oldest first),
   // so we need to be reverse the order for the index page
-  results.unshift({
+  results.push({
     pathToPost: fileName,
     title: postData.attributes.title,
     author: postData.attributes.author,
