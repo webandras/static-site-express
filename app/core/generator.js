@@ -226,7 +226,7 @@ module.exports = function () {
           authors: [config.site.author],
 
           /**
-           * The publish date of the page
+           * The publishing date of the page
            * - `datePublished` field of JSON-LD Article object: https://schema.org/Article
            * - meta[property="article:published_time"]
            */
