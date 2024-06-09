@@ -75,7 +75,7 @@ This script was also deleted: ~~bin/generate~~
 Note: On Windows, you can't use the bash scripts located in the bin folder -> use the corresponding npm scripts in
 package.json instead.
 
-1. **Build** site from `./content` into the `./public` folder (in watch mode):
+#### 1. **Build** site from `./content` into the `./public` folder (in watch mode):
 
 ```raw
 bin/watch
@@ -104,7 +104,7 @@ For local development, make sure you rewrite the mode to "development"!
 These scripts were replaced by `bin\webpack`, or `npm run webpack-watch`. This will generate the js and css bundles as
 well (in --watch mode).
 
-2. **Serve website** on `localhost:4000` (or the port you set in .env, default port is 4000) (legacy):
+#### 2. **Serve website** on `localhost:4000` (or the port you set in .env, default port is 4000) (legacy):
 
 ```raw
 bin/serve
@@ -140,8 +140,7 @@ or run:
 browser-sync start --server 'public' --files 'public'
 ```
 
-3. Call the `bin/webpack` (`npm run webpack`) watcher script to make sure the js and css bundles are recreated after
-   file changes.
+#### 3. Call the `bin/webpack` (`npm run webpack`) watcher script to make sure the js and css bundles are recreated after file changes.
 
 If you don't see your changes:
 
