@@ -1,12 +1,12 @@
 <header class="bg-white dark:bg-gray-900 border-gray-200 border-b border-b-gray-200 dark:border-b-gray-800">
   <nav class="max-w-screen-2xl mx-auto px-2 sm:px-4 py-2.5 rounded">
-    <div class="container flex flex-wrap justify-between items-center mx-auto">
+    <section class="container flex flex-wrap justify-between items-center mx-auto">
       <a href="<%= site.url %>/" class="flex items-center">
         <img src="<%= site.url %>/assets/images/static-site-express.png" class="mr-2 h-10 sm:h-11" alt="<%= site.title %>" />
         <span class="self-center text-lg sm:text-xl font-semibold whitespace-nowrap dark:text-white"><%= site.title %></span>
       </a>
 
-      <div class="flex md:order-2">
+      <section class="flex md:order-2">
         <% if (site.darkMode) { %>
         <button id="theme-toggle" type="button"
                 class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
@@ -37,7 +37,7 @@
             ></path>
           </svg>
         </button>
-      </div>
+      </section>
       <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-default">
         <ul
           class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
@@ -86,6 +86,6 @@
           </li>
         </ul>
       </div>
-    </div>
+    </section>
   </nav>
 </header>

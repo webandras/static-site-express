@@ -1,11 +1,11 @@
-<div class="max-w-2xl mx-auto">
+<section class="max-w-2xl mx-auto">
   <h1 data-i18n="contact.title" class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 dark:text-gray-50">Contact page</h1>
 
   <form name="contact" method="POST" action="/message-sent.html" netlify-honeypot="bot-field" netlify>
-    <div class="grid gap-6 mb-6 md:grid-cols-2">
-      <div class="hidden">
+    <section class="grid gap-6 mb-6 md:grid-cols-2">
+      <p class="hidden">
         <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-      </div>
+      </p>
       <div>
         <label data-i18n="contact.full_name" for="full_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Full name</label>
         <input
@@ -29,7 +29,7 @@
           required
         />
       </div>
-    </div>
+    </section>
 
     <div class="mb-6">
       <label data-i18n="contact.message" for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your message</label>
@@ -66,4 +66,4 @@
       Send message
     </button>
   </form>
-</div>
+</section>
