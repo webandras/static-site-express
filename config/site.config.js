@@ -1,6 +1,6 @@
 // Make sure to commit it as "production"
 // For local development rewrite it to "development"
-const mode = "production";
+const mode = "development";
 
 // Add your global site properties here
 module.exports = {
@@ -39,7 +39,7 @@ module.exports = {
     // Switch website to the dark mode
     darkMode: true,
 
-    // Link for the deploy button url
+    // Link for the deployment button url
     netlifyDeployLink: "https://app.netlify.com/start/deploy?repository=https://github.com/SalsaBoy990/static-site-express",
     netlifyDeployButtonId: "#deploy",
 
