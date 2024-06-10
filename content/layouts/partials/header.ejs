@@ -5,7 +5,7 @@
         <span><%= site.title %></span>
       </a>
 
-      <div id="navbar-default">
+      <section id="navbar-default">
         <ul>
           <li>
             <% if (pageName === 'index') { %>
@@ -50,9 +50,9 @@
             <% } %>
           </li>
         </ul>
-      </div>
+      </section>
 
-    <div>
+    <section>
       <% if (site.darkMode) { %>
         <button id="theme-toggle" type="button">
           <svg id="theme-toggle-dark-icon" class="hidden" fill="currentColor" viewBox="0 0 20 20"
@@ -82,12 +82,12 @@
           ></path>
         </svg>
       </button>
-    </div>
+    </section>
   </nav>
 </header>
 
-<div class="sidenav" id="main-sidenav">
+<article class="sidenav" id="main-sidenav">
   <a href="javascript:void(0)" id="close-btn" class="close-btn">&times;</a>
-  <div id="mobile-nav"></div>
-</div>
+  <section id="mobile-nav"></section>
+</article>
 

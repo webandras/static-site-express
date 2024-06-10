@@ -2,33 +2,24 @@
   <h1 data-i18n="contact.title">Contact page</h1>
 
   <form class="contact--form" name="contact" method="POST" action="/message-sent.html" netlify-honeypot="bot-field" netlify>
-    <div>
-      <div class="hidden">
+      <p class="hidden">
         <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-      </div>
-      <div>
-        <label data-i18n="contact.full_name" for="full_name">Full name</label>
-        <input type="text" name="full_name" id="full_name" placeholder="Your name" required />
-      </div>
+      </p>
 
-      <div>
-        <label data-i18n="contact.email" for="email">Your email</label>
-        <input type="email" id="email" name="email" placeholder="Your email" required />
-      </div>
-    </div>
+      <label data-i18n="contact.full_name" for="full_name">Full name</label>
+      <input type="text" name="full_name" id="full_name" placeholder="Your name" required />
 
-    <div>
+      <label data-i18n="contact.email" for="email">Your email</label>
+      <input type="email" id="email" name="email" placeholder="Your email" required />
+
       <label data-i18n="contact.message" for="message">Your message</label>
       <textarea id="message" rows="4" name="message" data-i18n="[placeholder]contact.message_placeholder" placeholder="Your message..." required
       ></textarea>
-    </div>
 
-    <div>
       <label for="privacy_accepted">
       <input id="privacy_accepted" type="checkbox" value="1" name="gdpr" required />
       I have read and accepted the <a href="#">Privacy Policy</a>.</label>
-    </div>
 
-    <button data-i18n="contact.send" type="submit">Send message</button>
+      <button data-i18n="contact.send" type="submit">Send message</button>
   </form>
 
