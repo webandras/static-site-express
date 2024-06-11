@@ -1,16 +1,13 @@
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 mb-10">
   <div><img class="w-full book-cover" src="/assets/images/uploads/<%= coverImage %>" alt="" /></div>
   <div>
-    <small><%= date %></small>
-    <h1 class="text-3xl sm:text-4xl md:text-5xl"><%= title %></h1>
-
-    <div>Author: <%= author %></div>
-    <div>Price: <b>$<%= price %></b></div>
-    <div>Number of pages: <%= pages %></div>
+    <p class="post-date text-md"><%= date %></p>
+    <h1 class="text-3xl sm:text-4xl md:text-5xl post-title format-headings:font-bold"><%= title %></h1>
+    <strong class="text-gray-500">$<%= price %></strong>
 
     <p><%= excerpt %></p>
     <button
-      class="snipcart-add-item flex flex-row items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      class="snipcart-add-item flex flex-row items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm uppercase px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
       data-item-id="<%= postId %>"
       data-item-price="<%= price %>"
       data-item-url="<%= pathToPost %>"
@@ -21,5 +18,19 @@
     <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
       Add to cart
     </button>
+
+    <table class="text-md">
+      <tbody>
+      <tr>
+        <td>Author: <%= author %></td>
+      </tr>
+      <tr>
+        <td>Price: <b>$<%= price %></b></td>
+      </tr>
+      <tr>
+        <td>Number of pages: <%= pages %></td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>

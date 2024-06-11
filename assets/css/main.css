@@ -32,17 +32,17 @@ body {
 
 .format h1.post-title {
     font-weight: 700;
-    margin-bottom: 0.25rem;
+    margin-bottom: 1.75rem;
 }
 
 @media (min-width: 1024px) {
     .lg\:format-lg h1.post-title {
-        margin-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
     }
 }
 
 .format .post-date {
     margin-top: 0.75rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.2rem;
     font-size: 16px;
 }
