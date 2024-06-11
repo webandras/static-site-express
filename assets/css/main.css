@@ -46,3 +46,8 @@ body {
     margin-bottom: 0.2rem;
     font-size: 16px;
 }
+
+.footer--logo {
+    width: fit-content;
+    margin: 0 auto;
+}
