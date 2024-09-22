@@ -9,7 +9,7 @@ to Netlify or any platform to your liking. Suited for landing pages, portfolio, 
 
 ### Install static-site-express
 
-1. Click on "Use this template" button to get a exact copy of the repo / site builder that uses Flowbite, an open-source
+. Click on "Use this template" button to get an exact copy of the repo / site builder that uses Flowbite, an open-source
    UI library of components created with Tailwind CSS. Then use the `master` branch, which is the default. Or use the
    GitHub CLI:
 
@@ -36,12 +36,8 @@ never be committed.
 abandoned carts, sales, orders, customers and more.
 _Disclaimer:_ I am not affiliated with Snipcart in any ways.
 
-- It supports card payments via PayPay, Stripe, and other payment gateways,
-- It generates invoices and sends them to the customers after purchase,
-- etc.
-
 _Note:_ Netlify will build your site from the default branch (usually the `master`) by default.
-You can use a different branch other than the default one, but **in that case Netlify CMS will not work properly**. For
+You can use a different branch other than the default one, but **in that case Decap CMS (previously: Netlify CMS) will not work properly**. For
 example, the images uploaded through the CMS will be pushed into the default branch, not the other one you set up in
 Netlify!)
 
@@ -62,15 +58,6 @@ Check out all the settings in the `site.config.js`. There are comments there wit
 
 Use npm scripts defined in package.json
 
-Previously, I used [flow](https://flow.org/), a static type checker for JavaScript, to have type checking for the code,
-but I found it hardly useful.
-It caught some wrong argument types, but that is all. Besides, a good IDE can catch those errors without tedious
-rebuilds all the time changes have been made.
-So, building the app code into the `app` folder from `site-generator` folder, where the JS code with flow annotation
-used to be, is not necessary anymore.
-The `site-generator` folder was deleted.
-Babel and flow packages were removed too.
-This script was also deleted: ~~bin/generate~~
 
 Note: On Windows, you can't use the bash scripts located in the bin folder -> use the corresponding npm scripts in
 package.json instead.
@@ -100,9 +87,7 @@ If you modify `site.config.js` restart the `bin/watch` or the corresponding scri
 you have made.
 For local development, make sure you rewrite the mode to "development"!
 
-~~Also call the `bin/css` and `bin/js` watcher scripts to make sure the bundles recreated after file changes.~~
-These scripts were replaced by `bin\webpack`, or `npm run webpack-watch`. This will generate the js and css bundles as
-well (in --watch mode).
+Generate the js and css bundles as well (in --watch mode): `bin\webpack` (`npm run webpack-watch`). 
 
 #### 2. **Serve website** on `localhost:4000` (or the port you set in .env, default port is 4000) (legacy):
 
@@ -175,11 +160,7 @@ After the changes, restart build/watch scripts. This process in suboptimal, but 
 
 ## Publish Website to Netlify
 
-### Register at Netlify and publish your website
-
-- Register on [Netlify](https://www.netlify.com/),
-  and [see this tutorial video](https://www.netlify.com/docs/continuous-deployment/) if you are unfamiliar with the
-  procedure.
+### Register at Netlify.com and publish your website
 
 - The `netlify.toml` configuration file contains important properties:
 
@@ -280,11 +261,9 @@ in the form to protect against spam bots. Netlify has first-class spam filter.
 
 [Netlify Forms Docs](https://docs.netlify.com/forms/setup/)
 
-### Netlify CMS
+### Decap CMS
 
-Optional: set `display_url` to your custom domain in `content/admin/config.yml`
-
-[Netlify CMS Docs](https://github.com/netlify/netlify-cms)
+[Decap CMS Docs](https://decapcms.org/)
 
 ### Algolia Search
 
@@ -395,7 +374,7 @@ When I started my journey as web developer, I started using [Jekyll](http://jeky
 reading some articles from Michael Lee about it. He has a great starter for Jekyll,
 the [Jekyll ⍺](https://github.com/michaellee/jekyll-alpha).
 
-The data comes from `content/data/opening-hours.yml`. It can be edited from Netlify CMS as well.
+The data comes from `content/data/opening-hours.yml`. It can be edited from Decap CMS as well.
 
 ## CHANGELOG
 
@@ -603,4 +582,4 @@ the `legacy` branch and some ideas from the `master` branch, MIT © Douglas Mato
 
 ## Licence
 
-MIT licence - Copyright © 2018-2023 András Gulácsi.
+MIT licence - Copyright © 2018-2024 András Gulácsi.

@@ -22,7 +22,7 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "date", format: "YYYY-MM-DD" }
+      - { label: "Date", name: "date", widget: "datetime", default: "{{now}}", date_format: "YYYY-MM-DD", time_format: "HH:mm", format: "LLL", picker_utc: false }
       - { label: "Excerpt", name: "excerpt", widget: "text" }
       - { label: "Cover image", name: "coverImage", widget: "image" }
       - { label: "Content", name: "body", widget: "markdown" }

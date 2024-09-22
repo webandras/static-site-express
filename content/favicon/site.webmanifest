@@ -1,6 +1,6 @@
 {
-    "name": "static-site-express",
-    "short_name": "static-site-express",
+    "name": "Static Site Gen",
+    "short_name": "Static Site Gen",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",

@@ -607,5 +607,5 @@ the `legacy` branch and some ideas from the `master` branch, MIT © Douglas Mato
 
 ## Licence
 
-MIT licence - Copyright © 2018-2023 András Gulácsi.
+MIT licence - Copyright © 2018-2024 András Gulácsi.
 
