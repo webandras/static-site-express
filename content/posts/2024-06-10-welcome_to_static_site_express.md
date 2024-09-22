@@ -13,23 +13,28 @@ to Netlify or any platform to your liking. Suited for landing pages, portfolio, 
 
 ### Install static-site-express
 
-1. Click on "Use this template" button to get a exact copy of the repo / site builder that uses Flowbite, an open-source
-   UI library of components created with Tailwind CSS. Then use the `master` branch, which is the default. Or use the
+I created a "Barebone" theme (previously on the `starter/barebone` branch) without Tailwind CSS and Flowbite UI, with
+SASS support and some basic
+styling. It was a huge mistake to be dependent on any CSS frameworks. This theme became the default on the master
+branch.
+The old master branch is now available as `deprecated-tailwind`, and I discontinued its development.
+
+1. Click on "Use this template" button to get an exact copy of the repo / site builder. Then use the `master` branch,
+   which is the default. Or use the
    GitHub CLI:
 
-```raw
+```shell
 gh repo create your-username/new-repo  -p webandras/static-site-express
 ```
 
 2. To have a basic e-commerce website Flowbite/TailWind starter incorporating the [Snipcart](https://snipcart.com/)
-   ecommerce platform into static-site-express:
+   ecommerce platform into static-site-express (Flowbite/Tailwind is going to be removed soon...):
 
 - Checkout branch `snipcart`
 - Register at [Snipcart](https://snipcart.com/)
 - Copy your Snipcart public test key at `src/layouts/partials/scripts.ejs` to the `publicApiKey` property value:
 
 ```html
-
 <div id="snipcart" data-config-modal-style="side" data-api-key="YOUR_PUBLIC_TEST_API_KEY" hidden></div>
 ```
 
@@ -40,12 +45,9 @@ never be committed.
 abandoned carts, sales, orders, customers and more.
 _Disclaimer:_ I am not affiliated with Snipcart in any ways.
 
-- It supports card payments via PayPay, Stripe, and other payment gateways,
-- It generates invoices and sends them to the customers after purchase,
-- etc.
-
 _Note:_ Netlify will build your site from the default branch (usually the `master`) by default.
-You can use a different branch other than the default one, but **in that case Netlify CMS will not work properly**. For
+You can use a different branch other than the default one, but **in that case Decap CMS (previously: Netlify CMS) will
+not work properly**. For
 example, the images uploaded through the CMS will be pushed into the default branch, not the other one you set up in
 Netlify!)
 
@@ -66,34 +68,24 @@ Check out all the settings in the `site.config.js`. There are comments there wit
 
 Use npm scripts defined in package.json
 
-Previously, I used [flow](https://flow.org/), a static type checker for JavaScript, to have type checking for the code,
-but I found it hardly useful.
-It caught some wrong argument types, but that is all. Besides, a good IDE can catch those errors without tedious
-rebuilds all the time changes have been made.
-So, building the app code into the `app` folder from `site-generator` folder, where the JS code with flow annotation
-used to be, is not necessary anymore.
-The `site-generator` folder was deleted.
-Babel and flow packages were removed too.
-This script was also deleted: ~~bin/generate~~
-
 Note: On Windows, you can't use the bash scripts located in the bin folder -> use the corresponding npm scripts in
 package.json instead.
 
 #### 1. **Build** site from `./content` into the `./public` folder (in watch mode):
 
-```raw
+```shell
 bin/watch
 ```
 
 Or:
 
-```raw
+```shell
 npm run watch-chokidar
 ```
 
 Or:
 
-```raw
+```shell
 npm run watch-nodemon
 ```
 
@@ -104,19 +96,17 @@ If you modify `site.config.js` restart the `bin/watch` or the corresponding scri
 you have made.
 For local development, make sure you rewrite the mode to "development"!
 
-~~Also call the `bin/css` and `bin/js` watcher scripts to make sure the bundles recreated after file changes.~~
-These scripts were replaced by `bin\webpack`, or `npm run webpack-watch`. This will generate the js and css bundles as
-well (in --watch mode).
+Generate the js and css bundles as well (in --watch mode): `bin\webpack` (`npm run webpack-watch`).
 
 #### 2. **Serve website** on `localhost:4000` (or the port you set in .env, default port is 4000) (legacy):
 
-```raw
+```shell
 bin/serve
 ```
 
 Or:
 
-```raw
+```shell
 npm run serve
 ```
 
@@ -128,19 +118,19 @@ generally less than 300 ms). So this error happens rarely.~~
 It is recommended to switch to browser-sync to have live reloading in the browser when files change. The issue above
 will disappear if you use this:
 
-```raw
+```shell
 bin/liveserver
 ```
 
 Or:
 
-```raw
+```shell
 npm run liveserver
 ```
 
 or run:
 
-```bash
+```shell
 browser-sync start --server 'public' --files 'public'
 ```
 
@@ -179,15 +169,11 @@ After the changes, restart build/watch scripts. This process in suboptimal, but 
 
 ## Publish Website to Netlify
 
-### Register at Netlify and publish your website
-
-- Register on [Netlify](https://www.netlify.com/),
-  and [see this tutorial video](https://www.netlify.com/docs/continuous-deployment/) if you are unfamiliar with the
-  procedure.
+### Register at Netlify.com and publish your website
 
 - The `netlify.toml` configuration file contains important properties:
 
-```raw
+```yaml
 [build]
   base    = "/"
   publish = "public"
@@ -208,7 +194,7 @@ your custom domain there.
 
 `robots.txt` default settings:
 
-```raw
+```text
 # Disallow admin page
 User-agent: *
 Disallow: /admin/
@@ -284,17 +270,15 @@ in the form to protect against spam bots. Netlify has first-class spam filter.
 
 [Netlify Forms Docs](https://docs.netlify.com/forms/setup/)
 
-### Netlify CMS
+### Decap CMS
 
-Optional: set `display_url` to your custom domain in `content/admin/config.yml`
-
-[Netlify CMS Docs](https://github.com/netlify/netlify-cms)
+[Decap CMS Docs](https://decapcms.org/)
 
 ### Algolia Search
 
 These are the key parts in the code for Algolia:
 
-```JavaScript
+```javascript
 const algoliasearch = require("algoliasearch");
 const client = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_ADMIN_KEY);
 const index = client.initIndex(process.env.ALGOLIA_INDEX);
@@ -302,7 +286,7 @@ const index = client.initIndex(process.env.ALGOLIA_INDEX);
 
 Here, I use the AlgoliaSearch client library to send request to update and/or create records for the posts:
 
-```JavaScript
+```javascript
 index.partialUpdateObjects(searchIndexData, {
     createIfNotExists: true,
 });
@@ -310,7 +294,7 @@ index.partialUpdateObjects(searchIndexData, {
 
 This is currently the structure of the search index (as a default example):
 
-```JavaScript
+```javascript
 searchIndexData.push({
     /**
      * The object's unique identifier
@@ -399,7 +383,7 @@ When I started my journey as web developer, I started using [Jekyll](http://jeky
 reading some articles from Michael Lee about it. He has a great starter for Jekyll,
 the [Jekyll ⍺](https://github.com/michaellee/jekyll-alpha).
 
-The data comes from `content/data/opening-hours.yml`. It can be edited from Netlify CMS as well.
+The data comes from `content/data/opening-hours.yml`. It can be edited from Decap CMS as well.
 
 ## CHANGELOG
 
@@ -566,7 +550,7 @@ script is using nodemon.
 ## Useful resources
 
 - [Netlify Docs](https://docs.netlify.com/)
-- [Netlify CMS docs](https://www.netlifycms.org/docs/intro/)
+- [Decap CMS Docs](https://decapcms.org/)
 - [How the Netlify buildbot builds websites](https://www.netlify.com/blog/2016/10/18/how-our-build-bots-build-sites/)
 - [Netlify Drop - formarly BitBalloon](https://www.netlify.com/blog/2018/08/14/announcing-netlify-drop-the-simplicity-of-bitballoon-with-the-added-power-of-netlify/)
 - [Complete Intro to Netlify in 3.5 hours](https://www.netlify.com/blog/2019/10/07/complete-intro-to-netlify-in-3.5-hours/)
@@ -608,4 +592,5 @@ the `legacy` branch and some ideas from the `master` branch, MIT © Douglas Mato
 ## Licence
 
 MIT licence - Copyright © 2018-2024 András Gulácsi.
+
 
