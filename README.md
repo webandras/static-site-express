@@ -9,8 +9,14 @@ to Netlify or any platform to your liking. Suited for landing pages, portfolio, 
 
 ### Install static-site-express
 
-. Click on "Use this template" button to get an exact copy of the repo / site builder that uses Flowbite, an open-source
-   UI library of components created with Tailwind CSS. Then use the `master` branch, which is the default. Or use the
+I created a "Barebone" theme (previously on the `starter/barebone` branch) without Tailwind CSS and Flowbite UI, with
+SASS support and some basic
+styling. It was a huge mistake to be dependent on any CSS frameworks. This theme became the default on the master
+branch.
+The old master branch is now available as `deprecated-tailwind`, and discontinued its development.
+
+1. Click on "Use this template" button to get an exact copy of the repo / site builder. Then use the `master` branch,
+   which is the default. Or use the
    GitHub CLI:
 
 ```raw
@@ -18,14 +24,13 @@ gh repo create your-username/new-repo  -p webandras/static-site-express
 ```
 
 2. To have a basic e-commerce website Flowbite/TailWind starter incorporating the [Snipcart](https://snipcart.com/)
-   ecommerce platform into static-site-express:
+   ecommerce platform into static-site-express (Flowbite/Tailwind is going to be removed soon...):
 
 - Checkout branch `snipcart`
 - Register at [Snipcart](https://snipcart.com/)
 - Copy your Snipcart public test key at `src/layouts/partials/scripts.ejs` to the `publicApiKey` property value:
 
 ```html
-
 <div id="snipcart" data-config-modal-style="side" data-api-key="YOUR_PUBLIC_TEST_API_KEY" hidden></div>
 ```
 
@@ -37,7 +42,8 @@ abandoned carts, sales, orders, customers and more.
 _Disclaimer:_ I am not affiliated with Snipcart in any ways.
 
 _Note:_ Netlify will build your site from the default branch (usually the `master`) by default.
-You can use a different branch other than the default one, but **in that case Decap CMS (previously: Netlify CMS) will not work properly**. For
+You can use a different branch other than the default one, but **in that case Decap CMS (previously: Netlify CMS) will
+not work properly**. For
 example, the images uploaded through the CMS will be pushed into the default branch, not the other one you set up in
 Netlify!)
 
@@ -57,7 +63,6 @@ you don't want to use Algolia, set `enableSearch` to false in `config/site.confi
 Check out all the settings in the `site.config.js`. There are comments there with additional information.
 
 Use npm scripts defined in package.json
-
 
 Note: On Windows, you can't use the bash scripts located in the bin folder -> use the corresponding npm scripts in
 package.json instead.
@@ -87,7 +92,7 @@ If you modify `site.config.js` restart the `bin/watch` or the corresponding scri
 you have made.
 For local development, make sure you rewrite the mode to "development"!
 
-Generate the js and css bundles as well (in --watch mode): `bin\webpack` (`npm run webpack-watch`). 
+Generate the js and css bundles as well (in --watch mode): `bin\webpack` (`npm run webpack-watch`).
 
 #### 2. **Serve website** on `localhost:4000` (or the port you set in .env, default port is 4000) (legacy):
 
@@ -541,7 +546,7 @@ script is using nodemon.
 ## Useful resources
 
 - [Netlify Docs](https://docs.netlify.com/)
-- [Netlify CMS docs](https://www.netlifycms.org/docs/intro/)
+- [Decap CMS Docs](https://decapcms.org/)
 - [How the Netlify buildbot builds websites](https://www.netlify.com/blog/2016/10/18/how-our-build-bots-build-sites/)
 - [Netlify Drop - formarly BitBalloon](https://www.netlify.com/blog/2018/08/14/announcing-netlify-drop-the-simplicity-of-bitballoon-with-the-added-power-of-netlify/)
 - [Complete Intro to Netlify in 3.5 hours](https://www.netlify.com/blog/2019/10/07/complete-intro-to-netlify-in-3.5-hours/)
