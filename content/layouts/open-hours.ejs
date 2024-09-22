@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="<%= site.lang %>">
-  <%- include ('partials/head-default.ejs') %>
-  <body>
-    <%- include ('partials/header') %>
+<%- include ('partials/head-default.ejs') %>
 
-    <main class="container page-open-hours">
-      <%- include ('partials/breadcrumb') %>
-      <%- body %>
-    </main>
+<body>
+<%- include ('partials/header') %>
 
-    <%- include ('partials/footer') %> <%- include ('partials/scripts') %>
+<main class="container page-open-hours">
+    <%- include ('partials/breadcrumb') %>
+    <%- body %>
+</main>
 
-    <script src="/assets/js/opening-hours.js" charset="utf-8"></script>
-    <script>
+<%- include ('partials/footer') %>
+<%- include ('partials/scripts') %>
 
-      let data = <%- JSON.stringify(openingHours) %>;
+<script src="/assets/js/opening-hours.js" charset="utf-8"></script>
+<script>
+    let data = <%- JSON.stringify(openingHours) %>;
 
-      const hours = {
-          "Monday": data && data.hours && data.hours.Monday ? data.hours.Monday : {},
-          "Tuesday": data && data.hours && data.hours.Tuesday ? data.hours.Tuesday : {},
-          "Wednesday": data && data.hours && data.hours.Wednesday ? data.hours.Wednesday : {},
-          "Thursday": data && data.hours && data.hours.Thursday ? data.hours.Thursday : {},
-          "Friday": data && data.hours && data.hours.Friday ? data.hours.Friday : {},
-          "Saturday": data && data.hours && data.hours.Saturday ? data.hours.Saturday : {},
-          "Sunday": data && data.hours && data.hours.Sunday ? data.hours.Sunday : {},
-      }
+    const hours = {
+        "Monday": data && data.hours && data.hours.Monday ? data.hours.Monday : {},
+        "Tuesday": data && data.hours && data.hours.Tuesday ? data.hours.Tuesday : {},
+        "Wednesday": data && data.hours && data.hours.Wednesday ? data.hours.Wednesday : {},
+        "Thursday": data && data.hours && data.hours.Thursday ? data.hours.Thursday : {},
+        "Friday": data && data.hours && data.hours.Friday ? data.hours.Friday : {},
+        "Saturday": data && data.hours && data.hours.Saturday ? data.hours.Saturday : {},
+        "Sunday": data && data.hours && data.hours.Sunday ? data.hours.Sunday : {},
+    }
 
-      OpenHours.generateTime(hours);
-    </script>
-  </body>
+    OpenHours.generateTime(hours);
+</script>
+</body>
 </html>

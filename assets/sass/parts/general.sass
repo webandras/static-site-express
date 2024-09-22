@@ -1,3 +1,11 @@
+html, body
+    font-family: "Wix Madefor Text", sans-serif
+    min-width: 320px
+
+h1, h2, h3, h4, h5, h6
+    font-family: "Wix Madefor Display", sans-serif
+    line-height: 1.2
+
 .small
     font-size: 0.85em
 
@@ -5,15 +13,47 @@
     height: 24px
     width: 24px
 
+.netlify-image
+    width: 24px
+    height: 24px
+    position: relative
+    top: 4px
+
 .date
-    margin-top: 1.5em
+    margin-top: 1rem
+    font-size: 16px !important
     display: block
+    opacity: 0.7
 
 .sr-only, .hidden
     display: none
 
+.clearfix
+    overflow: auto
+
+.logo
+    width: 60px
+    height: auto
+
+.post-title
+    line-height: 1.2
+    font-size: 44px
+
+    @media screen and (max-width: 550px)
+        font-size: 34px
+
+.post-excerpt
+    margin-bottom: 2rem
+
 pre
     overflow-x: auto
+
+p, blockquote, ul, ol
+    line-height: 1.5
+
+blockquote p
+    font-size: 24px
+    font-style: italic
 
 p, ul li
     code
@@ -22,3 +62,25 @@ p, ul li
 
 figure
     margin: 0
+
+img.cover
+    max-width: 100%
+    width: 100%
+
+.container-lg
+    max-width: 960px
+
+::-moz-selection
+    color: white
+    background: $primary
+
+::selection
+    color: white
+    background: $primary
+
+iframe
+    margin-top: 0.5rem
+    margin-bottom: 1.25rem
+
+figcaption
+    padding-bottom: 2rem

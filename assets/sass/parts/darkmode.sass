@@ -1,13 +1,23 @@
 html.dark
     a
-        color: lightblue
+        color: $primary-light
+
+        &.logo-link
+            text-decoration: none
+            color: white !important
 
         &:hover, &:focus
             color: coral
 
     body
         background-color: $darkgray
-        color: $gray
+        color: rgb(203, 203, 203)
+
+        h1, h2, h3, h4, h5, h6
+            color: white
+
+        .header
+            border-bottom: 1px solid rgb(51, 51, 51)
 
         .header, .footer
             background-color: $black
@@ -35,3 +45,11 @@ html.dark
         p, ul li
             code
                 color: coral
+
+        button#theme-toggle,
+        button#toggle-menu
+            color: lightgray
+
+        article
+            p.meta
+                color: lightgrey

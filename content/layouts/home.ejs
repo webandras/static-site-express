@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="<%= site.lang %>">
 <%- include ('partials/head') %>
-  <body>
-    <%- include ('partials/header') %>
-    <%- include ('partials/introduction') %>
-    <main class="container">
-      <%- body %>
-    </main>
-    <%- include ('partials/footer') %>
-    <%- include ('partials/scripts') %>
-  </body>
+
+<body>
+<%- include ('partials/header') %>
+<%- include ('partials/introduction') %>
+
+<main class="container">
+    <%- body %>
+</main>
+
+<%- include ('partials/footer') %>
+<%- include ('partials/scripts') %>
+</body>
 </html>

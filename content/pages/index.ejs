@@ -1,18 +1,18 @@
 <section>
-  <h2>Newest writings</h2>
+    <h2>Newest writings</h2>
 
-  <ol class="post-list">
-    <% for (var i = 0; i < postsDataForIndexPage.length; i++) { %>
-    <li>
-      <time class="small"><%= postsDataForIndexPage[i].date %></time>
-      <h3>
-        <a href="<%= site.url %><%= postsDataForIndexPage[i].pathToPost %>"><%= postsDataForIndexPage[i].title %></a>
-      </h3>
-      <p><%= postsDataForIndexPage[i].excerpt %></p>
-    </li>
-    <% } %>
-  </ol>
-  <p>
-    <a href="<%= site.url %>/writings.html">All writings</a>
-  </p>
+    <ol class="post-list">
+        <% for (var i = 0; i < postsDataForIndexPage.length; i++) { %>
+            <li>
+                <time class="post-date"><%= postsDataForIndexPage[i].date %></time>
+                <h3>
+                    <a href="<%= site.url %><%= postsDataForIndexPage[i].pathToPost %>"><%= postsDataForIndexPage[i].title %></a>
+                </h3>
+                <p><%= postsDataForIndexPage[i].excerpt %></p>
+            </li>
+        <% } %>
+    </ol>
+    <p>
+        <a href="<%= site.url %>/writings.html">All writings &raquo;</a>
+    </p>
 </section>

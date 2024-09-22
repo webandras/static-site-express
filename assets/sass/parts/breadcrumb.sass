@@ -5,16 +5,22 @@
         list-style-type: none
         padding-left: 0
         align-items: center
-        font-size: 0.85em
+        font-size: 0.85rem
+
+        @media screen and (max-width: 500px)
+            flex-direction: column
+            align-items: flex-start
 
         li
             display: inline
 
             & > div
                 display: flex
+                align-items: center
 
         a.breadcrumb--home-link
             display: flex
+            align-items: center
 
             svg
                 width: 18px

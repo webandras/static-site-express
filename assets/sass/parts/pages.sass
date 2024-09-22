@@ -5,19 +5,30 @@ ol.post-list
     li
         margin-bottom: 2em
 
+        time.post-date
+            opacity: 0.70
+            font-size: 1rem
+
+        img
+            border-radius: 4px
+            max-height: 400px
+            object-fit: cover
+
         h3
+            font-size: 24px
+            font-weight: 700
             margin-top: 0
             margin-bottom: 0.25em
 
+            @media screen and (max-width: 550px)
+                font-size: 22px
 
 .page-404
     padding-bottom: 2em
     text-align: center
 
-
 .page-open-hours
     padding-bottom: 2em
-
 
 .contact--form
     padding-bottom: 2em
@@ -27,7 +38,6 @@ ol.post-list
         margin: 0 0.5em 0 0
         height: 18px
         width: 18px
-
 
 .page-message-sent
     text-align: center
@@ -42,3 +52,64 @@ ol.post-list
             height: 18px
             width: 18px
             margin-left: 0.25em
+
+h1.archive-title
+    margin-bottom: 2rem
+
+.blog--archive
+    padding-left: 0
+    list-style-type: none
+    margin: 0
+
+    li
+        h3
+            font-weight: 700
+            font-size: 20px
+
+        div
+            font-weight: 700
+            font-size: 18px
+            opacity: 0.9
+
+        ul
+            padding-left: 1rem
+            margin-left: 0
+            margin-top: 0
+            margin-bottom: 2rem
+
+.single
+    article
+        h1
+            padding-top: 0.25rem
+            margin-bottom: 1rem
+            font-size: 40px
+
+            @media screen and (max-width: 550px)
+                padding-top: 0.5rem
+                font-size: 34px
+
+        p, ul, ol
+            line-height: 1.65
+            font-size: 18px
+
+        blockquote
+            margin-top: 2rem
+            margin-bottom: 2rem
+            margin-left: 0
+            padding-left: 1.5rem
+            border-left: 8px solid $primary-light
+            p
+                opacity: 0.9
+                font-size: 24px
+                font-style: italic
+
+                @media screen and (max-width: 550px)
+                    font-size: 22px
+
+        p.meta
+            color: #666
+            font-size: 1rem
+            margin-bottom: 0
+
+.post-header
+    margin-bottom: 1.5rem

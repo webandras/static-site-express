@@ -272,11 +272,11 @@ Some text to show that the reference links can follow later.
 
 ### 1. Add a CSS class and an #id to an element{id=add-class}
 
-One example add underline to a link (by default, Bootstrap 3 does not use underline for the links - I might change this behaviour though):
+Add a class to a link:
 
-`[link](https://highlightjs.org/){.underline}`
+`[link](https://highlightjs.org/){.button}`
 
-And the result is: [link](https://highlightjs.org/){.underline}
+And the result is: [link](https://highlightjs.org/){.button}
 
 It is very important that you should not use whitespace, otherwise it will not work!
 
@@ -332,7 +332,6 @@ foo(a)
 
 
 ```javascript
-
 var a = 20
 
 function foo (a) {

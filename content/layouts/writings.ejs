@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="<%= site.lang %>">
 <%- include ('partials/head-writings.ejs') %>
-  <body>
-    <%- include ('partials/header') %>
 
-    <main class="container">
-      <%- include ('partials/breadcrumb') %>
-      <%- body %>
-    </main>
+<body>
+<%- include ('partials/header') %>
 
-    <%- include ('partials/footer') %>
-    <%- include ('partials/scripts') %>
-    <%- include ('partials/algolia') %>
-  </body>
+<main class="container">
+    <%- include ('partials/breadcrumb') %>
+    <%- body %>
+</main>
+
+<%- include ('partials/footer') %>
+<%- include ('partials/scripts') %>
+<%- include ('partials/algolia') %>
+</body>
 </html>

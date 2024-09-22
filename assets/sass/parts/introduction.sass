@@ -1,18 +1,35 @@
 .introduction
     text-align: center
-    padding: 1.5em
+    padding: 2rem
     border-bottom: 1px solid $lightgray
+
+    h1
+        padding-top: 1rem
+        margin-bottom: 1rem
+        text-transform: uppercase
+        font-size: 40px
+        letter-spacing: 2px
+
+        @media screen and (max-width: 550px)
+            padding-top: 10px
+            font-size: 34px
 
     .introduction--link-center
         display: flex
         align-items: center
         justify-content: center
+        width: fit-content
+        margin: 0 auto
 
     .introduction-cta-row
         display: flex
         justify-content: center
         column-gap: 1em
         align-items: center
+
+        @media screen and (max-width: 550px)
+            flex-direction: column
+            row-gap: 0.25rem
 
         #deploy
             img
@@ -24,7 +41,6 @@
             span
                 position: relative
                 top: -4px
-
 
         .link
             display: flex

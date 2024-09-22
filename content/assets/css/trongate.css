@@ -3,9 +3,9 @@ Copyright (c) 2019, David Connelly, MIT licence
 https://github.com/trongate/trongate-framework/blob/master/public/css/trongate.css
 */
 :root {
-    --primary: #4682b4;
-    --primary-dark: #38678f;
-    --primary-darker: #294d6b;
+    --primary: #24758e;
+    --primary-dark: #005a77;
+    --primary-darker: #0c485b;
     --primary-color: #fff;
     --secondary: #ff0000;
     --border: #c5c5c5;
@@ -26,12 +26,16 @@ form {
 
 h1 {
     margin-top: 0;
-    font-size: 4em;
+    font-size: 44px;
     margin-bottom: 0.2em;
 }
 
 h2 {
-    font-size: 2em;
+    font-size: 32px;
+}
+
+h3 {
+    font-size: 24px;
 }
 
 p {
@@ -476,4 +480,9 @@ hr {
         max-height: 85vh;
         overflow-y: auto;
     }
+}
+
+img.cover {
+    max-width: 700px;
+    object-fit: cover;
 }

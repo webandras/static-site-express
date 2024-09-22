@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="<%= site.lang %>">
-  <%- include ('partials/head-post') %>
-  <body>
-    <%- include ('partials/header') %>
+<%- include ('partials/head-post') %>
 
-    <main class="container">
-      <%- include ('partials/post-title') %>
-      <%- body %>
-    </main>
+<body>
+<%- include ('partials/header') %>
 
-    <%- include ('partials/footer') %>
-    <%- include ('partials/scripts') %>
-  </body>
+<main class="container single" style="padding-bottom: 3rem;">
+    <article>
+    <%- include ('partials/post-title') %>
+    <%- body %>
+    </article>
+</main>
+
+<%- include ('partials/footer') %>
+<%- include ('partials/scripts') %>
+</body>
 </html>
