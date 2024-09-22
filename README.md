@@ -13,7 +13,7 @@ I created a "Barebone" theme (previously on the `starter/barebone` branch) witho
 SASS support and some basic
 styling. It was a huge mistake to be dependent on any CSS frameworks. This theme became the default on the master
 branch.
-The old master branch is now available as `deprecated-tailwind`, and discontinued its development.
+The old master branch is now available as `deprecated-tailwind`, and I discontinued its development.
 
 1. Click on "Use this template" button to get an exact copy of the repo / site builder. Then use the `master` branch,
    which is the default. Or use the
