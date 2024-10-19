@@ -35,7 +35,7 @@
     "algoliasearch": "^4.14.2",
     "dotenv": "^16.0.1",
     "ejs": "^3.1.10",
-    "express": "^4.21.0",
+    "express": "^4.21.1",
     "front-matter": "^4.0.2",
     "fs-extra": "^10.1.0",
     "glob": "^9.3.2",
