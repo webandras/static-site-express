@@ -44,7 +44,7 @@
     "html-escaper": "^3.0.3",
     "i18next": "^21.9.0",
     "i18next-browser-languagedetector": "^6.1.5",
-    "js-yaml": "^4.1.0",
+    "js-yaml": "^4.1.1",
     "loc-i18next": "^0.1.4",
     "markdown-it": "^13.0.1",
     "markdown-it-attrs": "^4.1.4",
