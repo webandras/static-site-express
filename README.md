@@ -383,6 +383,30 @@ The data comes from `content/data/opening-hours.yml`. It can be edited from Deca
 
 ## CHANGELOG
 
+### Release 2.3.0 (22 September 2024)
+
+- The Barebone theme became the default, Tailwind/Flowbite is deprecated
+  (still available on the "deprecated-tailwind" branch).
+- Templates and styles updated to make it look better.
+- Update npm package versions.
+- Update readme, and other markdown files.
+- Fix highlight.js syntax highlighting.
+- Fix/update Content Security Policy (update whitelist).
+
+### Release 2.2.2 (10 July 2024)
+
+- Update and improve the README.
+- Update EJS package from ^3.1.8 to ^3.1.10.
+- Update express from ^4.18.1 to ^4.19.2.
+- Update the content of the demo blogposts.
+- Change the ordering of posts for index page in descending order - newest first.
+- Remove breadcrumb from single blogpost template.
+- Header border and background-color fixes.
+- Update post title EJS partial.
+- Fix typos in code comments.
+- Update CSS and JS bundles.
+- Extend the safe-list for Tailwind CSS config.
+
 ### Release 2.2.1 (27 March 2023)
 
 - fix: Missing glob package (caused an issue on starter/barebone branch - not able to reproduce it on master though).
@@ -411,7 +435,7 @@ You can use `bin/livereload` instead of `bin\serve`. The old express local serve
 
 The project is now in mature state, there will be no more refactoring, only bugfixes and occasional improvements of
 features. No breaking changes.
-I don't want to be part of the "rewrite culture". Also, not a fan of npm any more. I use as small amount of packages as
+I don't want to be part of the "rewrite culture". Also, not a fan of npm anymore. I use as small amount of packages as
 possible.
 Having 1000s of interdependent packages (with all these regular rewrites, and security issues as well) is a dependency
 hell.
