@@ -1,12 +1,12 @@
 <footer class="footer">
-    <a class="footer--logo" href="<%= site.url %>/">
+    <a class="footer__logo" href="<%= site.url %>/">
       <img src="<%= site.url %>/assets/images/static-site-express.png" alt="<%= site.title %>" class="logo"/>
       <%= site.title %>
     </a>
 
     <p><%= site.quote %></p>
 
-    <ul class="footer--nav">
+    <ul class="footer__nav">
 
       <li>
         <% if (pageName === 'index') { %>
@@ -58,6 +58,6 @@
 
     </ul>
 
-    <aside class="footer--copyright">© 2019-<%= site.currentYear %> <a href="<%= site.githubProfile %>" class="hover:underline"><%= site.author %></a>. MIT license.</aside>
+    <aside class="footer__copyright">© 2019-<%= site.currentYear %> <a href="<%= site.githubProfile %>" class="hover:underline"><%= site.author %></a>. MIT license.</aside>
 
 </footer>
