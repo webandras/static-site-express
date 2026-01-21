@@ -1,3 +1,5 @@
+@use "variables"
+
 .sidenav
     height: 100%
     width: 0
@@ -5,7 +7,7 @@
     z-index: 1
     top: 0
     left: 0
-    background-color: $darkgray
+    background-color: variables.$darkgray
     overflow-x: hidden
     padding-top: 60px
     transition: 0.5s
@@ -15,21 +17,21 @@
 
     .close-btn
         text-decoration: none
-        color: $lightgray
+        color: variables.$lightgray
         position: absolute
         top: 0
         right: 12px
         font-size: 36px
 
         &:hover, &:focus
-            color: $primary-light
+            color: variables.$primary-light
 
     #mobile-nav
         #navbar-default
             ul
                 li
                     a
-                        color: $lightgray
+                        color: variables.$lightgray
 
                         &:hover, &:focus
-                            color: $primary-light
+                            color: variables.$primary-light

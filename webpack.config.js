@@ -17,7 +17,12 @@ module.exports = {
           // Translates CSS into CommonJS
           "css-loader",
           // Compiles Sass to CSS
-          "sass-loader",
+          {
+            loader: "sass-loader", // Compiles Sass to CSS
+            options: {
+              api: "modern"
+            },
+          },
           // Runs PostCSS
           'postcss-loader'
 

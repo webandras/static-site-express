@@ -1,8 +1,10 @@
-header.header
-    background-color: $white
+@use "variables"
+
+.header
+    background-color: variables.$white
     border-bottom: 1px solid rgb(229, 231, 235)
 
-    nav.container
+    .container
         display: flex
         align-items: center
         justify-content: space-between
@@ -14,7 +16,7 @@ header.header
 
             &.logo-link
                 text-decoration: none
-                color: $darkgray
+                color: variables.$darkgray
 
                 span
                     text-decoration: none
@@ -22,8 +24,8 @@ header.header
                     font-size: 1.25rem
                     font-weight: 500
 
-        button#theme-toggle,
-        button#toggle-menu
+        #theme-toggle,
+        #toggle-menu
             margin: 0
             padding: 0.3em
 
@@ -53,12 +55,12 @@ header.header
                     a[aria-current="page"]
                         font-weight: 700
 
-        .header--section-1
+        .header__section-1
             display: flex
             flex-direction: row
             align-items: center
 
-        .header--section-2, .header--button-group
+        .header__section-2, .header__button-group
             margin-left: 8px
             display: flex
             flex-direction: row

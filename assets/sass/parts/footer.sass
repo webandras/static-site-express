@@ -1,9 +1,11 @@
+@use "variables"
+
 .footer
     padding: 2em 1em
-    background-color: $white
+    background-color: variables.$white
     text-align: center
 
-    ul.footer--nav
+    &__nav
         margin: 2em 0
         padding-left: 0
         display: inline-block
@@ -12,12 +14,12 @@
             display: inline
             margin: 0 0.5rem
 
-    .footer--logo
+    &__logo
         width: fit-content
         margin: 0 auto
         display: flex
         align-items: center
         justify-content: center
 
-    .footer--copyright
+    &__copyright
         font-size: 0.85em
