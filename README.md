@@ -9,37 +9,12 @@ to Netlify or any platform to your liking. Suited for landing pages, portfolio, 
 
 ### Install static-site-express
 
-I created a "Barebone" theme (previously on the `starter/barebone` branch) without Tailwind CSS and Flowbite UI, with
-SASS support and some basic
-styling. It was a huge mistake to be dependent on any CSS frameworks. This theme became the default on the master
-branch.
-The old master branch is now available as `deprecated-tailwind`, and I discontinued its development.
-
-1. Click on "Use this template" button to get an exact copy of the repo / site builder. Then use the `master` branch,
-   which is the default. Or use the
-   GitHub CLI:
+Click on "Use this template" button to get an exact copy of the repo / site builder. Then use the `master` branch,
+which is the default. Or use the GitHub CLI:
 
 ```raw
 gh repo create your-username/new-repo  -p webandras/static-site-express
 ```
-
-2. To have a basic e-commerce website Flowbite/TailWind starter incorporating the [Snipcart](https://snipcart.com/)
-   ecommerce platform into static-site-express (Flowbite/Tailwind is going to be removed soon...):
-
-- Checkout branch `snipcart`
-- Register at [Snipcart](https://snipcart.com/)
-- Copy your Snipcart public test key at `src/layouts/partials/scripts.ejs` to the `publicApiKey` property value:
-
-```html
-<div id="snipcart" data-config-modal-style="side" data-api-key="YOUR_PUBLIC_TEST_API_KEY" hidden></div>
-```
-
-_Note:_ This api key is public, and can be submitted to version control. There is also a private key, but that should
-never be committed.
-
-[Snipcart](https://snipcart.com/) is more than a simple cart: enjoy a full back-office management dashboard to track
-abandoned carts, sales, orders, customers and more.
-_Disclaimer:_ I am not affiliated with Snipcart in any ways.
 
 _Note:_ Netlify will build your site from the default branch (usually the `master`) by default.
 You can use a different branch other than the default one, but **in that case Decap CMS (previously: Netlify CMS) will
