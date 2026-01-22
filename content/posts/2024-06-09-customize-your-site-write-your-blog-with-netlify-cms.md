@@ -6,7 +6,7 @@ excerpt: >-
 coverImage: static.jpg
 ---
 
-The frontend of website is created by using Tailwind CSS framework with Flowbite UI library. In order to understand static-site-express better, the directory structure is shown below. When you customize your site, you need to modify the site generator code a little bit. For example, if you want to add about page etc. to your site.
+In order to understand static-site-express better, the directory structure is shown below. When you customize your site, you need to modify the site generator code a little bit. For example, if you want to add about page etc. to your site.
 
 For the installation guide, [see this posts](https://static-site-express.netlify.app/2024/06/10/welcome_to_static_site_express).
 
@@ -20,7 +20,6 @@ For the installation guide, [see this posts](https://static-site-express.netlify
     ├── js
         ├── identity.js
         └── main.js
-├── bin
 ├── config/site.config.js
 ├── content
     ├── admin
@@ -56,7 +55,6 @@ For the installation guide, [see this posts](https://static-site-express.netlify
 ├── .env
 ├── package.json
 └── postcss.config.js
-└── tailwind.config.js
 └── webpack.config.js
 └── .gitignore
 └── etc.
@@ -119,7 +117,7 @@ coverImage: node.jpg
 static-site-express is a simple Node.js based static-site generator that uses EJS and Markdown...
 ```
 
-Currrently, only string format is allowed for the `date` property, so if you need to post more than once a day, it will lead to problems!
+Currently, only string format is allowed for the `date` property, so if you need to post more than once a day, it will lead to problems!
 
 ### Use Netlify's Content Management System to write your posts
 
