@@ -85,8 +85,6 @@ If you don't see your changes:
 
 Make sure to build the live bundle in production mode.
 
-Check out the `bin` folder and the `package.json` file to see the available scripts.
-
 ### Modify the application code
 
 The JavaScript source is in the `app/` folder. **Generally, you only need to modify the `core/generator.js` and
