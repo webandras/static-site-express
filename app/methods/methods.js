@@ -39,10 +39,9 @@ module.exports = {
 /**
  * Copy assets folder (contains images, scripts and css) and favicon folder to destination
  *
- * @param srcPath: string
- * @param distPath: string
- *
  * @return void
+ * @param {string} srcPath
+ * @param {string} distPath
  */
 function copyAssetsFaviconFolders(srcPath, distPath) {
   "use strict";
@@ -59,8 +58,8 @@ function copyAssetsFaviconFolders(srcPath, distPath) {
 /**
  * Copy lang folder to destination
  *
- * @param srcPath: string
- * @param distPath: string
+ * @param {string} srcPath
+ * @param {string} distPath
  *
  * @return void
  */
@@ -75,8 +74,8 @@ function copyLangFolder(srcPath, distPath) {
 /**
  * Copy data folder to destination
  *
- * @param srcPath: string
- * @param distPath: string
+ * @param {string} srcPath
+ * @param {string} distPath
  *
  * @return void
  */
@@ -91,8 +90,8 @@ function copyDataFolder(srcPath, distPath) {
 /**
  * Handle errors for copying folders
  *
- * @param err: string|null
- * @param name: string
+ * @param {string|null} err
+ * @param {string} name
  *
  * @return void
  */
@@ -106,8 +105,8 @@ function handleError(err, name) {
 
 /**
  * copy admin folder (contains files for Netlify CMS) to the root of /public folder
- * @param srcPath: string
- * @param distPath: string
+ * @param {string} srcPath
+ * @param {string} distPath
  *
  * @return void
  */
@@ -122,9 +121,9 @@ function copyAdminFolder(srcPath, distPath) {
 /**
  * Copy files from /website root to the root of /public folder
  *
- * @param filename: string
- * @param srcPath: string
- * @param distPath: string
+ * @param {string} filename
+ * @param {string} srcPath
+ * @param {string} distPath
  *
  * @return void
  */
@@ -139,8 +138,8 @@ function copyRootFile(filename, srcPath, distPath) {
 /**
  * Generate canonical url for the post
  *
- * @param fileData: any
- * @param config: any
+ * @param {any} fileData
+ * @param {any} config
  *
  * @return string
  */
@@ -157,7 +156,7 @@ function generateCanonicalURL(fileData, config) {
 /**
  * Generate postid for the post (needed for disqus)
  *
- * @param fileData: any
+ * @param {any} fileData
  *
  * @return string
  */
@@ -175,7 +174,7 @@ function generatePostId(fileData) {
 /**
  * Read data from file and then render post
  *
- * @param pathToFile: string
+ * @param {string} pathToFile
  *
  * @return string
  */
@@ -192,10 +191,10 @@ function getPostDataFromMarkdown(pathToFile) {
 /**
  * Change date format
  *
- * @param postData: any
- * @param pathToFile: string
- * @param months: string
- * @param lang: string
+ * @param {any} postData
+ * @param {string} pathToFile
+ * @param {string} months
+ * @param {string} lang
  *
  * @return string
  */
@@ -295,7 +294,17 @@ function convertDateFormat(postData, pathToFile, months, lang = "en") {
   }
 }
 
-// save postdata for the index page
+
+/**
+ * Save postdata for the index page
+ *
+ * @param {any} fileData
+ * @param {string} dateFormatted
+ * @param {any} postData
+ * @param {any} results
+ *
+ * @return void
+ */
 function savePostDataForIndexPage(fileData, dateFormatted, postData, results) {
   "use strict";
 
@@ -327,9 +336,9 @@ function savePostDataForIndexPage(fileData, dateFormatted, postData, results) {
 /**
  * Save the rendered blogposts to destination folder
  *
- * @param fileData: any
- * @param destPath: string
- * @param layoutContent: any
+ * @param {any} fileData
+ * @param {string} destPath
+ * @param {any} layoutContent
  *
  * @return void
  */
@@ -350,9 +359,9 @@ function saveBlogpostsHTML(fileData, destPath, layoutContent) {
 /**
  * Get the postsData for the archive on the index page grouped by year, month
  *
- * @param data: any
- * @param config: any
- * @param results: any
+ * @param {any} data
+ * @param {any} config
+ * @param {any} results
  *
  * @return [type]
  */
