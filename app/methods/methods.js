@@ -161,8 +161,6 @@ function generateCanonicalURL(fileData, config) {
  *
  * @return string
  */
-
-
 function generatePostId(fileData) {
   "use strict";
 
@@ -336,8 +334,9 @@ function savePostDataForIndexPage(fileData, dateFormatted, postData, results) {
  * @return void
  */
 function saveBlogpostsHTML(fileData, destPath, layoutContent) {
-  "use strict"; // split filename to extract year, month, day, and the title of the post
+  "use strict";
 
+  // split filename to extract year, month, day, and the title of the post
   const datePart = fileData.name.split("-");
   datePart.length = 3;
   const titlePart = fileData.name.split("-").slice(3).join("-"); // year/month/day/post_title.html
