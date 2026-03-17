@@ -9,7 +9,6 @@
   const fs = require("fs-extra");
 
   const port = process.env.PORT || 4000;
-  const nodeEnvironment = process.env.NODE_ENV || "development";
 
   if (port === undefined) {
     throw new Error(`Argument missing: port number not supplied`);
