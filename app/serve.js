@@ -18,55 +18,18 @@
   // create express server
   const app = express();
 
-  if (nodeEnvironment === "production") {
-    // Set Security Headers.
-    const helmet = require("helmet");
-
-    app.use(helmet());
-
-    // Content Security Policy.
-    //const csp = require('helmet-csp')
-    // These settings should be changed (these are just examples)
-    /*app.use(csp({
-      directives: {
-        defaultSrc: [`'none'`],
-        styleSrc: [`'self'`,
-          'https://fonts.googleapis.com',
-          'https://www.youtube.com',
-          'https://maxcdn.bootstrapcdn.com/',
-          '//cdnjs.cloudflare.com'
-        ],
-        fontSrc: [`'self'`,
-          'https://fonts.gstatic.com',
-          'https://maxcdn.bootstrapcdn.com'
-        ],
-        scriptSrc: [`'self'`,
-          'https://www.youtube.com',
-          'https://www.googletagmanager.com',
-          'https://www.google-analytics.com',
-          'https://code.jquery.com',
-          'https://maxcdn.bootstrapcdn.com',
-          '//cdnjs.cloudflare.com'
-        ],
-        childSrc: [`'self'`, 'https://www.youtube.com'],
-        imgSrc: [`'self'`,
-          'www.google-analytics.com',
-          'https://use.fontawesome.com',
-          'https://cloud.netlifyusercontent.com'
-        ],
-        objectSrc: [`'none'`],
-        connectSrc: [`'self'`]
-      }
-    }))*/
-  } // Middlewares.
-  // GET favicon.ico
-
+  /* =========================================================================
+   * MIDDLEWARES
+   * =========================================================================
+   */
 
   // Add intentional latency for every request
   // During the build process (when all files are re-copied into the public folder),
   // sometimes not all html files are available on time to be served, so the server will crash.
   // It happens rarely. This modification decreases the frequency / likelihood of this "race condition".
   app.use((req, res, next) => setTimeout(next, 1000));
+
+  // GET favicon.ico
   app.use("/", favicon(path.join("public", "favicon.ico")));
 
   // to serve the static files from the /public folder
