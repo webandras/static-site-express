@@ -257,10 +257,6 @@ module.exports = function () {
       // save the rendered blogposts to destination folder
       $.ssg.saveBlogpostsHTML(fileData, destPath, layoutContent);
 
-      // Test
-      // console.log(JSON.stringify(searchIndexData));
-      // $.fse.writeFileSync(`${srcPath}/algoliaindex.json`, JSON.stringify(searchIndexData));
-
       if (config.site.enableSearch && config.site.refreshSearchIndex) {
         // Update or create records of the Algolia Search index
         index.partialUpdateObjects(searchIndexData, {
