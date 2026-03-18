@@ -87,14 +87,12 @@ Make sure to build the live bundle in production mode.
 
 ### Modify the application code
 
-The JavaScript source is in the `app/` folder. **Generally, you only need to modify the `core/generator.js` and
-the `core/methods.js` files.**
+The JavaScript source is in the `app/` folder. **Generally, you only need to modify 2 sections of the `core/generator.js`:**
 
-- `methods.js` contains most of the methods for the generator.
-- In `generator.js`, you can modify the pages you want to generate in the switch statements starting from **line 280**.
+- Modify the pages you want to generate in the switch statements starting from **line 309**.
   You also need to create a page (`.ejs`) in the `pages/` folder, and a template (in `layouts/`) to be used for that
   page (or use one of the pre-existing templates like `default.ejs`).
-- Post properties can be extended **starting at line 142**, in the `templateConfig` object literal (`generator.js`)
+- Post properties can be extended **starting at line 166**, in the `templateConfig` object literal.
 
 After the changes, restart build/watch scripts. This process in suboptimal, but currently this is the workflow.
 
