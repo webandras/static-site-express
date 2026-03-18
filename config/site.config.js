@@ -12,8 +12,8 @@ module.exports = {
       "A Node.js based static-site generator that uses EJS and Markdown. Deploy your static site to Netlify or any platform to your liking. Suited for landing pages, portfolio, blogs, documentation, hobby projects.",
     author: "András Gulácsi",
     defaultImage: "/assets/images/static.jpg",
-    github: "https://github.com/SalsaBoy990/static-site-express",
-    githubProfile: "https://github.com/SalsaBoy990",
+    github: "https://github.com/webandras/static-site-express",
+    githubProfile: "https://github.com/webandras",
     currentYear: new Date().getFullYear(),
 
     // CONFIGURATION
@@ -40,7 +40,7 @@ module.exports = {
     darkMode: true,
 
     // Link for the deployment button url
-    netlifyDeployLink: "https://app.netlify.com/start/deploy?repository=https://github.com/SalsaBoy990/static-site-express",
+    netlifyDeployLink: "https://app.netlify.com/start/deploy?repository=https://github.com/webandras/static-site-express",
     netlifyDeployButtonId: "#deploy",
 
     // Default language
