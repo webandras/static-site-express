@@ -269,6 +269,21 @@ for reference.
 
 The translations come from `content/lang/translations.json`.
 
+Example usage 1:
+
+```html
+<h1 data-i18n="contact.title">Contact page</h1>
+```
+
+Example usage 2:
+
+```html
+<textarea name="message"
+          data-i18n="[placeholder]contact.message_placeholder"
+          placeholder="Your message..."
+></textarea>
+```
+
 [i18next Docs](https://www.i18next.com/)
 
 ### Open Hours library for displaying opening hours.
