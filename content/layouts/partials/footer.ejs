@@ -1,63 +1,66 @@
 <footer class="footer">
-    <a class="footer__logo" href="<%= site.url %>/">
-      <img src="<%= site.url %>/assets/images/static-site-express.png" alt="<%= site.title %>" class="logo"/>
-      <%= site.title %>
-    </a>
+  <a class="footer__logo" href="<%= site.url %>/">
+    <img src="<%= site.url %>/assets/images/static-site-express.png" alt="<%= site.title %>" class="logo"/>
+    <%= site.title %>
+  </a>
 
-    <p><%= site.quote %></p>
+  <p><%= site.quote %></p>
 
-    <ul class="footer__nav">
+  <ul class="footer__nav">
 
-      <li>
-        <% if (pageName === 'index') { %>
+    <li>
+      <% if (pageName === 'index') { %>
         <a href="<%= site.url %>/index.html" aria-current="page">Home</a>
-        <% } else { %>
+      <% } else { %>
         <a href="<%= site.url %>/index.html">Home</a>
-        <% } %>
-      </li>
+      <% } %>
+    </li>
 
-      <li>
-        <% if (pageName === 'contact') { %>
+    <li>
+      <% if (pageName === 'contact') { %>
         <a href="<%= site.url %>/contact.html" aria-current="page">Contact</a>
-        <% } else { %>
+      <% } else { %>
         <a href="<%= site.url %>/contact.html">Contact</a>
-        <% } %>
-      </li>
+      <% } %>
+    </li>
 
-      <li>
-        <% if (pageName === 'writings') { %>
+    <li>
+      <% if (pageName === 'writings') { %>
         <a href="<%= site.url %>/writings.html" aria-current="page">Writings</a>
-        <% } else { %>
+      <% } else { %>
         <a href="<%= site.url %>/writings.html">Writings</a>
-        <% } %>
-      </li>
+      <% } %>
+    </li>
 
-      <li>
-        <% if (pageName === 'message-sent') { %>
+    <li>
+      <% if (pageName === 'message-sent') { %>
         <a href="<%= site.url %>/message-sent.html" aria-current="page">Message sent</a>
-        <% } else { %>
+      <% } else { %>
         <a href="<%= site.url %>/message-sent.html">Message sent</a>
-        <% } %>
-      </li>
+      <% } %>
+    </li>
 
-      <li>
-        <% if (pageName === 'open-hours') { %>
+    <li>
+      <% if (pageName === 'open-hours') { %>
         <a href="<%= site.url %>/open-hours.html" aria-current="page">Open hours</a>
-        <% } else { %>
+      <% } else { %>
         <a href="<%= site.url %>/open-hours.html">Open hours</a>
-        <% } %>
-      </li>
+      <% } %>
+    </li>
 
-      <li>
-        <% if (pageName === '404') { %>
+    <li>
+      <% if (pageName === '404') { %>
         <a href="<%= site.url %>/404.html" aria-current="page">Page 404</a>
-        <% } else { %>
+      <% } else { %>
         <a href="<%= site.url %>/404.html">Page 404</a>
-        <% } %>
-      </li>
+      <% } %>
+    </li>
 
-    </ul>
+  </ul>
 
-    <aside class="footer__copyright">© 2019-<%= site.currentYear %> <a href="<%= site.githubProfile %>" class="hover:underline"><%= site.author %></a>. MIT license.</aside>
+  <aside class="footer__copyright">© 2019-<%= site.currentYear %> <a href="<%= site.githubProfile %>"
+                                                                     class="hover:underline"><%= site.author %></a>. MIT
+    license.
+  </aside>
 
 </footer>
