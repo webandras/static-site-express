@@ -89,18 +89,14 @@ If you don't see your changes:
 
 Make sure to build the live bundle in production mode.
 
-Check out the `bin` folder and the `package.json` file to see the available scripts.
-
 ### Modify the application code
 
-The JavaScript source is in the `app/` folder. **Generally, you only need to modify the `core/generator.js` and
-the `core/methods.js` files.**
+The JavaScript source is in the `app/` folder. **Generally, you only need to modify 2 sections of the `core/generator.js`:**
 
-- `methods.js` contains most of the methods for the generator.
-- In `generator.js`, you can modify the pages you want to generate in the switch statements starting from **line 280**.
+- Modify the pages you want to generate in the switch statements starting from **line 309**.
   You also need to create a page (`.ejs`) in the `pages/` folder, and a template (in `layouts/`) to be used for that
   page (or use one of the pre-existing templates like `default.ejs`).
-- Post properties can be extended **starting at line 142**, in the `templateConfig` object literal (`generator.js`)
+- Post properties can be extended **starting at line 166**, in the `templateConfig` object literal.
 
 After the changes, restart build/watch scripts. This process in suboptimal, but currently this is the workflow.
 
@@ -276,6 +272,21 @@ the ones coming from config) cannot be made translatable. Probably not a good so
 for reference.
 
 The translations come from `content/lang/translations.json`.
+
+Example usage 1:
+
+```html
+<h1 data-i18n="contact.title">Contact page</h1>
+```
+
+Example usage 2:
+
+```html
+<textarea name="message"
+          data-i18n="[placeholder]contact.message_placeholder"
+          placeholder="Your message..."
+></textarea>
+```
 
 [i18next Docs](https://www.i18next.com/)
 
