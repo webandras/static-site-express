@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SalsaBoy990/static-site-express.git"
+    "url": "git+https://github.com/webandras/static-site-express.git"
   },
   "keywords": [
     "Node.js",
@@ -72,7 +72,7 @@
     "webpack-cli": "^4.10.0"
   },
   "bugs": {
-    "url": "https://github.com/SalsaBoy990/static-site-express/issues"
+    "url": "https://github.com/webandras/static-site-express/issues"
   },
-  "homepage": "https://github.com/SalsaBoy990/static-site-express#readme"
+  "homepage": "https://github.com/webandras/static-site-express#readme"
 }

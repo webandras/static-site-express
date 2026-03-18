@@ -328,7 +328,7 @@ However, the assets folder is sometimes not deleted, so an exception occurs:
 - Update: Chokidar is working properly on Ubuntu 20.04 (28 April 2021)
 
 If you have a problem or a question about
-static-site-express, [open an issue here](https://github.com/SalsaBoy990/static-site-express/issues).
+static-site-express, [open an issue here](https://github.com/webandras/static-site-express/issues).
 
 ## Credits
 
