@@ -1,3 +1,5 @@
+"use strict";
+
 import './../sass/main.sass';
 
 // import i18next from "i18next";
@@ -11,123 +13,123 @@ import './../sass/main.sass';
 const config = require("../../config/site.config").site;
 
 const onLoad = () => {
-  // Fast deploy to Netlify
-  const deployBtn = document.querySelector(config.netlifyDeployButtonId);
-  if (deployBtn) {
-    deployBtn.addEventListener("click", () => {
-      window.location.href = config.netlifyDeployLink;
-    });
-  }
-
-  // Enable multi-language features
-  // detects the browser language and reads the translation strings from file
-  /* i18next.use(LanguageDetector).init(
-    {
-      fallbackLng: config.fallbackLang,
-      debug: config.langDebug,
-      resources: translations,
-    },
-    (err, t) => {
-      if (err) return console.error(err);
-
-      // init set content
-      const localize = locI18next.init(i18next, {
-        selectorAttr: "data-i18n", // selector for translating elements
-        targetAttr: "i18n-target",
-        optionsAttr: "i18n-options",
-        useOptionsAttr: false,
-        parseDefaultValueFromContent: true,
-      });
-      localize("body");
-    }
-  );*/
-
-  /* i18next.on("languageChanged", () => {
-    localize("body");
-  }); */
-
-  /* function changeLng(lng) {
-    console.log(lng);
-    i18next.changeLanguage(lng);
-  } */
-
-  toggleDarkMode();
-
-  // darkmode switcher
-  function toggleDarkMode() {
-
-    // if darkmode disabled
-    if (!config.darkMode) {
-      return;
+    // Fast deploy to Netlify
+    const deployBtn = document.querySelector(config.netlifyDeployButtonId);
+    if (deployBtn) {
+        deployBtn.addEventListener("click", () => {
+            window.location.href = config.netlifyDeployLink;
+        });
     }
 
-    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    // Enable multi-language features
+    // detects the browser language and reads the translation strings from file
+    /* i18next.use(LanguageDetector).init(
+      {
+        fallbackLng: config.fallbackLang,
+        debug: config.langDebug,
+        resources: translations,
+      },
+      (err, t) => {
+        if (err) return console.error(err);
 
-    // Change the icons inside the button based on previous settings
-    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      themeToggleLightIcon.classList.remove('hidden');
-    } else {
-      themeToggleDarkIcon.classList.remove('hidden');
-    }
-
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    themeToggleBtn.addEventListener('click', function () {
-
-      // toggle icons inside button
-      themeToggleDarkIcon.classList.toggle('hidden');
-      themeToggleLightIcon.classList.toggle('hidden');
-
-      // if set via local storage previously
-      if (localStorage.getItem('color-theme')) {
-        if (localStorage.getItem('color-theme') === 'light') {
-          document.documentElement.classList.add('dark');
-          localStorage.setItem('color-theme', 'dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-          localStorage.setItem('color-theme', 'light');
-        }
-
-        // if NOT set via local storage previously
-      } else {
-        if (document.documentElement.classList.contains('dark')) {
-          document.documentElement.classList.remove('dark');
-          localStorage.setItem('color-theme', 'light');
-        } else {
-          document.documentElement.classList.add('dark');
-          localStorage.setItem('color-theme', 'dark');
-        }
+        // init set content
+        const localize = locI18next.init(i18next, {
+          selectorAttr: "data-i18n", // selector for translating elements
+          targetAttr: "i18n-target",
+          optionsAttr: "i18n-options",
+          useOptionsAttr: false,
+          parseDefaultValueFromContent: true,
+        });
+        localize("body");
       }
+    );*/
 
-    });
+    /* i18next.on("languageChanged", () => {
+      localize("body");
+    }); */
 
-  }
+    /* function changeLng(lng) {
+      console.log(lng);
+      i18next.changeLanguage(lng);
+    } */
 
-  // SIDEBAR MENU
-  /* Set the width of the side navigation to 250px */
-  function openOffcanvasNavigation() {
-    const defaultNavbar = document.getElementById("navbar-default");
-    const defaultNavbarClone = defaultNavbar.cloneNode(true);
+    toggleDarkMode();
 
-    // delete previous cloned content
-    const mobileNav = document.getElementById("mobile-nav");
-    mobileNav.innerText = '';
-    mobileNav.appendChild(defaultNavbarClone);
-    document.getElementById("main-sidenav").style.width = "250px";
-  }
+    // darkmode switcher
+    function toggleDarkMode() {
+        // if darkmode disabled
+        if (!config.darkMode) {
+            return;
+        }
 
-  /* Set the width of the side navigation to 0, delete cloned menu */
-  function closeOffcanvasNavigation() {
-    document.getElementById("main-sidenav").style.width = "0";
-    document.getElementById("mobile-nav").innerText = '';
-  }
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
-  // Sidebar close button
-  document.getElementById('close-btn').addEventListener('click', closeOffcanvasNavigation);
+        // Change the icons inside the button based on previous settings
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage)
+            && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
 
-  // Sidebar open menu
-  document.getElementById("toggle-menu").addEventListener('click', openOffcanvasNavigation);
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        themeToggleBtn.addEventListener('click', function () {
 
+            // toggle icons inside button
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            // if set via local storage previously
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+
+                // if NOT set via local storage previously
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+
+        });
+
+    }
+
+    // SIDEBAR MENU
+    /* Set the width of the side navigation to 250px */
+    function openOffcanvasNavigation() {
+        const defaultNavbar = document.getElementById("navbar-default");
+        const defaultNavbarClone = defaultNavbar.cloneNode(true);
+
+        // delete previous cloned content
+        const mobileNav = document.getElementById("mobile-nav");
+        mobileNav.innerText = '';
+        mobileNav.appendChild(defaultNavbarClone);
+        document.getElementById("main-sidenav").style.width = "250px";
+    }
+
+    /* Set the width of the side navigation to 0, delete cloned menu */
+    function closeOffcanvasNavigation() {
+        document.getElementById("main-sidenav").style.width = "0";
+        document.getElementById("mobile-nav").innerText = '';
+    }
+
+    // Sidebar close button
+    document.getElementById('close-btn').addEventListener('click', closeOffcanvasNavigation);
+
+    // Sidebar open menu
+    document.getElementById("toggle-menu").addEventListener('click', openOffcanvasNavigation);
 };
 
 // only execute when DOM is ready
