@@ -1,11 +1,12 @@
 import './../sass/main.sass';
 
-import i18next from "i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
-import locI18next from "loc-i18next";
+// import i18next from "i18next";
+// import LanguageDetector from "i18next-browser-languagedetector";
+// import locI18next from "loc-i18next";
 
 // load translations from file
-const translations = require("../../content/lang/translations.json");
+// const translations = require("../../content/lang/translations.json");
+
 // load global site config
 const config = require("../../config/site.config").site;
 
@@ -20,7 +21,7 @@ const onLoad = () => {
 
   // Enable multi-language features
   // detects the browser language and reads the translation strings from file
-  i18next.use(LanguageDetector).init(
+  /* i18next.use(LanguageDetector).init(
     {
       fallbackLng: config.fallbackLang,
       debug: config.langDebug,
@@ -39,16 +40,16 @@ const onLoad = () => {
       });
       localize("body");
     }
-  );
+  );*/
 
-  i18next.on("languageChanged", () => {
+  /* i18next.on("languageChanged", () => {
     localize("body");
-  });
+  }); */
 
-  function changeLng(lng) {
+  /* function changeLng(lng) {
     console.log(lng);
     i18next.changeLanguage(lng);
-  }
+  } */
 
   toggleDarkMode();
 
