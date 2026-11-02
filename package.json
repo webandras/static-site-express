@@ -42,8 +42,6 @@
     "helmet": "^5.1.1",
     "helmet-csp": "^3.4.0",
     "html-escaper": "^3.0.3",
-    "i18next": "^21.10.0",
-    "i18next-browser-languagedetector": "^6.1.8",
     "js-yaml": "^5.2.3",
     "loc-i18next": "^0.1.6",
     "markdown-it": "14.3.3",

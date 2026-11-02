@@ -103,9 +103,6 @@ module.exports = function () {
   // copy assets folder (contains images, scripts and css) and favicon folder to destination
   $.ssg.copyAssetsFaviconFolders(srcPath, distPath);
 
-  // copy lang folder to destination
-  $.ssg.copyLangFolder(srcPath, distPath);
-
   // copy data folder to destination
   $.ssg.copyDataFolder(srcPath, distPath);
 
