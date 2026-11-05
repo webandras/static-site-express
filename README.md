@@ -31,11 +31,10 @@ First, install or update npm packages.
 
 Second, create a `.env` file (see `.env.example`), and set the variables.
 
-If you want to use Algolia Search, you need
-to [register](https://www.algolia.com/doc/guides/getting-started/what-is-algolia/) and generate your API credentials. If
+If you want to use Algolia Search, [register](https://www.algolia.com/doc/guides/getting-started/what-is-algolia/) and generate your API credentials. If
 you don't want to use Algolia, set `enableSearch` to false in `config/site.config.js`.
 
-Check out all the settings in the `site.config.js`. There are comments there with additional information.
+Check out all the settings in the `site.config.js`.
 
 
 #### 1. **Build** site from `./content` into the `./public` folder (in watch mode):
@@ -102,7 +101,7 @@ After the changes, restart build/watch scripts. This process in suboptimal, but 
   change them, but do not forget to update the `templateConfig` object literal (`generator.js`) as well).
 - Pages (in `pages/`) are using templates and partials defined in the `layouts/` folder.
 - The `config/site.config.js` file contains some of the global site properties (like site title, author, description,
-  social media links etc.) that are used in the EJS partials. Can also be extended it to your liking.
+  social media links etc.) that are used in the EJS partials.
 
 ## Publish Website to Netlify
 
@@ -124,10 +123,10 @@ Netlify's CI/CD pipeline.
 
 In the optional `_headers` file you can specify the HTTP headers and set Content Security Policy (CSP) rules for the
 Netlify server.
-Currently, CSP rules are commented out. You can also specify these in `netlify.toml`.
+Currently, CSP rules are commented out. They can also be specified in `netlify.toml`.
 
-The `_redirects` file is currently empty. When you have a custom domain, you can make a redirect from _.netlify.com_ to
-your custom domain there.
+The `_redirects` file is currently empty. When using a custom domain, make a redirect from _.netlify.com_ to
+your domain here.
 
 `robots.txt` default settings:
 
@@ -263,28 +262,7 @@ slug to be completely unique. You can't have two posts at the same day now.
 
 ### Internationalisation (i18n)
 
-Provided by **i18next** package. See in `assets/js/main.js`. Remove this feature if you don't need it. Some texts (like
-the ones coming from config) cannot be made translatable. Probably not a good solution. The code is left there mainly
-for reference.
-
-The translations come from `content/lang/translations.json`.
-
-Example usage 1:
-
-```html
-<h1 data-i18n="contact.title">Contact page</h1>
-```
-
-Example usage 2:
-
-```html
-<textarea name="message"
-          data-i18n="[placeholder]contact.message_placeholder"
-          placeholder="Your message..."
-></textarea>
-```
-
-[i18next Docs](https://www.i18next.com/)
+Use the **i18next** package. [i18next Docs](https://www.i18next.com/)
 
 ### Open Hours library for displaying opening hours.
 
